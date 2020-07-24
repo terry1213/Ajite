@@ -1,6 +1,0 @@
-framework module Pods_ajite_ajiteUITests {
-  umbrella header "Pods-ajite-ajiteUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
