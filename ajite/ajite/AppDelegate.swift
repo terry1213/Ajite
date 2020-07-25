@@ -2,22 +2,20 @@
 //  AppDelegate.swift
 //  ajite
 //
-//  Created by Chanwoong Ahn on 2020/07/23.
-//  Copyright © 2020 keilvher. All rights reserved.
+//  Created by 노은솔 on 2020/07/25.
+//  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        // Override point for customization after application launch.
         return true
     }
 

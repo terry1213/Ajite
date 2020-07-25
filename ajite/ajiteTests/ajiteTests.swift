@@ -2,8 +2,8 @@
 //  ajiteTests.swift
 //  ajiteTests
 //
-//  Created by Chanwoong Ahn on 2020/07/23.
-//  Copyright © 2020 keilvher. All rights reserved.
+//  Created by 노은솔 on 2020/07/25.
+//  Copyright © 2020 ajite. All rights reserved.
 //
 
 import XCTest
