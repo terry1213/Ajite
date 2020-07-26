@@ -23,13 +23,13 @@
                                 <rect key="frame" x="117" y="215" width="181" height="301"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="spM-2Y-bQs" secondAttribute="height" multiplier="85:148" constant="8.1283783783783861" id="BGj-YL-bB3"/>
+                                    <constraint firstAttribute="width" secondItem="spM-2Y-bQs" secondAttribute="height" multiplier="181:301" id="jBB-yp-GP9"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo-ajite" translatesAutoresizingMaskIntoConstraints="NO" id="dvA-m1-H0B">
                                 <rect key="frame" x="102" y="365" width="211" height="232"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="211" id="nv9-d3-x83"/>
+                                    <constraint firstAttribute="width" secondItem="dvA-m1-H0B" secondAttribute="height" multiplier="211:232" id="p7t-lX-NLF"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -38,10 +38,18 @@
                             <constraint firstItem="dvA-m1-H0B" firstAttribute="centerX" secondItem="spM-2Y-bQs" secondAttribute="centerX" id="2jX-mz-Eah"/>
                             <constraint firstItem="spM-2Y-bQs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="30i-nG-Zbk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dvA-m1-H0B" secondAttribute="bottom" constant="265" id="Ccd-0o-j7A"/>
+                            <constraint firstItem="dvA-m1-H0B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="CpR-bM-oWk"/>
                             <constraint firstItem="dvA-m1-H0B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="FiZ-yn-H9S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dvA-m1-H0B" secondAttribute="trailing" constant="101" id="H51-p0-cYz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="spM-2Y-bQs" secondAttribute="bottom" constant="346" id="KZT-UZ-8jx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="spM-2Y-bQs" secondAttribute="bottom" constant="346" id="VIq-Rh-LLu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="spM-2Y-bQs" secondAttribute="trailing" constant="116" id="YVz-J0-WeX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dvA-m1-H0B" secondAttribute="bottom" constant="265" id="hUa-ev-QjR"/>
                             <constraint firstItem="spM-2Y-bQs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="171" id="m5e-2u-3Ys"/>
+                            <constraint firstItem="dvA-m1-H0B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="321" id="mvo-Ce-8Js"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="spM-2Y-bQs" secondAttribute="trailing" constant="116" id="pXT-2R-hqL"/>
+                            <constraint firstItem="spM-2Y-bQs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="rO2-ix-5to"/>
+                            <constraint firstItem="spM-2Y-bQs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="171" id="ssd-gV-NZz"/>
                             <constraint firstItem="dvA-m1-H0B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="321" id="yW8-WA-hWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
