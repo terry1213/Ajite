@@ -20,6 +20,7 @@
 		16AE4B0F24CC761900807ECB /* ajiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0E24CC761900807ECB /* ajiteUITests.swift */; };
 		1AB5901F26C33358E802B4B2 /* libPods-ajite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223357BD1FB96AE136E86622 /* libPods-ajite.a */; };
 		DC7EE5AE65E925948C9E0412 /* libPods-ajite-ajiteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */; };
+		DE47396224CD617E00C7EC70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE47396124CD617E00C7EC70 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite-ajiteUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CFA86BB9B0F3D43A70F2FC /* Pods-ajiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.debug.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D452F51C3DD4EA8BB6468220 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
+		DE47396124CD617E00C7EC70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		16AE4AE824CC761400807ECB /* ajite */ = {
 			isa = PBXGroup;
 			children = (
+				DE47396124CD617E00C7EC70 /* GoogleService-Info.plist */,
 				161C12D624CC97B5002E9246 /* Storyboards */,
 				16AE4AE924CC761400807ECB /* AppDelegate.swift */,
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
@@ -291,6 +294,7 @@
 			files = (
 				161C12D824CC97E3002E9246 /* Authentication.storyboard in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
+				DE47396224CD617E00C7EC70 /* GoogleService-Info.plist in Resources */,
 				16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */,
 				16AE4AF124CC761400807ECB /* Main.storyboard in Resources */,
 			);
