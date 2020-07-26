@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		087AB64D522F92638EFD6401 /* libPods-ajiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F366D6D791255A79E968006 /* libPods-ajiteTests.a */; };
+		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
 		16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AEB24CC761400807ECB /* SceneDelegate.swift */; };
 		16AE4AEE24CC761400807ECB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AED24CC761400807ECB /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		08125D956A5BDEFF9E72F287 /* Pods-ajite-ajiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.release.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		08CE5227FC726640CFE6A21B /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4AE924CC761400807ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AE4AEB24CC761400807ECB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				16AE4AF524CC761800807ECB /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
 				16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */,
+				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 			);
 			path = ajite;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				16AE4AEE24CC761400807ECB /* ViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
+				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
 				16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

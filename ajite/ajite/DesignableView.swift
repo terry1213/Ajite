@@ -1,0 +1,33 @@
+//
+//  DesignableView.swift
+//  ajite
+//
+//  Created by 노은솔 on 2020/07/26.
+//  Copyright © 2020 ajite. All rights reserved.
+//
+
+import UIKit
+
+@IBDesignable
+class DesignableView : UIView {
+    @IBInspectable var shadowColor : UIColor = UIColor.clear{
+        didSet {
+            layer.shadowColor = shadowColor.cgColor
+        }
+    }
+    @IBInspectable var shadowOpacity : CGFloat = 0{
+        didSet{
+            layer.shadowOpacity = Float(shadowOpacity)
+        }
+    }
+    @IBInspectable var shadowRadius : CGFloat = 0{
+        didSet{
+            layer.shadowRadius = shadowRadius
+        }
+    }
+    @IBInspectable var shadowOffsetY : CGFloat = 0{
+        didSet {
+            layer.shadowOffset.height = shadowOffsetY
+        }
+    }
+}
