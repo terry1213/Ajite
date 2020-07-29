@@ -10,9 +10,14 @@
 		087AB64D522F92638EFD6401 /* libPods-ajiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F366D6D791255A79E968006 /* libPods-ajiteTests.a */; };
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
+		164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125C24D17A240069B5EC /* ProfileViewController.swift */; };
+		164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */; };
+		164B126124D17A640069B5EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126024D17A640069B5EC /* HomeViewController.swift */; };
+		164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126224D17A6F0069B5EC /* AjiteViewController.swift */; };
+		164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126424D17AAB0069B5EC /* PlaylistViewController.swift */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
 		16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AEB24CC761400807ECB /* SceneDelegate.swift */; };
-		16AE4AEE24CC761400807ECB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AED24CC761400807ECB /* ViewController.swift */; };
+		16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AED24CC761400807ECB /* LoginViewControllers.swift */; };
 		16AE4AF124CC761400807ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AE4AEF24CC761400807ECB /* Main.storyboard */; };
 		16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */; };
 		16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16AE4AF524CC761800807ECB /* Assets.xcassets */; };
@@ -47,10 +52,15 @@
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = ajite/made.otf; sourceTree = SOURCE_ROOT; };
+		164B125C24D17A240069B5EC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "ajite/TabBar Item VC/ProfileViewController.swift"; sourceTree = SOURCE_ROOT; };
+		164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAjiteViewController.swift; sourceTree = "<group>"; };
+		164B126024D17A640069B5EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		164B126224D17A6F0069B5EC /* AjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteViewController.swift; sourceTree = "<group>"; };
+		164B126424D17AAB0069B5EC /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4AE924CC761400807ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AE4AEB24CC761400807ECB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		16AE4AED24CC761400807ECB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		16AE4AED24CC761400807ECB /* LoginViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllers.swift; sourceTree = "<group>"; };
 		16AE4AF024CC761400807ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16AE4AF324CC761400807ECB /* ajite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ajite.xcdatamodel; sourceTree = "<group>"; };
 		16AE4AF524CC761800807ECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +118,18 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		164B126624D17AC00069B5EC /* TabBar Item VC */ = {
+			isa = PBXGroup;
+			children = (
+				164B126224D17A6F0069B5EC /* AjiteViewController.swift */,
+				164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */,
+				164B126024D17A640069B5EC /* HomeViewController.swift */,
+				164B126424D17AAB0069B5EC /* PlaylistViewController.swift */,
+				164B125C24D17A240069B5EC /* ProfileViewController.swift */,
+			);
+			path = "TabBar Item VC";
+			sourceTree = "<group>";
+		};
 		16AE4ADD24CC761400807ECB = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +159,8 @@
 				161C12D624CC97B5002E9246 /* Storyboards */,
 				16AE4AE924CC761400807ECB /* AppDelegate.swift */,
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
-				16AE4AED24CC761400807ECB /* ViewController.swift */,
+				16AE4AED24CC761400807ECB /* LoginViewControllers.swift */,
+				164B126624D17AC00069B5EC /* TabBar Item VC */,
 				16AE4AF524CC761800807ECB /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
 				1645658324CE889100DDA830 /* made.otf */,
@@ -393,10 +416,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16AE4AEE24CC761400807ECB /* ViewController.swift in Sources */,
+				164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */,
+				164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */,
+				16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */,
+				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
+				164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */,
 				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
+				164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */,
 				16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
