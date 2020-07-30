@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,8 +25,8 @@
 		16AE4B0424CC761900807ECB /* ajiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0324CC761900807ECB /* ajiteTests.swift */; };
 		16AE4B0F24CC761900807ECB /* ajiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0E24CC761900807ECB /* ajiteUITests.swift */; };
 		1AB5901F26C33358E802B4B2 /* libPods-ajite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223357BD1FB96AE136E86622 /* libPods-ajite.a */; };
+		6EB4F1CE24D2D6F400013093 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */; };
 		DC7EE5AE65E925948C9E0412 /* libPods-ajite-ajiteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */; };
-		DE47396424CDA13C00C7EC70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE47396324CDA13C00C7EC70 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +75,10 @@
 		1F366D6D791255A79E968006 /* libPods-ajiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223357BD1FB96AE136E86622 /* libPods-ajite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBFF8655778FA2B7DA06F6D /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
+		6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite-ajiteUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CFA86BB9B0F3D43A70F2FC /* Pods-ajiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.debug.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D452F51C3DD4EA8BB6468220 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
-		DE47396324CDA13C00C7EC70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 		16AE4AE824CC761400807ECB /* ajite */ = {
 			isa = PBXGroup;
 			children = (
-				DE47396324CDA13C00C7EC70 /* GoogleService-Info.plist */,
+				6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */,
 				161C12D624CC97B5002E9246 /* Storyboards */,
 				16AE4AE924CC761400807ECB /* AppDelegate.swift */,
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
@@ -222,6 +222,7 @@
 				16AE4AE224CC761400807ECB /* Sources */,
 				16AE4AE324CC761400807ECB /* Frameworks */,
 				16AE4AE424CC761400807ECB /* Resources */,
+				FBC0023C1246B2A8ACBFE166 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +260,7 @@
 				16AE4B0624CC761900807ECB /* Sources */,
 				16AE4B0724CC761900807ECB /* Frameworks */,
 				16AE4B0824CC761900807ECB /* Resources */,
+				B066319422314929599A9F34 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,7 +322,7 @@
 			files = (
 				1645658424CE889100DDA830 /* made.otf in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
-				DE47396424CDA13C00C7EC70 /* GoogleService-Info.plist in Resources */,
+				6EB4F1CE24D2D6F400013093 /* GoogleService-Info.plist in Resources */,
 				16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */,
 				16AE4AF124CC761400807ECB /* Main.storyboard in Resources */,
 			);
@@ -387,6 +389,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B066319422314929599A9F34 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D237C5EAA2C65FB6711132AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +426,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBC0023C1246B2A8ACBFE166 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -602,6 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTTW8HP27;
 				INFOPLIST_FILE = ajite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -621,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPTTW8HP27;
 				INFOPLIST_FILE = ajite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
