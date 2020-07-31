@@ -111,7 +111,7 @@
         <!--Tab Bar Controller VC-->
         <scene sceneID="21B-tb-2GS">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hsq-SA-NQ2" userLabel="Tab Bar Controller VC" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="hsq-SA-NQ2" userLabel="Tab Bar Controller VC" customClass="TabBarMenuViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u9W-8r-tp0">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1533,12 +1533,12 @@
     <resources>
         <image name="ajitelogo" width="200" height="200"/>
         <image name="background image" width="500" height="889"/>
-        <image name="music.note.list" catalog="system" width="128" height="113"/>
+        <image name="music.note.list" catalog="system" width="32" height="32"/>
         <image name="person.badge.plus" catalog="system" width="128" height="116"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="square.and.arrow.up.on.square.fill" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
     </resources>
 </document>
