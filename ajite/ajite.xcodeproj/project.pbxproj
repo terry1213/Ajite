@@ -25,8 +25,10 @@
 		16AE4B0424CC761900807ECB /* ajiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0324CC761900807ECB /* ajiteTests.swift */; };
 		16AE4B0F24CC761900807ECB /* ajiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0E24CC761900807ECB /* ajiteUITests.swift */; };
 		1AB5901F26C33358E802B4B2 /* libPods-ajite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223357BD1FB96AE136E86622 /* libPods-ajite.a */; };
-		6EB4F1CE24D2D6F400013093 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */; };
 		DC7EE5AE65E925948C9E0412 /* libPods-ajite-ajiteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */; };
+		DEA14A2324D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
+		DEA14A2424D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
+		DEA14A2524D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +77,10 @@
 		1F366D6D791255A79E968006 /* libPods-ajiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223357BD1FB96AE136E86622 /* libPods-ajite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBFF8655778FA2B7DA06F6D /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
-		6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite-ajiteUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CFA86BB9B0F3D43A70F2FC /* Pods-ajiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.debug.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D452F51C3DD4EA8BB6468220 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
+		DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +157,7 @@
 		16AE4AE824CC761400807ECB /* ajite */ = {
 			isa = PBXGroup;
 			children = (
-				6EB4F1CD24D2D6F400013093 /* GoogleService-Info.plist */,
+				DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */,
 				161C12D624CC97B5002E9246 /* Storyboards */,
 				16AE4AE924CC761400807ECB /* AppDelegate.swift */,
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
@@ -322,7 +324,7 @@
 			files = (
 				1645658424CE889100DDA830 /* made.otf in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
-				6EB4F1CE24D2D6F400013093 /* GoogleService-Info.plist in Resources */,
+				DEA14A2324D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */,
 				16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */,
 				16AE4AF124CC761400807ECB /* Main.storyboard in Resources */,
 			);
@@ -332,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEA14A2424D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEA14A2524D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
