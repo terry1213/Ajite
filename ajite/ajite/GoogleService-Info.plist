@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>609456955654-l60ud2ija44j7n5306pn08jq4f0ua5iv.apps.googleusercontent.com</string>
+	<string>761858142230-os6em0bmnottmm6os74na59nao7n1pg1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.609456955654-l60ud2ija44j7n5306pn08jq4f0ua5iv</string>
+	<string>com.googleusercontent.apps.761858142230-os6em0bmnottmm6os74na59nao7n1pg1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBTowjGsEdKrZ_o0gXcP2QqrTnRKBgnJhE</string>
+	<string>AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>609456955654</string>
+	<string>761858142230</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.teamajite.ajite</string>
 	<key>PROJECT_ID</key>
-	<string>ajite-49c66</string>
+	<string>ajite-13729</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ajite-49c66.appspot.com</string>
+	<string>ajite-13729.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:609456955654:ios:2abcbecd513410cee6be87</string>
+	<string>1:761858142230:ios:d8ed6100b96a2251144537</string>
 	<key>DATABASE_URL</key>
-	<string>https://ajite-49c66.firebaseio.com</string>
+	<string>https://ajite-13729.firebaseio.com</string>
 </dict>
 </plist>
