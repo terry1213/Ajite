@@ -18,7 +18,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // if user is logged in before
+        if let loggedUsername = UserDefaults.standard.string(forKey: "username") {
+            //로그인된 상태라면 root view controller를 TabBarMenuViewController로 설정한다.
+            print("after login")
+            let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+            window?.rootViewController = tabBarMenuViewController
+        } else {
+            ////로그인되지 않은 상태라면 root view controller를 LoginViewControllers로 설정한다.
+            print("before login")
+            let loginViewControllers = storyboard.instantiateViewController(identifier: "LoginViewControllers")
+            window?.rootViewController = loginViewControllers
+        }
     }
+    
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        
+        //root view controller를 vc로 변경
+        window.rootViewController = vc
+        
+        //변경 애니메이션 적용
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: [.transitionCrossDissolve],
+                          animations: nil,
+                          completion: nil)
+    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
