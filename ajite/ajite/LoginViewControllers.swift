@@ -13,7 +13,8 @@ import GoogleSignIn
 class LoginViewController: UIViewController, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil){
-            
+            let webPage = self.storyboard?.instantiateViewController(withIdentifier: "test")
+            self.present(webPage!, animated: true, completion: nil)
         }else{
             
         }
@@ -32,8 +33,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().delegate = self//uiDelegate to delegate
-        GIDSignIn.sharedInstance()?.signIn()
+        //GIDSignIn.sharedInstance().delegate = self//uiDelegate to delegate
+        GIDSignIn.sharedInstance().signIn()
         // Do any additional setup after loading the view.
     }
     
