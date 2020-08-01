@@ -266,12 +266,11 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3c-xC-FAf">
                                                 <rect key="frame" x="260" y="0.0" width="70" height="35"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="FYH-fX-G1R"/>
                                                     <constraint firstAttribute="height" constant="35" id="hfH-W8-Kbd"/>
                                                 </constraints>
-                                                <state key="normal" title="Add" image="person.badge.plus" catalog="system">
+                                                <state key="normal" title="Add" image="loginbutton">
                                                     <color key="titleColor" red="0.85490196080000003" green="0.72156862749999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                             </button>
@@ -706,12 +705,11 @@
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wh2-C4-vsW">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="25" id="oHu-aH-Dsc"/>
                                                                                 <constraint firstAttribute="height" constant="25" id="xVr-hw-eTN"/>
                                                                             </constraints>
-                                                                            <state key="normal" image="music.note.list" catalog="system"/>
+                                                                            <state key="normal" image="playlist-blue"/>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZk-XA-kL0">
                                                                             <rect key="frame" x="40" y="0.0" width="25" height="25"/>
@@ -1533,11 +1531,12 @@
     <resources>
         <image name="ajitelogo" width="200" height="200"/>
         <image name="background image" width="500" height="889"/>
-        <image name="music.note.list" catalog="system" width="32" height="32"/>
-        <image name="person.badge.plus" catalog="system" width="128" height="116"/>
+        <image name="loginbutton" width="968" height="416"/>
+        <image name="music.note.list" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="playlist-blue" width="200" height="200"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
     </resources>
