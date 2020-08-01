@@ -16,7 +16,7 @@
         <!--Login VC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Login VC" customClass="LoginViewController" customModule="ajite" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewControllers" id="BYZ-38-t0r" userLabel="Login VC" customClass="LoginViewController" customModule="ajite" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
         <!--Tab Bar Controller VC-->
         <scene sceneID="21B-tb-2GS">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="hsq-SA-NQ2" userLabel="Tab Bar Controller VC" customClass="TabBarMenuViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarMenuViewController" automaticallyAdjustsScrollViewInsets="NO" id="hsq-SA-NQ2" userLabel="Tab Bar Controller VC" customClass="TabBarMenuViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u9W-8r-tp0">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
