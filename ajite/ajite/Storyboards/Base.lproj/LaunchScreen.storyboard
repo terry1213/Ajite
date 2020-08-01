@@ -28,15 +28,15 @@
                                     <constraint firstAttribute="width" constant="567" id="lz1-m5-Wkn"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo" translatesAutoresizingMaskIntoConstraints="NO" id="spM-2Y-bQs" userLabel="logo image">
-                                <rect key="frame" x="102" y="89.666666666666686" width="210" height="297"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ajitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="spM-2Y-bQs" userLabel="logo image">
+                                <rect key="frame" x="119" y="106" width="176" height="187"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="297" id="Kuq-sw-jqz"/>
-                                    <constraint firstAttribute="width" constant="210" id="TTD-SP-J2U"/>
+                                    <constraint firstAttribute="height" constant="187" id="Kuq-sw-jqz"/>
+                                    <constraint firstAttribute="width" constant="176" id="TTD-SP-J2U"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -46,9 +46,9 @@
                             <constraint firstItem="oNK-b0-Q4K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7fv-bB-mkW"/>
                             <constraint firstItem="dvA-m1-H0B" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7pU-dm-JGe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oNK-b0-Q4K" secondAttribute="trailing" id="Bb0-IR-lms"/>
-                            <constraint firstItem="spM-2Y-bQs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-130" id="QrO-Ny-r9Y"/>
                             <constraint firstItem="spM-2Y-bQs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ygo-nN-MqK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oNK-b0-Q4K" secondAttribute="bottom" constant="-34" id="ac4-bX-4ht"/>
+                            <constraint firstItem="spM-2Y-bQs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="cKj-CK-kEO"/>
                             <constraint firstItem="oNK-b0-Q4K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="rTj-Ie-O3G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -56,11 +56,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="373.66071428571428"/>
+            <point key="canvasLocation" x="52.173913043478265" y="373.36956521739131"/>
         </scene>
     </scenes>
     <resources>
-        <image name="applogo" width="210" height="297"/>
+        <image name="ajitelogo" width="200" height="200"/>
         <image name="applogo-ajite" width="567" height="567"/>
         <image name="background image" width="500" height="889"/>
     </resources>
