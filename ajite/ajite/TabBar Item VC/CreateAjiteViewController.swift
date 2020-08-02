@@ -8,31 +8,18 @@
 
 import UIKit
 
-class MemberCell : UITableViewCell{
-    
-    @IBOutlet weak var profilepicture: UIImageView!
-    override func awakeFromNib() {
-          super.awakeFromNib()
-          // Initialization code
-      }
 
-      override func setSelected(_ selected: Bool, animated: Bool) {
-          super.setSelected(selected, animated: animated)
-
-          // Configure the view for the selected state
-      }
-   
-    
-    
-}
 
 class CreateAjiteViewController: UIViewController {
 
     
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    
     
     //@IBAction func unwindToRed(unwindSegue: UIStoryboardSegue) {
    // }

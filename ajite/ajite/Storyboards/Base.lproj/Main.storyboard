@@ -374,6 +374,11 @@
                                     <constraint firstItem="S7g-9t-oiv" firstAttribute="leading" secondItem="Xyj-Ef-ZIL" secondAttribute="leading" constant="10" id="RzJ-Ob-cqD"/>
                                     <constraint firstAttribute="height" constant="500" id="ZIb-9s-pIa"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-YE-B15" userLabel="Logo Ajite">
                                 <rect key="frame" x="150" y="178" width="114.5" height="60"/>
@@ -410,9 +415,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Ajite" id="lZk-By-fXm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="CreateView" destination="Xyj-Ef-ZIL" id="RMw-y0-8t2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voe-PM-9u6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="r7W-gi-orw"/>
@@ -1167,14 +1169,13 @@
         <!--Table View Controller-->
         <scene sceneID="Mq0-d3-7UD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1g5-ze-tXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="lWD-ti-Fdi" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TpM-I4-tEI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="707"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
-                            <tableViewSection id="ByV-Fb-NiU">
+                            <tableViewSection headerTitle="Section-1" id="ByV-Fb-NiU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="srZ-cm-Jg5">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -1196,6 +1197,50 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZPi-fn-fjF">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPi-fn-fjF" id="FYf-vf-ckP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-zU-ZiA">
+                                                    <rect key="frame" x="175" y="11.5" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BQ7-zU-ZiA" firstAttribute="centerX" secondItem="FYf-vf-ckP" secondAttribute="centerX" id="Fuc-Q8-2rC"/>
+                                                <constraint firstItem="BQ7-zU-ZiA" firstAttribute="centerY" secondItem="FYf-vf-ckP" secondAttribute="centerY" id="aPK-Tg-h7z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Section-3" id="XjG-8Q-RAW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kby-Qe-7uw">
+                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kby-Qe-7uw" id="7Xi-RH-o2i">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78C-sU-beY">
+                                                    <rect key="frame" x="175" y="11.5" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="78C-sU-beY" firstAttribute="centerX" secondItem="7Xi-RH-o2i" secondAttribute="centerX" id="Ayh-Hr-XpU"/>
+                                                <constraint firstItem="78C-sU-beY" firstAttribute="centerY" secondItem="7Xi-RH-o2i" secondAttribute="centerY" id="Tpy-Fd-Knz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1205,6 +1250,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1g5-ze-tXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4391" y="1655"/>
         </scene>
@@ -1507,7 +1553,7 @@
                         <viewLayoutGuide key="safeArea" id="djq-se-rBt"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" leftItemsSupplementBackButton="YES" id="TPV-cN-wzZ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up.doc.fill" catalog="system" id="IFb-ea-AjY">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="settings-navy" id="IFb-ea-AjY">
                             <connections>
                                 <segue destination="Obz-hZ-rO8" kind="showDetail" id="Bpx-mS-o5w"/>
                             </connections>
@@ -1668,7 +1714,6 @@
     <resources>
         <image name="addpurple" width="100" height="50"/>
         <image name="ajitelogo" width="200" height="200"/>
-        <image name="arrow.up.doc.fill" catalog="system" width="115" height="128"/>
         <image name="background image" width="500" height="889"/>
         <image name="door-1" width="100" height="100"/>
         <image name="door-2" width="100" height="100"/>
@@ -1682,6 +1727,7 @@
         <image name="plus-navy" width="200" height="200"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="recordblue" width="100" height="100"/>
+        <image name="settings-navy" width="30" height="30"/>
         <image name="share-purple" width="100" height="50"/>
         <image name="youtube-navy" width="200" height="200"/>
     </resources>
