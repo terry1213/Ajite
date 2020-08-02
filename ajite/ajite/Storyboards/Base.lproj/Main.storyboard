@@ -609,6 +609,9 @@
                                                 <state key="normal" image="share-purple">
                                                     <color key="titleColor" red="0.80596011879999996" green="0.67666262389999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="test:" destination="hGq-4s-E0g" eventType="touchUpInside" id="mRW-di-INH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

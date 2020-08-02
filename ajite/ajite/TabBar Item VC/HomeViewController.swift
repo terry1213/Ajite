@@ -62,10 +62,10 @@ class HomeViewController: UIViewController {
     
     func setYoutubePlayerVCConstraints() {
         youtubePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         youtubePlayerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         youtubePlayerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
     @IBAction func test(_ sender: Any) {
