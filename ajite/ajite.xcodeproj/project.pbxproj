@@ -10,6 +10,8 @@
 		087AB64D522F92638EFD6401 /* libPods-ajiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F366D6D791255A79E968006 /* libPods-ajiteTests.a */; };
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
+		1645EB0E24D688EE007ACBF5 /* InsidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */; };
+		1645EB1424D6B246007ACBF5 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645EB1324D6B246007ACBF5 /* CircleImageView.swift */; };
 		164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125C24D17A240069B5EC /* ProfileViewController.swift */; };
 		164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */; };
 		164B126124D17A640069B5EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126024D17A640069B5EC /* HomeViewController.swift */; };
@@ -56,6 +58,8 @@
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = ajite/made.otf; sourceTree = SOURCE_ROOT; };
+		1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsidePlaylistViewController.swift; sourceTree = "<group>"; };
+		1645EB1324D6B246007ACBF5 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		164B125C24D17A240069B5EC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "ajite/TabBar Item VC/ProfileViewController.swift"; sourceTree = SOURCE_ROOT; };
 		164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAjiteViewController.swift; sourceTree = "<group>"; };
 		164B126024D17A640069B5EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				164B126224D17A6F0069B5EC /* AjiteViewController.swift */,
 				164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */,
+				1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */,
 				164B126024D17A640069B5EC /* HomeViewController.swift */,
 				164B126424D17AAB0069B5EC /* PlaylistViewController.swift */,
 				164B125C24D17A240069B5EC /* ProfileViewController.swift */,
@@ -171,6 +176,7 @@
 				16AE4AFA24CC761800807ECB /* Info.plist */,
 				1645658324CE889100DDA830 /* made.otf */,
 				16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */,
+				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 				DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
@@ -468,6 +474,8 @@
 				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
 				DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */,
+				1645EB1424D6B246007ACBF5 /* CircleImageView.swift in Sources */,
+				1645EB0E24D688EE007ACBF5 /* InsidePlaylistViewController.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
 				164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */,
 				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
