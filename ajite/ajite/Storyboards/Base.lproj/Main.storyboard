@@ -236,7 +236,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Create Ajite" image="plus.app.fill" catalog="system" id="VFE-8V-KXg">
                             <color key="tintColor" red="0.83137254901960778" green="0.8784313725490196" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="uKJ-AH-r7f" kind="presentation" id="efq-F7-nIg"/>
+                                <segue destination="uKJ-AH-r7f" kind="show" id="efq-F7-nIg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -251,29 +251,16 @@
             <objects>
                 <viewController id="uKJ-AH-r7f" userLabel="Create Ajite VC" customClass="CreateAjiteViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxW-bD-QI8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ijo-9f-Qbb" userLabel="Background Image">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.87843137250000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyj-Ef-ZIL" userLabel="Create Ajite View ">
-                                <rect key="frame" x="32" y="221" width="350" height="500"/>
+                                <rect key="frame" x="32" y="248" width="350" height="500"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-xM-lRG">
-                                        <rect key="frame" x="10" y="183" width="330" height="34"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGP-Fu-HOd">
-                                                <rect key="frame" x="0.0" y="0.0" width="330" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="bH5-fn-ryj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="S7g-9t-oiv" userLabel="Members">
                                         <rect key="frame" x="10" y="224.5" width="330" height="220"/>
                                         <subviews>
@@ -302,7 +289,7 @@
                                                 <rect key="frame" x="0.0" y="51" width="330" height="169"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" rowHeight="53" id="Z26-gD-8Xw">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" rowHeight="53" id="Z26-gD-8Xw" customClass="MemberCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="330" height="53"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z26-gD-8Xw" id="U2q-Zn-fGb">
@@ -312,7 +299,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Klq-l6-0YM">
                                                                     <rect key="frame" x="29" y="1.5" width="119" height="50"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd7-up-o19">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd7-up-o19" userLabel="profilepicture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="50" id="N6p-hJ-AYA"/>
@@ -338,6 +325,9 @@
                                                                 <constraint firstItem="Klq-l6-0YM" firstAttribute="leading" secondItem="U2q-Zn-fGb" secondAttribute="leadingMargin" constant="9" id="kO7-H3-S0C"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="profilepicture" destination="Qd7-up-o19" id="PlG-e3-56I"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -351,7 +341,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Hbu-US-F0C" secondAttribute="bottom" id="zBM-Zq-KTI"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-Jw-QzQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-Jw-QzQ" userLabel="Enter Button">
                                         <rect key="frame" x="234" y="446" width="112" height="45.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="112" id="tmY-sP-O4H"/>
@@ -362,31 +352,37 @@
                                             <segue destination="AeW-qZ-H78" kind="show" id="rKh-mh-Isa"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ajite Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGP-Fu-HOd">
+                                        <rect key="frame" x="50" y="174" width="250" height="34"/>
+                                        <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="S7g-9t-oiv" firstAttribute="centerX" secondItem="Xyj-Ef-ZIL" secondAttribute="centerX" id="21P-fi-ObM"/>
+                                    <constraint firstItem="wGP-Fu-HOd" firstAttribute="leading" secondItem="Xyj-Ef-ZIL" secondAttribute="leading" constant="50" id="4pq-dY-zcD"/>
+                                    <constraint firstItem="wGP-Fu-HOd" firstAttribute="top" secondItem="Xyj-Ef-ZIL" secondAttribute="top" constant="174" id="80U-lg-TEp"/>
                                     <constraint firstItem="KTU-Jw-QzQ" firstAttribute="top" secondItem="S7g-9t-oiv" secondAttribute="bottom" constant="1.5" id="881-zR-Q84"/>
                                     <constraint firstAttribute="trailing" secondItem="KTU-Jw-QzQ" secondAttribute="trailing" constant="4" id="BLG-yQ-MhC"/>
                                     <constraint firstAttribute="trailing" secondItem="S7g-9t-oiv" secondAttribute="trailing" constant="10" id="C6z-sm-8Ku"/>
                                     <constraint firstAttribute="bottom" secondItem="KTU-Jw-QzQ" secondAttribute="bottom" constant="8.5" id="Ec0-iE-x35"/>
+                                    <constraint firstAttribute="trailing" secondItem="wGP-Fu-HOd" secondAttribute="trailing" constant="50" id="MRN-pR-ibJ"/>
+                                    <constraint firstItem="S7g-9t-oiv" firstAttribute="top" secondItem="wGP-Fu-HOd" secondAttribute="bottom" constant="16.5" id="ORZ-Qs-1vH"/>
                                     <constraint firstAttribute="width" constant="350" id="P6E-Fz-pU2"/>
                                     <constraint firstItem="S7g-9t-oiv" firstAttribute="leading" secondItem="Xyj-Ef-ZIL" secondAttribute="leading" constant="10" id="RzJ-Ob-cqD"/>
-                                    <constraint firstItem="vaD-xM-lRG" firstAttribute="leading" secondItem="Xyj-Ef-ZIL" secondAttribute="leading" constant="10" id="Vvd-nQ-KJ1"/>
                                     <constraint firstAttribute="height" constant="500" id="ZIb-9s-pIa"/>
-                                    <constraint firstItem="vaD-xM-lRG" firstAttribute="centerY" secondItem="Xyj-Ef-ZIL" secondAttribute="centerY" constant="-50" id="fQm-Wq-P49"/>
-                                    <constraint firstAttribute="trailing" secondItem="vaD-xM-lRG" secondAttribute="trailing" constant="10" id="i8x-aP-Hdf"/>
-                                    <constraint firstItem="S7g-9t-oiv" firstAttribute="top" secondItem="vaD-xM-lRG" secondAttribute="bottom" constant="7.5" id="jxG-4d-SZs"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-YE-B15" userLabel="Logo Ajite">
-                                <rect key="frame" x="150" y="151" width="114.5" height="60"/>
+                                <rect key="frame" x="150" y="178" width="114.5" height="60"/>
                                 <fontDescription key="fontDescription" name="MADESunflower" family="MADE Sunflower" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="door-1" translatesAutoresizingMaskIntoConstraints="NO" id="9dn-H2-9e6">
-                                <rect key="frame" x="132" y="231" width="150" height="150"/>
+                                <rect key="frame" x="132" y="258" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="59q-yT-eNG"/>
                                     <constraint firstAttribute="height" constant="150" id="mpc-mT-B0z"/>
@@ -414,6 +410,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Ajite" id="lZk-By-fXm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="CreateView" destination="Xyj-Ef-ZIL" id="RMw-y0-8t2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voe-PM-9u6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="r7W-gi-orw"/>
@@ -468,7 +467,7 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-KL-Fce" userLabel="profileofsharee">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-KL-Fce" userLabel="profileofsharee" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="0.0" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="6NF-DJ-ZDO"/>
@@ -668,14 +667,14 @@
             <objects>
                 <viewController id="AeW-qZ-H78" userLabel="Ajite Room VC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JVu-qk-slg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ctr-6i-NX8">
-                                <rect key="frame" x="0.0" y="-44" width="414" height="886"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="754"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUv-1u-85N">
-                                <rect key="frame" x="0.0" y="293" width="414" height="549"/>
+                                <rect key="frame" x="0.0" y="381" width="414" height="515"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-Bh-xfF" userLabel="Favorite Songs CV view">
                                         <rect key="frame" x="0.0" y="68" width="414" height="178.5"/>
@@ -798,10 +797,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATn-C1-ddE" userLabel="Shared Songs TV view">
-                                        <rect key="frame" x="0.0" y="246.5" width="414" height="302.5"/>
+                                        <rect key="frame" x="0.0" y="246.5" width="414" height="268.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0vY-c3-sTQ" userLabel="Shared Songs Table View">
-                                                <rect key="frame" x="0.0" y="41" width="414" height="261.5"/>
+                                                <rect key="frame" x="0.0" y="41" width="414" height="227.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="J8j-L9-3Ih" userLabel="Shared Songs TV Cell">
@@ -814,7 +813,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="FVW-PU-Mpt" userLabel="song info stack">
                                                                     <rect key="frame" x="15" y="5" width="139" height="50"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Edy-a9-d20" userLabel="shared music image">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Edy-a9-d20" userLabel="shared music image" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="50" id="Grb-IG-0Fe"/>
@@ -1414,7 +1413,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Ma-KkU" userLabel="Profile Picture">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Ma-KkU" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                         <rect key="frame" x="143" y="-111" width="128" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Zh4-fJ-chV"/>
