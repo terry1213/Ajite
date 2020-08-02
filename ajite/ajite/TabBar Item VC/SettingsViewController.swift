@@ -1,21 +1,22 @@
 //
-//  ProfileViewController.swift
+//  SettingsViewController.swift
 //  ajite
 //
-//  Created by 노은솔 on 2020/07/29.
+//  Created by 노은솔 on 2020/08/02.
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-   
+class SettingsViewController: UIViewController {
+
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
+
     /*
     // MARK: - Navigation
 

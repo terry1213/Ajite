@@ -9,10 +9,12 @@
 import UIKit
 
 class CircleImageView: UIImageView {
-    self.layer.borderWidth = 1.0
-    self.layer.masksToBounds = false
-    self.layer.cornerRadius = self.frame.size.width/2
-    self.clipsToBounds = true
+    override func awakeFromNib() {
+        self.layer.borderWidth = 1.0
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
