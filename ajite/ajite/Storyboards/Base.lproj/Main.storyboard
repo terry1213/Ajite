@@ -608,16 +608,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="top" secondItem="95d-Je-ewc" secondAttribute="bottom" id="9CE-bR-Tmo"/>
-                            <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="top" secondItem="XdH-Z5-GKG" secondAttribute="top" constant="54" id="CfU-GH-LUo"/>
+                            <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="top" secondItem="XdH-Z5-GKG" secondAttribute="top" constant="54" identifier="FeedTableViewTop" id="CfU-GH-LUo"/>
                             <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="trailing" secondItem="XdH-Z5-GKG" secondAttribute="trailing" id="IZ7-E0-8MP"/>
                             <constraint firstItem="95d-Je-ewc" firstAttribute="leading" secondItem="XdH-Z5-GKG" secondAttribute="leading" id="MFL-jF-fJ3"/>
                             <constraint firstItem="R7D-j9-Lai" firstAttribute="leading" secondItem="XdH-Z5-GKG" secondAttribute="leading" id="Oih-bb-dWf"/>
                             <constraint firstAttribute="bottom" secondItem="R7D-j9-Lai" secondAttribute="bottom" id="TwQ-v2-KPl"/>
                             <constraint firstItem="R7D-j9-Lai" firstAttribute="top" secondItem="rGx-uF-yFn" secondAttribute="top" id="Xh9-zF-DA9"/>
-                            <constraint firstItem="95d-Je-ewc" firstAttribute="top" secondItem="XdH-Z5-GKG" secondAttribute="top" id="ZR2-eG-5NI"/>
                             <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="bottom" secondItem="XdH-Z5-GKG" secondAttribute="bottom" id="cd5-gI-gqs"/>
                             <constraint firstItem="R7D-j9-Lai" firstAttribute="trailing" secondItem="XdH-Z5-GKG" secondAttribute="trailing" id="eSB-u6-7dJ"/>
-                            <constraint firstItem="95d-Je-ewc" firstAttribute="top" secondItem="XdH-Z5-GKG" secondAttribute="top" id="pRJ-cc-4vC"/>
+                            <constraint firstItem="95d-Je-ewc" firstAttribute="top" secondItem="XdH-Z5-GKG" secondAttribute="top" identifier="SearchBarViewTop" id="pRJ-cc-4vC"/>
                             <constraint firstItem="95d-Je-ewc" firstAttribute="trailing" secondItem="XdH-Z5-GKG" secondAttribute="trailing" id="rEk-aU-Mz6"/>
                             <constraint firstItem="VpZ-Ct-Y0I" firstAttribute="leading" secondItem="XdH-Z5-GKG" secondAttribute="leading" id="wPu-CJ-wOY"/>
                         </constraints>
@@ -628,6 +627,10 @@
                             <color key="tintColor" red="0.83137254901960778" green="0.8784313725490196" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="feedTableView" destination="VpZ-Ct-Y0I" id="68O-29-zgr"/>
+                        <outlet property="searchBarView" destination="95d-Je-ewc" id="dhG-2K-clp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mb6-nB-9Kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1545,7 +1548,7 @@
         <image name="door-2" width="100" height="100"/>
         <image name="enter-purple" width="100" height="50"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="music.note.list" catalog="system" width="128" height="113"/>
+        <image name="music.note.list" catalog="system" width="32" height="32"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
