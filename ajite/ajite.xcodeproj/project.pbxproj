@@ -27,6 +27,7 @@
 		16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AE4AF724CC761800807ECB /* LaunchScreen.storyboard */; };
 		16AE4B0424CC761900807ECB /* ajiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0324CC761900807ECB /* ajiteTests.swift */; };
 		16AE4B0F24CC761900807ECB /* ajiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0E24CC761900807ECB /* ajiteUITests.swift */; };
+		16C133D224D70B4D00DA4177 /* AjiteRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */; };
 		1AB5901F26C33358E802B4B2 /* libPods-ajite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223357BD1FB96AE136E86622 /* libPods-ajite.a */; };
 		DC7EE5AE65E925948C9E0412 /* libPods-ajite-ajiteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */; };
 		DEA14A2324D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
@@ -82,6 +83,7 @@
 		16AE4B0A24CC761900807ECB /* ajiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ajiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4B0E24CC761900807ECB /* ajiteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ajiteUITests.swift; sourceTree = "<group>"; };
 		16AE4B1024CC761900807ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteRoomViewController.swift; sourceTree = "<group>"; };
 		1F366D6D791255A79E968006 /* libPods-ajiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223357BD1FB96AE136E86622 /* libPods-ajite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBFF8655778FA2B7DA06F6D /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,11 +137,9 @@
 			children = (
 				164B126224D17A6F0069B5EC /* AjiteViewController.swift */,
 				164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */,
-				1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */,
 				164B126024D17A640069B5EC /* HomeViewController.swift */,
 				164B126424D17AAB0069B5EC /* PlaylistViewController.swift */,
 				164B125C24D17A240069B5EC /* ProfileViewController.swift */,
-				1645EB1524D6E1FE007ACBF5 /* SettingsViewController.swift */,
 			);
 			path = "TabBar Item VC";
 			sourceTree = "<group>";
@@ -175,11 +175,14 @@
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
 				16AE4AED24CC761400807ECB /* LoginViewControllers.swift */,
 				164B126624D17AC00069B5EC /* TabBar Item VC */,
+				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
+				16C133D524D71BD700DA4177 /* UIResources Swift */,
+				1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */,
+				1645EB1524D6E1FE007ACBF5 /* SettingsViewController.swift */,
 				16AE4AF524CC761800807ECB /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
 				1645658324CE889100DDA830 /* made.otf */,
 				16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */,
-				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 				DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
@@ -203,6 +206,14 @@
 				16AE4B1024CC761900807ECB /* Info.plist */,
 			);
 			path = ajiteUITests;
+			sourceTree = "<group>";
+		};
+		16C133D524D71BD700DA4177 /* UIResources Swift */ = {
+			isa = PBXGroup;
+			children = (
+				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
+			);
+			path = "UIResources Swift";
 			sourceTree = "<group>";
 		};
 		8F49A914A998D1FB38B8C46B /* Frameworks */ = {
@@ -472,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */,
+				16C133D224D70B4D00DA4177 /* AjiteRoomViewController.swift in Sources */,
 				164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */,
 				16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */,
 				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,

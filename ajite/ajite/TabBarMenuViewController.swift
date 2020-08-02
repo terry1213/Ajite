@@ -29,3 +29,16 @@ class TabBarMenuViewController: UITabBarController {
 
 }
 
+/*extension TabBarMenuViewController : UITabBarControllerDelegate{
+    public func tabBarController (tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController)->Bool{
+        
+        let fromView: UIView = tabBarController.selectedViewController!.view
+        let toView : UIView = viewController.view
+        if fromView == toView{
+            return false
+        }
+        UIView.transition(from: fromView, to: toView, duration: 0.3, options: UIView.AnimationOptions.transitionCrossDissolve)
+        return true
+    }
+}
+*/

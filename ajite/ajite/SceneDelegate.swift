@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //변경 애니메이션 적용
         UIView.transition(with: window,
-                          duration: 0.5,
+                          duration: 0.3,
                           options: [.transitionCrossDissolve],
                           animations: nil,
                           completion: nil)
