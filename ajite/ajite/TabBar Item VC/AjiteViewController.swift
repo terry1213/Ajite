@@ -9,7 +9,6 @@
 import UIKit
 
 class AjiteViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

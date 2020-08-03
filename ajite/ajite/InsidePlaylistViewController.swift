@@ -18,8 +18,8 @@ class InsidePlaylistViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func create(_ sender: Any) {
+        
+    @IBAction func finished(_ sender: Any) {
         dismiss(animated: true)
     }
 }
