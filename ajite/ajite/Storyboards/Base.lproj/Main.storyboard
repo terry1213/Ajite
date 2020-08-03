@@ -813,7 +813,6 @@
         <!--Inside Playlist View Controller-->
         <scene sceneID="vEq-KN-Ey8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cqw-bw-X4F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController modalPresentationStyle="overCurrentContext" id="BBK-6o-Sj2" customClass="InsidePlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4rh-c1-cQf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -920,6 +919,7 @@
                         <outlet property="playlistView" destination="sS5-aD-ktf" id="MYx-B4-It9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cqw-bw-X4F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3772" y="92.364532019704441"/>
         </scene>
@@ -2012,6 +2012,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="userNameLabel" destination="tTo-69-zUc" id="X26-WO-eLt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZL9-YM-G4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2158,7 +2161,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rKh-mh-Isa"/>
-        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="zGq-bB-aty"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
