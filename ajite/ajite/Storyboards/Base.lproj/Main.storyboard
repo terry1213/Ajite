@@ -52,14 +52,14 @@
                                                 <rect key="frame" x="16" y="236" width="343" height="173"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXR-8w-wt6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="71.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="MADESunflower" family="MADE Sunflower" pointSize="60"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                         <size key="shadowOffset" width="2" height="1"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XC-P4-OGX" customClass="GIDSignInButton">
-                                                        <rect key="frame" x="0.0" y="120" width="343" height="53"/>
+                                                        <rect key="frame" x="0.0" y="121.66666666666667" width="343" height="51.333333333333329"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                 </subviews>
@@ -1207,33 +1207,36 @@
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-Gv-lD3">
-                                                <rect key="frame" x="19" y="-0.33333333333331439" width="89" height="30.666666666666668"/>
+                                                <rect key="frame" x="19" y="2.6666666666666874" width="89" height="30.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBk-NK-sKn">
-                                                <rect key="frame" x="284" y="-5" width="79" height="40"/>
+                                                <rect key="frame" x="284" y="-1" width="79" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="79" id="29q-O5-l6l"/>
                                                     <constraint firstAttribute="height" constant="40" id="9Wc-sc-szZ"/>
                                                 </constraints>
                                                 <state key="normal" image="addnavy"/>
+                                                <connections>
+                                                    <action selector="add:" destination="AeW-qZ-H78" eventType="touchUpInside" id="hWp-Dv-WvJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.66922193770000005" green="0.73069894310000005" blue="0.89806061979999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="0vY-c3-sTQ" firstAttribute="leading" secondItem="ATn-C1-ddE" secondAttribute="leading" id="2OH-m3-2WS"/>
-                                            <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="HBk-NK-sKn" secondAttribute="bottom" constant="3" id="43d-FN-YZC"/>
+                                            <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="HBk-NK-sKn" secondAttribute="bottom" constant="-1" id="43d-FN-YZC"/>
                                             <constraint firstAttribute="trailing" secondItem="HBk-NK-sKn" secondAttribute="trailing" constant="12" id="43u-rZ-zuT"/>
                                             <constraint firstAttribute="trailing" secondItem="0vY-c3-sTQ" secondAttribute="trailing" id="4H7-vk-c4c"/>
                                             <constraint firstItem="soO-Gv-lD3" firstAttribute="leading" secondItem="ATn-C1-ddE" secondAttribute="leading" constant="19" id="Hns-h0-Jfy"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="soO-Gv-lD3" secondAttribute="trailing" constant="20" symbolic="YES" id="S09-eD-Lwp"/>
                                             <constraint firstAttribute="trailing" secondItem="0vY-c3-sTQ" secondAttribute="trailing" id="S56-CM-b6D"/>
-                                            <constraint firstItem="HBk-NK-sKn" firstAttribute="centerY" secondItem="soO-Gv-lD3" secondAttribute="centerY" id="Y0D-Ex-UUj"/>
-                                            <constraint firstItem="HBk-NK-sKn" firstAttribute="top" secondItem="ATn-C1-ddE" secondAttribute="top" constant="-5" id="ehL-OE-n1j"/>
+                                            <constraint firstItem="HBk-NK-sKn" firstAttribute="centerY" secondItem="soO-Gv-lD3" secondAttribute="centerY" constant="0.99999999999992184" id="Y0D-Ex-UUj"/>
+                                            <constraint firstItem="HBk-NK-sKn" firstAttribute="top" secondItem="ATn-C1-ddE" secondAttribute="top" constant="-1" id="ehL-OE-n1j"/>
                                             <constraint firstItem="0vY-c3-sTQ" firstAttribute="leading" secondItem="ATn-C1-ddE" secondAttribute="leading" id="gI0-ZY-hW0"/>
-                                            <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="soO-Gv-lD3" secondAttribute="bottom" constant="7.6666666666666714" id="rtQ-ad-YOs"/>
+                                            <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="soO-Gv-lD3" secondAttribute="bottom" constant="4.6666666666665861" id="rtQ-ad-YOs"/>
                                             <constraint firstAttribute="bottom" secondItem="0vY-c3-sTQ" secondAttribute="bottom" constant="-18" id="sPi-1h-DmK"/>
                                         </constraints>
                                     </view>
@@ -1295,7 +1298,7 @@
                         <viewLayoutGuide key="safeArea" id="epr-lZ-9NV"/>
                     </view>
                     <navigationItem key="navigationItem" id="514-pZ-nVD">
-                        <barButtonItem key="rightBarButtonItem" image="leave purple" id="PQF-Fa-GnZ"/>
+                        <barButtonItem key="rightBarButtonItem" image="leave purple" id="F2e-iI-NWZ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="blurEffect" destination="vBQ-FC-7rh" id="3vs-8a-cDp"/>
@@ -1368,7 +1371,8 @@
                                     <rect key="frame" x="208" y="490" width="100" height="50"/>
                                     <state key="normal" image="addblue"/>
                                     <connections>
-                                        <action selector="finishedAdding:" destination="AeW-qZ-H78" eventType="touchUpInside" id="jtw-Ab-LiH"/>
+                                        <action selector="finished:" destination="AeW-qZ-H78" eventType="touchUpInside" id="Ogb-6L-fsV"/>
+                                        <action selector="finishedAdding:" destination="AeW-qZ-H78" eventType="touchUpInside" id="ddi-hZ-Fl9"/>
                                     </connections>
                                 </button>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LsJ-g6-dwq" userLabel="Added Members">

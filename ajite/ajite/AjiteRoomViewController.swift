@@ -26,10 +26,10 @@ class AjiteRoomViewController: UIViewController {
     }
     
  
-    @IBAction func finishedAdding(_ sender: Any) {
-            animateOut(desiredView: popUpView)
-               animateOut(desiredView: blurEffect)
-               print("pressed!")
+    
+    @IBAction func finished(_ sender: Any) {
+        animateOut(desiredView: popUpView)
+        animateOut(desiredView: blurEffect)
     }
     
     func animateIn(desiredView: UIView){
