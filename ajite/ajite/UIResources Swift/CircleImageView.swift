@@ -14,6 +14,7 @@ class CircleImageView: UIImageView {
         self.layer.masksToBounds = false
         self.layer.cornerRadius = self.frame.size.width/2
         self.clipsToBounds = true
+        self.layer.borderColor = UIColor(white: 1.0, alpha: 0).cgColor
     }
     /*
     // Only override draw() if you perform custom drawing.
