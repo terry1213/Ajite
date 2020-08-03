@@ -28,8 +28,8 @@
 		16AE4B0424CC761900807ECB /* ajiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0324CC761900807ECB /* ajiteTests.swift */; };
 		16AE4B0F24CC761900807ECB /* ajiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4B0E24CC761900807ECB /* ajiteUITests.swift */; };
 		16C133D224D70B4D00DA4177 /* AjiteRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */; };
-		16C133DB24D7F58C00DA4177 /* ChoosePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133DA24D7F58C00DA4177 /* ChoosePlaylistViewController.swift */; };
-		16C133DD24D813B900DA4177 /* AddtoPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133DC24D813B900DA4177 /* AddtoPlaylistViewController.swift */; };
+		16C133E224D851EF00DA4177 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133E124D851EF00DA4177 /* NewPlaylistViewController.swift */; };
+		16C133E624D852C200DA4177 /* PlaylistSongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C133E524D852C200DA4177 /* PlaylistSongListViewController.swift */; };
 		1AB5901F26C33358E802B4B2 /* libPods-ajite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223357BD1FB96AE136E86622 /* libPods-ajite.a */; };
 		DC7EE5AE65E925948C9E0412 /* libPods-ajite-ajiteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7B1C9976D2637B3A8C68 /* libPods-ajite-ajiteUITests.a */; };
 		DEA14A2324D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
@@ -86,8 +86,8 @@
 		16AE4B0E24CC761900807ECB /* ajiteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ajiteUITests.swift; sourceTree = "<group>"; };
 		16AE4B1024CC761900807ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteRoomViewController.swift; sourceTree = "<group>"; };
-		16C133DA24D7F58C00DA4177 /* ChoosePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlaylistViewController.swift; sourceTree = "<group>"; };
-		16C133DC24D813B900DA4177 /* AddtoPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddtoPlaylistViewController.swift; sourceTree = "<group>"; };
+		16C133E124D851EF00DA4177 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewPlaylistViewController.swift; path = ajite/Playlist/NewPlaylistViewController.swift; sourceTree = SOURCE_ROOT; };
+		16C133E524D852C200DA4177 /* PlaylistSongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaylistSongListViewController.swift; path = ajite/Playlist/PlaylistSongListViewController.swift; sourceTree = SOURCE_ROOT; };
 		1F366D6D791255A79E968006 /* libPods-ajiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223357BD1FB96AE136E86622 /* libPods-ajite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ajite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBFF8655778FA2B7DA06F6D /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,16 +175,14 @@
 			children = (
 				DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */,
 				161C12D624CC97B5002E9246 /* Storyboards */,
+				16AE4AED24CC761400807ECB /* LoginViewControllers.swift */,
 				16AE4AE924CC761400807ECB /* AppDelegate.swift */,
 				16AE4AEB24CC761400807ECB /* SceneDelegate.swift */,
-				16AE4AED24CC761400807ECB /* LoginViewControllers.swift */,
 				164B126624D17AC00069B5EC /* TabBar Item VC */,
-				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
 				16C133D524D71BD700DA4177 /* UIResources Swift */,
-				1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */,
-				16C133DC24D813B900DA4177 /* AddtoPlaylistViewController.swift */,
-				16C133DA24D7F58C00DA4177 /* ChoosePlaylistViewController.swift */,
+				16C133DE24D84EBE00DA4177 /* Playlist */,
 				1645EB1524D6E1FE007ACBF5 /* SettingsViewController.swift */,
+				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
 				16AE4AF524CC761800807ECB /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
 				1645658324CE889100DDA830 /* made.otf */,
@@ -220,6 +218,16 @@
 				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
 			);
 			path = "UIResources Swift";
+			sourceTree = "<group>";
+		};
+		16C133DE24D84EBE00DA4177 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				16C133E524D852C200DA4177 /* PlaylistSongListViewController.swift */,
+				16C133E124D851EF00DA4177 /* NewPlaylistViewController.swift */,
+				1645EB0D24D688EE007ACBF5 /* InsidePlaylistViewController.swift */,
+			);
+			path = Playlist;
 			sourceTree = "<group>";
 		};
 		8F49A914A998D1FB38B8C46B /* Frameworks */ = {
@@ -489,11 +497,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */,
+				16C133E224D851EF00DA4177 /* NewPlaylistViewController.swift in Sources */,
 				16C133D224D70B4D00DA4177 /* AjiteRoomViewController.swift in Sources */,
 				164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */,
-				16C133DD24D813B900DA4177 /* AddtoPlaylistViewController.swift in Sources */,
 				16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */,
-				16C133DB24D7F58C00DA4177 /* ChoosePlaylistViewController.swift in Sources */,
 				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
 				DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */,
@@ -502,6 +509,7 @@
 				1645EB1624D6E1FE007ACBF5 /* SettingsViewController.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
 				164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */,
+				16C133E624D852C200DA4177 /* PlaylistSongListViewController.swift in Sources */,
 				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
 				164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */,
 				16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */,

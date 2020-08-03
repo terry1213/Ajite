@@ -688,7 +688,9 @@
                                                                             </constraints>
                                                                             <state key="normal" image="plus-navy"/>
                                                                             <connections>
-                                                                                <segue destination="BBK-6o-Sj2" kind="presentation" id="s6P-ML-mhp"/>
+                                                                                <segue destination="BBK-6o-Sj2" kind="popoverPresentation" popoverAnchorView="Eb7-Gz-ctD" id="s6P-ML-mhp">
+                                                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                                                </segue>
                                                                             </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLV-VY-oFD">
@@ -815,11 +817,11 @@
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="BBK-6o-Sj2" customClass="InsidePlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4rh-c1-cQf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulx-t9-Wab">
-                                <rect key="frame" x="21" y="187" width="333" height="438"/>
+                                <rect key="frame" x="21" y="143" width="333" height="472"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sS5-aD-ktf">
                                         <rect key="frame" x="20" y="20" width="293" height="358"/>
@@ -845,7 +847,7 @@
                                                             <state key="normal" image="square" catalog="system"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-EX-qWv">
-                                                            <rect key="frame" x="59.999999999999993" y="20.666666666666668" width="103.33333333333331" height="21.000000000000004"/>
+                                                            <rect key="frame" x="60" y="20.666666666666668" width="103.33333333333331" height="21.000000000000004"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -862,27 +864,8 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cja-HT-yER">
-                                        <rect key="frame" x="214" y="386" width="99" height="30"/>
-                                        <color key="backgroundColor" red="0.75505012270000005" green="0.80368874290000003" blue="0.95296651119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="tintColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="  New Playlist" image="plus" catalog="system">
-                                            <color key="titleColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="30"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="create:" destination="BBK-6o-Sj2" eventType="touchUpInside" id="muV-IY-bhl"/>
-                                            <segue destination="KVQ-FR-ZcJ" kind="presentation" id="8lx-9C-Iem"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow8-cx-DvG">
-                                        <rect key="frame" x="125" y="386" width="60" height="30"/>
+                                        <rect key="frame" x="276" y="386" width="37" height="30"/>
                                         <color key="backgroundColor" red="0.61039167640000003" green="0.71580427889999998" blue="0.83531099559999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -901,13 +884,10 @@
                                 <constraints>
                                     <constraint firstItem="sS5-aD-ktf" firstAttribute="centerX" secondItem="ulx-t9-Wab" secondAttribute="centerX" id="1LZ-BG-7Xo"/>
                                     <constraint firstItem="Ow8-cx-DvG" firstAttribute="top" secondItem="sS5-aD-ktf" secondAttribute="bottom" constant="8" id="C1l-px-J2X"/>
-                                    <constraint firstItem="Cja-HT-yER" firstAttribute="top" secondItem="Ow8-cx-DvG" secondAttribute="top" id="XkF-7c-2BZ"/>
-                                    <constraint firstItem="Cja-HT-yER" firstAttribute="leading" secondItem="Ow8-cx-DvG" secondAttribute="trailing" constant="29" id="ajz-0i-Op9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ow8-cx-DvG" secondAttribute="trailing" constant="20" id="Z92-od-SsP"/>
                                     <constraint firstItem="sS5-aD-ktf" firstAttribute="top" secondItem="ulx-t9-Wab" secondAttribute="top" constant="20" id="dW8-ka-u9p"/>
-                                    <constraint firstItem="Cja-HT-yER" firstAttribute="trailing" secondItem="sS5-aD-ktf" secondAttribute="trailing" id="fwW-0W-xTm"/>
-                                    <constraint firstItem="Cja-HT-yER" firstAttribute="bottom" secondItem="Ow8-cx-DvG" secondAttribute="bottom" id="iAr-R5-lZF"/>
-                                    <constraint firstItem="Ow8-cx-DvG" firstAttribute="leading" secondItem="ulx-t9-Wab" secondAttribute="leading" constant="125" id="vCo-0R-C6y"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cja-HT-yER" secondAttribute="trailing" constant="20" id="zM1-CJ-YcS"/>
+                                    <constraint firstItem="sS5-aD-ktf" firstAttribute="trailing" secondItem="Ow8-cx-DvG" secondAttribute="trailing" id="o5A-rG-vGW"/>
+                                    <constraint firstItem="Ow8-cx-DvG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ulx-t9-Wab" secondAttribute="leading" symbolic="YES" id="vCo-0R-C6y"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -934,25 +914,25 @@
             </objects>
             <point key="canvasLocation" x="3772" y="177"/>
         </scene>
-        <!--Addto Playlist View Controller-->
+        <!--New Playlist View Controller-->
         <scene sceneID="JgD-I1-uOB">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="KVQ-FR-ZcJ" customClass="AddtoPlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="KVQ-FR-ZcJ" customClass="NewPlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5v1-BD-hcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3A-xw-iXR">
-                                <rect key="frame" x="37" y="328" width="301" height="156"/>
+                                <rect key="frame" x="37" y="284" width="301" height="190"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUf-yF-Irt">
-                                        <rect key="frame" x="20" y="8" width="193.66666666666666" height="40.666666666666664"/>
+                                        <rect key="frame" x="22" y="30.999999999999996" width="193.66666666666666" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mGo-QH-Jth">
-                                        <rect key="frame" x="27" y="64.666666666666686" width="247" height="34"/>
+                                        <rect key="frame" x="29" y="87.666666666666686" width="247" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pE-BE-jDI">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="34"/>
@@ -971,23 +951,23 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfM-bK-Pyr">
-                                        <rect key="frame" x="230" y="106.66666666666669" width="46" height="30"/>
+                                        <rect key="frame" x="232" y="129.66666666666669" width="46" height="30"/>
                                         <state key="normal" title="Create"/>
                                         <connections>
-                                            <action selector="create:" destination="KVQ-FR-ZcJ" eventType="touchUpInside" id="hm5-Ba-KrY"/>
+                                            <action selector="createPlaylist:" destination="KVQ-FR-ZcJ" eventType="touchUpInside" id="6Ve-kx-Dzf"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="top" secondItem="x3A-xw-iXR" secondAttribute="top" constant="8" id="A4T-Ih-AK2"/>
+                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="top" secondItem="x3A-xw-iXR" secondAttribute="top" constant="31" id="A4T-Ih-AK2"/>
                                     <constraint firstItem="vfM-bK-Pyr" firstAttribute="top" secondItem="mGo-QH-Jth" secondAttribute="bottom" constant="8" id="LfR-VP-n1S"/>
-                                    <constraint firstItem="mGo-QH-Jth" firstAttribute="centerX" secondItem="x3A-xw-iXR" secondAttribute="centerX" id="Orm-zA-3RW"/>
+                                    <constraint firstItem="mGo-QH-Jth" firstAttribute="centerX" secondItem="x3A-xw-iXR" secondAttribute="centerX" constant="2" id="Orm-zA-3RW"/>
                                     <constraint firstItem="vfM-bK-Pyr" firstAttribute="top" secondItem="mGo-QH-Jth" secondAttribute="bottom" constant="8" id="VDO-A9-gYT"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oUf-yF-Irt" secondAttribute="trailing" constant="20" symbolic="YES" id="Xmm-1s-ZYz"/>
                                     <constraint firstItem="vfM-bK-Pyr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x3A-xw-iXR" secondAttribute="leading" constant="20" symbolic="YES" id="exT-Bj-CTC"/>
-                                    <constraint firstAttribute="trailing" secondItem="vfM-bK-Pyr" secondAttribute="trailing" constant="25" id="kiW-B2-pdw"/>
-                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="leading" secondItem="x3A-xw-iXR" secondAttribute="leading" constant="20" id="pyn-e8-ayd"/>
+                                    <constraint firstAttribute="trailing" secondItem="vfM-bK-Pyr" secondAttribute="trailing" constant="23" id="kiW-B2-pdw"/>
+                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="leading" secondItem="x3A-xw-iXR" secondAttribute="leading" constant="22" id="pyn-e8-ayd"/>
                                     <constraint firstItem="mGo-QH-Jth" firstAttribute="top" secondItem="oUf-yF-Irt" secondAttribute="bottom" constant="16" id="tan-Oc-IL1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -997,7 +977,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.67000000000000004" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x3A-xw-iXR" firstAttribute="centerX" secondItem="5v1-BD-hcV" secondAttribute="centerX" id="9qz-6A-cY1"/>
                             <constraint firstItem="x3A-xw-iXR" firstAttribute="centerX" secondItem="5v1-BD-hcV" secondAttribute="centerX" id="CRI-OE-C2M"/>
@@ -1008,10 +988,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vs8-d3-jPv"/>
                     </view>
+                    <connections>
+                        <outlet property="userSpecifiedPlaylistName" destination="cLO-nz-Izd" id="K2X-u6-8ff"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahT-ep-w5r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4599.1999999999998" y="329.55665024630542"/>
+            <point key="canvasLocation" x="4729" y="424"/>
         </scene>
         <!--Ajite Room VC-->
         <scene sceneID="2Wr-CL-yA7">
@@ -1564,7 +1547,9 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="A3N-ul-FN4">
                             <color key="tintColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="KVQ-FR-ZcJ" kind="presentation" id="Xjw-7G-UCO"/>
+                                <segue destination="KVQ-FR-ZcJ" kind="popoverPresentation" identifier="newplaylist" popoverAnchorBarButtonItem="A3N-ul-FN4" id="H3I-Ee-XZb">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1573,10 +1558,10 @@
             </objects>
             <point key="canvasLocation" x="2682.4000000000001" y="818.7192118226601"/>
         </scene>
-        <!--Inside Playlist VC-->
+        <!--PlaylistinSong VC-->
         <scene sceneID="R8r-Cx-X9w">
             <objects>
-                <viewController id="lyK-Vm-Yth" userLabel="Inside Playlist VC" customClass="ChoosePlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lyK-Vm-Yth" userLabel="PlaylistinSong VC" customClass="PlaylistSongListViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v5K-Dp-iyo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1620,6 +1605,11 @@
                                                                         <constraint firstAttribute="height" constant="35" id="cVs-4D-voK"/>
                                                                     </constraints>
                                                                     <state key="normal" image="plus-navy"/>
+                                                                    <connections>
+                                                                        <segue destination="BBK-6o-Sj2" kind="popoverPresentation" popoverAnchorView="54d-l0-7D6" id="JAE-1w-Nkx">
+                                                                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                                        </segue>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-u8-UlK">
                                                                     <rect key="frame" x="43" y="0.0" width="35" height="35"/>
@@ -1883,7 +1873,9 @@
                                                                             </constraints>
                                                                             <state key="normal" image="plus-navy"/>
                                                                             <connections>
-                                                                                <segue destination="BBK-6o-Sj2" kind="presentation" id="mTL-EN-GMb"/>
+                                                                                <segue destination="BBK-6o-Sj2" kind="popoverPresentation" popoverAnchorView="EWN-cx-QQQ" id="mTL-EN-GMb">
+                                                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                                                </segue>
                                                                             </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKS-Sk-DLU">
@@ -2217,8 +2209,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rKh-mh-Isa"/>
-        <segue reference="Xjw-7G-UCO"/>
-        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="JAE-1w-Nkx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>

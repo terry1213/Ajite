@@ -1,5 +1,5 @@
 //
-//  ChoosePlaylistViewController.swift
+//  PlaylistSongListViewController.swift
 //  ajite
 //
 //  Created by 노은솔 on 2020/08/03.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChoosePlaylistViewController: UIViewController {
+class PlaylistSongListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
