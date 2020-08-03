@@ -10,9 +10,16 @@ import UIKit
 
 class InsidePlaylistViewController: UIViewController {
 
+    @IBOutlet weak var newPlaylist: UIView!
+    @IBOutlet weak var playlistView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func create(_ sender: Any) {
+        dismiss(animated: true)
     }
 }
