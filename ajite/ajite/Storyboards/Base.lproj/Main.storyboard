@@ -289,7 +289,7 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hbu-US-F0C">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hbu-US-F0C">
                                                 <rect key="frame" x="0.0" y="51" width="330" height="169"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
@@ -587,7 +587,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7D-j9-Lai" userLabel="Background Image">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-Ct-Y0I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-Ct-Y0I">
                                 <rect key="frame" x="0.0" y="142" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.85490196080000003" green="0.72156862749999995" blue="0.95294117649999999" alpha="0.61616899920000001" colorSpace="custom" customColorSpace="displayP3"/>
@@ -917,7 +917,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ctr-6i-NX8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="763"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="719"/>
                                 <color key="backgroundColor" red="0.8917601495726496" green="0.8666666666666667" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUv-1u-85N">
@@ -1358,7 +1358,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.83286947010000001" green="0.87690049410000004" blue="0.98040634390000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
                                 <rect key="frame" x="0.0" y="158" width="375" height="571"/>
                                 <color key="backgroundColor" red="0.792156862745098" green="0.70588235294117641" blue="0.99607843137254903" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.85490196080000003" green="0.72156862749999995" blue="0.95294117649999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1485,7 +1485,7 @@
                                             <constraint firstItem="4II-VS-evR" firstAttribute="leading" secondItem="ghB-ly-7AY" secondAttribute="trailing" id="o5m-YK-jES"/>
                                         </constraints>
                                     </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
                                         <rect key="frame" x="0.0" y="45.333333333333343" width="375" height="481.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
@@ -1809,7 +1809,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgr-Uo-Yep" userLabel="Shared Songs TV view">
                                         <rect key="frame" x="0.0" y="252" width="375" height="189"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-LH-7Su" userLabel="Shared Songs Table View">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-LH-7Su" userLabel="Shared Songs Table View">
                                                 <rect key="frame" x="0.0" y="41" width="375" height="148"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
@@ -2133,8 +2133,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5S1-UU-hZU"/>
-        <segue reference="efq-F7-nIg"/>
+        <segue reference="rKh-mh-Isa"/>
+        <segue reference="Ewa-oT-TiC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
