@@ -5,19 +5,22 @@
 //  Created by 노은솔 on 2020/07/29.
 //  Copyright © 2020 ajite. All rights reserved.
 //
-struct Ajite {
-    var name = String ()
-    var numberOfMembers = Int()
-}
+
+
 import UIKit
+
+var ajite :[Ajite] = []
 
 class AjiteViewController: UIViewController {
     
-    var ajite = [Ajite]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
    
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+    }
+    
+    
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MemberCell : UITableViewCell{
     
     @IBOutlet weak var profilepicture: UIImageView!
@@ -27,25 +28,34 @@ class MemberCell : UITableViewCell{
     
 }
 
+
 class CreateAjiteViewController: UIViewController {
 
     
+    //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
     @IBAction func add(_ sender: Any) {
         animateIn(desiredView: blurEffect)
         animateIn(desiredView: popUpView)
     }
+    //E
     @IBAction func finished(_ sender: Any) {
         animateOut(desiredView: popUpView)
         animateOut(desiredView: blurEffect)
     }
-  
+  //변수들
+    @IBOutlet weak var ajiteName: UITextField!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
+    var name = ""
+    var newAjite = Ajite()
+    
+    
+//로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
         blurEffect.bounds = self.view.bounds
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9 , height: self.view.bounds.height * 0.6)
-   
+   //navigation 바를 없애는 코드 !
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
@@ -72,7 +82,7 @@ class CreateAjiteViewController: UIViewController {
         })
         
     }
-    
+    //다른 곳에 터지 하면 일어남
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         
@@ -80,5 +90,17 @@ class CreateAjiteViewController: UIViewController {
             animateOut(desiredView: popUpView)
             animateOut(desiredView: blurEffect)
         }
+    }
+    
+
+    @IBAction func pressedEnter(_ sender: Any) {
+        self.newAjite.name = ajiteName.text!
+        ajite.append(newAjite)
+        performSegue(withIdentifier: "create", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! AjiteRoomViewController
+        vc.nameOfAjite = self.newAjite.name
     }
 }
