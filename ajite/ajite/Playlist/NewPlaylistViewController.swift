@@ -19,7 +19,7 @@ class NewPlaylistViewController: UIViewController {
     
     @IBOutlet weak var userSpecifiedPlaylistName: UITextField!
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         //userSpecifiedPlaylistName.delegate = self
         // Do any additional setup after loading the view.
@@ -36,7 +36,13 @@ class NewPlaylistViewController: UIViewController {
         dismiss(animated: true)
     }
    
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        
+        if touch.view == self.view {
+            dismiss(animated: true)
+        }
+    }
 }
 
 extension NewPlaylistViewController : UITextFieldDelegate {
