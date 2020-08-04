@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-                // add these lines
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // add these lines
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
         guard let signIn = GIDSignIn.sharedInstance() else { return }
         //만약 이미 로그인을 한 유저라면
