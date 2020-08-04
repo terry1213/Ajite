@@ -11,16 +11,20 @@ import UIKit
 
 var ajite :[Ajite] = []
 
-class AjiteViewController: UIViewController {
+class AjiteViewController: UIViewController{
+    
+    @IBOutlet weak var ajiteCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // Do any additional setup after loading the view.
     }
    
-    @IBAction func buttonPressed(_ sender: Any) {
+    override func didReceiveMemoryWarning() {
         
     }
     
     
+
 }

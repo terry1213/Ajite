@@ -8,7 +8,7 @@
 
 
 import Foundation
-
+import UIKit
 
 class Member {
     var name = String()
@@ -34,9 +34,23 @@ class Ajite {
 class Playlist {
     var playlistName = String()
     var numberOfSongs = Int()
-    
+    var songs = [Song]()
+    let ajiteOrPersonal : Bool
     init (){
         playlistName = ""
         numberOfSongs = 0
+        ajiteOrPersonal = true
+    }
+}
+
+class Song {
+    let name : String
+    let artist : String
+    let link : String
+    var thumbnail = UIImage()
+    init(){
+        name = ""
+        link = ""
+        artist = ""
     }
 }

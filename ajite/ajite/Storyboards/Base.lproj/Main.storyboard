@@ -162,42 +162,12 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fSz-gn-B87">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ajiteCell" id="fSz-gn-B87">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pcd-CY-jG9">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="door-1" translatesAutoresizingMaskIntoConstraints="NO" id="BMc-AA-4tJ" userLabel="Ajite Door Image">
-                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOu-nE-FAo" userLabel="Ajite Name ">
-                                                            <rect key="frame" x="34" y="113" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCg-V0-sgu" userLabel="#ofMembers">
-                                                            <rect key="frame" x="38" y="137" width="35" height="15"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="hCg-V0-sgu" firstAttribute="top" secondItem="BMc-AA-4tJ" secondAttribute="bottom" constant="22" id="6oL-4D-51x"/>
-                                                        <constraint firstItem="BMc-AA-4tJ" firstAttribute="top" secondItem="pcd-CY-jG9" secondAttribute="top" id="FEt-S1-dqo"/>
-                                                        <constraint firstItem="hCg-V0-sgu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pcd-CY-jG9" secondAttribute="leading" constant="20" symbolic="YES" id="gXj-hq-QYG"/>
-                                                        <constraint firstAttribute="trailing" secondItem="hCg-V0-sgu" secondAttribute="trailing" constant="40.5" id="jyy-bB-BQ5"/>
-                                                        <constraint firstItem="fOu-nE-FAo" firstAttribute="centerY" secondItem="pcd-CY-jG9" secondAttribute="centerY" id="lQf-WM-YZS"/>
-                                                        <constraint firstItem="fOu-nE-FAo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pcd-CY-jG9" secondAttribute="leading" constant="20" symbolic="YES" id="nvB-Av-lZB"/>
-                                                        <constraint firstAttribute="bottom" secondItem="BMc-AA-4tJ" secondAttribute="bottom" constant="10" id="oAU-Z5-q4l"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fOu-nE-FAo" secondAttribute="trailing" constant="34" id="ryN-yi-4aX"/>
-                                                        <constraint firstAttribute="trailing" secondItem="BMc-AA-4tJ" secondAttribute="trailing" id="spu-WK-K6Q"/>
-                                                        <constraint firstItem="fOu-nE-FAo" firstAttribute="top" secondItem="BMc-AA-4tJ" secondAttribute="bottom" constant="3" id="wJk-4c-ZZy"/>
-                                                        <constraint firstItem="BMc-AA-4tJ" firstAttribute="leading" secondItem="pcd-CY-jG9" secondAttribute="leading" id="wO5-bB-IqI"/>
-                                                    </constraints>
                                                 </collectionViewCellContentView>
                                                 <connections>
                                                     <segue destination="AeW-qZ-H78" kind="show" id="5S1-UU-hZU"/>
@@ -232,10 +202,13 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="trs-p5-nEE"/>
+                    <connections>
+                        <outlet property="ajiteCollection" destination="E9R-9R-g96" id="iUq-pc-7wd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc1-Iq-iOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="-2087"/>
+            <point key="canvasLocation" x="2684" y="-2087.4384236453202"/>
         </scene>
         <!--Create Ajite VC-->
         <scene sceneID="Qul-JJ-ZJT">
@@ -923,88 +896,6 @@
             </objects>
             <point key="canvasLocation" x="3772" y="177"/>
         </scene>
-        <!--New Playlist View Controller-->
-        <scene sceneID="JgD-I1-uOB">
-            <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="KVQ-FR-ZcJ" customClass="NewPlaylistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5v1-BD-hcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3A-xw-iXR">
-                                <rect key="frame" x="37" y="284" width="301" height="190"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUf-yF-Irt">
-                                        <rect key="frame" x="22" y="30.999999999999996" width="193.66666666666666" height="40.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mGo-QH-Jth">
-                                        <rect key="frame" x="29" y="87.666666666666686" width="247" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pE-BE-jDI">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLO-nz-Izd">
-                                                <rect key="frame" x="57" y="0.0" width="190" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="190" id="Bp4-u3-NdC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfM-bK-Pyr">
-                                        <rect key="frame" x="232" y="129.66666666666669" width="46" height="30"/>
-                                        <state key="normal" title="Create"/>
-                                        <connections>
-                                            <action selector="createPlaylist:" destination="KVQ-FR-ZcJ" eventType="touchUpInside" id="6Ve-kx-Dzf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="top" secondItem="x3A-xw-iXR" secondAttribute="top" constant="31" id="A4T-Ih-AK2"/>
-                                    <constraint firstItem="vfM-bK-Pyr" firstAttribute="top" secondItem="mGo-QH-Jth" secondAttribute="bottom" constant="8" id="LfR-VP-n1S"/>
-                                    <constraint firstItem="mGo-QH-Jth" firstAttribute="centerX" secondItem="x3A-xw-iXR" secondAttribute="centerX" constant="2" id="Orm-zA-3RW"/>
-                                    <constraint firstItem="vfM-bK-Pyr" firstAttribute="top" secondItem="mGo-QH-Jth" secondAttribute="bottom" constant="8" id="VDO-A9-gYT"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oUf-yF-Irt" secondAttribute="trailing" constant="20" symbolic="YES" id="Xmm-1s-ZYz"/>
-                                    <constraint firstItem="vfM-bK-Pyr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x3A-xw-iXR" secondAttribute="leading" constant="20" symbolic="YES" id="exT-Bj-CTC"/>
-                                    <constraint firstAttribute="trailing" secondItem="vfM-bK-Pyr" secondAttribute="trailing" constant="23" id="kiW-B2-pdw"/>
-                                    <constraint firstItem="oUf-yF-Irt" firstAttribute="leading" secondItem="x3A-xw-iXR" secondAttribute="leading" constant="22" id="pyn-e8-ayd"/>
-                                    <constraint firstItem="mGo-QH-Jth" firstAttribute="top" secondItem="oUf-yF-Irt" secondAttribute="bottom" constant="16" id="tan-Oc-IL1"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="centerX" secondItem="5v1-BD-hcV" secondAttribute="centerX" id="9qz-6A-cY1"/>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="centerX" secondItem="5v1-BD-hcV" secondAttribute="centerX" id="CRI-OE-C2M"/>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="leading" secondItem="vs8-d3-jPv" secondAttribute="leading" constant="37" id="JNX-Pu-bOD"/>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="centerY" secondItem="5v1-BD-hcV" secondAttribute="centerY" id="JbV-7x-CLa"/>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="top" secondItem="vs8-d3-jPv" secondAttribute="top" constant="284" id="Me1-dd-gyN"/>
-                            <constraint firstItem="x3A-xw-iXR" firstAttribute="centerY" secondItem="5v1-BD-hcV" secondAttribute="centerY" id="mbL-0C-l3V"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vs8-d3-jPv"/>
-                    </view>
-                    <connections>
-                        <outlet property="userSpecifiedPlaylistName" destination="cLO-nz-Izd" id="K2X-u6-8ff"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ahT-ep-w5r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4729" y="424"/>
-        </scene>
         <!--Ajite Room VC-->
         <scene sceneID="2Wr-CL-yA7">
             <objects>
@@ -1546,10 +1437,10 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
                                 <rect key="frame" x="0.0" y="158" width="375" height="571"/>
-                                <color key="backgroundColor" red="0.792156862745098" green="0.70588235294117641" blue="0.99607843137254903" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="sectionIndexBackgroundColor" red="0.85490196080000003" green="0.72156862749999995" blue="0.95294117649999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" editingAccessoryType="detailDisclosureButton" rowHeight="96" id="Gmr-aj-JXJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="playlistCell" editingAccessoryType="detailDisclosureButton" rowHeight="96" id="Gmr-aj-JXJ" customClass="PlaylistTableViewCell" customModule="ajite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gmr-aj-JXJ" id="JFp-2n-HrB">
@@ -1600,12 +1491,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="numberOfSongsInPlaylist" destination="cWk-mb-gYR" id="j9l-aO-L6v"/>
+                                            <outlet property="playlistName" destination="Rih-tX-ilD" id="2Vz-lR-ml3"/>
                                             <segue destination="lyK-Vm-Yth" kind="show" id="9UB-FE-s3N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-84-hBt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-84-hBt">
                                 <rect key="frame" x="115.00000000000001" y="98" width="143.33333333333337" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="MADESunflower" family="MADE Sunflower" pointSize="40"/>
@@ -1633,12 +1526,13 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="A3N-ul-FN4">
                             <color key="tintColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="KVQ-FR-ZcJ" kind="popoverPresentation" identifier="newplaylist" popoverAnchorBarButtonItem="A3N-ul-FN4" id="H3I-Ee-XZb">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <action selector="plusTapped:" destination="C3e-7u-qmp" id="1iz-YN-4e9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="playlistTableView" destination="sBb-iD-W4a" id="RRx-CT-K5Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITk-kK-Bv3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2298,8 +2192,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pds-8x-tIW"/>
-        <segue reference="YzI-Ue-2oM"/>
-        <segue reference="s6P-ML-mhp"/>
+        <segue reference="5S1-UU-hZU"/>
+        <segue reference="JAE-1w-Nkx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
