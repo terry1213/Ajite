@@ -7,31 +7,32 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        // if user is logged in before
-        if let loggedUsername = UserDefaults.standard.string(forKey: "username") {
-            //로그인된 상태라면 root view controller를 TabBarMenuViewController로 설정한다.
-            print("after login")
-            let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
-            window?.rootViewController = tabBarMenuViewController
-        } else {
-            ////로그인되지 않은 상태라면 root view controller를 LoginViewControllers로 설정한다.
-            print("before login")
-            let loginViewControllers = storyboard.instantiateViewController(identifier: "LoginViewControllers")
-            window?.rootViewController = loginViewControllers
+                // add these lines
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+        guard let signIn = GIDSignIn.sharedInstance() else { return }
+        //만약 이미 로그인을 한 유저라면
+        if (signIn.hasPreviousSignIn()) {
+            //이전 아이디로 로그인
+            signIn.restorePreviousSignIn()
+            //로그인 화면을 root view로 설정
+            let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+            window?.rootViewController = mainTabBarController
+        }
+        else {
+            //로그인 화면을 root view로 설정
+            let loginController = storyboard.instantiateViewController(identifier: "LoginViewControllers")
+            window?.rootViewController = loginController
         }
     }
     
@@ -50,8 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                           animations: nil,
                           completion: nil)
     }
-
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
