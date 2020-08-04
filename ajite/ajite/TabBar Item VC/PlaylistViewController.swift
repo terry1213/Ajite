@@ -5,24 +5,13 @@
 //  Created by 노은솔 on 2020/07/29.
 //  Copyright © 2020 ajite. All rights reserved.
 //
-struct Playlist{
-    var playlistName = String()
-    var numberOfSongs = Int()
-    
-    init (){
-        playlistName = ""
-        numberOfSongs = 0
-    }
-}
 
 import UIKit
 
-
+var playlists = [Playlist]()
 
 class PlaylistViewController: UIViewController,playlistDelegate {
     
-    
-     var playlists = [Playlist]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -33,9 +22,9 @@ class PlaylistViewController: UIViewController,playlistDelegate {
     }
     
     func addToPlaylist(name : String){
-        var playlist = Playlist()
-        playlist.playlistName = name
-        playlists.append(playlist)
+        let newPlaylist = Playlist()
+        newPlaylist.playlistName = name
+        playlists.append(newPlaylist)
         print(playlists)
         
     }
