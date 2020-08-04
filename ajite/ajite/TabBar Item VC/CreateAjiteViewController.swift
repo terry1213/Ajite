@@ -73,5 +73,12 @@ class CreateAjiteViewController: UIViewController {
         
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        
+        if touch.view != popUpView{
+            animateOut(desiredView: popUpView)
+            animateOut(desiredView: blurEffect)
+        }
+    }
 }

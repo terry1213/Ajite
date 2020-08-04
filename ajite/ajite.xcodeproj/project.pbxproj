@@ -37,6 +37,7 @@
 		DEA14A2524D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */; };
 		DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */; };
 		DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */; };
+		DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		DEA14A2224D3CD7100B7FA2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuViewController.swift; sourceTree = "<group>"; };
 		DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
+		DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 				DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
+				DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */,
 			);
 			path = ajite;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
 				DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */,
 				1645EB1424D6B246007ACBF5 /* CircleImageView.swift in Sources */,
+				DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */,
 				1645EB0E24D688EE007ACBF5 /* InsidePlaylistViewController.swift in Sources */,
 				1645EB1624D6E1FE007ACBF5 /* SettingsViewController.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,

@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
    
     @IBOutlet weak var userNameLabel: UILabel!
+    let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userNameLabel.text = user.profile.name
         // Do any additional setup after loading the view.
     }
     

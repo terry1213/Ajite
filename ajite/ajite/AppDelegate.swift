@@ -15,60 +15,31 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        if let error = error {
-//            
-//            return
-//        }
-//        
-//        guard let authentification = user.authentication else {return}
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentification.idToken, accessToken: authentification.accessToken)
-//        
-//        Auth.auth().signIn(with: credential) { (authResult, error) in
-//            if let error = error {
-//                let authError = error as NSError
-//                if (authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
-//                    // The user is a multi-factor user. Second factor challenge is required.
-//                    let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
-//                    var displayNameString = ""
-//                    for tmpFactorInfo in (resolver.hints) {
-//                        displayNameString += tmpFactorInfo.displayName ?? ""
-//                        displayNameString += " "
-//                    }
-////              self.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
-////                var selectedHint: PhoneMultiFactorInfo?
-////                for tmpFactorInfo in resolver.hints {
-////                  if (displayName == tmpFactorInfo.displayName) {
-////                    selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
-////                  }
-////                }
-////                PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
-////                  if error != nil {
-////                    print("Multi factor start sign in failed. Error: \(error.debugDescription)")
-////                  } else {
-////                    self.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
-////                      let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
-////                      let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
-////                      resolver.resolveSignIn(with: assertion!) { authResult, error in
-////                        if error != nil {
-////                          print("Multi factor finanlize sign in failed. Error: \(error.debugDescription)")
-////                        } else {
-////                          self.navigationController?.popViewController(animated: true)
-////                        }
-////                      }
-////                    })
-////                  }
-////                }
-////              })
-//                } else {
-//                    //self.showMessagePrompt(error.localizedDescription)
-//                    return
-//                }
-//                // ...
-//                return
-//            }
-//            // User is signed in
-//            // ...
-//        }
+        if let error = error {
+            
+            return
+        }
+        
+        guard let authentification = user.authentication else {return}
+        let credential = GoogleAuthProvider.credential(withIDToken: authentification.idToken, accessToken: authentification.accessToken)
+                
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                  print("The user has not signed in before or they have since signed out.")
+                } else {
+                  print("\(error.localizedDescription)")
+                }
+                return
+            }
+            //유저 로그인 후
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+                    
+            //root view controller를 LoginViewControllers에서 TabBarMenuViewController로 전환
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarMenuViewController)
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
@@ -81,11 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
-        //GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
+        
+        // Override point for customization after application launch.
+        
         return true
     }
     
