@@ -12,7 +12,7 @@ import GoogleSignIn
 class ProfileViewController: UIViewController {
    
     @IBOutlet weak var userNameLabel: UILabel!
-    
+    @IBOutlet weak var profilePicture: CircleImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+   
     /*
     // MARK: - Navigation
 

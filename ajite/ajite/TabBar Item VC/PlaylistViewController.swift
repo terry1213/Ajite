@@ -64,13 +64,17 @@ extension PlaylistViewController: UITableViewDataSource {
     indexPath: IndexPath) -> CGFloat {
             return 96
          }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        playlists.remove(at: indexPath.row)
+        playlistTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
 }
 
 extension PlaylistViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataToSend = playlists[indexPath.row]
-        self.performSegue(withIdentifier: "PlaylistSongListViewController", sender: dataToSend)
-    }
+    
 }
 
 

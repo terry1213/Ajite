@@ -1493,7 +1493,6 @@
                                         <connections>
                                             <outlet property="numberOfSongsInPlaylist" destination="cWk-mb-gYR" id="j9l-aO-L6v"/>
                                             <outlet property="playlistName" destination="Rih-tX-ilD" id="2Vz-lR-ml3"/>
-                                            <segue destination="lyK-Vm-Yth" kind="show" id="9UB-FE-s3N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1547,17 +1546,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9LM-NK-9rj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="719"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.86353498930000006" green="0.86666666670000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="2uQ-ld-cEQ">
-                                <rect key="frame" x="0.0" y="145" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jds-ZS-6Gg">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="34.333333333333336"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="127.33333333333333"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4II-VS-evR">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="34.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="45.666666666666657" width="335" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1565,7 +1564,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
-                                        <rect key="frame" x="0.0" y="45.333333333333343" width="375" height="481.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="138.33333333333334" width="375" height="481.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="Vc0-eS-SLG">
@@ -1641,7 +1640,7 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdx-7g-AFb">
-                                        <rect key="frame" x="153.33333333333334" y="538" width="68.666666666666657" height="36"/>
+                                        <rect key="frame" x="153.33333333333334" y="631" width="68.666666666666657" height="36"/>
                                         <fontDescription key="fontDescription" name="MADESunflower" family="MADE Sunflower" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1713,8 +1712,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-zU-ZiA">
-                                                    <rect key="frame" x="36" y="11.666666666666664" width="64" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-zU-ZiA">
+                                                    <rect key="frame" x="35.999999999999993" y="11.666666666666664" width="116.33333333333331" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1986,12 +1985,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Ma-KkU" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
-                                        <rect key="frame" x="123.66666666666669" y="-111" width="128" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Ma-KkU" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
+                                        <rect key="frame" x="123.66666666666669" y="-110" width="128" height="126.66666666666667"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                        </accessibility>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Zh4-fJ-chV"/>
                                             <constraint firstAttribute="width" secondItem="hxy-Ma-KkU" secondAttribute="height" multiplier="1:1" id="dbB-7J-wkE"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6e0-cd-qSn" appends="YES" id="3Ou-Yx-FQI"/>
+                                            <outletCollection property="gestureRecognizers" destination="6e0-cd-qSn" appends="YES" id="MOq-Mz-Toh"/>
+                                            <outletCollection property="gestureRecognizers" destination="6e0-cd-qSn" appends="YES" id="XH9-9b-IFu"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -2044,10 +2053,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="profilePicture" destination="hxy-Ma-KkU" id="Acj-bU-ZuS"/>
                         <outlet property="userNameLabel" destination="tTo-69-zUc" id="X26-WO-eLt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZL9-YM-G4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6e0-cd-qSn"/>
             </objects>
             <point key="canvasLocation" x="2684" y="1660.344827586207"/>
         </scene>
@@ -2193,7 +2204,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pds-8x-tIW"/>
         <segue reference="5S1-UU-hZU"/>
-        <segue reference="JAE-1w-Nkx"/>
+        <segue reference="mTL-EN-GMb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
@@ -2207,6 +2218,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
