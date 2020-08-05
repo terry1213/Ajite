@@ -19,8 +19,6 @@
 		164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126224D17A6F0069B5EC /* AjiteViewController.swift */; };
 		164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126424D17AAB0069B5EC /* PlaylistViewController.swift */; };
 		1654349324D9936E001B05C2 /* ShareSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349224D9936E001B05C2 /* ShareSongsViewController.swift */; };
-		1654349C24D99D00001B05C2 /* AjiteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349A24D99D00001B05C2 /* AjiteCollectionViewCell.swift */; };
-		1654349D24D99D00001B05C2 /* AjiteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1654349B24D99D00001B05C2 /* AjiteCollectionViewCell.xib */; };
 		1654349F24D9B280001B05C2 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */; };
 		1698669524D9569800946C2F /* ClassFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698669424D9569800946C2F /* ClassFiles.swift */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
@@ -76,8 +74,6 @@
 		164B126224D17A6F0069B5EC /* AjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteViewController.swift; sourceTree = "<group>"; };
 		164B126424D17AAB0069B5EC /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		1654349224D9936E001B05C2 /* ShareSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareSongsViewController.swift; path = ajite/ShareSongsViewController.swift; sourceTree = SOURCE_ROOT; };
-		1654349A24D99D00001B05C2 /* AjiteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AjiteCollectionViewCell.swift; path = Playlist/AjiteCollectionViewCell.swift; sourceTree = "<group>"; };
-		1654349B24D99D00001B05C2 /* AjiteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjiteCollectionViewCell.xib; sourceTree = "<group>"; };
 		1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaylistTableViewCell.swift; path = "ajite/UIResources Swift/PlaylistTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		1698669424D9569800946C2F /* ClassFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFiles.swift; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +198,6 @@
 				DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
 				DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */,
-				1654349A24D99D00001B05C2 /* AjiteCollectionViewCell.swift */,
 			);
 			path = ajite;
 			sourceTree = "<group>";
@@ -231,7 +226,6 @@
 				1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */,
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
-				1654349B24D99D00001B05C2 /* AjiteCollectionViewCell.xib */,
 			);
 			path = "UIResources Swift";
 			sourceTree = "<group>";
@@ -379,7 +373,6 @@
 			files = (
 				1645658424CE889100DDA830 /* made.otf in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
-				1654349D24D99D00001B05C2 /* AjiteCollectionViewCell.xib in Resources */,
 				DEA14A2324D3CD7100B7FA2D /* GoogleService-Info.plist in Resources */,
 				16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */,
 				16AE4AF124CC761400807ECB /* Main.storyboard in Resources */,
@@ -512,7 +505,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1654349C24D99D00001B05C2 /* AjiteCollectionViewCell.swift in Sources */,
 				164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */,
 				1654349F24D9B280001B05C2 /* PlaylistTableViewCell.swift in Sources */,
 				1654349324D9936E001B05C2 /* ShareSongsViewController.swift in Sources */,

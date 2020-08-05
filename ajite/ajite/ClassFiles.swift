@@ -10,21 +10,19 @@
 import Foundation
 import UIKit
 
-class Member {
-    var name = String()
-      var userID = String ()
-      
-      init(){
-          name = ""
-          userID = ""
-      }
+class User{
+    var name = ""
+    var friends = [User]()
+    var sharedSongs = [Song]()
+    var userID = String()
 }
 
 
 class Ajite {
     var name = String ()
     var numberOfMembers = Int()
-    var members = [Member]()
+    var members = [User]()
+    var sharedSongs = [Song]()
     init () {
         name = ""
         numberOfMembers = 0
@@ -33,12 +31,10 @@ class Ajite {
 
 class Playlist {
     var playlistName = String()
-    var numberOfSongs = Int()
     var songs = [Song]()
     let ajiteOrPersonal : Bool
     init (){
         playlistName = ""
-        numberOfSongs = 0
         ajiteOrPersonal = true
     }
 }
@@ -46,11 +42,10 @@ class Playlist {
 class Song {
     let name : String
     let artist : String
-    let link : String
-    var thumbnail = UIImage()
+    let videoID : String
     init(){
         name = ""
-        link = ""
+        videoID = ""
         artist = ""
     }
 }
