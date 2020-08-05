@@ -306,7 +306,7 @@
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hbu-US-F0C">
                                                 <rect key="frame" x="0.0" y="46" width="330" height="178"/>
-                                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="1" alpha="0.71070379273504269" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" rowHeight="53" id="Z26-gD-8Xw" customClass="MemberCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="330" height="53"/>
@@ -845,7 +845,7 @@
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="tVu-Eo-5eg">
                         <barButtonItem key="rightBarButtonItem" title="Find Friend" image="person.crop.circle.badge.plus" catalog="system" id="1ae-e1-NTe">
-                            <color key="tintColor" red="0.59205859900000002" green="0.74655914310000004" blue="0.90198224780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.81671917439999997" green="0.86983418459999995" blue="0.92157655949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -985,6 +985,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nPd-RD-SgJ">
                                                 <rect key="frame" x="0.0" y="29" width="375" height="146"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="146" id="9yc-aA-udm"/>
                                                 </constraints>
@@ -1015,17 +1016,17 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hax-b5-rC4" userLabel="album labels">
                                                                             <rect key="frame" x="90" y="15.333333333333329" width="190" height="44"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="album name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bt0-zX-uaB" userLabel="album name ">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="album name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bt0-zX-uaB" userLabel="album name ">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="20.333333333333332"/>
                                                                                     <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1b9-MR-oyV">
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1b9-MR-oyV">
                                                                                     <rect key="frame" x="0.0" y="28.333333333333332" width="72" height="15.666666666666668"/>
                                                                                     <subviews>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-pX-z6m">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="album artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-pX-z6m">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="72" height="15.666666666666666"/>
                                                                                             <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1087,6 +1088,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="nPd-RD-SgJ" secondAttribute="trailing" id="5nF-7r-kNH"/>
                                             <constraint firstItem="6r9-pg-765" firstAttribute="leading" secondItem="JY2-Bh-xfF" secondAttribute="leading" constant="20" id="6YH-oh-bvv"/>
@@ -1098,6 +1100,11 @@
                                             <constraint firstItem="nPd-RD-SgJ" firstAttribute="leading" secondItem="JY2-Bh-xfF" secondAttribute="leading" id="cZe-Ul-msG"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6r9-pg-765" secondAttribute="trailing" constant="20" symbolic="YES" id="yex-2p-0bU"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATn-C1-ddE" userLabel="Members Songs TV view">
                                         <rect key="frame" x="0.0" y="333" width="375" height="319"/>
@@ -1170,13 +1177,16 @@
                                                     <constraint firstAttribute="width" constant="79" id="29q-O5-l6l"/>
                                                     <constraint firstAttribute="height" constant="40" id="9Wc-sc-szZ"/>
                                                 </constraints>
-                                                <state key="normal" image="addpink"/>
+                                                <size key="titleShadowOffset" width="2" height="1"/>
+                                                <state key="normal" image="leave pink">
+                                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="add:" destination="AeW-qZ-H78" eventType="touchUpInside" id="hWp-Dv-WvJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.75941646100000004" green="0.88464343550000002" blue="0.99217289689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.95259529350000005" green="0.85809397700000001" blue="0.91373091939999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="0vY-c3-sTQ" firstAttribute="leading" secondItem="ATn-C1-ddE" secondAttribute="leading" id="2OH-m3-2WS"/>
                                             <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="HBk-NK-sKn" secondAttribute="bottom" constant="-1" id="43d-FN-YZC"/>
@@ -1191,6 +1201,11 @@
                                             <constraint firstItem="0vY-c3-sTQ" firstAttribute="top" secondItem="soO-Gv-lD3" secondAttribute="bottom" constant="4.6666666666665861" id="rtQ-ad-YOs"/>
                                             <constraint firstAttribute="bottom" secondItem="0vY-c3-sTQ" secondAttribute="bottom" constant="-18" id="sPi-1h-DmK"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AjiteName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-Ha-biV">
                                         <rect key="frame" x="20" y="107" width="139.33333333333334" height="35"/>
@@ -1202,7 +1217,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY1-eR-1M6">
-                                        <rect key="frame" x="289" y="104" width="78" height="41"/>
+                                        <rect key="frame" x="281" y="104" width="78" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="78" id="zRe-Tf-fPN"/>
                                         </constraints>
@@ -1219,7 +1234,7 @@
                                     <constraint firstItem="ATn-C1-ddE" firstAttribute="top" secondItem="JY2-Bh-xfF" secondAttribute="bottom" constant="8" symbolic="YES" id="Ngb-Xx-piV"/>
                                     <constraint firstItem="JY2-Bh-xfF" firstAttribute="leading" secondItem="tUv-1u-85N" secondAttribute="leading" id="PS0-Ea-CR1"/>
                                     <constraint firstItem="yMw-Ha-biV" firstAttribute="centerY" secondItem="hY1-eR-1M6" secondAttribute="centerY" id="T3T-tj-GkJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="hY1-eR-1M6" secondAttribute="trailing" constant="8" id="WRC-rM-5Gz"/>
+                                    <constraint firstAttribute="trailing" secondItem="hY1-eR-1M6" secondAttribute="trailing" constant="16" id="WRC-rM-5Gz"/>
                                     <constraint firstItem="yMw-Ha-biV" firstAttribute="leading" secondItem="tUv-1u-85N" secondAttribute="leading" constant="20" id="ZkS-tI-tpF"/>
                                     <constraint firstItem="hY1-eR-1M6" firstAttribute="top" secondItem="tUv-1u-85N" secondAttribute="top" constant="104" id="b1O-qv-X6p"/>
                                     <constraint firstItem="ATn-C1-ddE" firstAttribute="leading" secondItem="tUv-1u-85N" secondAttribute="leading" id="fSl-nR-LkC"/>
@@ -1253,7 +1268,7 @@
                         <viewLayoutGuide key="safeArea" id="epr-lZ-9NV"/>
                     </view>
                     <navigationItem key="navigationItem" id="514-pZ-nVD">
-                        <barButtonItem key="rightBarButtonItem" image="leave blue" id="F2e-iI-NWZ">
+                        <barButtonItem key="rightBarButtonItem" image="leave pink" id="F2e-iI-NWZ">
                             <connections>
                                 <action selector="pressedLeave:" destination="AeW-qZ-H78" id="FNM-4c-ey0"/>
                             </connections>
@@ -1263,6 +1278,7 @@
                         <outlet property="ajiteName" destination="yMw-Ha-biV" id="Uh8-BF-5A8"/>
                         <outlet property="blurEffect" destination="vBQ-FC-7rh" id="3vs-8a-cDp"/>
                         <outlet property="popUpView" destination="dyk-sk-aWR" id="gCu-Sl-FIg"/>
+                        <outlet property="sharedSongsView" destination="JY2-Bh-xfF" id="mE6-Px-hzI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChS-bh-KpG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2271,8 +2287,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xEi-qz-IQe"/>
-        <segue reference="mTL-EN-GMb"/>
+        <segue reference="pds-8x-tIW"/>
+        <segue reference="s6P-ML-mhp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
@@ -2284,7 +2300,7 @@
         <image name="fluid" width="1201" height="801"/>
         <image name="fluid 2" width="801" height="1201"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="leave blue" width="100" height="50"/>
+        <image name="leave pink" width="100" height="50"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>

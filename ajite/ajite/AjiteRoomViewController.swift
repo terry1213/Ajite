@@ -14,6 +14,7 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
+    @IBOutlet weak var sharedSongsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,10 @@ class AjiteRoomViewController: UIViewController {
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9 , height: self.view.bounds.height * 0.6)
         popUpView.layer.cornerRadius = 40
         ajiteName.text = nameOfAjite
+        sharedSongsView.layer.shadowColor = UIColor.gray.cgColor
+        sharedSongsView.layer.shadowOpacity = 0.45
+        sharedSongsView.layer.shadowOffset = .zero
+        sharedSongsView.layer.shadowRadius = 5
         // Do any additional setup after loading the view.
     }
     // when you want to add members
