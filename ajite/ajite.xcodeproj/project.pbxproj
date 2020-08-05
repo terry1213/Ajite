@@ -20,6 +20,9 @@
 		164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126424D17AAB0069B5EC /* PlaylistViewController.swift */; };
 		1654349324D9936E001B05C2 /* ShareSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349224D9936E001B05C2 /* ShareSongsViewController.swift */; };
 		1654349F24D9B280001B05C2 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */; };
+		167BC0A224DAF96D0041A510 /* memberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BC0A124DAF96D0041A510 /* memberTableViewCell.swift */; };
+		167BC0A424DAF9E90041A510 /* friendsToAjiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BC0A324DAF9E90041A510 /* friendsToAjiteTableViewCell.swift */; };
+		167BC0A624DB01030041A510 /* songTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BC0A524DB01030041A510 /* songTableViewCell.swift */; };
 		1695F5AA24DAB13700B9601E /* AjiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */; };
 		1698669524D9569800946C2F /* ClassFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698669424D9569800946C2F /* ClassFiles.swift */; };
 		1698B9A724DABAF5005DE79F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9A624DABAF5005DE79F /* GoogleService-Info.plist */; };
@@ -78,6 +81,9 @@
 		164B126424D17AAB0069B5EC /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		1654349224D9936E001B05C2 /* ShareSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareSongsViewController.swift; path = ajite/ShareSongsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaylistTableViewCell.swift; path = "ajite/UIResources Swift/PlaylistTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		167BC0A124DAF96D0041A510 /* memberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberTableViewCell.swift; sourceTree = "<group>"; };
+		167BC0A324DAF9E90041A510 /* friendsToAjiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsToAjiteTableViewCell.swift; sourceTree = "<group>"; };
+		167BC0A524DB01030041A510 /* songTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songTableViewCell.swift; sourceTree = "<group>"; };
 		1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteTableViewCell.swift; sourceTree = "<group>"; };
 		1698669424D9569800946C2F /* ClassFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFiles.swift; sourceTree = "<group>"; };
 		1698B9A624DABAF5005DE79F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 				1698B9A824DAC99C005DE79F /* proxima-alt.otf */,
 				1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */,
 				1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */,
+				167BC0A124DAF96D0041A510 /* memberTableViewCell.swift */,
+				167BC0A324DAF9E90041A510 /* friendsToAjiteTableViewCell.swift */,
+				167BC0A524DB01030041A510 /* songTableViewCell.swift */,
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
 				1645EB1324D6B246007ACBF5 /* CircleImageView.swift */,
 			);
@@ -526,6 +535,7 @@
 				16C133D224D70B4D00DA4177 /* AjiteRoomViewController.swift in Sources */,
 				164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */,
 				16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */,
+				167BC0A224DAF96D0041A510 /* memberTableViewCell.swift in Sources */,
 				1698669524D9569800946C2F /* ClassFiles.swift in Sources */,
 				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
@@ -533,6 +543,8 @@
 				1645EB1424D6B246007ACBF5 /* CircleImageView.swift in Sources */,
 				DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */,
 				1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */,
+				167BC0A624DB01030041A510 /* songTableViewCell.swift in Sources */,
+				167BC0A424DAF9E90041A510 /* friendsToAjiteTableViewCell.swift in Sources */,
 				1645EB1624D6E1FE007ACBF5 /* SettingsViewController.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
 				1695F5AA24DAB13700B9601E /* AjiteTableViewCell.swift in Sources */,

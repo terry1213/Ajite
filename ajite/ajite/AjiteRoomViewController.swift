@@ -15,17 +15,25 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet weak var sharedSongsView: UIView!
-    
+    @IBOutlet weak var membersView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         blurEffect.bounds = self.view.bounds
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9 , height: self.view.bounds.height * 0.6)
         popUpView.layer.cornerRadius = 40
+        
+        //아지트이름 뽑아옴
         ajiteName.text = nameOfAjite
+        //shared Songs View 에 섀도우 집어넣음
         sharedSongsView.layer.shadowColor = UIColor.gray.cgColor
         sharedSongsView.layer.shadowOpacity = 0.45
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
+        //멤버스뷰에 섀도우 집어넣음
+        membersView.layer.shadowColor = UIColor.gray.cgColor
+        membersView.layer.shadowOpacity = 0.45
+        membersView.layer.shadowOffset = .zero
+        membersView.layer.shadowRadius = 5
         // Do any additional setup after loading the view.
     }
     // when you want to add members
