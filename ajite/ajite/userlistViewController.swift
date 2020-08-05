@@ -13,9 +13,15 @@ import CoreData
 import FirebaseDatabase
 import GoogleSignIn
 
-class userlistViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class userlistViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+    
+    
+    var userArray = [NSDictionary?]()
+    var filteredUsers = [NSDictionary?]()
     
     //var ref: DatabaseReference!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     var ref = Database.database().reference()
     
@@ -25,59 +31,43 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
     
     @IBOutlet var searchBar: UISearchBar!
     
-    @IBOutlet var nameBox: UILabel!
-    @IBOutlet var checkBox: UIButton!
-    
-    /*
-    func dataRead() {
-        let userID = Auth.auth().currentUser?.uid
-        ref.child("user").child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            let user = User(username: username)
-        }, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-    }*/
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != ""{
+            return filteredUsers.count
+        }
         
+        return self.userArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserlistTableViewCell
+        let user: NSDictionary?
+        if searchController.isActive && searchController.searchBar.text != ""{
+            user = filteredUsers[indexPath.row]
+        }
+        else
+        {
+            user = self.userArray[indexPath.row]
+        }
+        cell.nameBox.text = user?["name"] as? String
+        return cell
     }
     
-    
-    @IBOutlet var checkButton: UIButton!
-    
-    @IBOutlet var userName: UILabel!
     @IBAction func searchCheckBtn(_ sender: Any) {
     }
     
     private let database = Database.database().reference()
     
-    
-    func dataAdd() {
-        let UserRef =  Database.database().reference().child("user").childByAutoId()
-        //친구신청 수락시 추가
-        /*let userObject = [
-            
-        ] as [String: Any]
-        */
-    }
-    
     @objc private func addNewEntry(){
-        let object: [String: Any] = [
-            "name" : "Ajite" as NSObject,
-            "Youtube": "yes"
-        ]
         let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+        let object: [String: Any] = [
+            "name" : user.profile.name as NSObject
+        ]
+        database.child("user").child(user.profile.name).setValue(object)
         
-        
-        database.child(user.profile.name).setValue(object)
     }
     
-    
+    /*
     func dataRead() {
         let userID = Auth.auth().currentUser?.uid
         ref.child("user").child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -87,59 +77,49 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
         }){
             (error) in print(error.localizedDescription)
         }
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkButton.addTarget(self, action: #selector(addNewEntry) , for: .touchUpInside)
         
         //로그인 계정 데이터베이스에 추가
         addNewEntry()
-        //userName
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.searchBar.delegate = self
-        self.searchBar.placeholder = "검색할 사람을 입력하세요"
+        //self.searchBar.delegate = self
+        //self.searchBar.placeholder = "검색할 사람을 입력하세요"
         
+        ref = Database.database().reference().child("user")
         
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
-        
-        /*
-        database.child("user").observeSingleEvent(of: .value, with: {snapshot in
-            guard let value = snapshot.value as? [String: Any] else {
-                return
-            }
-            print("value: \(value)")
-        })*/
-    }
-    /*
-    func checkIfUserIsLoggedIn(){
-        if Auth.auth().currentUser?.uid == nil {
-            perform(#selector(handleLogout), with: nil, afterDelay: 0)
-        }
-        else {
-            let uid = Auth.auth().currentUser?.uid
-            Database.database().reference().child("유저리스트").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
-                
-                if let dictionary = snapshot.value as? [String: AnyObject]{
-                    
-                    self.navigationItem.title = dictionary["name"] as? String
-                }
-                
-            }, withCancel: nil)
-        }
+        ref.child("user").queryOrdered(byChild: "name").observe(.childAdded, with: {(snapshot) in
+            
+            self.userArray.append(snapshot.value as? NSDictionary)
+            
+            self.tableView.insertRows(at: [IndexPath(row:self.userArray.count-1,section: 0)],with: UITableView.RowAnimation.automatic)
+        })
     }
     
-    @objc func handleLogout(){
-        do {
-            try Auth.auth().signOut()
-        }catch let logoutError {
-            print(logoutError)
-        }
-        let homeController = HomeViewController()
-        present(homeController,animated: true, completion: nil)
+    @IBAction func dismissFollowUsersTableView(_sender: AnyObject){
+        dismiss(animated: true, completion: nil)
     }
     
-    */
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContent(searchText: self.searchController.searchBar.text!)
+    }
+    
+    func filterContent(searchText:String){
+        self.filteredUsers = self.userArray.filter{ user in
+            let username = user!["name"] as? String
+            return(username?.lowercased().contains(searchText.lowercased()))!
+            
+        }
+        tableView.reloadData()
+    }
+    
 }

@@ -2317,17 +2317,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="653" id="RUD-17-E5n"/>
                                         </constraints>
-                                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="lkr-Ww-egh">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="56"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="56" id="CRA-HL-bcD"/>
-                                            </constraints>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="S57-Py-d69" customClass="UserlistTableViewCell" customModule="ajite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="84" width="359" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S57-Py-d69" id="S2U-nD-gSN">
                                                     <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
@@ -2354,8 +2346,8 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="checkBox" destination="qaJ-Uw-HEo" id="RLa-41-pVg"/>
-                                                    <outlet property="nameBox" destination="8Rc-RX-1hQ" id="ELV-IG-dpF"/>
+                                                    <outlet property="checkBox" destination="qaJ-Uw-HEo" id="teI-rV-gsq"/>
+                                                    <outlet property="nameBox" destination="8Rc-RX-1hQ" id="yFd-EO-9WZ"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -2387,8 +2379,7 @@
                         <viewLayoutGuide key="safeArea" id="OaI-bA-8P0"/>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="lkr-Ww-egh" id="PN0-mr-UMk"/>
-                        <outlet property="tableView" destination="n5C-JA-GN9" id="0kO-lW-7BF"/>
+                        <outlet property="tableView" destination="n5C-JA-GN9" id="JTd-uK-zvA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQk-IN-IMH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
