@@ -33,6 +33,10 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>proxima-alt.otf</string>
+		<string>proxima-black.otf</string>
+		<string>proxima-thin.otf</string>
+		<string>proxima-regular.otf</string>
 		<string>made.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

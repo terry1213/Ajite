@@ -18,6 +18,7 @@ class AjiteViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ajiteTable.layer.cornerRadius = 20.0
         self.ajiteTable.dataSource = self
         // Do any additional setup after loading the view.
     }
@@ -27,7 +28,7 @@ class AjiteViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DispatchQueue.main.async { self.ajiteTable.reloadData() }
+        self.ajiteTable.reloadData()
     }
 }
 
@@ -47,6 +48,6 @@ extension AjiteViewController : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt
      indexPath: IndexPath) -> CGFloat {
-             return 60
+             return 90
           }
 }

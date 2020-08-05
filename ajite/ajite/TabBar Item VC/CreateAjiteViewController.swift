@@ -37,28 +37,28 @@ class CreateAjiteViewController: UIViewController {
         animateIn(desiredView: blurEffect)
         animateIn(desiredView: popUpView)
     }
-    //E
+    //popup 에 있는 "add" 버튼을 누르면 애니메이션 동작함
     @IBAction func finished(_ sender: Any) {
         animateOut(desiredView: popUpView)
         animateOut(desiredView: blurEffect)
     }
   //변수들
+    
+    
+    @IBOutlet weak var addedFriendsTableView: UITableView!
+    @IBOutlet weak var searchFriendsTableView: UITableView!
+    @IBOutlet weak var memberTableView: UITableView!
+    @IBOutlet weak var searchFriendsField: UITextField!
     @IBOutlet weak var ajiteName: UITextField!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
     var name = ""
-    var newAjite = Ajite()
-    
     
 //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
         blurEffect.bounds = self.view.bounds
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9 , height: self.view.bounds.height * 0.6)
-   //navigation 바를 없애는 코드 !
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.isTranslucent = true
     }
    //animate in a specific view
     func animateIn (desiredView : UIView){
@@ -94,17 +94,29 @@ class CreateAjiteViewController: UIViewController {
     
 
     @IBAction func pressedEnter(_ sender: Any) {
-        self.newAjite.name = ajiteName.text!
-        self.newAjite.numberOfMembers = self.newAjite.members.count + 1
-        print(self.newAjite.name, self.newAjite.numberOfMembers)
+        let newAjite = Ajite()
+        newAjite.name = ajiteName.text!
+        //아지트 text field 안에 아무 것도 안들어가있을 때 즉 whitespace로만 이루어졌을 때
+        if newAjite.name.trimmingCharacters(in: .whitespaces).isEmpty{
+            //alert 메세지가 뜬다
+            let alert = UIAlertController(title: "Empty Name Field", message: "Your Ajite must have a name.", preferredStyle: .alert)
+            //alert 액션이다.
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")}))
+            
+         self.present(alert, animated: true, completion: nil)
+            return
+        }
+        else{
+        newAjite.numberOfMembers = newAjite.members.count + 1
         ajite.append(newAjite)
-        print(ajite.first?.name)
-        
+            //"create" segue 를 이용해 그 세그와 연결된 뷰 컨트롤러로 이동함
         performSegue(withIdentifier: "create", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var vc = segue.destination as! AjiteRoomViewController
-        vc.nameOfAjite = self.newAjite.name
+        vc.nameOfAjite = ajiteName.text!
     }
 }
