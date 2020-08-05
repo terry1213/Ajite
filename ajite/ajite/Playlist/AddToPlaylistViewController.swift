@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InsidePlaylistViewController: UIViewController {
+class AddToPlaylistViewController: UIViewController {
 
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!

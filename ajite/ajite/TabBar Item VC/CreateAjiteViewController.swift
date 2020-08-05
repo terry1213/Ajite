@@ -95,7 +95,11 @@ class CreateAjiteViewController: UIViewController {
 
     @IBAction func pressedEnter(_ sender: Any) {
         self.newAjite.name = ajiteName.text!
+        self.newAjite.numberOfMembers = self.newAjite.members.count + 1
+        print(self.newAjite.name, self.newAjite.numberOfMembers)
         ajite.append(newAjite)
+        print(ajite.first?.name)
+        
         performSegue(withIdentifier: "create", sender: self)
     }
     

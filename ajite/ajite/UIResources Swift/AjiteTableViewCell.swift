@@ -1,5 +1,5 @@
 //
-//  PlaylistTableViewCell.swift
+//  AjiteTableViewCell.swift
 //  ajite
 //
 //  Created by 노은솔 on 2020/08/05.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-class PlaylistTableViewCell: UITableViewCell {
+class AjiteTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var playlistName: UILabel!
-    @IBOutlet weak var numberOfSongsInPlaylist: UILabel!
+    
+    @IBOutlet weak var ajiteImage: UIImageView!
+    @IBOutlet weak var ajiteName: UILabel!
+    @IBOutlet weak var numberOfMembers: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
         // Initialization code
     }
 

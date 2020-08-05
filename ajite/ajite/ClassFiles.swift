@@ -25,7 +25,7 @@ class Ajite {
     var sharedSongs = [Song]()
     init () {
         name = ""
-        numberOfMembers = 0
+        numberOfMembers = members.count
     }
 }
 

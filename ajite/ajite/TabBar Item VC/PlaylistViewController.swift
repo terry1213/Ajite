@@ -21,7 +21,7 @@ class PlaylistViewController: UIViewController{
         self.navigationController!.navigationBar.isTranslucent = true
         // Do any additional setup after loading the view.
         self.playlistTableView.dataSource = self
-        self.playlistTableView.delegate = self
+
     }
     //adding to array of playlist classes
     
@@ -72,9 +72,3 @@ extension PlaylistViewController: UITableViewDataSource {
         playlistTableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
-
-extension PlaylistViewController: UITableViewDelegate {
-    
-}
-
-
