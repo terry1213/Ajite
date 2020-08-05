@@ -11,10 +11,11 @@ import Foundation
 import UIKit
 
 class User{
-    var name = ""
+    var name = String()
     var friends = [User]()
     var sharedSongs = [Song]()
     var userID = String()
+    
 }
 
 

@@ -8,11 +8,6 @@
 
 import UIKit
 import youtube_ios_player_helper
-import GoogleAPIClientForREST
-
-struct Response: Codable {
-    let status: String
-}
 
 class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
@@ -22,8 +17,6 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=헤이즈&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg"
-        getData(from: url)
     }
 
     override func loadView() {
@@ -51,30 +44,6 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
                 ])
             }
         }
-    }
-    
-    func getData(from url: String) {
-        let task = URLSession.shared.dataTask(with: URL(string: url.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)!)!, completionHandler: {data, response, error in
-            
-            guard let data = data, error == nil else {
-                print("something went wrong")
-                return
-            }
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : AnyObject] {
-                    if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        print(JSONString)
-                    }
-                    //print("Response from YouTube: \(jsonResult)")
-                }
-            }
-            catch {
-                print("failed to convert \(error.localizedDescription)")
-            }
-        })
-        
-        task.resume()
     }
     /*
     // MARK: - Navigation
