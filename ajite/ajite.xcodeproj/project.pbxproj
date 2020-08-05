@@ -23,6 +23,10 @@
 		1695F5AA24DAB13700B9601E /* AjiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */; };
 		1698669524D9569800946C2F /* ClassFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698669424D9569800946C2F /* ClassFiles.swift */; };
 		1698B9A724DABAF5005DE79F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9A624DABAF5005DE79F /* GoogleService-Info.plist */; };
+		1698B9A924DAC99C005DE79F /* proxima-alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9A824DAC99C005DE79F /* proxima-alt.otf */; };
+		1698B9AD24DAC9BE005DE79F /* proxima-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AA24DAC9BD005DE79F /* proxima-regular.otf */; };
+		1698B9AE24DAC9BE005DE79F /* proxima-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AB24DAC9BD005DE79F /* proxima-black.otf */; };
+		1698B9AF24DAC9BE005DE79F /* proxima-thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
 		16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AEB24CC761400807ECB /* SceneDelegate.swift */; };
 		16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AED24CC761400807ECB /* LoginViewControllers.swift */; };
@@ -63,7 +67,7 @@
 		08CE5227FC726640CFE6A21B /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = ajite/made.otf; sourceTree = SOURCE_ROOT; };
+		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = "ajite/UIResources Swift/made.otf"; sourceTree = SOURCE_ROOT; };
 		1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
 		1645EB1324D6B246007ACBF5 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		1645EB1524D6E1FE007ACBF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,10 @@
 		1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteTableViewCell.swift; sourceTree = "<group>"; };
 		1698669424D9569800946C2F /* ClassFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFiles.swift; sourceTree = "<group>"; };
 		1698B9A624DABAF5005DE79F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1698B9A824DAC99C005DE79F /* proxima-alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-alt.otf"; sourceTree = "<group>"; };
+		1698B9AA24DAC9BD005DE79F /* proxima-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-regular.otf"; sourceTree = "<group>"; };
+		1698B9AB24DAC9BD005DE79F /* proxima-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-black.otf"; sourceTree = "<group>"; };
+		1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-thin.otf"; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4AE924CC761400807ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AE4AEB24CC761400807ECB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,7 +201,6 @@
 				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
 				16AE4AF524CC761800807ECB /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
-				1645658324CE889100DDA830 /* made.otf */,
 				16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */,
 				DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
@@ -223,6 +230,11 @@
 		16C133D524D71BD700DA4177 /* UIResources Swift */ = {
 			isa = PBXGroup;
 			children = (
+				1645658324CE889100DDA830 /* made.otf */,
+				1698B9AB24DAC9BD005DE79F /* proxima-black.otf */,
+				1698B9AA24DAC9BD005DE79F /* proxima-regular.otf */,
+				1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */,
+				1698B9A824DAC99C005DE79F /* proxima-alt.otf */,
 				1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */,
 				1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */,
 				161C12E424CD9B59002E9246 /* DesignableView.swift */,
@@ -374,9 +386,13 @@
 			files = (
 				1645658424CE889100DDA830 /* made.otf in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
+				1698B9AE24DAC9BE005DE79F /* proxima-black.otf in Resources */,
 				1698B9A724DABAF5005DE79F /* GoogleService-Info.plist in Resources */,
 				16AE4AF624CC761800807ECB /* Assets.xcassets in Resources */,
+				1698B9AF24DAC9BE005DE79F /* proxima-thin.otf in Resources */,
+				1698B9A924DAC99C005DE79F /* proxima-alt.otf in Resources */,
 				16AE4AF124CC761400807ECB /* Main.storyboard in Resources */,
+				1698B9AD24DAC9BE005DE79F /* proxima-regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

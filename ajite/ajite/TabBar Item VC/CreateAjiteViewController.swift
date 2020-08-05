@@ -49,7 +49,6 @@ class CreateAjiteViewController: UIViewController {
     var name = ""
     var newAjite = Ajite()
     
-    
 //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +93,20 @@ class CreateAjiteViewController: UIViewController {
     
 
     @IBAction func pressedEnter(_ sender: Any) {
+        
         self.newAjite.name = ajiteName.text!
+        if ajiteName.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+            let alert = UIAlertController(title: "Empty Name Field", message: "Your Ajite must have a name.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")}))
+            
+         self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         self.newAjite.numberOfMembers = self.newAjite.members.count + 1
         print(self.newAjite.name, self.newAjite.numberOfMembers)
         ajite.append(newAjite)
-        print(ajite.first?.name)
-        
         performSegue(withIdentifier: "create", sender: self)
     }
     

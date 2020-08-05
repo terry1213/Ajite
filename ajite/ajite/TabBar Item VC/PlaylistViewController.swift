@@ -31,7 +31,8 @@ class PlaylistViewController: UIViewController{
             playlistTextField.placeholder = "Enter Playlist Name"
         })
         let action = UIAlertAction(title: "Add", style: .default){(_) in guard let newPlaylist = alert.textFields?.first?.text else{return}
-            print(newPlaylist)
+            
+            
             let playlistToAdd = Playlist()
             playlistToAdd.playlistName = newPlaylist
             playlists.append(playlistToAdd)

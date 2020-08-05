@@ -23,6 +23,7 @@ class Ajite {
     var numberOfMembers = Int()
     var members = [User]()
     var sharedSongs = [Song]()
+    var imageName = String()
     init () {
         name = ""
         numberOfMembers = members.count
