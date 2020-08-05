@@ -9,6 +9,7 @@ target 'ajite' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
   pod 'GoogleSignIn', '~> 5.0'
   pod "youtube-ios-player-helper", "~> 1.0.2"
   pod "GoogleAPIClientForREST/YouTube"
