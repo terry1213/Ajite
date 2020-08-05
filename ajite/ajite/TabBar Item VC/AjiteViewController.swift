@@ -28,7 +28,7 @@ class AjiteViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DispatchQueue.main.async { self.ajiteTable.reloadData() }
+        self.ajiteTable.reloadData()
     }
 }
 
