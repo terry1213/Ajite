@@ -828,7 +828,6 @@
                                                     <color key="titleColor" red="0.80596011879999996" green="0.67666262389999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="test:" destination="hGq-4s-E0g" eventType="touchUpInside" id="mRW-di-INH"/>
                                                     <segue destination="YTT-Lv-6TJ" kind="presentation" id="pds-8x-tIW"/>
                                                 </connections>
                                             </button>
@@ -1480,18 +1479,46 @@
                                         <state key="normal" image="magnifyingglass" catalog="system">
                                             <color key="titleColor" red="0.66922193770000005" green="0.73069894310000005" blue="0.89806061979999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchAction:" destination="YTT-Lv-6TJ" eventType="touchUpInside" id="gPe-IZ-yzq"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-5k-chS">
                                         <rect key="frame" x="20" y="86" width="295" height="186"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="LPM-jS-59R">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YoutubeVideoSearchTableViewCell" rowHeight="58" id="LPM-jS-59R" customClass="YoutubeVideoSearchTableViewCell" customModule="ajite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="295" height="58"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LPM-jS-59R" id="iGV-tY-1JM">
                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="58"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcV-IS-lUg">
+                                                            <rect key="frame" x="15" y="-1" width="72" height="59"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-xg-kxS">
+                                                            <rect key="frame" x="108" y="11" width="157" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9E-BS-qBL">
+                                                            <rect key="frame" x="108" y="31" width="157" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="artistLabel" destination="f9E-BS-qBL" id="lAs-NO-fry"/>
+                                                    <outlet property="songNameLabel" destination="wBa-xg-kxS" id="pFc-T7-Fxu"/>
+                                                    <outlet property="thumbnailImageView" destination="fcV-IS-lUg" id="bTz-vh-Qbi"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -1524,10 +1551,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8tC-lg-pxP"/>
                     </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="azt-9V-hMC" id="2nZ-Ge-TQg"/>
+                        <outlet property="youtubeVideoTableView" destination="UVc-5k-chS" id="JyZ-Ua-fMQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nj1-H7-xuK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4957.6000000000004" y="-576.35467980295573"/>
+            <point key="canvasLocation" x="4957.6000000000004" y="-577.06146926536735"/>
         </scene>
         <!--Playlist VC-->
         <scene sceneID="Lda-2v-Eqh">
