@@ -11,57 +11,60 @@ import GoogleAPIClientForREST
 
 //유튜브 데이터 모델
 struct YouTubeModel: Codable {
-    let kind, etag: String?
-    let pageInfo: PageInfo?
+//    let kind, etag: String?
+//    let pageInfo: PageInfo?
     let items: [Item]
 }
 
 //아이템 정보(비디오)
 struct Item: Codable {
-    let kind, etag: String?
+//    let kind, etag: String?
     let id: Id?
     let snippet: Snippet?
 }
 
 //아이템의 아이디
 struct Id: Codable {
-    let kind, videoId: String?
+//    let kind: String?
+    let videoId: String?
 }
 
 struct Snippet: Codable {
-    let title, snippetDescription: String?
-    let publishedAt: String?
+    let title: String?
+//    let snippetDescription: String?
+//    let publishedAt: String?
     let channelTitle: String?
-    let publishTime: String?
+//    let publishTime: String?
     let thumbnails: Thumbnails?
-    let country: String?
+//    let country: String?
 
     enum CodingKeys: String, CodingKey {
-        case title
-        case snippetDescription = "description"
-        case publishedAt, thumbnails, country, channelTitle, publishTime
+        case title, channelTitle, thumbnails
+//        case snippetDescription = "description"
+//        case publishedAt, country, publishTime
     }
 }
 
 //썸네일 정보(화질, url)
 struct Thumbnails: Codable {
-    let thumbnailsDefault, medium, high: Default
+    let thumbnailsDefault: Default
+//    let medium, high: Default
 
     enum CodingKeys: String, CodingKey {
         case thumbnailsDefault = "default"
-        case medium, high
+//        case medium, high
     }
 }
 
 struct Default: Codable {
     let url: String
-    let width, height: Int
+//    let width, height: Int
 }
 
 //페이지 정보
-struct PageInfo: Codable {
-    let totalResults, resultsPerPage: Int?
-}
+//struct PageInfo: Codable {
+//    let totalResults, resultsPerPage: Int?
+//}
 
 class ShareSongsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -71,8 +74,12 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     //검색된 결과(유튜브 데이터 모델)
     var youTubeModel: YouTubeModel?
     //기본 url, 마지막 'q=' 이후에 검색어 붙여서 사용
-    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg&q="
-    
+    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id(videoId),snippet(channelTitle,title,thumbnails(default(url))))&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg&q="
+    /*
+     keys
+        AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg
+        AIzaSyA56mjgLpsdf1Sz6AqKuNSTIIuyQHpED2c
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.youtubeVideoTableView.dataSource = self
@@ -92,7 +99,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         //아티스트(업로드한 채널) 이름 불러오기
         cell.artistLabel.text = youTubeModel?.items[indexPath.row].snippet?.channelTitle
         //썸네일 사진 불러오기
-        let data = try? Data(contentsOf: URL(string: (youTubeModel?.items[indexPath.row].snippet?.thumbnails?.medium.url)!)!)
+        let data = try? Data(contentsOf: URL(string: (youTubeModel?.items[indexPath.row].snippet?.thumbnails?.thumbnailsDefault.url)!)!)
         DispatchQueue.main.async {
             cell.thumbnailImageView.image = UIImage(data: data!)
         }
