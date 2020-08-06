@@ -3,13 +3,15 @@
 
 target 'ajite' do
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+  use_frameworks!
   use_modular_headers!
   # Pods for ajite
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  #pod 'FirebaseFirestoreSwift'
   pod 'GoogleSignIn', '~> 5.0'
   pod "youtube-ios-player-helper", "~> 1.0.2"
   pod "GoogleAPIClientForREST/YouTube"
