@@ -102,7 +102,6 @@ class userlistTableViewController: UITableViewController, UISearchResultsUpdatin
         self.filteredUsers = self.userArray.filter{ user in
             let username = user!["name"] as? String
             return(username?.lowercased().contains(searchText.lowercased()))!
-            
         }
         tableView.reloadData()
     }
