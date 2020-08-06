@@ -20,6 +20,7 @@ class AjiteViewController: UIViewController{
         super.viewDidLoad()
         self.ajiteTable.layer.cornerRadius = 20.0
         self.ajiteTable.dataSource = self
+        self.ajiteTable.delegate = self
         // Do any additional setup after loading the view.
     }
    
@@ -30,6 +31,19 @@ class AjiteViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         self.ajiteTable.reloadData()
     }
+    
+    override func  prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           guard segue.identifier == "intoAjite" else {
+               return
+           }
+           guard let sendingAjite = sender as? Ajite else {
+               return
+           }
+           guard let destination = segue.destination as? AjiteRoomViewController else{
+               return
+           }
+           destination.currentAjite = sendingAjite
+       }
 }
 
 extension AjiteViewController : UITableViewDataSource{

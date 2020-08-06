@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -394,7 +394,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9dn-H2-9e6">
-                                        <rect key="frame" x="100" y="7.6666666666667425" width="150" height="149.33333333333334"/>
+                                        <rect key="frame" x="100" y="7.6666666666666714" width="150" height="149.33333333333334"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.90376268699999995" green="0.88464343550000002" blue="0.99217289689999999" alpha="0.8428485577" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -733,17 +733,17 @@
             <objects>
                 <viewController id="3ve-0e-ZXD" userLabel="AjiteMember View Controller" customClass="MemberViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HX7-co-XAF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M1-5G-kK9" userLabel="Members Songs TV view">
-                                <rect key="frame" x="0.0" y="97" width="375" height="715"/>
+                                <rect key="frame" x="0.0" y="53" width="375" height="705"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vcu-Kh-WgW" userLabel="Shared Songs Table View">
-                                        <rect key="frame" x="0.0" y="38" width="375" height="677"/>
+                                        <rect key="frame" x="0.0" y="38" width="375" height="667"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" rowHeight="60" id="eYV-hw-6XE" userLabel="Shared Songs TV Cell" customClass="FindMemberTableViewCell" customModule="ajite" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" rowHeight="60" id="eYV-hw-6XE" userLabel="Shared Songs TV Cell" customClass="memberInAjiteTableViewCell" customModule="ajite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eYV-hw-6XE" id="W1p-yF-x7U">
@@ -788,15 +788,14 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="memberName" destination="Cop-z7-8rq" id="YVl-nE-ztf"/>
-                                                    <outlet property="memberProfile" destination="svF-uc-r5c" id="75f-8u-sWN"/>
-                                                    <outlet property="userName" destination="Cop-z7-8rq" id="Yfr-rK-eRV"/>
+                                                    <outlet property="memberName" destination="Cop-z7-8rq" id="zWs-Fd-hQy"/>
+                                                    <outlet property="memberProfile" destination="svF-uc-r5c" id="eVN-bV-fCg"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNz-yA-s5E">
-                                        <rect key="frame" x="19" y="2.6666666666666732" width="89" height="30.666666666666671"/>
+                                        <rect key="frame" x="19" y="2.6666666666666661" width="89" height="30.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -847,6 +846,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="riE-Di-g6g"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xjB-WO-HdU"/>
                     <connections>
                         <outlet property="memberTableView" destination="vcu-Kh-WgW" id="sF5-UV-NNZ"/>
                     </connections>
@@ -1069,10 +1069,10 @@
                         <viewLayoutGuide key="safeArea" id="epr-lZ-9NV"/>
                     </view>
                     <navigationItem key="navigationItem" id="514-pZ-nVD">
-                        <barButtonItem key="rightBarButtonItem" title="Members" image="person.3.fill" catalog="system" id="F2e-iI-NWZ">
-                            <color key="tintColor" red="0.75941646100000004" green="0.88464343550000002" blue="0.99217289689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Members" image="person.3" catalog="system" id="F2e-iI-NWZ">
+                            <color key="tintColor" red="0.95259529350000005" green="0.85809397700000001" blue="0.91373091939999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="pressedLeave:" destination="AeW-qZ-H78" id="FNM-4c-ey0"/>
+                                <action selector="pressedMembers:" destination="AeW-qZ-H78" id="EV1-Uu-z54"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1081,6 +1081,7 @@
                         <outlet property="blurEffect" destination="vBQ-FC-7rh" id="3vs-8a-cDp"/>
                         <outlet property="popUpView" destination="dyk-sk-aWR" id="gCu-Sl-FIg"/>
                         <outlet property="sharedSongsView" destination="JY2-Bh-xfF" id="mE6-Px-hzI"/>
+                        <segue destination="3ve-0e-ZXD" kind="presentation" identifier="viewMembers" id="9cY-5Y-XQE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChS-bh-KpG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1486,7 +1487,7 @@
                                 <color key="backgroundColor" red="0.51139467949999995" green="0.57121837139999998" blue="0.73861511749999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="2uQ-ld-cEQ">
-                                <rect key="frame" x="0.0" y="212" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="213" width="375" height="501"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="441"/>
@@ -1594,6 +1595,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Q8s-Zl-zZn"/>
                     <connections>
+                        <outlet property="playlistName" destination="9bV-4r-0p7" id="0we-ju-D6q"/>
                         <outlet property="songListTableView" destination="uvS-OE-UTt" id="u3B-fA-98X"/>
                     </connections>
                 </viewController>
@@ -2091,7 +2093,8 @@
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="music.house.fill" catalog="system" width="128" height="106"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>
-        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="paperplane" catalog="system" width="128" height="121"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

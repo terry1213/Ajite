@@ -1,18 +1,16 @@
 //
-//  FindMemberTableViewCell.swift
-//  ajite
+//  memberInAjiteTableViewCell.swift
+//  
 //
 //  Created by 노은솔 on 2020/08/06.
-//  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 
-class FindMemberTableViewCell: UITableViewCell {
+class memberInAjiteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memberProfile: CircleImageView!
     @IBOutlet weak var memberName: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

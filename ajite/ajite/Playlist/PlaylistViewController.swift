@@ -35,6 +35,15 @@ class PlaylistViewController: UIViewController{
         })
         let action = UIAlertAction(title: "Add", style: .default){(_) in guard let newPlaylist = alert.textFields?.first?.text else{return}
             
+            if newPlaylist.trimmingCharacters(in: .whitespaces).isEmpty{
+                         let nameIsEmpty = UIAlertController(title: "Empty Name Field", message: "Your Playlist must have a name.", preferredStyle: .alert)
+                         
+                         nameIsEmpty.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                                    NSLog("The \"OK\" alert occured.")}))
+                                    
+                                 self.present(nameIsEmpty, animated: true, completion: nil)
+                                    return
+                }
             
             let playlistToAdd = Playlist()
             playlistToAdd.playlistName = newPlaylist

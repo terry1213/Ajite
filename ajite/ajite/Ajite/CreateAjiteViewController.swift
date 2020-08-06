@@ -9,28 +9,10 @@
 import UIKit
 
 
-class MemberCell : UITableViewCell{
-    
-    @IBOutlet weak var profilepicture: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-          // Initialization code
-      }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-      // Configure the view for the selected state
-    }
-   
-    
-    
-}
-
 
 class CreateAjiteViewController: UIViewController {
 
+    var tempAjite = Ajite()
     
     //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
     @IBAction func add(_ sender: Any) {
@@ -52,7 +34,6 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet weak var ajiteName: UITextField!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
-    var name = ""
     
 //로드가 되었을 때
     override func viewDidLoad() {
@@ -109,14 +90,31 @@ class CreateAjiteViewController: UIViewController {
         }
         else{
         newAjite.numberOfMembers = newAjite.members.count + 1
+        addMember(newAjite: newAjite, newUser: myUser)
         ajite.append(newAjite)
             //"create" segue 를 이용해 그 세그와 연결된 뷰 컨트롤러로 이동함
+        tempAjite = newAjite
         performSegue(withIdentifier: "create", sender: self)
         }
     }
     
+    func addMember (newAjite: Ajite, newUser: User){
+        if newAjite.members.contains(newUser){
+            let alert = UIAlertController(title: "Existing Member", message: "This member is already part of your Ajite! ", preferredStyle: .alert)
+                //alert 액션이다.
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")}))
+                
+            self.present(alert, animated: true, completion: nil)
+                return
+        }
+        else{
+            newAjite.members.append(newUser)
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var vc = segue.destination as! AjiteRoomViewController
-        vc.nameOfAjite = ajiteName.text!
+        vc.currentAjite = tempAjite
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class AjiteRoomViewController: UIViewController {
-    var nameOfAjite : String = ""
+   var currentAjite = Ajite()
     
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet var popUpView: UIView!
@@ -23,7 +23,7 @@ class AjiteRoomViewController: UIViewController {
         popUpView.layer.cornerRadius = 40
         
         //아지트이름 뽑아옴
-        ajiteName.text = nameOfAjite
+        ajiteName.text = currentAjite.name
         //shared Songs View 에 섀도우 집어넣음
         sharedSongsView.layer.shadowColor = UIColor.gray.cgColor
         sharedSongsView.layer.shadowOpacity = 0.45
@@ -63,20 +63,14 @@ class AjiteRoomViewController: UIViewController {
         })
     }
     
-    @IBAction func pressedLeave(_ sender: Any) {
-        let removingAjite = ajiteName.text
-        var i = 0
-        print(ajite)
-        for rooms in ajite {
-            if rooms.name == removingAjite {
-                ajite.remove(at: i)
-                _ = navigationController?.popViewController(animated: true)
-            } else{
-                print(i, rooms.name)
-                i+=1
-            }
-        }
+ 
+    @IBAction func pressedMembers(_ sender: Any) {
+    performSegue(withIdentifier: "viewMembers", sender: self)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! MemberViewController
+        vc.memberViewAjite = currentAjite
     }
     //animation for when it is touched out of bounds
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

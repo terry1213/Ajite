@@ -9,6 +9,8 @@
 import UIKit
 import GoogleSignIn
 
+var myUser =  User()
+
 class ProfileViewController: UIViewController {
    
     @IBOutlet weak var userNameLabel: UILabel!
@@ -17,6 +19,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
         userNameLabel.text = user.profile.name
+        
+        myUser.name = user.profile.name
         // Do any additional setup after loading the view.
     }
     
