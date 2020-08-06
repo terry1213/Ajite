@@ -51,3 +51,10 @@ extension AjiteViewController : UITableViewDataSource{
              return 90
           }
 }
+
+extension AjiteViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let dataToSend = ajite[indexPath.row]
+    self.performSegue(withIdentifier: "intoAjite", sender: dataToSend)
+    }
+}

@@ -9,13 +9,59 @@
 import UIKit
 
 class PlaylistSongListViewController: UIViewController {
-
+    var source = Playlist()
     @IBOutlet weak var songListTableView: UITableView!
+    
+    @IBOutlet weak var playlistName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        playlistName.text = source.playlistName
+        self.songListTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear (_ animated: Bool){
+        self.songListTableView.reloadData()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+           return .none
+       }
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+        // Delete the row from the data source
+            songListTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+}
 
+extension PlaylistSongListViewController : UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return source.songs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = songListTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! songTableViewCell
+    cell.songName.text = source.songs[indexPath.row].name
+    cell.artistName.text = source.songs[indexPath.row].artist
+    return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt
+    indexPath: IndexPath) -> CGFloat {
+            return 60
+         }
+    
 }
