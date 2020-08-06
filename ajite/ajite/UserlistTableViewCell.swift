@@ -14,6 +14,4 @@ class UserlistTableViewCell: UITableViewCell {
     @IBOutlet var checkBox: UIButton!
     
 
-    
-    
 }
