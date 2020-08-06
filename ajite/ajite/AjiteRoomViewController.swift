@@ -15,7 +15,7 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet weak var sharedSongsView: UIView!
-    @IBOutlet weak var membersView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         blurEffect.bounds = self.view.bounds
@@ -30,10 +30,6 @@ class AjiteRoomViewController: UIViewController {
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
         //멤버스뷰에 섀도우 집어넣음
-        membersView.layer.shadowColor = UIColor.gray.cgColor
-        membersView.layer.shadowOpacity = 0.45
-        membersView.layer.shadowOffset = .zero
-        membersView.layer.shadowRadius = 5
         // Do any additional setup after loading the view.
     }
     // when you want to add members
