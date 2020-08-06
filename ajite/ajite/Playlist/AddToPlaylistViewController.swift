@@ -10,6 +10,7 @@ import UIKit
 
 class AddToPlaylistViewController: UIViewController {
 
+    var addingSong = Song()
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!
     

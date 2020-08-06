@@ -13,8 +13,11 @@ var myUser =  User()
 
 class ProfileViewController: UIViewController {
    
+    @IBOutlet weak var myFriendsTableView: UITableView!
+    @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var profilePicture: CircleImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
