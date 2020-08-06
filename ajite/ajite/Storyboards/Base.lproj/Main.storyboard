@@ -863,7 +863,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Find Friend" image="person.crop.circle.badge.plus" catalog="system" id="1ae-e1-NTe">
                             <color key="tintColor" red="0.81671917439999997" green="0.86983418459999995" blue="0.92157655949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="S60-S8-AJT" kind="presentation" id="VbE-qX-Vc8"/>
+                                <segue destination="F9U-HR-SWW" kind="presentation" id="MNL-OY-5Q0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2324,11 +2324,11 @@
             <objects>
                 <viewController id="S60-S8-AJT" userLabel="userlist VC" customClass="userlistViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Awt-wT-Bph">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-QZ-MBx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-yZ-A2U">
                                         <rect key="frame" x="330" y="669" width="37" height="30"/>
@@ -2410,12 +2410,81 @@
                         <viewLayoutGuide key="safeArea" id="OaI-bA-8P0"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="n5C-JA-GN9" id="JTd-uK-zvA"/>
+                        <outlet property="tableView" destination="n5C-JA-GN9" id="6cB-3T-8e8"/>
+                        <outlet property="userlistTableView" destination="n5C-JA-GN9" id="FTX-W0-Br2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQk-IN-IMH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4957.6000000000004" y="176.60098522167488"/>
+        </scene>
+        <!--Userlist Table View Controller-->
+        <scene sceneID="ygS-Es-bSO">
+            <objects>
+                <tableViewController id="QyM-kn-vZs" customClass="userlistTableViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="53O-4A-Y3a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="lWu-Uj-CHj" style="IBUITableViewCellStyleDefault" id="YYa-qy-xRH" customClass="UserlistTableViewCell" customModule="ajite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YYa-qy-xRH" id="qkC-Yj-0Ia">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lWu-Uj-CHj">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NG2-go-k1b">
+                                            <rect key="frame" x="164" y="6" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkBox" destination="NG2-go-k1b" id="XeL-qb-oNj"/>
+                                    <outlet property="nameBox" destination="lWu-Uj-CHj" id="f11-XR-sBe"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QyM-kn-vZs" id="CCk-7k-cag"/>
+                            <outlet property="delegate" destination="QyM-kn-vZs" id="KLa-TF-gHz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="dKC-Sy-pty"/>
+                    <connections>
+                        <outlet property="userlistTableView" destination="53O-4A-Y3a" id="N0U-Os-Z8j"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-kp-p9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6286" y="171"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DzC-aG-cDd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F9U-HR-SWW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="친구검색" insetsLayoutMarginsFromSafeArea="NO" id="wUb-QO-j8L" userLabel="친구검색">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QyM-kn-vZs" kind="relationship" relationship="rootViewController" id="2Gf-sX-ygm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fg-9v-ibC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5622" y="171"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -13,8 +13,10 @@ import CoreData
 import FirebaseDatabase
 import GoogleSignIn
 
-class userlistViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class userlistTableViewController: UITableViewController, UISearchResultsUpdating {
     
+    
+    @IBOutlet var userlistTableView: UITableView!
     
     var userArray = [NSDictionary?]()
     var filteredUsers = [NSDictionary?]()
@@ -27,11 +29,10 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
     
     
     var userlist = [User]()
-    @IBOutlet var tableView: UITableView!
     
     @IBOutlet var searchBar: UISearchBar!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != ""{
             return filteredUsers.count
         }
@@ -39,7 +40,7 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
         return self.userArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserlistTableViewCell
         let user: NSDictionary?
         if searchController.isActive && searchController.searchBar.text != ""{
@@ -53,9 +54,6 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
         return cell
     }
     
-    @IBAction func searchCheckBtn(_ sender: Any) {
-    }
-    
     private let database = Database.database().reference()
     
     @objc private func addNewEntry(){
@@ -66,19 +64,6 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
         database.child("user").child(user.profile.name).setValue(object)
         
     }
-    
-    /*
-    func dataRead() {
-        let userID = Auth.auth().currentUser?.uid
-        ref.child("user").child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let username = value?["user"] as? String
-            //let user = User(username: username)
-        }){
-            (error) in print(error.localizedDescription)
-        }
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,7 +86,7 @@ class userlistViewController: UIViewController, UISearchBarDelegate, UITableView
             
             self.userArray.append(snapshot.value as? NSDictionary)
             
-            self.tableView.insertRows(at: [IndexPath(row:self.userArray.count-1,section: 0)],with: UITableView.RowAnimation.automatic)
+            self.userlistTableView.insertRows(at: [IndexPath(row:self.userArray.count-1,section: 0)],with: UITableView.RowAnimation.automatic)
         })
     }
     
