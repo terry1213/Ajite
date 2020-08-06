@@ -18,39 +18,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oNK-b0-Q4K">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1380"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="WeN-j4-03n">
-                                <rect key="frame" x="375.5" y="524.5" width="273" height="317"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ajitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="spM-2Y-bQs" userLabel="logo image">
-                                        <rect key="frame" x="48.5" y="0.0" width="176" height="187"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="187" id="Kuq-sw-jqz"/>
-                                            <constraint firstAttribute="width" constant="176" id="TTD-SP-J2U"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo-ajite" translatesAutoresizingMaskIntoConstraints="NO" id="dvA-m1-H0B">
-                                        <rect key="frame" x="0.0" y="215" width="273" height="102"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="102.33" id="9YZ-fm-52s"/>
-                                            <constraint firstAttribute="width" constant="273" id="9gO-xj-qgm"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ajitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="spM-2Y-bQs" userLabel="logo image">
+                                <rect key="frame" x="311" y="482" width="402" height="402"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oNK-b0-Q4K" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0el-BW-nsX"/>
+                            <constraint firstItem="spM-2Y-bQs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="19k-2i-R8w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oNK-b0-Q4K" secondAttribute="bottom" constant="-34" id="UUf-p5-s4S"/>
-                            <constraint firstItem="WeN-j4-03n" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Z0x-JW-nam"/>
-                            <constraint firstItem="WeN-j4-03n" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dvQ-Ww-h0O"/>
                             <constraint firstItem="oNK-b0-Q4K" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gWm-1a-s0N"/>
+                            <constraint firstItem="spM-2Y-bQs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qq6-7M-zwA"/>
                             <constraint firstItem="oNK-b0-Q4K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vlE-Es-L0w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -58,12 +39,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="372.99107142857139"/>
+            <point key="canvasLocation" x="52.1484375" y="372.91361639824299"/>
         </scene>
     </scenes>
     <resources>
         <image name="ajitelogo" width="200" height="200"/>
-        <image name="applogo-ajite" width="567" height="567"/>
         <image name="background" width="2048" height="2732"/>
     </resources>
 </document>

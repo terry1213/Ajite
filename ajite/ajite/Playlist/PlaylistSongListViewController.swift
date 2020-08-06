@@ -34,12 +34,11 @@ class PlaylistSongListViewController: UIViewController {
         return false
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-        // Delete the row from the data source
-            songListTableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+    
+    @IBAction func pressedPlus(_ sender: Any) {
+       performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
+    
 }
 
 extension PlaylistSongListViewController : UITableViewDataSource{
@@ -65,4 +64,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
             return 60
          }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+          guard editingStyle == .delete else { return }
+          
+          source.songs.remove(at: indexPath.row)
+          songListTableView.deleteRows(at: [indexPath], with: .automatic)
+      }
 }

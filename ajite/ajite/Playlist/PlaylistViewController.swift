@@ -55,6 +55,11 @@ class PlaylistViewController: UIViewController{
             song2.name = "Jenga - Heize"
             song2.artist = "Heize"
             playlistToAdd.songs.append(song2)
+            
+            let random = arc4random_uniform(4)
+            let imageName = "playlist-\(random)"
+        
+            playlistToAdd.playlistImage = UIImage(named: imageName)!
             playlists.append(playlistToAdd)
             self.playlistTableView.reloadData()
         }
@@ -90,6 +95,7 @@ extension PlaylistViewController: UITableViewDataSource {
         cell.playlistName.text = playlists[indexPath.row].playlistName
         //cell.ownerLabel.text = "\(playlists[indexPath.row].ownerName), \(playlists[indexPath.row].songs.count)"
         cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
+        cell.playlistImage.image = playlists[indexPath.row].playlistImage
         return cell
     }
     
@@ -99,10 +105,19 @@ extension PlaylistViewController: UITableViewDataSource {
          }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
+       
+        let deleteAlert = UIAlertController (title: "Delete Playlist", message: "Would you like to delete your playlist?" ,preferredStyle: UIAlertController.Style.alert)
         
-        playlists.remove(at: indexPath.row)
-        playlistTableView.deleteRows(at: [indexPath], with: .automatic)
+        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
+            
+            guard editingStyle == .delete else { return }
+            playlists.remove(at: indexPath.row)
+            self.playlistTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }))
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(deleteAlert, animated: true, completion: nil)
+       
     }
     
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

@@ -8,6 +8,7 @@
 
 
 import UIKit
+import GoogleSignIn
 
 var ajite :[Ajite] = []
 
@@ -57,6 +58,7 @@ extension AjiteViewController : UITableViewDataSource{
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajite[indexPath.row].name
         cell.numberOfMembers.text = "\(ajite[indexPath.row].numberOfMembers) members"
+        cell.ajiteImage.image = ajite[indexPath.row].ajiteImage
         
         return cell
     }

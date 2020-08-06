@@ -12,7 +12,7 @@ class TabBarMenuViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 2
+        self.selectedIndex = 0
         delegate = self
         // Do any additional setup after loading the view.
     }
