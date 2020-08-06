@@ -20,6 +20,9 @@ class userlistTableViewController: UITableViewController, UISearchResultsUpdatin
     
     var userArray = [NSDictionary?]()
     var filteredUsers = [NSDictionary?]()
+    var loggedInUser:User?
+    
+    var testArray = [NSDictionary?]()
     
     //var ref: DatabaseReference!
     
@@ -61,7 +64,7 @@ class userlistTableViewController: UITableViewController, UISearchResultsUpdatin
         let object: [String: Any] = [
             "name" : user.profile.name as NSObject
         ]
-        database.child("user").child(user.profile.name).setValue(object)
+        database.child("user").child("\(String(describing: user.userID))").setValue(object)
         
     }
     override func viewDidLoad() {
@@ -75,6 +78,7 @@ class userlistTableViewController: UITableViewController, UISearchResultsUpdatin
         //self.searchBar.delegate = self
         //self.searchBar.placeholder = "검색할 사람을 입력하세요"
         
+        
         ref = Database.database().reference().child("user")
         
         searchController.searchResultsUpdater = self
@@ -84,10 +88,28 @@ class userlistTableViewController: UITableViewController, UISearchResultsUpdatin
         
         ref.child("user").queryOrdered(byChild: "name").observe(.childAdded, with: {(snapshot) in
             
-            self.userArray.append(snapshot.value as? NSDictionary)
+            let key = snapshot.key
+            let snapshot = snapshot.value as? NSDictionary
+            snapshot?.setValue(key, forKey: "name")
             
-            self.userlistTableView.insertRows(at: [IndexPath(row:self.userArray.count-1,section: 0)],with: UITableView.RowAnimation.automatic)
-        })
+            if(key == self.loggedInUser?.userID){
+                print("Same as logged in user, so don't show!")
+            }
+            else{
+                self.userArray.append(snapshot)
+                self.userlistTableView.insertRows(at: [IndexPath(row:self.userArray.count-1,section: 0)],with: UITableView.RowAnimation.automatic)
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     @IBAction func dismissFollowUsersTableView(_sender: AnyObject){
