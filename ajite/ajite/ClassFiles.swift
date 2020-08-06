@@ -15,6 +15,7 @@ class User{
     var friends = [User]()
     var sharedSongs = [Song]()
     var userID = String()
+    var bio = String()
     
 }
 
@@ -24,7 +25,8 @@ class Ajite {
     var numberOfMembers = Int()
     var members = [User]()
     var sharedSongs = [Song]()
-    var imageName = String()
+    var ajiteID = String()
+    
     init () {
         name = ""
         numberOfMembers = members.count
@@ -34,7 +36,7 @@ class Ajite {
 class Playlist {
     var playlistName = String()
     var songs = [Song]()
-    let ajiteOrPersonal : Bool
+    var ajiteOrPersonal : Bool
     init (){
         playlistName = ""
         ajiteOrPersonal = true
@@ -42,9 +44,9 @@ class Playlist {
 }
 
 class Song {
-    let name : String
-    let artist : String
-    let videoID : String
+    var name : String
+    var artist : String
+    var videoID : String
     init(){
         name = ""
         videoID = ""

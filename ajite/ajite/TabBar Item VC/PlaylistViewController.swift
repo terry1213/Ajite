@@ -20,9 +20,12 @@ class PlaylistViewController: UIViewController{
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
         // Do any additional setup after loading the view.
+       
         self.playlistTableView.dataSource = self
+        self.playlistTableView.delegate = self
 
     }
+    
     //adding to array of playlist classes
     
     @IBAction func plusTapped(_ sender: Any) {
@@ -35,6 +38,14 @@ class PlaylistViewController: UIViewController{
             
             let playlistToAdd = Playlist()
             playlistToAdd.playlistName = newPlaylist
+            let song1 = Song()
+            song1.name = "Palette - IU"
+            song1.artist = "IU"
+            playlistToAdd.songs.append(song1)
+            let song2 = Song()
+            song2.name = "Jenga - Heize"
+            song2.artist = "Heize"
+            playlistToAdd.songs.append(song2)
             playlists.append(playlistToAdd)
             self.playlistTableView.reloadData()
         }
@@ -42,6 +53,18 @@ class PlaylistViewController: UIViewController{
         present(alert, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          guard segue.identifier == "toPlaylist" else {
+              return
+          }
+          guard let sendingPlaylist = sender as? Playlist else {
+              return
+          }
+          guard let destination = segue.destination as? PlaylistSongListViewController else {
+              return
+          }
+          destination.source = sendingPlaylist
+      }
 
 }
 
@@ -71,5 +94,23 @@ extension PlaylistViewController: UITableViewDataSource {
         
         playlists.remove(at: indexPath.row)
         playlistTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        let movedObject = playlists[fromIndexPath.row]
+           playlists.remove(at: fromIndexPath.row)
+            playlists.insert(movedObject, at: to.row)
+        }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+}
+
+extension PlaylistViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let dataToSend = playlists[indexPath.row]
+    self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
     }
 }
