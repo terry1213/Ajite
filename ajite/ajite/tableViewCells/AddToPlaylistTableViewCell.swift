@@ -12,13 +12,16 @@ class AddToPlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var playlistName: UILabel!
+    
+    //weak var delegate : AddToPlaylistTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       //self.checkBoxButton.addTarget(self, action: #selector(pressedCheckBox(_:)), for: .touchUpInside)
     }
-    @IBAction func pressedCheckbox(_ sender: Any) {
-        print("checked")
-    }
+
+    
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
