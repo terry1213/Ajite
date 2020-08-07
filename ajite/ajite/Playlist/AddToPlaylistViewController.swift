@@ -17,7 +17,7 @@ class AddToPlaylistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playlistView.dataSource = self
-        self.playlistView.delegate = self
+
         // Do any additional setup after loading the view.
     }
     
@@ -25,9 +25,6 @@ class AddToPlaylistViewController: UIViewController {
         self.playlistView.reloadData()
     }
         
-    @IBAction func pressedCheckBox(_ sender: Any) {
-        print("pressed check!")
-    }
     @IBAction func finished(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -53,7 +50,4 @@ extension AddToPlaylistViewController : UITableViewDataSource{
           }
 }
 
-extension AddToPlaylistViewController : UITableViewDelegate{
-    
-}
 

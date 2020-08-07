@@ -10,12 +10,16 @@ import UIKit
 
 class AddToPlaylistTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var playlistName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBAction func pressedCheckbox(_ sender: Any) {
+        print("checked")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

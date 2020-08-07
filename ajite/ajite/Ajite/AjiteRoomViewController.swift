@@ -9,8 +9,8 @@
 import UIKit
 
 class AjiteRoomViewController: UIViewController {
-   var currentAjite = Ajite()
     
+    var currentAjite = Ajite()
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
@@ -32,6 +32,7 @@ class AjiteRoomViewController: UIViewController {
         //멤버스뷰에 섀도우 집어넣음
         // Do any additional setup after loading the view.
     }
+//===================애니메이션 코드=================
     // when you want to add members
     @IBAction func add(_ sender: Any) {
         animateIn(desiredView: blurEffect)
@@ -63,7 +64,20 @@ class AjiteRoomViewController: UIViewController {
         })
     }
     
- 
+    
+    //animation for when it is touched out of bounds
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        
+        if touch.view != popUpView{
+            animateOut(desiredView: popUpView)
+            animateOut(desiredView: blurEffect)
+        }
+    }
+    
+ //=======================애니메이션 끝===================//
+    
+    
     @IBAction func pressedMembers(_ sender: Any) {
     performSegue(withIdentifier: "viewMembers", sender: self)
     }
@@ -78,14 +92,6 @@ class AjiteRoomViewController: UIViewController {
                }
 
     }
-    //animation for when it is touched out of bounds
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first! as UITouch
-        
-        if touch.view != popUpView{
-            animateOut(desiredView: popUpView)
-            animateOut(desiredView: blurEffect)
-        }
-    }
+
     
 }
