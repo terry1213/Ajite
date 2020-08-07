@@ -13,7 +13,7 @@ class AjiteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ajiteImage: UIImageView!
     @IBOutlet weak var ajiteName: UILabel!
-    @IBOutlet weak var numberOfMembers: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,3 +27,6 @@ class AjiteTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: AjiteViewController
+//Description: 현재 유저가 소속되어 있는 아지트 정보를 담고 있는 셀

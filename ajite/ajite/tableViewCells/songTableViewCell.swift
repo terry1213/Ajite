@@ -25,3 +25,7 @@ class songTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: PlaylistSongListViewController
+//Description: 플레이리스트 내에 들어있는 곡들을 볼러와준다
+

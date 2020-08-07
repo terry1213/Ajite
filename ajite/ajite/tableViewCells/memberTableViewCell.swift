@@ -24,3 +24,6 @@ class memberTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: CreateAjiteViewController
+//Description: 아지트를 생성할때 추가될 친구들이 이 테이블뷰에 뜬다

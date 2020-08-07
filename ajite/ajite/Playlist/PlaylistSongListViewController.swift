@@ -9,6 +9,8 @@
 import UIKit
 
 class PlaylistSongListViewController: UIViewController {
+    
+    //outlet & variables
     var source = Playlist()
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var playlistName: UILabel!

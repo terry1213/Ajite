@@ -8,8 +8,13 @@
 
 import UIKit
 
+//:::::::::::::아지트 방 안을 보여주는 뷰 컨트롤러 :::::::::::
+
+
 class AjiteRoomViewController: UIViewController {
     
+    
+   //아웃렛과 변수들
     var currentAjite = Ajite()
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet var popUpView: UIView!
@@ -29,10 +34,14 @@ class AjiteRoomViewController: UIViewController {
         sharedSongsView.layer.shadowOpacity = 0.45
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
-        //멤버스뷰에 섀도우 집어넣음
-        // Do any additional setup after loading the view.
+
     }
-//===================애니메이션 코드=================
+    
+    
+    
+    
+//===================애니메이션 코드 시작 =================
+    
     // when you want to add members
     @IBAction func add(_ sender: Any) {
         animateIn(desiredView: blurEffect)
@@ -78,6 +87,8 @@ class AjiteRoomViewController: UIViewController {
  //=======================애니메이션 끝===================//
     
     
+    
+    //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
     @IBAction func pressedMembers(_ sender: Any) {
     performSegue(withIdentifier: "viewMembers", sender: self)
     }

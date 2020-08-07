@@ -15,19 +15,16 @@ var ajites :[Ajite] = []
 
 class AjiteViewController: UIViewController{
     
-    
     @IBOutlet weak var ajiteTable: UITableView!
     let db = Firestore.firestore()
     
+    
+ // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ajiteTable.dataSource = self
         self.ajiteTable.delegate = self
         // Do any additional setup after loading the view.
-    }
-   
-    override func didReceiveMemoryWarning() {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +43,11 @@ class AjiteViewController: UIViewController{
            }
            destination.currentAjite = sendingAjite
     }
+
+    // ==================================================================>
     
+    
+    //데이터베이스에서 데이터를 불러내는 함수
     func getData(){
         db.collection("ajites").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -73,6 +74,8 @@ class AjiteViewController: UIViewController{
     }
 }
 
+
+
 extension AjiteViewController : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
              return 1
@@ -83,7 +86,6 @@ extension AjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
-        cell.numberOfMembers.text = "\(ajites[indexPath.row].members.count) members"
         cell.ajiteImage.image = UIImage(named: ajites[indexPath.row].ajiteImageString)
         
         return cell
@@ -93,14 +95,14 @@ extension AjiteViewController : UITableViewDataSource{
              return 90
           }
     
-    
+//table view 에 있는 cell 을 삭제 할 때
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          
           let deleteAlert = UIAlertController (title: "Leave Ajite", message: "Would you like to leave this Ajite?" ,preferredStyle: UIAlertController.Style.alert)
           
           deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
               guard editingStyle == .delete else { return }
-              ajite.remove(at: indexPath.row)
+              ajites.remove(at: indexPath.row)
               self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
               
           }))
@@ -110,9 +112,9 @@ extension AjiteViewController : UITableViewDataSource{
       }
       
       func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-          let movedObject = ajite[fromIndexPath.row]
-             ajite.remove(at: fromIndexPath.row)
-              ajite.insert(movedObject, at: to.row)
+          let movedObject = ajites[fromIndexPath.row]
+             ajites.remove(at: fromIndexPath.row)
+              ajites.insert(movedObject, at: to.row)
           }
 }
 

@@ -12,16 +12,15 @@ import Firebase
 var playlists : [Playlist] = []
 
 class PlaylistViewController: UIViewController{
-    
+
+    //outlets and variables
     @IBOutlet weak var playlistTableView: UITableView!
     let db = Firestore.firestore()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.isTranslucent = true
-        // Do any additional setup after loading the view.
+        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
        
         self.playlistTableView.dataSource = self
         self.playlistTableView.delegate = self
@@ -31,6 +30,32 @@ class PlaylistViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         self.getData()
     }
+    //getting data from database
+    func getData(){
+        db
+            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("playlists").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                playlists.removeAll()
+                var playlist: Playlist
+                for document in querySnapshot!.documents {
+                    playlist = Playlist()
+                    playlist.playlistName = document.data()["name"] as! String
+                    playlist.playlistImageString = document.data()["playlistImageString"] as! String
+                    playlists.append(playlist)
+                }
+                print("The number of playlists is \(playlists.count)")
+                DispatchQueue.main.async{
+                    self.playlistTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+//************ 관련된 Action들 ********
+    
     
     //adding to array of playlist classes
     @IBAction func plusTapped(_ sender: Any) {
@@ -38,6 +63,8 @@ class PlaylistViewController: UIViewController{
         alert.addTextField(configurationHandler: { (playlistTextField) in
             playlistTextField.placeholder = "Enter Playlist Name"
         })
+        
+        
         let action = UIAlertAction(title: "Add", style: .default){(_) in guard let newPlaylist = alert.textFields?.first?.text else{return}
             
             if newPlaylist.trimmingCharacters(in: .whitespaces).isEmpty{
@@ -71,28 +98,7 @@ class PlaylistViewController: UIViewController{
         present(alert, animated: true)
     }
     
-    func getData(){
-        db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
-            .collection("playlists").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                playlists.removeAll()
-                var playlist: Playlist
-                for document in querySnapshot!.documents {
-                    playlist = Playlist()
-                    playlist.playlistName = document.data()["name"] as! String
-                    playlist.playlistImageString = document.data()["playlistImageString"] as! String
-                    playlists.append(playlist)
-                }
-                print("The number of playlists is \(playlists.count)")
-                DispatchQueue.main.async{
-                    self.playlistTableView.reloadData()
-                }
-            }
-        }
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toPlaylist" else {
@@ -120,7 +126,6 @@ extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = playlistTableView.dequeueReusableCell(withIdentifier: "playlistCell", for: indexPath) as! PlaylistTableViewCell
         cell.playlistName.text = playlists[indexPath.row].playlistName
-        //cell.ownerLabel.text = "\(playlists[indexPath.row].ownerName), \(playlists[indexPath.row].songs.count)"
         cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
         cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
         return cell
@@ -131,6 +136,8 @@ extension PlaylistViewController: UITableViewDataSource {
             return 96
          }
     
+    
+// 플레이리스트를 삭제할 때 사용하는 코드
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
         let deleteAlert = UIAlertController (title: "Delete Playlist", message: "Would you like to delete your playlist?" ,preferredStyle: UIAlertController.Style.alert)
