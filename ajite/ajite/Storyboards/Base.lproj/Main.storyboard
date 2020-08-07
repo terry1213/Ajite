@@ -1877,9 +1877,6 @@
                                                 <rect key="frame" x="274" y="-4" width="83" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="addnavy"/>
-                                                <connections>
-                                                    <segue destination="QyM-kn-vZs" kind="presentation" id="sSf-ko-tPJ"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2103,89 +2100,8 @@
             </objects>
             <point key="canvasLocation" x="1757" y="819"/>
         </scene>
-        <!--search friends-->
-        <scene sceneID="ygS-Es-bSO">
-            <objects>
-                <tableViewController id="QyM-kn-vZs" customClass="userlistTableViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="53O-4A-Y3a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iB0-Jj-qTl" customClass="UserlistTableViewCell" customModule="ajite" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="22.333333969116211"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iB0-Jj-qTl" id="3ew-hD-bqc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="22.333333969116211"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28g-7H-7Ri">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="22.333333333333332"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paH-yL-ngw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="281.33333333333331" height="22.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOx-HS-j8l">
-                                                    <rect key="frame" x="281.33333333333331" y="0.0" width="93.666666666666686" height="22.333333333333332"/>
-                                                    <state key="normal" title="Button" image="paperplane" catalog="system"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="paH-yL-ngw" firstAttribute="width" secondItem="MOx-HS-j8l" secondAttribute="width" multiplier="3" id="22E-GW-hrN"/>
-                                            </constraints>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="28g-7H-7Ri" firstAttribute="top" secondItem="3ew-hD-bqc" secondAttribute="top" id="1re-oQ-bQN"/>
-                                        <constraint firstItem="28g-7H-7Ri" firstAttribute="leading" secondItem="3ew-hD-bqc" secondAttribute="leading" id="Uoe-cq-s79"/>
-                                        <constraint firstAttribute="trailing" secondItem="28g-7H-7Ri" secondAttribute="trailing" id="Uwx-Z6-fIE"/>
-                                        <constraint firstAttribute="bottom" secondItem="28g-7H-7Ri" secondAttribute="bottom" id="jKK-9S-yCn"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="checkBox" destination="MOx-HS-j8l" id="6qT-ju-Omk"/>
-                                    <outlet property="nameBox" destination="paH-yL-ngw" id="jtx-q1-0zk"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="QyM-kn-vZs" id="CCk-7k-cag"/>
-                            <outlet property="delegate" destination="QyM-kn-vZs" id="KLa-TF-gHz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="search friends" id="dKC-Sy-pty"/>
-                    <connections>
-                        <outlet property="userlistTableView" destination="53O-4A-Y3a" id="N0U-Os-Z8j"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-kp-p9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6285.6000000000004" y="170.68965517241381"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DzC-aG-cDd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F9U-HR-SWW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="친구검색" insetsLayoutMarginsFromSafeArea="NO" id="wUb-QO-j8L" userLabel="친구검색">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="QyM-kn-vZs" kind="relationship" relationship="rootViewController" id="2Gf-sX-ygm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0fg-9v-ibC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5622" y="171"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sSf-ko-tPJ"/>
         <segue reference="YzI-Ue-2oM"/>
         <segue reference="RTc-KO-dhc"/>
     </inferredMetricsTieBreakers>
@@ -2204,7 +2120,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>
-        <image name="paperplane" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
