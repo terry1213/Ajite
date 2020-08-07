@@ -33,6 +33,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             //유저 로그인 후
+            let db = Firestore.firestore()
+            
+            var ref: DocumentReference? = nil
+            db.collection("users").whereField("userID", isEqualTo: user.profile.email)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        if querySnapshot!.documents.count == 0 {
+                            ref = db.collection("users").addDocument(data: [
+                                "userID": user.profile.email,
+                                "name": user.profile.name,
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    print("Document added with ID: \(ref!.documentID)")
+                                    UserDefaults.standard.set(ref!.documentID, forKey: "userID")
+                                }
+                            }
+                        }
+                    }
+            }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")

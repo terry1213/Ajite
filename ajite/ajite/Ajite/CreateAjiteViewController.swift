@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 
 
 class CreateAjiteViewController: UIViewController {
+    let db = Firestore.firestore()
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
     var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
@@ -97,14 +99,8 @@ class CreateAjiteViewController: UIViewController {
     
     //아지트 버튼 "Enter" 누를 때 등장
     @IBAction func pressedEnter(_ sender: Any) {
-        //새로운 아지트 생성함
-        let newAjite = Ajite()
-        newAjite.name = ajiteName.text!
         
-        newAjite.ajiteImageString = imageName
-        //아지트 text field 안에 아무 것도 안들어가있을 때 즉 whitespace로만 이루어졌을 때
-        
-        if newAjite.name.trimmingCharacters(in: .whitespaces).isEmpty{
+        if ajiteName.text!.trimmingCharacters(in: .whitespaces).isEmpty{
             //alert 메세지가 뜬다
             let alert = UIAlertController(title: "Empty Name Field", message: "Your Ajite must have a name.", preferredStyle: .alert)
             //alert 액션이다.
@@ -115,12 +111,33 @@ class CreateAjiteViewController: UIViewController {
         }
             
         else{
-        newAjite.numberOfMembers = newAjite.members.count + 1
-        addMember(newAjite: newAjite, newUser: myUser)
-        ajite.append(newAjite)
-        //"create" segue 를 이용해 그 세그와 연결된 뷰 컨트롤러로 이동함
-        tempAjite = newAjite
-        performSegue(withIdentifier: "create", sender: self)
+            //새로운 아지트 생성함
+            var ref: DocumentReference? = nil
+            ref = db.collection("ajites").addDocument(data: [
+                "name": ajiteName.text,
+                "numberOfMembers": 1,
+                "members": [],
+                "sharedSongs": [],
+                "ajiteImageString": imageName
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Ajite added with ID: \(ref!.documentID)")
+                    
+                    let newAjite = Ajite()
+                    newAjite.name = self.ajiteName.text!
+                    //newAjite.numberOfMembers = 1
+                    //newAjite.members = []
+                    newAjite.sharedSongs = []
+                    newAjite.ajiteImageString = self.imageName
+                    newAjite.ajiteID = ref!.documentID
+
+                    //"create" segue 를 이용해 그 세그와 연결된 뷰 컨트롤러로 이동함
+                    self.tempAjite = newAjite
+                    self.performSegue(withIdentifier: "create", sender: self)
+                }
+            }
         }
     }
     

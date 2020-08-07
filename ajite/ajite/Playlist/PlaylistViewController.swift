@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 var playlists : [Playlist] = []
 
 class PlaylistViewController: UIViewController{
     
     @IBOutlet weak var playlistTableView: UITableView!
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +29,9 @@ class PlaylistViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.playlistTableView.reloadData()
+        self.getData()
     }
+    
     //adding to array of playlist classes
     @IBAction func plusTapped(_ sender: Any) {
         let alert = UIAlertController (title: "New Playlist", message: nil, preferredStyle: .alert)
@@ -47,26 +50,48 @@ class PlaylistViewController: UIViewController{
                                     return
                 }
             
-            let playlistToAdd = Playlist()
-            playlistToAdd.playlistName = newPlaylist
-            let song1 = Song()
-            song1.name = "Palette - IU"
-            song1.artist = "IU"
-            playlistToAdd.songs.append(song1)
-            let song2 = Song()
-            song2.name = "Jenga - Heize"
-            song2.artist = "Heize"
-            playlistToAdd.songs.append(song2)
-            
             let random = arc4random_uniform(4)
             let imageName = "playlist-\(random)"
-        
-            playlistToAdd.playlistImageString = imageName
-            playlists.append(playlistToAdd)
-            self.playlistTableView.reloadData()
+            var ref: DocumentReference? = nil
+            ref = self.db
+                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("playlists").addDocument(data: [
+                "name": newPlaylist,
+                "playlistImageString": imageName
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Playlist added with ID: \(ref!.documentID)")
+                    self.getData()
+                }
+            }
         }
         alert.addAction(action)
         present(alert, animated: true)
+    }
+    
+    func getData(){
+        db
+            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("playlists").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                playlists.removeAll()
+                var playlist: Playlist
+                for document in querySnapshot!.documents {
+                    playlist = Playlist()
+                    playlist.playlistName = document.data()["name"] as! String
+                    playlist.playlistImageString = document.data()["playlistImageString"] as! String
+                    playlists.append(playlist)
+                }
+                print("The number of playlists is \(playlists.count)")
+                DispatchQueue.main.async{
+                    self.playlistTableView.reloadData()
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
