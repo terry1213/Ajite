@@ -51,6 +51,8 @@ class CreateAjiteViewController: UIViewController {
           imageName = "door-\(random)"
             doorImage.image = UIImage(named: imageName)
        }
+    
+    
 //=================여기부터애니메이션=======================//
     
     

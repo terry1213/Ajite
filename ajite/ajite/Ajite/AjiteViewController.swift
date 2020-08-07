@@ -19,7 +19,6 @@ class AjiteViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ajiteTable.layer.cornerRadius = 20.0
         self.ajiteTable.dataSource = self
         self.ajiteTable.delegate = self
         // Do any additional setup after loading the view.
@@ -65,6 +64,28 @@ extension AjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt
      indexPath: IndexPath) -> CGFloat {
              return 90
+          }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         
+          let deleteAlert = UIAlertController (title: "Leave Ajite", message: "Would you like to leave this Ajite?" ,preferredStyle: UIAlertController.Style.alert)
+          
+          deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
+              guard editingStyle == .delete else { return }
+              ajite.remove(at: indexPath.row)
+              self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
+              
+          }))
+          deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+          self.present(deleteAlert, animated: true, completion: nil)
+         
+      }
+      
+      func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+          let movedObject = ajite[fromIndexPath.row]
+             ajite.remove(at: fromIndexPath.row)
+              ajite.insert(movedObject, at: to.row)
           }
 }
 

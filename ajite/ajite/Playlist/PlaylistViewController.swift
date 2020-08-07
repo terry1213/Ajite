@@ -26,8 +26,10 @@ class PlaylistViewController: UIViewController{
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.playlistTableView.reloadData()
+    }
     //adding to array of playlist classes
-    
     @IBAction func plusTapped(_ sender: Any) {
         let alert = UIAlertController (title: "New Playlist", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (playlistTextField) in
