@@ -69,8 +69,14 @@ class AjiteRoomViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! MemberViewController
-        vc.memberViewAjite = currentAjite
+         switch segue.identifier {
+               case "viewMembers":
+                   var vc = segue.destination as! MemberViewController
+                   vc.memberViewAjite = currentAjite
+               default:
+                   print("Undefined Segue indentifier: \(segue.identifier)")
+               }
+
     }
     //animation for when it is touched out of bounds
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
