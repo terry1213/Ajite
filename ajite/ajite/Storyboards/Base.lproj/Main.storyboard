@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -861,7 +861,7 @@
             </objects>
             <point key="canvasLocation" x="3772" y="-1708.3743842364534"/>
         </scene>
-        <!--User View Controller-->
+        <!--Friend Request-->
         <scene sceneID="Oev-fL-2oC">
             <objects>
                 <viewController id="mSL-Oh-ks7" customClass="userViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
@@ -870,7 +870,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IER-fM-2GH">
-                                <rect key="frame" x="0.0" y="110" width="375" height="614"/>
+                                <rect key="frame" x="0.0" y="112" width="375" height="612"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="aqZ-UF-bkQ" customClass="UserTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -883,15 +883,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8J-Rp-Mjx">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameBox" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-iX-ty1" userLabel="nameBox">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameBox" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-iX-ty1" userLabel="nameBox">
                                                             <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEd-WX-Nl4">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEd-WX-Nl4">
                                                             <rect key="frame" x="300" y="0.0" width="75" height="60"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <state key="normal" image="paperplane" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -917,36 +919,35 @@
                                     <outlet property="delegate" destination="mSL-Oh-ks7" id="20I-FT-DUG"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="t8E-Dg-23q">
-                                <rect key="frame" x="0.0" y="76" width="375" height="34"/>
-                                <color key="barTintColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1CV-dD-dP9">
+                                <rect key="frame" x="0.0" y="56" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="mSL-Oh-ks7" id="5V0-KN-SUs"/>
+                                    <outlet property="delegate" destination="mSL-Oh-ks7" id="pBw-w8-jb8"/>
                                 </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="t8E-Dg-23q" firstAttribute="leading" secondItem="Heh-Ki-juH" secondAttribute="leading" id="1p3-cT-aqH"/>
+                            <constraint firstItem="IER-fM-2GH" firstAttribute="top" secondItem="1CV-dD-dP9" secondAttribute="bottom" id="2yy-Ze-k2o"/>
                             <constraint firstItem="IER-fM-2GH" firstAttribute="bottom" secondItem="Heh-Ki-juH" secondAttribute="bottom" id="503-Ue-su3"/>
-                            <constraint firstItem="IER-fM-2GH" firstAttribute="leading" secondItem="t8E-Dg-23q" secondAttribute="leading" id="BYy-4Z-O9l"/>
-                            <constraint firstItem="IER-fM-2GH" firstAttribute="top" secondItem="t8E-Dg-23q" secondAttribute="bottom" id="WsZ-N7-CkO"/>
-                            <constraint firstItem="Heh-Ki-juH" firstAttribute="bottom" secondItem="t8E-Dg-23q" secondAttribute="bottom" constant="614" id="XbN-SD-t7Y"/>
-                            <constraint firstItem="IER-fM-2GH" firstAttribute="trailing" secondItem="t8E-Dg-23q" secondAttribute="trailing" id="a4c-E9-hIs"/>
-                            <constraint firstItem="t8E-Dg-23q" firstAttribute="trailing" secondItem="Heh-Ki-juH" secondAttribute="trailing" id="hVu-DH-0nK"/>
-                            <constraint firstItem="t8E-Dg-23q" firstAttribute="top" secondItem="Heh-Ki-juH" secondAttribute="top" constant="76" id="j4E-Sq-duO"/>
+                            <constraint firstItem="1CV-dD-dP9" firstAttribute="trailing" secondItem="Heh-Ki-juH" secondAttribute="trailing" id="AdT-IV-pHA"/>
+                            <constraint firstItem="1CV-dD-dP9" firstAttribute="top" secondItem="Heh-Ki-juH" secondAttribute="top" id="Ziq-D6-1TP"/>
+                            <constraint firstItem="IER-fM-2GH" firstAttribute="trailing" secondItem="1CV-dD-dP9" secondAttribute="trailing" id="bW1-L6-l0c"/>
+                            <constraint firstItem="IER-fM-2GH" firstAttribute="leading" secondItem="1CV-dD-dP9" secondAttribute="leading" id="i9T-J0-l9b"/>
+                            <constraint firstItem="1CV-dD-dP9" firstAttribute="leading" secondItem="Heh-Ki-juH" secondAttribute="leading" id="pXG-RW-WjQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Heh-Ki-juH"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Friend Request" id="igu-a3-EU4"/>
                     <connections>
-                        <outlet property="searchBar" destination="t8E-Dg-23q" id="IZH-Es-X49"/>
+                        <outlet property="searchBar" destination="1CV-dD-dP9" id="wSj-5v-MjY"/>
                         <outlet property="userTable" destination="IER-fM-2GH" id="d1u-a6-1v5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4y-bN-366" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4914.3999999999996" y="-1701.7241379310346"/>
+            <point key="canvasLocation" x="5552.8000000000002" y="-1759.3596059113302"/>
         </scene>
         <!--Ajite Room VC-->
         <scene sceneID="2Wr-CL-yA7">
@@ -1113,7 +1114,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AjiteName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-Ha-biV">
-                                        <rect key="frame" x="18" y="27.666666666666657" width="139.33333333333334" height="35"/>
+                                        <rect key="frame" x="18" y="27.666666666666657" width="133.33333333333334" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="LTa-qH-CFe"/>
                                         </constraints>
@@ -1956,7 +1957,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="addnavy"/>
                                                 <connections>
-                                                    <segue destination="mSL-Oh-ks7" kind="presentation" id="Z3n-n1-clk"/>
+                                                    <segue destination="xl5-Xm-9WV" kind="presentation" id="Z3n-n1-clk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2181,6 +2182,24 @@
             </objects>
             <point key="canvasLocation" x="1757" y="819"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1M4-we-QXb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xl5-Xm-9WV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pTj-k8-8yo" userLabel="Friend Request">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mSL-Oh-ks7" kind="relationship" relationship="rootViewController" id="6ee-wj-NMj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJ3-uJ-4HT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4914.3999999999996" y="-1701.7241379310346"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MaB-sY-zyl"/>
@@ -2200,6 +2219,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="music.note.list" catalog="system" width="128" height="113"/>
+        <image name="paperplane" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

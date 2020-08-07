@@ -22,73 +22,75 @@ public struct UserDB: Codable {
     
 }
 
-
-
 class userViewController: UIViewController {
-    
-    @IBOutlet var nameBox: UILabel!
-    var userToDB = UserDB(name: user.profile.name)
-    
     
     @IBOutlet var userTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
     let userRef = db.collection("userlist")
-    let userData = db.collection("userlist").document("name")
+    let userData = db.collection("userlist").document(user.userID)
     
-    var userArray = [UserDB]()
+    
+    var userListData = [String]()
+    var userArray = [String]()
     var collectionRef = Firestore.firestore().collection("userlist")
     
+    var testArray = ["apple", "banana", "kiwi"]
+    var testFruit = [String]()
+    var searching = false
     
     override func viewWillAppear(_ animated: Bool) {
+        
         
     }
     
     func userDataAdd(){
         
-        let dataForAdd: [String: Any] = [
-            "name" : user.profile.name as Any,
-            "id" : user.userID as Any
-        ]
-        
-        db.collection("userlist").whereField("name", isEqualTo: true).getDocuments(){ (QuerySnapshot, err) in
+        // Add a new document in collection "cities"
+        db.collection("userlist").document(user.userID).setData([
+            "id": user.userID as Any,
+            "name": user.profile.name as Any
+        ]) { err in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
             }
-            else{
-                for document in QuerySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+        }
+    }
+    
+    func userDataGet(){
+        
+        
+        userRef.getDocuments{ (snapshot, error) in
+            if let err = error {
+                debugPrint("Error fetching docs: \(err)")
+            }
+            else {
+                guard let snap = snapshot else {return}
+                for document in snap.documents {
+                    print(document.data())
                     let data = document.data()
                     let username = data["name"] as? String
-                    
-                    let newUserArray = UserDB(name: username!)
-                    self.userArray.append(newUserArray)
+                    self.userArray.append(username!)
+                    self.userListData.append(username!)
                 }
             }
             self.userTable.reloadData()
             
         }
-    }
     
-    func userDataGet(){
-        userData.getDocument{(document, error) in
-            if let document = document, document.exists{
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-                
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userDataAdd()
+        
         userTable.delegate = self
         userTable.dataSource = self
         userTable.estimatedRowHeight = 80
         userTable.rowHeight = UITableView.automaticDimension
+        userDataAdd()
+        userDataGet()
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,15 +100,35 @@ class userViewController: UIViewController {
 
 extension userViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return userArray.count
         return userArray.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
     
-        cell.configureCell(userDB: userArray[indexPath.row])
+        //cell.configureCell(userDB: userArray[indexPath.row])
+        
+        if searching {
+            cell.nameBox?.text = userListData[indexPath.row]
+        }
+        else{
+            cell.nameBox?.text = userArray[indexPath.row]
+        }
         return cell
+    }
+}
+
+extension userViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        userArray = userListData.filter({$0.contains(searchBar.text!)})
+        searching = true
+        userTable.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        userTable.reloadData()
     }
 }

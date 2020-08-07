@@ -10,6 +10,7 @@
 import UIKit
 import GoogleSignIn
 import Firebase
+import FirebaseFirestore
 
 var ajites :[Ajite] = []
 
@@ -100,7 +101,7 @@ extension AjiteViewController : UITableViewDataSource{
           
           deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
               guard editingStyle == .delete else { return }
-              ajite.remove(at: indexPath.row)
+              ajites.remove(at: indexPath.row)
               self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
               
           }))
@@ -110,9 +111,9 @@ extension AjiteViewController : UITableViewDataSource{
       }
       
       func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-          let movedObject = ajite[fromIndexPath.row]
-             ajite.remove(at: fromIndexPath.row)
-              ajite.insert(movedObject, at: to.row)
+          let movedObject = ajites[fromIndexPath.row]
+             ajites.remove(at: fromIndexPath.row)
+              ajites.insert(movedObject, at: to.row)
           }
 }
 
