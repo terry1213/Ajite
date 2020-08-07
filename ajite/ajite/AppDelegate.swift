@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             //유저 로그인 후
+            UserDefaults.standard.set("xf7V10PrHYVyjJ68glSE", forKey: "userID")
             let db = Firestore.firestore()
             
             var ref: DocumentReference? = nil

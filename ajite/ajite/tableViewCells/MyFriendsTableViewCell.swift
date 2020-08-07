@@ -22,3 +22,6 @@ class MyFriendsTableViewCell: UITableViewCell {
     }
 
 }
+
+// 소속: ProfileViewController
+//Description: 유저의 친구들을 저장해둔 셀

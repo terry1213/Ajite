@@ -18,7 +18,8 @@ class BiographyViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    // 바이오그래피는 최소 60자
+    // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = biographyTF.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }

@@ -26,3 +26,6 @@ class friendsToAjiteTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: CreateAjiteViewController
+//Description: Create Ajite 화면에서 친구 추가를 누를때 뷰 화면이 하나 뜬다. 거기에 사용되는 셀

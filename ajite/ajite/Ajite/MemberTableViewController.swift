@@ -4,9 +4,12 @@
 //
 //  Created by 노은솔 on 2020/08/06.
 //  Copyright © 2020 ajite. All rights reserved.
-//
 
 import UIKit
+
+
+//:::::::::::::해당아지트에 속한 멤버들을 보여주는 뷰 컨트롤러 :::::::::::::::::::
+
 
 class MemberViewController: UIViewController {
     var memberViewAjite = Ajite()

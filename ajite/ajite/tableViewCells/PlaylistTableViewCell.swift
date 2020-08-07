@@ -28,3 +28,7 @@ class PlaylistTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: PlaylistViewController
+//Description: 현재 유저가 소유하고 있는 개인 플레이리스트들을 보여준다
+

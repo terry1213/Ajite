@@ -30,3 +30,6 @@ class AddToPlaylistTableViewCell: UITableViewCell {
     }
 
 }
+
+//소속: AddToPlaylistViewController
+//Description: 노래를 자기 플레이리스트에 추가하고 싶을때 어떤 플레이리스트에 추가할 수 있는지 보여주는 TableCell

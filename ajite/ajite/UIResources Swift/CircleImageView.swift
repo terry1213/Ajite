@@ -25,3 +25,5 @@ class CircleImageView: UIImageView {
     */
 
 }
+
+// 유저들의 프로필 이미지를 불러올때 그 프로필 이미지를 동그라미로 표시해줌

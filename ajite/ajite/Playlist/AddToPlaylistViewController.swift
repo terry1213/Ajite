@@ -17,7 +17,6 @@ class AddToPlaylistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playlistView.dataSource = self
-        self.playlistView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -48,8 +47,4 @@ extension AddToPlaylistViewController : UITableViewDataSource{
      indexPath: IndexPath) -> CGFloat {
              return 90
           }
-}
-
-extension AddToPlaylistViewController : UITableViewDelegate{
-    
 }

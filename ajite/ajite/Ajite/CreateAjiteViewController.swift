@@ -16,16 +16,11 @@ class CreateAjiteViewController: UIViewController {
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
     var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
-    //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
-    @IBAction func add(_ sender: Any) {
-        animateIn(desiredView: blurEffect)
-        animateIn(desiredView: popUpView)
-    }
-    //popup 에 있는 "add" 버튼을 누르면 애니메이션 동작함
-    @IBAction func finished(_ sender: Any) {
-        animateOut(desiredView: popUpView)
-        animateOut(desiredView: blurEffect)
-    }
+    
+    
+//==========================애니메이션==========================
+    
+    
   //Outlet들
     @IBOutlet weak var addedFriendsTableView: UITableView!
     @IBOutlet weak var searchFriendsTableView: UITableView!
@@ -58,6 +53,17 @@ class CreateAjiteViewController: UIViewController {
 //=================여기부터애니메이션=======================//
     
     
+    
+    //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
+    @IBAction func add(_ sender: Any) {
+        animateIn(desiredView: blurEffect)
+        animateIn(desiredView: popUpView)
+    }
+    //popup 에 있는 "add" 버튼을 누르면 애니메이션 동작함
+    @IBAction func finished(_ sender: Any) {
+        animateOut(desiredView: popUpView)
+        animateOut(desiredView: blurEffect)
+    }
     
     
     func animateIn (desiredView : UIView){
@@ -97,9 +103,15 @@ class CreateAjiteViewController: UIViewController {
     
 //=================여기까지 애니메이션=======================//
     
+    
+    
+    
+    
     //아지트 버튼 "Enter" 누를 때 등장
     @IBAction func pressedEnter(_ sender: Any) {
         
+        
+    //아지트 이름 생성할때 이름 text field 에 아무것도 없으면
         if ajiteName.text!.trimmingCharacters(in: .whitespaces).isEmpty{
             //alert 메세지가 뜬다
             let alert = UIAlertController(title: "Empty Name Field", message: "Your Ajite must have a name.", preferredStyle: .alert)
@@ -109,7 +121,9 @@ class CreateAjiteViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
+         
             
+    //아지트 Text Field 에 이름이 들어가있다
         else{
             //새로운 아지트 생성함
             var ref: DocumentReference? = nil
@@ -142,6 +156,7 @@ class CreateAjiteViewController: UIViewController {
     }
     
     
+    
     //새로운 멤버 추가하기 ! 이 방법은 아마 난중에 바꿔야할 것 같다.
     func addMember (newAjite: Ajite, newUser: User){
         if newAjite.members.contains(newUser){
@@ -158,6 +173,8 @@ class CreateAjiteViewController: UIViewController {
         }
     }
 
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var vc = segue.destination as! AjiteRoomViewController
         vc.currentAjite = tempAjite
