@@ -10,14 +10,13 @@
 import Foundation
 import UIKit
 
-class User : Equatable{
+class User : Equatable {
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.name == rhs.name && lhs.userID == rhs.userID
     }
     
     var name = String()
     var friends = [User]()
-    var sharedSongs = [Song]()
     var userID = String()
     var bio = String()
     
@@ -26,25 +25,21 @@ class User : Equatable{
 
 class Ajite {
     var name = String ()
-    var numberOfMembers = Int()
     var members = [User]()
     var sharedSongs = [Song]()
     var ajiteID = String()
     var ajiteImageString = String()
     init () {
         name = ""
-        numberOfMembers = members.count
     }
 }
 
 class Playlist {
     var playlistName = String()
     var songs = [Song]()
-    var ajiteOrPersonal : Bool
     var playlistImageString = String()
     init (){
         playlistName = ""
-        ajiteOrPersonal = true
     }
 }
 

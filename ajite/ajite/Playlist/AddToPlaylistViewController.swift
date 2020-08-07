@@ -9,7 +9,7 @@
 import UIKit
 
 class AddToPlaylistViewController: UIViewController {
-
+    
     var addingSong = Song()
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!
@@ -17,7 +17,7 @@ class AddToPlaylistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playlistView.dataSource = self
-
+        self.playlistView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -41,7 +41,7 @@ extension AddToPlaylistViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = playlistView.dequeueReusableCell(withIdentifier: "addToPlaylist", for: indexPath) as! AddToPlaylistTableViewCell
         cell.playlistName.text = playlists[indexPath.row].playlistName
-        
+       
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt
@@ -50,4 +50,6 @@ extension AddToPlaylistViewController : UITableViewDataSource{
           }
 }
 
-
+extension AddToPlaylistViewController : UITableViewDelegate{
+    
+}

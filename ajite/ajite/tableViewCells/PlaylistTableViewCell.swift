@@ -12,8 +12,9 @@ class PlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var playlistName: UILabel!
     @IBOutlet weak var numberOfSongsInPlaylist: UILabel!
-    
     @IBOutlet weak var playlistImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none

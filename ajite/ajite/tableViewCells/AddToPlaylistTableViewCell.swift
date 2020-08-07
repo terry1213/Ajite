@@ -17,7 +17,7 @@ class AddToPlaylistTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       //self.checkBoxButton.addTarget(self, action: #selector(pressedCheckBox(_:)), for: .touchUpInside)
+        
     }
 
     
