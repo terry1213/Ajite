@@ -22,10 +22,12 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
         userNameLabel.text = user.profile.name
-        
         myUser.name = user.profile.name
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        bio.text = myUser.bio
+    }
 
 }

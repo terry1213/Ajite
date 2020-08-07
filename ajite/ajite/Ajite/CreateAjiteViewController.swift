@@ -13,7 +13,7 @@ import UIKit
 class CreateAjiteViewController: UIViewController {
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
-    
+    var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
     //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
     @IBAction func add(_ sender: Any) {
         animateIn(desiredView: blurEffect)
@@ -33,6 +33,11 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet weak var doorImage: UIImageView!
+    
+    //==============필요한 Outlet 과 변수들================
+    
+    
+    
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +48,7 @@ class CreateAjiteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
            var random = arc4random_uniform(3)
-           let imageName = "door-\(random)"
-            print(imageName)
+          imageName = "door-\(random)"
             doorImage.image = UIImage(named: imageName)
        }
 //=================여기부터애니메이션=======================//
@@ -95,7 +99,7 @@ class CreateAjiteViewController: UIViewController {
         let newAjite = Ajite()
         newAjite.name = ajiteName.text!
         
-        newAjite.ajiteImage = doorImage.image!
+        newAjite.ajiteImageString = imageName
         //아지트 text field 안에 아무 것도 안들어가있을 때 즉 whitespace로만 이루어졌을 때
         
         if newAjite.name.trimmingCharacters(in: .whitespaces).isEmpty{
@@ -117,7 +121,9 @@ class CreateAjiteViewController: UIViewController {
         performSegue(withIdentifier: "create", sender: self)
         }
     }
-    //새로운 멤버 추가하기 ! 이 방법은 아마 난중ㅇ[ 바꿔야할 것 같다.
+    
+    
+    //새로운 멤버 추가하기 ! 이 방법은 아마 난중에 바꿔야할 것 같다.
     func addMember (newAjite: Ajite, newUser: User){
         if newAjite.members.contains(newUser){
             let alert = UIAlertController(title: "Existing Member", message: "This member is already part of your Ajite! ", preferredStyle: .alert)

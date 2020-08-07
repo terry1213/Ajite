@@ -58,7 +58,7 @@ extension AjiteViewController : UITableViewDataSource{
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajite[indexPath.row].name
         cell.numberOfMembers.text = "\(ajite[indexPath.row].numberOfMembers) members"
-        cell.ajiteImage.image = ajite[indexPath.row].ajiteImage
+        cell.ajiteImage.image = UIImage(named: ajite[indexPath.row].ajiteImageString)
         
         return cell
     }

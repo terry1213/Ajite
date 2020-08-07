@@ -10,20 +10,37 @@ import UIKit
 
 class BiographyViewController: UIViewController {
     
-    @IBOutlet weak var biographyTextField: UITextView!
+   
+    @IBOutlet weak var biographyTF: UITextField!
+    var changed = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        biographyTextField.delegate = self
-
+    }
+    // 바이오그래피는 최소 60자
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = biographyTF.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= 100
     }
     
+    @IBAction func changedBio(_ sender: Any) {
+        changed = true
+    }
+    @IBAction func pressedCancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
+    @IBAction func pressedDone(_ sender: Any) {
+        if changed {
+        myUser.bio = biographyTF.text!
+        dismiss(animated: true)
+        }
+    }
 
 }
 
-extension BiographyViewController : UITextViewDelegate{
-    func textViewDidChange(_ textView: UITextView) {
-        myUser.bio = biographyTextField.text
-    }
-}

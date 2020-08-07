@@ -30,7 +30,7 @@ class Ajite {
     var members = [User]()
     var sharedSongs = [Song]()
     var ajiteID = String()
-    var ajiteImage = UIImage()
+    var ajiteImageString = String()
     init () {
         name = ""
         numberOfMembers = members.count
@@ -41,7 +41,7 @@ class Playlist {
     var playlistName = String()
     var songs = [Song]()
     var ajiteOrPersonal : Bool
-    var playlistImage = UIImage()
+    var playlistImageString = String()
     init (){
         playlistName = ""
         ajiteOrPersonal = true

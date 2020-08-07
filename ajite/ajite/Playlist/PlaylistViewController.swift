@@ -59,7 +59,7 @@ class PlaylistViewController: UIViewController{
             let random = arc4random_uniform(4)
             let imageName = "playlist-\(random)"
         
-            playlistToAdd.playlistImage = UIImage(named: imageName)!
+            playlistToAdd.playlistImageString = imageName
             playlists.append(playlistToAdd)
             self.playlistTableView.reloadData()
         }
@@ -95,7 +95,7 @@ extension PlaylistViewController: UITableViewDataSource {
         cell.playlistName.text = playlists[indexPath.row].playlistName
         //cell.ownerLabel.text = "\(playlists[indexPath.row].ownerName), \(playlists[indexPath.row].songs.count)"
         cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
-        cell.playlistImage.image = playlists[indexPath.row].playlistImage
+        cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
         return cell
     }
     
