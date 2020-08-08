@@ -91,7 +91,7 @@ extension AjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
-        cell.ajiteImage.image = UIImage(named: ajites[indexPath.row].ajiteImageString)
+        cell.ajiteImage.image = UIImage(named: "door-\(ajites[indexPath.row].ajiteImageString)")
         
         return cell
     }

@@ -5,7 +5,7 @@
 //  Created by 노은솔 on 2020/07/29.
 //  Copyright © 2020 ajite. All rights reserved.
 //
-
+/// Copyright (c) 2018 Razeware LLC used to animate
 import UIKit
 import Firebase
 import FirebaseFirestore
@@ -16,15 +16,18 @@ class PlaylistViewController: UIViewController{
 
     //outlets and variables
     @IBOutlet weak var playlistTableView: UITableView!
+    var shouldAnimateFirstRow = false
     let db = Firestore.firestore()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
-       
         self.playlistTableView.dataSource = self
         self.playlistTableView.delegate = self
+     
+        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
+       
+      
 
     }
     
@@ -32,6 +35,8 @@ class PlaylistViewController: UIViewController{
         self.getData()
         self.playlistTableView.reloadData()
     }
+    
+   
     //getting data from database
     func getData(){
         db
@@ -128,8 +133,10 @@ class PlaylistViewController: UIViewController{
           destination.source = sendingPlaylist
       }
 
+    
+   
+    
 }
-
 extension PlaylistViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
@@ -149,8 +156,7 @@ extension PlaylistViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt
-    indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 96
          }
     
@@ -190,11 +196,17 @@ extension PlaylistViewController: UITableViewDataSource {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
+    
+    
+    
 }
 
 extension PlaylistViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let dataToSend = playlists[indexPath.row]
-    self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
+        let dataToSend = playlists[indexPath.row]
+        self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
     }
+    
+   
 }
+

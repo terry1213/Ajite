@@ -94,6 +94,11 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func pressShare(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return youTubeModel?.items.count ?? 0
     }
@@ -157,7 +162,9 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     @IBAction func pressedShare(_ sender: Any) {
+     }
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -191,6 +198,7 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
     @IBAction func shareSong(_ sender: Any) {
         var ref: DocumentReference? = nil
         if playlistID != nil {
+            
             //유저의, 현재 플레이리스트의, 노래 목록에 선택한 노래를 추가한다.
             ref = db
                 .collection("users")
@@ -216,7 +224,6 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
             }
         }
         else if ajiteID != nil {
-            
         }
     }
     
