@@ -154,18 +154,18 @@ class CreateAjiteViewController: UIViewController {
     
     //새로운 멤버 추가하기 ! 이 방법은 아마 난중에 바꿔야할 것 같다.
     func addMember (newAjite: Ajite, newUser: User){
-        if newAjite.members.contains(newUser){
-            let alert = UIAlertController(title: "Existing Member", message: "This member is already part of your Ajite! ", preferredStyle: .alert)
-                //alert 액션이다.
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                NSLog("The \"OK\" alert occured.")}))
-                
-            self.present(alert, animated: true, completion: nil)
-                return
-        }
-        else{
-            newAjite.members.append(newUser)
-        }
+//        if newAjite.members.contains(newUser){
+//            let alert = UIAlertController(title: "Existing Member", message: "This member is already part of your Ajite! ", preferredStyle: .alert)
+//                //alert 액션이다.
+//            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+//                NSLog("The \"OK\" alert occured.")}))
+//                
+//            self.present(alert, animated: true, completion: nil)
+//                return
+//        }
+//        else{
+//            newAjite.members.append(newUser)
+//        }
     }
 
     
