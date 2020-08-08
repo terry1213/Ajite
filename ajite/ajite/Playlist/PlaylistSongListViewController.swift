@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+
+var songs: [Song] = []
 
 class PlaylistSongListViewController: UIViewController {
     
@@ -23,7 +26,7 @@ class PlaylistSongListViewController: UIViewController {
     }
     
     override func viewWillAppear (_ animated: Bool){
-        self.songListTableView.reloadData()
+        getData()
     }
     
     
@@ -34,11 +37,41 @@ class PlaylistSongListViewController: UIViewController {
         return false
     }
     
+    func getData(){
+        db
+            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("playlists").document(source.id)
+            .collection("songs").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.source.songs.removeAll()
+                var temSong: Song
+                for document in querySnapshot!.documents {
+                    temSong = Song()
+                    temSong.name = document.data()["name"] as! String
+                    temSong.artist = document.data()["artist"] as! String
+                    temSong.thumbnailImageUrl = document.data()["thumbnailImageUrl"] as! String
+                    temSong.videoID = document.data()["videoID"] as! String
+                    self.source.songs.append(temSong)
+                }
+                print("The number of playlists is \(playlists.count)")
+                DispatchQueue.main.async{
+                    self.songListTableView.reloadData()
+                }
+            }
+        }
+    }
     
     @IBAction func pressedPlus(_ sender: Any) {
        performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ShareSongsViewController {
+            vc.playlistID = source.id
+        }
+    }
 }
 
 extension PlaylistSongListViewController : UITableViewDataSource{

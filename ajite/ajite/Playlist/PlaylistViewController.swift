@@ -44,6 +44,7 @@ class PlaylistViewController: UIViewController{
                     playlist = Playlist()
                     playlist.playlistName = document.data()["name"] as! String
                     playlist.playlistImageString = document.data()["playlistImageString"] as! String
+                    playlist.id = document.documentID
                     playlists.append(playlist)
                 }
                 print("The number of playlists is \(playlists.count)")
