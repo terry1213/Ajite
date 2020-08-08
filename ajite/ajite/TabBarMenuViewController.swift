@@ -14,6 +14,7 @@ class TabBarMenuViewController: UITabBarController {
         super.viewDidLoad()
         self.selectedIndex = 0
         delegate = self
+    
         // Do any additional setup after loading the view.
     }
 
