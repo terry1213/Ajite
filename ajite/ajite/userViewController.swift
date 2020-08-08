@@ -28,11 +28,6 @@ class userViewController: UIViewController {
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
     var displayUsers: [User] = []
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-    }
-    
     func getUserData(){
         userRef.getDocuments{ (snapshot, error) in
             if let err = error {
@@ -97,9 +92,6 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func sendRequest(sender: UIButton!){
-        sender.isSelected = !sender.isSelected
-    }
 }
 
 extension userViewController: UISearchBarDelegate {
