@@ -64,8 +64,6 @@ class userViewController: UIViewController {
         users.removeAll()
         userTable.delegate = self
         userTable.dataSource = self
-        userTable.estimatedRowHeight = 80
-        userTable.rowHeight = UITableView.automaticDimension
         getUserData()
     }
     
@@ -96,6 +94,10 @@ extension userViewController: UISearchBarDelegate {
         displayUsers = users.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         userTable.reloadData()
     }
+    func tableView(_ tableView: UITableView, heightForRowAt
+    indexPath: IndexPath) -> CGFloat {
+            return 70
+         }
     
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
