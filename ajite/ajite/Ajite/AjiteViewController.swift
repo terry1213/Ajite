@@ -50,7 +50,11 @@ class AjiteViewController: UIViewController{
     
     //데이터베이스에서 데이터를 불러내는 함수
     func getData(){
-        db.collection("ajites").getDocuments() { (querySnapshot, err) in
+        db
+            .collection("users")
+            .document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("ajites")
+            .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
