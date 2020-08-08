@@ -1,18 +1,18 @@
 //
-//  MyFriendsTableViewCell.swift
+//  ManageFriendsTableViewCell.swift
 //  ajite
 //
-//  Created by 노은솔 on 2020/08/07.
+//  Created by 노은솔 on 2020/08/08.
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 
-class MyFriendsTableViewCell: UITableViewCell {
+class ManageFriendsTableViewCell: UITableViewCell {
 
- 
-    @IBOutlet weak var myFriendsName: UILabel!
-    @IBOutlet weak var myFriendsProfile: UIImageView!
+    @IBOutlet weak var manageFriendProfile: UIImageView!
+    
+    @IBOutlet weak var manageFriendsName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +25,3 @@ class MyFriendsTableViewCell: UITableViewCell {
     }
 
 }
-
-// 소속: ProfileViewController
-//Description: 유저의 친구들을 저장해둔 셀

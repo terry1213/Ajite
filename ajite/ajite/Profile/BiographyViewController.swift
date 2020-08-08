@@ -32,15 +32,12 @@ class BiographyViewController: UIViewController {
     @IBAction func changedBio(_ sender: Any) {
         changed = true
     }
-    @IBAction func pressedCancel(_ sender: Any) {
-        dismiss(animated: true)
-    }
     
     @IBAction func pressedDone(_ sender: Any) {
         if changed {
         myUser.bio = biographyTF.text!
-        dismiss(animated: true)
         }
+        dismiss(animated: true)
     }
 
 }
