@@ -11,6 +11,8 @@ import CoreData
 import Firebase
 import FirebaseCore
 import GoogleSignIn
+import FirebaseAuth
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -44,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         if querySnapshot!.documents.count == 0 {
                             ref = db.collection("users").addDocument(data: [
                                 "userID": user.profile.email,
-                                "name": user.profile.name,
+                                "name": user.profile.name
                             ]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
