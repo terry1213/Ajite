@@ -219,7 +219,7 @@
         <!--Members To Ajite VC-->
         <scene sceneID="tuQ-tc-Jo2">
             <objects>
-                <viewController id="cQm-Tp-JFH" userLabel="Members To Ajite VC" sceneMemberID="viewController">
+                <viewController id="cQm-Tp-JFH" userLabel="Members To Ajite VC" customClass="FriendsToAjiteViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YrJ-XO-Mjb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,7 +231,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="193"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gEa-2r-lI0" customClass="friendsToAjiteTableViewCell" customModule="ajite" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFriends" id="gEa-2r-lI0" customClass="searchFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="42"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gEa-2r-lI0" id="KlX-q0-3mq">
@@ -262,8 +262,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="searchFriendsName" destination="8Vs-eE-iKR" id="Nz5-W2-I1x"/>
-                                                    <outlet property="searchFriendsProfile" destination="xI0-I6-RyM" id="HVv-sR-b6H"/>
+                                                    <outlet property="searchFriendImage" destination="xI0-I6-RyM" id="d7c-fM-jmf"/>
+                                                    <outlet property="searchFriendName" destination="8Vs-eE-iKR" id="Sgz-BM-nzE"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -278,7 +278,7 @@
                                         <rect key="frame" x="0.0" y="248.33333333333331" width="343" height="230"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aPe-5k-rC1" userLabel="Added Members" customClass="friendsToAjiteTableViewCell" customModule="ajite" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addedMembers" id="aPe-5k-rC1" userLabel="Added Members" customClass="AddedFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="43.333332061767578"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPe-5k-rC1" id="8z0-A8-8Vr">
@@ -303,7 +303,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="addedFriendsProfile" destination="FHv-Q4-MjY" id="Gno-CW-NCL"/>
+                                                    <outlet property="addedFriendsProfile" destination="FHv-Q4-MjY" id="vkV-EB-uRb"/>
+                                                    <outlet property="addedMembersLabel" destination="rw7-Y8-L0B" id="uEw-Wq-Qlu"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -368,6 +369,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NeK-dR-gJA"/>
                     </view>
+                    <connections>
+                        <outlet property="addedMembersTable" destination="Yac-kF-M5j" id="xPs-Qn-cUc"/>
+                        <outlet property="searchFriends" destination="VWf-su-mRG" id="qdk-IJ-fCk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWT-cR-vol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -420,7 +425,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="add:" destination="uKJ-AH-r7f" eventType="touchUpInside" id="GIE-Y3-Zpt"/>
-                                                            <segue destination="cQm-Tp-JFH" kind="popoverPresentation" popoverAnchorView="B3c-xC-FAf" id="Fvk-M5-njC">
+                                                            <segue destination="cQm-Tp-JFH" kind="popoverPresentation" identifier="addMembersNew" popoverAnchorView="B3c-xC-FAf" id="Fvk-M5-njC">
                                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                             </segue>
                                                         </connections>
@@ -877,7 +882,7 @@
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="cQm-Tp-JFH" kind="popoverPresentation" popoverAnchorView="UjH-Yl-JWU" id="EKj-P6-ADI">
+                                            <segue destination="cQm-Tp-JFH" kind="popoverPresentation" identifier="addMembersOriginal" popoverAnchorView="UjH-Yl-JWU" id="sCn-aX-fjh">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -1409,14 +1414,14 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="631.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-84-hBt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="46.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="40"/>
                                         <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
-                                        <rect key="frame" x="0.0" y="59" width="375" height="572.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666686" width="375" height="574.66666666666652"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -2237,7 +2242,7 @@
         <segue reference="xEi-qz-IQe"/>
         <segue reference="YzI-Ue-2oM"/>
         <segue reference="ZOl-UM-4IR"/>
-        <segue reference="Fvk-M5-njC"/>
+        <segue reference="sCn-aX-fjh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>

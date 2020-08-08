@@ -122,10 +122,7 @@ class CreateAjiteViewController: UIViewController {
             //새로운 아지트 생성함
             var ref: DocumentReference? = nil
             ref = db.collection("ajites").addDocument(data: [
-                "name": ajiteName.text,
-                "numberOfMembers": 1,
-                "members": [],
-                "sharedSongs": [],
+                "name": ajiteName.text as Any,
                 "ajiteImageString": imageName
             ]) { err in
                 if let err = err {
@@ -133,9 +130,26 @@ class CreateAjiteViewController: UIViewController {
                 } else {
                     print("Ajite added with ID: \(ref!.documentID)")
                     
+                    self.db
+                        .collection("ajites")
+                        .document(ref!.documentID)
+                        .collection("members").document(UserDefaults.standard.string(forKey: "userID")!)
+                        .setData([
+                            "userID" : user.profile.email as Any,
+                            "name" : user.profile.name as Any
+                        ])
+                    
+                    self.db
+                        .collection("users")
+                        .document(UserDefaults.standard.string(forKey: "userID")!)
+                        .collection("ajites").document(ref!.documentID)
+                        .setData([
+                            "name" : self.ajiteName.text as Any,
+                            "ajiteImageString" : self.imageName
+                        ])
+                    
                     let newAjite = Ajite()
                     newAjite.name = self.ajiteName.text!
-                    //newAjite.numberOfMembers = 1
                     //newAjite.members = []
                     newAjite.sharedSongs = []
                     newAjite.ajiteImageString = self.imageName
