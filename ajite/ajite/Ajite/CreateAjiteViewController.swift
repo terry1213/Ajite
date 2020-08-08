@@ -27,8 +27,6 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var searchFriendsField: UITextField!
     @IBOutlet weak var ajiteName: UITextField!
-    @IBOutlet var popUpView: UIView!
-    @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet weak var doorImage: UIImageView!
     
     //==============필요한 Outlet 과 변수들================
@@ -38,9 +36,6 @@ class CreateAjiteViewController: UIViewController {
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
-        blurEffect.bounds = self.view.bounds
-        popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9 , height: self.view.bounds.height * 0.6)
-        //랜덤하게 사진 정함
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +50,7 @@ class CreateAjiteViewController: UIViewController {
     
     
     //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
-    @IBAction func add(_ sender: Any) {
+/* @IBAction func add(_ sender: Any) {
         animateIn(desiredView: blurEffect)
         animateIn(desiredView: popUpView)
     }
@@ -100,7 +95,7 @@ class CreateAjiteViewController: UIViewController {
         }
     }
     
-    
+    */
 //=================여기까지 애니메이션=======================//
     
     
