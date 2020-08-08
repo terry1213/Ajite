@@ -48,7 +48,7 @@ class userViewController: UIViewController {
                     }
                     let username = data["name"] as? String
                     let userID = data["userID"] as? String
-                    var temUser = User()
+                    let temUser = User()
                     temUser.name = username!
                     temUser.userID = userID!
                     //전체 유저 목록에 추가
@@ -58,6 +58,8 @@ class userViewController: UIViewController {
             self.userTable.reloadData()
         }
     }
+    
+    var ref: DocumentReference? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,8 +85,14 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.nameLabel?.text = displayUsers[indexPath.row].name
         cell.userIdLabel.text = displayUsers[indexPath.row].userID
+        cell.cellDelegate = self
+        cell.index = indexPath
         
         return cell
+    }
+    
+    func sendRequest(sender: UIButton!){
+        sender.isSelected = !sender.isSelected
     }
 }
 
@@ -103,5 +111,22 @@ extension userViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //검색어 입력 칸을 비운다.
         searchBar.text = ""
+    }
+}
+
+extension userViewController: TableViewUser {
+    func onClickCell(index: Int){
+        
+        db.collection("users").whereField("name", isEqualTo: displayUsers[index].name)
+        .getDocuments() { (querySnapshot, err) in
+            
+        }
+        db.collection("users").addDocument(data:[
+            "userID":  displayUsers[index].userID,
+            "name": displayUsers[index].name,
+            "request": user.profile.name as Any
+        ])
+        
+        print("clicked user id:\(displayUsers [index].name)")
     }
 }

@@ -8,22 +8,26 @@
 
 import UIKit
 
+protocol TableViewUser {
+    func onClickCell(index: Int)
+}
+
 class UserTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
-    @IBOutlet var sendButton: UIButton!
+    var cellDelegate: TableViewUser?
+    var index: IndexPath?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func sendRequest(_ sender: Any) {
+        cellDelegate?.onClickCell(index: (index?.row)!)
     }
-
+    
 }

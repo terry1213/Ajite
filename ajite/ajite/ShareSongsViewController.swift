@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleAPIClientForREST
+import Firebase
 
 //유튜브 데이터 모델
 struct YouTubeModel: Codable {
@@ -80,7 +81,11 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg
         AIzaSyA56mjgLpsdf1Sz6AqKuNSTIIuyQHpED2c
      */
+    var playlistID: String!
+    var ajiteID: String!
+    
     override func viewDidLoad() {
+        print(playlistID)
         super.viewDidLoad()
         self.youtubeVideoTableView.dataSource = self
         self.youtubeVideoTableView.delegate = self
@@ -103,6 +108,12 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         DispatchQueue.main.async {
             cell.thumbnailImageView.image = UIImage(data: data!)
         }
+        //비디오 아이디 불러오기
+        cell.videoID = youTubeModel?.items[indexPath.row].id?.videoId
+        //playlistID,ajiteID 세팅
+        cell.playlistID = self.playlistID
+        cell.ajiteID = self.ajiteID
+        cell.thumbnailImageUrl = youTubeModel?.items[indexPath.row].snippet?.thumbnails?.thumbnailsDefault.url
         return cell
     }
     
@@ -155,10 +166,15 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
 }
 
 class YoutubeVideoSearchTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    
+    var playlistID: String!
+    var ajiteID: String!
+    var videoID: String!
+    var thumbnailImageUrl: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -169,6 +185,33 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    @IBAction func shareSong(_ sender: Any) {
+        var ref: DocumentReference? = nil
+        if playlistID != nil {
+            ref = db
+                .collection("users")
+                .document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("playlists")
+                .document(playlistID)
+                .collection("songs")
+                .addDocument(data: [
+                    "name": songNameLabel.text as Any,
+                    "artist": artistLabel.text as Any,
+                    "thumbnailImageUrl": thumbnailImageUrl as Any,
+                    "videoID": videoID as Any
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
+        }
+        else if ajiteID != nil {
+            
+        }
     }
     
 }

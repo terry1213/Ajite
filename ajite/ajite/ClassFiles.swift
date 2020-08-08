@@ -30,8 +30,10 @@ class Ajite {
 }
 
 class Playlist {
+    var id = String()
     var playlistName = String()
     var songs = [Song]()
+    var songNum = Int()
     var playlistImageString = String()
     init (){
         playlistName = ""
@@ -41,10 +43,12 @@ class Playlist {
 class Song {
     var name : String
     var artist : String
+    var thumbnailImageUrl : String
     var videoID : String
     init(){
         name = ""
-        videoID = ""
         artist = ""
+        thumbnailImageUrl = ""
+        videoID = ""
     }
 }
