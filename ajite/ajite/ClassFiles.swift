@@ -46,10 +46,12 @@ class Song {
     var artist : String
     var thumbnailImageUrl : String
     var videoID : String
+    var songID : String
     init(){
         name = ""
         artist = ""
         thumbnailImageUrl = ""
         videoID = ""
+        songID = ""
     }
 }
