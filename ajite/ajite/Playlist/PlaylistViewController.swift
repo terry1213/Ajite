@@ -40,17 +40,26 @@ class PlaylistViewController: UIViewController{
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                //우선 전에 받아왔던 플레이리스트 정보들을 다 삭제한다.
                 playlists.removeAll()
-                var playlist: Playlist
+                //정보를 받아오기 위한 임시 플레이리스트 선언
+                var temPlaylist: Playlist
+                //firestore에서 본인의 플레이리스트를 전부 불러와서 하나하나씩 처리한다.
                 for document in querySnapshot!.documents {
-                    playlist = Playlist()
-                    playlist.playlistName = document.data()["name"] as! String
-                    playlist.playlistImageString = document.data()["playlistImageString"] as! String
-                    playlist.id = document.documentID
-                    playlists.append(playlist)
+                    //다음 플레이리스트를 담기 위한 임시 플레이리스트 생성
+                    temPlaylist = Playlist()
+                    //플레이리스트 이름 받기
+                    temPlaylist.playlistName = document.data()["name"] as! String
+                    //플레이리스트 이미지 이름 받기
+                    temPlaylist.playlistImageString = document.data()["playlistImageString"] as! String
+                    //플레이리스트 아이디 받기
+                    temPlaylist.id = document.documentID
+                    //플레이리스트 목록에 추가
+                    playlists.append(temPlaylist)
                 }
                 print("The number of playlists is \(playlists.count)")
                 DispatchQueue.main.async{
+                    //테이블에 불러온 정보를 보여준다.
                     self.playlistTableView.reloadData()
                 }
             }
@@ -83,11 +92,14 @@ class PlaylistViewController: UIViewController{
             let random = arc4random_uniform(4)
             let imageName = "playlist-\(random)"
             var ref: DocumentReference? = nil
+            //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
             ref = self.db
                 .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
                 .collection("playlists").addDocument(data: [
-                "name": newPlaylist,
-                "playlistImageString": imageName
+                    //입력한 이름을 등록
+                    "name": newPlaylist,
+                    //랜덤으로 선택된 이미지의 이름을 등록
+                    "playlistImageString": imageName
             ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
@@ -128,8 +140,11 @@ extension PlaylistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = playlistTableView.dequeueReusableCell(withIdentifier: "playlistCell", for: indexPath) as! PlaylistTableViewCell
+        //해당 플레이리스트 이름을 라벨에 적음
         cell.playlistName.text = playlists[indexPath.row].playlistName
+        //해당 플레이리스트에 속한 노래의 개수를 적음
         cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
+        //해당 플레이리스트의 이미지를 불러온다.
         cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
         return cell
     }

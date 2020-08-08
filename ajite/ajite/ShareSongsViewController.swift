@@ -190,6 +190,7 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
     @IBAction func shareSong(_ sender: Any) {
         var ref: DocumentReference? = nil
         if playlistID != nil {
+            //유저의, 현재 플레이리스트의, 노래 목록에 선택한 노래를 추가한다.
             ref = db
                 .collection("users")
                 .document(UserDefaults.standard.string(forKey: "userID")!)
@@ -197,9 +198,13 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
                 .document(playlistID)
                 .collection("songs")
                 .addDocument(data: [
+                    //노래 이름 등록
                     "name": songNameLabel.text as Any,
+                    //아티스트(채널) 이름 등록
                     "artist": artistLabel.text as Any,
+                    //썸네일 이미지 url 등록
                     "thumbnailImageUrl": thumbnailImageUrl as Any,
+                    //비디오 ID 등록
                     "videoID": videoID as Any
             ]) { err in
                 if let err = err {
