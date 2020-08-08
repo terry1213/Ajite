@@ -95,7 +95,7 @@ class PlaylistViewController: UIViewController{
                 }
             
             let random = arc4random_uniform(4)
-            let imageName = "playlist-\(random)"
+            let imageName = "\(random)"
             var ref: DocumentReference? = nil
             //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
             ref = self.db
@@ -152,7 +152,7 @@ extension PlaylistViewController: UITableViewDataSource {
         //해당 플레이리스트에 속한 노래의 개수를 적음
         cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
         //해당 플레이리스트의 이미지를 불러온다.
-        cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
+        cell.playlistImage.image = UIImage(named: "record-\( playlists[indexPath.row].playlistImageString)")
         return cell
     }
     

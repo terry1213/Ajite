@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oNK-b0-Q4K">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1380"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-Hx-EKa">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ajitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="spM-2Y-bQs" userLabel="logo image">
                                 <rect key="frame" x="311" y="482" width="402" height="402"/>
@@ -25,14 +25,14 @@
                                 </accessibility>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oNK-b0-Q4K" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0el-BW-nsX"/>
                             <constraint firstItem="spM-2Y-bQs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="19k-2i-R8w"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oNK-b0-Q4K" secondAttribute="bottom" constant="-34" id="UUf-p5-s4S"/>
-                            <constraint firstItem="oNK-b0-Q4K" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gWm-1a-s0N"/>
+                            <constraint firstAttribute="bottom" secondItem="JgR-Hx-EKa" secondAttribute="bottom" id="PEe-hl-VjD"/>
+                            <constraint firstItem="JgR-Hx-EKa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tje-CT-f2W"/>
+                            <constraint firstItem="JgR-Hx-EKa" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="icS-co-bQw"/>
                             <constraint firstItem="spM-2Y-bQs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qq6-7M-zwA"/>
-                            <constraint firstItem="oNK-b0-Q4K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vlE-Es-L0w"/>
+                            <constraint firstItem="JgR-Hx-EKa" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ryh-Nw-FK2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -44,6 +44,6 @@
     </scenes>
     <resources>
         <image name="ajitelogo" width="200" height="200"/>
-        <image name="background" width="2048" height="2732"/>
+        <image name="background" width="2100" height="2800"/>
     </resources>
 </document>
