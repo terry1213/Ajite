@@ -16,50 +16,24 @@ import FirebaseFirestore
 
 let db = Firestore.firestore()
 let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
-
-public struct UserDB: Codable {
-    let name: String
-    
-}
+var users: [User] = []
 
 class userViewController: UIViewController {
     
     @IBOutlet var userTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    let userRef = db.collection("userlist")
-    let userData = db.collection("userlist").document(user.userID)
+    let userRef = db.collection("users")
     
-    
-    var userListData = [String]()
-    var userArray = [String]()
-    var collectionRef = Firestore.firestore().collection("userlist")
-    
-    var searching = false
+    //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
+    var displayUsers: [User] = []
     
     override func viewWillAppear(_ animated: Bool) {
         
         
     }
     
-    func userDataAdd(){
-        
-        // Add a new document in collection "cities"
-        db.collection("userlist").document(user.userID).setData([
-            "id": user.userID as Any,
-            "name": user.profile.name as Any
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-    }
-    
-    func userDataGet(){
-        
-        
+    func getUserData(){
         userRef.getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -67,28 +41,30 @@ class userViewController: UIViewController {
             else {
                 guard let snap = snapshot else {return}
                 for document in snap.documents {
-                    print(document.data())
                     let data = document.data()
+                    //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
+                    if data["userID"] as? String == user.profile.email {
+                        continue
+                    }
                     let username = data["name"] as? String
-                    self.userArray.append(username!)
-                    self.userListData.append(username!)
+                    let userID = data["userID"] as? String
+                    var temUser = User()
+                    temUser.name = username!
+                    temUser.userID = userID!
+                    //전체 유저 목록에 추가
+                    users.append(temUser)
                 }
             }
             self.userTable.reloadData()
-            
         }
-    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        users.removeAll()
         userTable.delegate = self
         userTable.dataSource = self
-        userTable.estimatedRowHeight = 80
-        userTable.rowHeight = UITableView.automaticDimension
-        userDataAdd()
-        userDataGet()
+        getUserData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,22 +74,16 @@ class userViewController: UIViewController {
 
 extension userViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return userArray.count
-        return userArray.count
+        return displayUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
-    
-        //cell.configureCell(userDB: userArray[indexPath.row])
         
-        if searching {
-            cell.nameBox?.text = userListData[indexPath.row]
-        }
-        else{
-            cell.nameBox?.text = userArray[indexPath.row]
-        }
+        cell.nameLabel?.text = displayUsers[indexPath.row].name
+        cell.userIdLabel.text = displayUsers[indexPath.row].userID
+        
         return cell
     }
     
@@ -125,14 +95,19 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension userViewController: UISearchBarDelegate {
+    //검색창에 키 입력이 될 시
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        userArray = userListData.filter({$0.contains(searchBar.text!)})
-        searching = true
+        displayUsers = users.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         userTable.reloadData()
     }
+    func tableView(_ tableView: UITableView, heightForRowAt
+    indexPath: IndexPath) -> CGFloat {
+            return 70
+         }
+    
+    //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
+        //검색어 입력 칸을 비운다.
         searchBar.text = ""
-        userTable.reloadData()
     }
 }

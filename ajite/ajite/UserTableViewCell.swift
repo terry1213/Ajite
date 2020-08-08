@@ -10,16 +10,14 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
-    @IBOutlet var nameBox: UILabel!
+
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet var sendButton: UIButton!
     @IBAction func didClickButton(){
         
     }
     
-    
-    func configureCell(userDB: UserDB){
-        nameBox.text = userDB.name
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

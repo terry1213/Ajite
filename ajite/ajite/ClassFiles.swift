@@ -10,16 +10,11 @@
 import Foundation
 import UIKit
 
-class User : Equatable {
-    static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.name == rhs.name && lhs.userID == rhs.userID
-    }
-    
+class User {
     var name = String()
     var friends = [User]()
     var userID = String()
     var bio = String()
-    
 }
 
 
