@@ -12,6 +12,10 @@ class UserTableViewCell: UITableViewCell {
 
     @IBOutlet var nameBox: UILabel!
     @IBOutlet var sendButton: UIButton!
+    @IBAction func didClickButton(){
+        
+    }
+    
     
     func configureCell(userDB: UserDB){
         nameBox.text = userDB.name
@@ -22,10 +26,5 @@ class UserTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

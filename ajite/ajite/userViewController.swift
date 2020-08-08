@@ -35,8 +35,6 @@ class userViewController: UIViewController {
     var userArray = [String]()
     var collectionRef = Firestore.firestore().collection("userlist")
     
-    var testArray = ["apple", "banana", "kiwi"]
-    var testFruit = [String]()
     var searching = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +115,12 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
             cell.nameBox?.text = userArray[indexPath.row]
         }
         return cell
+    }
+    
+    func sendRequest(sender: UIButton!){
+        sender.isSelected = !sender.isSelected
+        
+        
     }
 }
 
