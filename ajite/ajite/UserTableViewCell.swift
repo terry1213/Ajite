@@ -8,15 +8,17 @@
 
 import UIKit
 
+protocol TableViewUser {
+    func onClickCell(index: Int)
+}
+
 class UserTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
-    @IBOutlet var sendButton: UIButton!
-    @IBAction func didClickButton(){
-        
-    }
+    var cellDelegate: TableViewUser?
+    var index: IndexPath?
     
     
     override func awakeFromNib() {
@@ -24,5 +26,8 @@ class UserTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-
+    @IBAction func sendRequest(_ sender: Any) {
+        cellDelegate?.onClickCell(index: (index?.row)!)
+    }
+    
 }

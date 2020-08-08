@@ -8,8 +8,7 @@
 
 import UIKit
 import Firebase
-
-
+import FirebaseFirestore
 
 class CreateAjiteViewController: UIViewController {
     let db = Firestore.firestore()
