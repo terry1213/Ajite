@@ -27,6 +27,7 @@ class PlaylistSongListViewController: UIViewController {
     
     override func viewWillAppear (_ animated: Bool){
         getData()
+        self.songListTableView.reloadData()
     }
     
     
@@ -96,7 +97,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     indexPath: IndexPath) -> CGFloat {
             return 60
          }
-    
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제구현!!!!!!!!!!!!!!!!!!!!1
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
           guard editingStyle == .delete else { return }
           

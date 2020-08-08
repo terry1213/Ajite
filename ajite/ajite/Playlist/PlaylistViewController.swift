@@ -30,6 +30,7 @@ class PlaylistViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         self.getData()
+        self.playlistTableView.reloadData()
     }
     //getting data from database
     func getData(){
@@ -140,6 +141,7 @@ extension PlaylistViewController: UITableViewDataSource {
     
     
 // 플레이리스트를 삭제할 때 사용하는 코드
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제 구현 !!!!!!!!!!!!!!!!!!!!!!!!
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
         let deleteAlert = UIAlertController (title: "Delete Playlist", message: "Would you like to delete your playlist?" ,preferredStyle: UIAlertController.Style.alert)
