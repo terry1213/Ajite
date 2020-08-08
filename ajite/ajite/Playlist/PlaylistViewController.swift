@@ -139,7 +139,6 @@ extension PlaylistViewController: UITableViewDataSource {
             return 96
          }
     
-    
 // 플레이리스트를 삭제할 때 사용하는 코드
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제 구현 !!!!!!!!!!!!!!!!!!!!!!!!
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
