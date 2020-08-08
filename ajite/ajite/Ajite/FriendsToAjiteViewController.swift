@@ -14,18 +14,14 @@ class FriendsToAjiteViewController: UIViewController {
     var addingMembers = [User]()
     var addedMembers = [User]()
     
-    @IBOutlet weak var searchFriends: UITableView!
+    @IBOutlet weak var searchFriendsTable: UITableView!
     @IBOutlet weak var addedMembersTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addedMembersTable.dataSource = self
         self.addedMembersTable.delegate = self
-        self.searchFriends.dataSource = self
+        self.searchFriendsTable.dataSource = self
     }
-    
-
-   
-
 }
 
 
@@ -36,9 +32,8 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if tableView == self.addedMembersTable{
-            return playlists.count
-            }
-            return 1
+            return addedMembers.count
+            } else {return addingMembers.count}
         }
     
     func tableView(_ tableView: UITableView, heightForRowAt
@@ -54,13 +49,13 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             cell.addedMembersLabel.text = addedMembers[indexPath.row].name
             //!!!!!!!!!!!구현하기 유저 이미지 불러오기 !!!!!!!  cell.addedFriendsProfile.image = UIImage(named: addedMembers[indexPath.row].)
        
-            } else if tableView == self.searchFriends{
-                let cell = searchFriends.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
-                     cell.searchFriendName.text = addingMembers[indexPath.row].name
-        
+            }
+            else if tableView == self.searchFriendsTable{
+                let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
+                cell.searchFriendName.text = addingMembers[indexPath.row].name
+                //     cell.searchUser = myUser.friendds 에 저장
                  //!!!!!!!!!!!구현하기 유저 이미지 불러오기 !!!!!!!      cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
                 return cell
-                
             }
             return UITableViewCell()
     }
@@ -86,6 +81,14 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                addedMembers.remove(at: fromIndexPath.row)
                addedMembers.insert(movedObject, at: to.row)
             }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.searchFriendsTable{
+            //여기에 먼저 해당 아지트의 멤버를 뒤진다
+            //해당 아지트에 멤버가 없으면 addingMembers에 append한다 
+        }
+        
+        }
 }
 
 

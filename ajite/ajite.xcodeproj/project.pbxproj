@@ -25,7 +25,7 @@
 		1658B1E724DC95D20023469B /* MyFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658B1E624DC95D20023469B /* MyFriendsTableViewCell.swift */; };
 		1658B1E924DC9A270023469B /* BiographyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658B1E824DC9A270023469B /* BiographyViewController.swift */; };
 		165E15FD24DE89C500CD4F03 /* FriendsToAjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E15FC24DE89C500CD4F03 /* FriendsToAjiteViewController.swift */; };
-		165E15FF24DE8B7200CD4F03 /* sea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E15FE24DE8B7200CD4F03 /* sea.swift */; };
+		165E15FF24DE8B7200CD4F03 /* searchFriendsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */; };
 		167BC0A624DB01030041A510 /* songTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BC0A524DB01030041A510 /* songTableViewCell.swift */; };
 		1695F5AA24DAB13700B9601E /* AjiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */; };
 		1698669524D9569800946C2F /* ClassFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698669424D9569800946C2F /* ClassFiles.swift */; };
@@ -98,7 +98,7 @@
 		1658B1E624DC95D20023469B /* MyFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1658B1E824DC9A270023469B /* BiographyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiographyViewController.swift; sourceTree = "<group>"; };
 		165E15FC24DE89C500CD4F03 /* FriendsToAjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsToAjiteViewController.swift; sourceTree = "<group>"; };
-		165E15FE24DE8B7200CD4F03 /* sea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sea.swift; sourceTree = "<group>"; };
+		165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchFriendsTableView.swift; sourceTree = "<group>"; };
 		167BC0A524DB01030041A510 /* songTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songTableViewCell.swift; sourceTree = "<group>"; };
 		1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteTableViewCell.swift; sourceTree = "<group>"; };
 		1698669424D9569800946C2F /* ClassFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFiles.swift; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		1658B1E324DC7BC80023469B /* tableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				165E15FE24DE8B7200CD4F03 /* sea.swift */,
+				165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */,
 				1658B1E624DC95D20023469B /* MyFriendsTableViewCell.swift */,
 				1658B1E424DC8A630023469B /* AddToPlaylistTableViewCell.swift */,
 				1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */,
@@ -658,7 +658,7 @@
 				16F1C0FC24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift in Sources */,
 				1658B1DC24DC3BC90023469B /* memberInAjiteTableViewCell.swift in Sources */,
 				6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */,
-				165E15FF24DE8B7200CD4F03 /* sea.swift in Sources */,
+				165E15FF24DE8B7200CD4F03 /* searchFriendsTableView.swift in Sources */,
 				DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */,
 				165E15FD24DE89C500CD4F03 /* FriendsToAjiteViewController.swift in Sources */,
 			);

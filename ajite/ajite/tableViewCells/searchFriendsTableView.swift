@@ -14,6 +14,7 @@ class searchFriendsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var searchFriendName: UILabel!
     
+    let searchUser = User()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
