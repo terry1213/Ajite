@@ -48,9 +48,15 @@ class userViewController: UIViewController {
                     }
                     let username = data["name"] as? String
                     let userID = data["userID"] as? String
+                    let documentID = data["documentID"] as? String
                     let temUser = User()
                     temUser.name = username!
                     temUser.userID = userID!
+                    temUser.documentID = documentID!
+                    
+                    
+                    
+                    
                     //전체 유저 목록에 추가
                     users.append(temUser)
                 }
@@ -116,17 +122,14 @@ extension userViewController: UISearchBarDelegate {
 
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
-        
-        db.collection("users").whereField("name", isEqualTo: displayUsers[index].name)
-        .getDocuments() { (querySnapshot, err) in
-            
-        }
-        db.collection("users").addDocument(data:[
-            "userID":  displayUsers[index].userID,
+        print(displayUsers[index].documentID)
+        db.collection("users").document("\(displayUsers[index].documentID)").updateData([
+            /*"userID":  displayUsers[index].userID,
             "name": displayUsers[index].name,
+            
+            "documentID": displayUsers[index].documentID,*/
             "request": user.profile.name as Any
         ])
-        
-        print("clicked user id:\(displayUsers [index].name)")
     }
 }
+

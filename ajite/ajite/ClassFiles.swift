@@ -15,6 +15,7 @@ class User {
     var friends = [User]()
     var userID = String()
     var bio = String()
+    var documentID = String()
 }
 
 
