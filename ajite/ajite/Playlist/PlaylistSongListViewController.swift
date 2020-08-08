@@ -62,6 +62,7 @@ class PlaylistSongListViewController: UIViewController {
                     temSong.thumbnailImageUrl = document.data()["thumbnailImageUrl"] as! String
                     //노래 비디오의 ID 받기
                     temSong.videoID = document.data()["videoID"] as! String
+                    temSong.songID = document.documentID
                     //노래 목록에 받아온 노래 추가
                     self.source.songs.append(temSong)
                 }
@@ -109,13 +110,18 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     indexPath: IndexPath) -> CGFloat {
             return 60
          }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제구현!!!!!!!!!!!!!!!!!!!!1
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-          guard editingStyle == .delete else { return }
-          
-          source.songs.remove(at: indexPath.row)
-          songListTableView.deleteRows(at: [indexPath], with: .automatic)
-      }
+        guard editingStyle == .delete else { return }
+        //선택한 노래를 현재 플레이리스트로부터 삭제한다.
+        db
+            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("playlists").document(source.id)
+            .collection("songs").document(source.songs[indexPath.row].songID)
+            .delete()
+        source.songs.remove(at: indexPath.row)
+        songListTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     
     
 }
