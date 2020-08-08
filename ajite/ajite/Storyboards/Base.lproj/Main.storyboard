@@ -1993,12 +1993,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-nC-tmr" userLabel="Add Friend">
-                                                <rect key="frame" x="328" y="0.0" width="32" height="32"/>
+                                                <rect key="frame" x="301" y="0.0" width="59" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="6pJ-IB-Vp8"/>
-                                                    <constraint firstAttribute="width" constant="32" id="fGJ-36-96U"/>
+                                                    <constraint firstAttribute="width" constant="59" id="fGJ-36-96U"/>
                                                 </constraints>
-                                                <state key="normal" image="person.crop.circle.fill.badge.plus" catalog="system"/>
+                                                <state key="normal" image="addpink"/>
                                                 <connections>
                                                     <segue destination="xl5-Xm-9WV" kind="presentation" id="Z3n-n1-clk"/>
                                                 </connections>
@@ -2277,7 +2277,6 @@
         <image name="paperplane" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="person.crop.circle.fill.badge.plus" catalog="system" width="128" height="101"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
