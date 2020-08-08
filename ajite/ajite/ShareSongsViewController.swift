@@ -9,6 +9,7 @@
 import UIKit
 import GoogleAPIClientForREST
 import Firebase
+import FirebaseFirestore
 
 //유튜브 데이터 모델
 struct YouTubeModel: Codable {

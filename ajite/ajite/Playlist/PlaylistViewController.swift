@@ -156,8 +156,9 @@ extension PlaylistViewController: UITableViewDataSource {
             return 96
          }
     
-// 플레이리스트를 삭제할 때 사용하는 코드
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제 구현 !!!!!!!!!!!!!!!!!!!!!!!!
+    
+    // 플레이리스트를 삭제할 때 사용하는 코드
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
         let deleteAlert = UIAlertController (title: "Delete Playlist", message: "Would you like to delete your playlist?" ,preferredStyle: UIAlertController.Style.alert)
@@ -165,6 +166,13 @@ extension PlaylistViewController: UITableViewDataSource {
         deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
             
             guard editingStyle == .delete else { return }
+            
+            //현재 플레이리스트와 해당 플레이리스트에 속해있는 노래들을 삭제한다.
+            self.db
+                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("playlists").document(playlists[indexPath.row].id)
+                .delete()
+            
             playlists.remove(at: indexPath.row)
             self.playlistTableView.deleteRows(at: [indexPath], with: .automatic)
             
