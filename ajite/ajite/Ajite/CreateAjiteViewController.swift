@@ -39,8 +39,8 @@ class CreateAjiteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
            var random = arc4random_uniform(3)
-          imageName = "door-\(random)"
-            doorImage.image = UIImage(named: imageName)
+            imageName = "\(random)"
+            doorImage.image = UIImage(named: "door-\(imageName)")
        }
     
     

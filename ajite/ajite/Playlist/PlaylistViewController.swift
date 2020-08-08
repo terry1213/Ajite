@@ -22,10 +22,12 @@ class PlaylistViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
-       
         self.playlistTableView.dataSource = self
         self.playlistTableView.delegate = self
+     
+        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
+       
+      
 
     }
     
@@ -33,6 +35,8 @@ class PlaylistViewController: UIViewController{
         self.getData()
         self.playlistTableView.reloadData()
     }
+    
+   
     //getting data from database
     func getData(){
         db
@@ -205,3 +209,4 @@ extension PlaylistViewController: UITableViewDelegate {
     
    
 }
+
