@@ -59,7 +59,7 @@ class CreateAjiteViewController: UIViewController {
                       self.backgroundImage0.frame = self.topFrame
                             
         }, completion: { finished in
-            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.15
+            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.13
         })
     }
   

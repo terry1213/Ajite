@@ -35,6 +35,9 @@ class songTableViewCell: UITableViewCell {
         cellDelegate?.toAddToPlaylist(index: (index?.row)!)
     }
     
+    @IBAction func youtubeTouched(_ sender: Any) {
+        
+    }
 }
 
 //소속: PlaylistSongListViewController
