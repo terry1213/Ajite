@@ -33,7 +33,6 @@ class PlaylistViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         self.getData()
-        self.playlistTableView.reloadData()
     }
     
    
@@ -150,7 +149,7 @@ extension PlaylistViewController: UITableViewDataSource {
         //해당 플레이리스트 이름을 라벨에 적음
         cell.playlistName.text = playlists[indexPath.row].playlistName
         //해당 플레이리스트에 속한 노래의 개수를 적음
-        cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
+        cell.numberOfSongsInPlaylist.text = "\(playlists[indexPath.row].songs.count) songs"
         //해당 플레이리스트의 이미지를 불러온다.
         cell.playlistImage.image = UIImage(named: "record-\( playlists[indexPath.row].playlistImageString)")
         return cell
