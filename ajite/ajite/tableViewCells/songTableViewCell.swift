@@ -10,7 +10,6 @@ import UIKit
 
 protocol PlaylistSongListProtocol {
     func toAddToPlaylist(index: Int)
-    func toYoutubePlayer(index: Int)
 }
 
 class songTableViewCell: UITableViewCell {
@@ -18,8 +17,10 @@ class songTableViewCell: UITableViewCell {
     
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var songName: UILabel!
+    @IBOutlet weak var youtubeButton: UIButton!
     var cellDelegate: PlaylistSongListProtocol?
     var index: IndexPath?
+    weak var delegate : songTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,10 +37,13 @@ class songTableViewCell: UITableViewCell {
     }
     
     @IBAction func youtubeTouched(_ sender: Any) {
-        
+        if let delegate = delegate{ self.delegate?.toYoutubePlayer(index: index!.row)}
     }
 }
 
+protocol songTableViewCellDelegate: AnyObject{
+    func toYoutubePlayer(index: Int)
+}
 //소속: PlaylistSongListViewController
 //Description: 플레이리스트 내에 들어있는 곡들을 볼러와준다
 

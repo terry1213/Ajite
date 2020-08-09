@@ -50,17 +50,16 @@ class CreateAjiteViewController: UIViewController {
 }
     
     func animateView(){
-        UIView.animate(withDuration: 15.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
+        UIView.animate(withDuration: 20.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
                       self.topFrame = self.backgroundImage0.frame
 
-                      self.topFrame.origin.y -= self.topFrame.size.height/1.13
+            self.topFrame.origin.y -= self.topFrame.size.height/1.3
                             
                               
                       self.backgroundImage0.frame = self.topFrame
                             
         }, completion: { finished in
-            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.13
-        })
+            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.3        })
     }
   
 //=================여기부터애니메이션=======================//
@@ -205,8 +204,11 @@ class CreateAjiteViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! AjiteRoomViewController
+        if var vc = segue.destination as? AjiteRoomViewController{
         vc.currentAjite = tempAjite
+        } else if var vc = segue.destination as? FriendsToAjiteViewController {
+            print("hi")
+        }
     }
 }
 

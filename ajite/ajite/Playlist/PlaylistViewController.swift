@@ -95,6 +95,8 @@ class PlaylistViewController: UIViewController{
             
             let random = arc4random_uniform(4)
             let imageName = "\(random)"
+            
+            
             var ref: DocumentReference? = nil
             //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
             ref = self.db
@@ -209,3 +211,11 @@ extension PlaylistViewController: UITableViewDelegate {
    
 }
 
+extension PlaylistViewController : songTableViewCellDelegate{
+    func toYoutubePlayer(index: Int) {
+             let alert = UIAlertController (title: "Sent Request!", message: nil, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+           self.present(alert, animated: true, completion: nil)
+    }
+    
+}

@@ -368,7 +368,7 @@
                     </view>
                     <connections>
                         <outlet property="addedMembersTable" destination="Yac-kF-M5j" id="xPs-Qn-cUc"/>
-                        <outlet property="searchFriends" destination="VWf-su-mRG" id="qdk-IJ-fCk"/>
+                        <outlet property="searchFriendsTable" destination="VWf-su-mRG" id="aG2-FD-nbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWT-cR-vol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -435,9 +435,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="cQm-Tp-JFH" kind="popoverPresentation" identifier="addMembersNew" popoverAnchorView="B3c-xC-FAf" id="Fvk-M5-njC">
-                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                            </segue>
+                                                            <segue destination="cQm-Tp-JFH" kind="presentation" id="reF-Mh-huZ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1634,6 +1632,7 @@
                                                 <connections>
                                                     <outlet property="artistName" destination="swB-Dq-v9i" id="oMK-Vz-N12"/>
                                                     <outlet property="songName" destination="XGO-uo-oyq" id="4Pt-RP-E5n"/>
+                                                    <outlet property="youtubeButton" destination="YVk-u8-UlK" id="Bx2-Fu-oq4"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -2274,7 +2273,7 @@
         <segue reference="KTm-i4-nT0"/>
         <segue reference="YzI-Ue-2oM"/>
         <segue reference="RTc-KO-dhc"/>
-        <segue reference="Fvk-M5-njC"/>
+        <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
