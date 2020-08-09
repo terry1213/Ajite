@@ -11,7 +11,7 @@ import GoogleSignIn
 
 var myUser =  User()
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var addFriend: UIButton!
     @IBOutlet weak var myFriendsTableView: UITableView!
@@ -21,12 +21,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
-        userNameLabel.text = user.profile.name
-        myUser.name = user.profile.name
         // Do any additional setup after loading the view.
        addFriend.imageView?.contentMode = .scaleAspectFit
         self.myFriendsTableView.delegate = self
@@ -34,17 +28,12 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        userNameLabel.text = user.profile.name
+        myUser.name = user.profile.name
+        getData()
         bio.text = myUser.bio
     }
-
-}
-
-
-extension ProfileViewController : UITableViewDelegate{
     
-}
-
-extension ProfileViewController : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
        }
@@ -55,15 +44,36 @@ extension ProfileViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myFriendsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! MyFriendsTableViewCell
         cell.myFriendsName.text = myUser.friends[indexPath.row].name
-        
-//!!!!!!!!!!!!!!!!!!!!!!!! 여기 수정 해주세요 !!!!!!!!!!!!!!!!!!!!!
-        
-        cell.myFriendsProfile.image = UIImage(named: playlists[indexPath.row].playlistImageString)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
             return 60
-         }
+    }
+    
+    func getData(){
+            db
+                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    myUser.friends.removeAll()
+                    var temUser : User
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        temUser = User()
+                        temUser.userID = data["userID"] as! String
+                        temUser.name = data["name"] as! String
+                        temUser.documentID = document.documentID
+                        myUser.friends.append(temUser)
+                    }
+                    DispatchQueue.main.async{
+                        //테이블에 불러온 정보를 보여준다.
+                        self.myFriendsTableView.reloadData()
+                    }
+                }
+        }
+    }
 }
