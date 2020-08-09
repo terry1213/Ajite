@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddToPlaylistViewController: UIViewController {
+class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     
     var addingSong = Song()
     @IBOutlet weak var newPlaylist: UIView!
@@ -17,6 +17,7 @@ class AddToPlaylistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playlistView.dataSource = self
+        self.playlistView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -25,6 +26,7 @@ class AddToPlaylistViewController: UIViewController {
     }
         
     @IBAction func finished(_ sender: Any) {
+        
         dismiss(animated: true)
     }
 }
@@ -45,6 +47,7 @@ extension AddToPlaylistViewController : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt
      indexPath: IndexPath) -> CGFloat {
-             return 90
-          }
+        return 50
+    }
+    
 }

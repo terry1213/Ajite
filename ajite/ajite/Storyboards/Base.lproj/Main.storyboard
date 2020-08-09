@@ -606,10 +606,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulx-t9-Wab">
-                                <rect key="frame" x="21" y="234" width="333" height="344"/>
+                                <rect key="frame" x="21" y="184" width="333" height="444"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sS5-aD-ktf">
-                                        <rect key="frame" x="20" y="-27" width="293" height="358"/>
+                                        <rect key="frame" x="20" y="73" width="293" height="358"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="358" id="Oab-Lf-xvu"/>
@@ -639,7 +639,7 @@
                                                             <state key="selected" image="checked"/>
                                                             <state key="highlighted" image="checked"/>
                                                             <connections>
-                                                                <action selector="pressedCheckbox:" destination="Lcm-Or-IK4" eventType="touchUpInside" id="prG-sv-sVA"/>
+                                                                <action selector="checkBox:" destination="Lcm-Or-IK4" eventType="touchUpInside" id="sNC-g7-gF9"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -670,7 +670,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow8-cx-DvG">
-                                <rect key="frame" x="297" y="586" width="37" height="30"/>
+                                <rect key="frame" x="297" y="636" width="37" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -696,7 +696,7 @@
                             <constraint firstItem="ulx-t9-Wab" firstAttribute="centerY" secondItem="4rh-c1-cQf" secondAttribute="centerY" id="peA-MP-Pua"/>
                             <constraint firstItem="LzV-a0-1J0" firstAttribute="trailing" secondItem="ulx-t9-Wab" secondAttribute="trailing" constant="21" id="s7z-nD-ufa"/>
                             <constraint firstItem="sS5-aD-ktf" firstAttribute="trailing" secondItem="Ow8-cx-DvG" secondAttribute="trailing" id="sKk-AN-Ppv"/>
-                            <constraint firstItem="ulx-t9-Wab" firstAttribute="top" secondItem="LzV-a0-1J0" secondAttribute="top" constant="190" id="w1D-vv-Khw"/>
+                            <constraint firstItem="ulx-t9-Wab" firstAttribute="top" secondItem="LzV-a0-1J0" secondAttribute="top" constant="140" id="w1D-vv-Khw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LzV-a0-1J0"/>
                     </view>
@@ -1544,7 +1544,7 @@
                                 <color key="backgroundColor" red="0.51139467949999995" green="0.57121837139999998" blue="0.73861511749999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bV-4r-0p7">
-                                <rect key="frame" x="26" y="118" width="138.33333333333334" height="47"/>
+                                <rect key="frame" x="26.000000000000007" y="118" width="126.66666666666669" height="47"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="ivT-lv-y4l"/>
@@ -1557,7 +1557,7 @@
                                 <rect key="frame" x="0.0" y="178" width="375" height="541"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="496.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="498"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.63666866987179482" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="85" id="Vc0-eS-SLG" customClass="songTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1598,7 +1598,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swB-Dq-v9i">
-                                                            <rect key="frame" x="15" y="58.000000000000114" width="33" height="16.666666666666664"/>
+                                                            <rect key="frame" x="15" y="57.999999999999993" width="33" height="16.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1624,7 +1624,7 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YST-Sf-ILA">
-                                        <rect key="frame" x="148" y="504.33333333333343" width="79" height="36.666666666666686"/>
+                                        <rect key="frame" x="148.33333333333334" y="506" width="78.333333333333343" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2259,7 +2259,7 @@
         <segue reference="KTm-i4-nT0"/>
         <segue reference="YzI-Ue-2oM"/>
         <segue reference="RTc-KO-dhc"/>
-        <segue reference="sCn-aX-fjh"/>
+        <segue reference="Fvk-M5-njC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
