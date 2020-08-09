@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol PlaylistSongListProtocol {
+    func toAddToPlaylist(index: Int)
+    func toYoutubePlayer(index: Int)
+}
+
 class songTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var songName: UILabel!
+    var cellDelegate: PlaylistSongListProtocol?
+    var index: IndexPath?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +31,10 @@ class songTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func plusTouched(_ sender: Any) {
+        cellDelegate?.toAddToPlaylist(index: (index?.row)!)
+    }
+    
 }
 
 //소속: PlaylistSongListViewController

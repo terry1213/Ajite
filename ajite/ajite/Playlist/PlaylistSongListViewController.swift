@@ -15,6 +15,7 @@ class PlaylistSongListViewController: UIViewController {
     
     //outlet & variables
     var source = Playlist()
+    var nextSourceIndex : Int = -1
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var playlistName: UILabel!
     
@@ -76,13 +77,12 @@ class PlaylistSongListViewController: UIViewController {
         }
     }
     
-    @IBAction func pressedPlus(_ sender: Any) {
-       performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ShareSongsViewController {
             vc.playlistID = source.id
+        }
+        else if let vc = segue.destination as? AddToPlaylistViewController {
+            vc.addingSong = source.songs[nextSourceIndex]
         }
     }
 }
@@ -104,6 +104,8 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         cell.songName.text = source.songs[indexPath.row].name
         //해당 노래의 아티스트(채널) 이름을 라벨에 적음
         cell.artistName.text = source.songs[indexPath.row].artist
+        cell.cellDelegate = self
+        cell.index = indexPath
         return cell
     }
     
@@ -125,4 +127,14 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     }
     
     
+}
+
+extension PlaylistSongListViewController : PlaylistSongListProtocol {
+    func toAddToPlaylist(index: Int) {
+        nextSourceIndex = index
+        performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
+    }
+    func toYoutubePlayer(index: Int) {
+        
+    }
 }
