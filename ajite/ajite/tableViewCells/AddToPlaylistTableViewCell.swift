@@ -17,18 +17,22 @@ class AddToPlaylistTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
     }
-
-    
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func checkBox(_ sender: UIButton) {
+        if checkBoxButton.image(for: .normal) == UIImage(named: "check") {
+            checkBoxButton.setImage(UIImage(named: "checked"), for: .normal)
+        }
+        else {
+            checkBoxButton.setImage(UIImage(named: "check"), for: .normal)
+        }
+    }
 }
 
 //소속: AddToPlaylistViewController

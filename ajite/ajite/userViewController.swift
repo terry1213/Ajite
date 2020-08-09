@@ -15,7 +15,6 @@ import GoogleSignIn
 import FirebaseFirestore
 
 let db = Firestore.firestore()
-let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
 var users: [User] = []
 
 class userViewController: UIViewController {
@@ -38,16 +37,16 @@ class userViewController: UIViewController {
                 for document in snap.documents {
                     let data = document.data()
                     //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
-                    if data["userID"] as? String == user.profile.email {
+                    if data["userID"] as? String == myUser.userID {
                         continue
                     }
                     let username = data["name"] as? String
                     let userID = data["userID"] as? String
-                    let documentID = data["documentID"] as? String
+                    let documentID = document.documentID
                     let temUser = User()
                     temUser.name = username!
                     temUser.userID = userID!
-                    temUser.documentID = documentID!
+                    temUser.documentID = documentID
                     
                     
                     
@@ -115,13 +114,46 @@ extension userViewController: UISearchBarDelegate {
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
         print(displayUsers[index].documentID)
-        db.collection("users").document("\(displayUsers[index].documentID)").updateData([
-            /*"userID":  displayUsers[index].userID,
-            "name": displayUsers[index].name,
-            
-            "documentID": displayUsers[index].documentID,*/
-            "request": user.profile.name as Any
-        ])
+        db
+            .collection("users").document(displayUsers[index].documentID)
+            .collection("friends").document(myUser.documentID).setData([
+                "userID" : myUser.userID as Any,
+                "name" : myUser.name as Any,
+                /*
+                 친구 state 설명:
+                    0 = 친구 신청 보냄
+                    1 = 친구 신청 받음
+                    2 = 친구 상태
+                    거절하면 document 자체를 삭제
+                 */
+                "state" : 1
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added")
+                }
+            }
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("friends").document(displayUsers[index].documentID).setData([
+                "userID" : displayUsers[index].userID as Any,
+                "name" : displayUsers[index].name as Any,
+                /*
+                 친구 state 설명:
+                    0 = 친구 신청 보냄
+                    1 = 친구 신청 받음
+                    2 = 친구 상태
+                    거절하면 document 자체를 삭제
+                 */
+                "state" : 0
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added")
+                }
+            }
     }
 }
 

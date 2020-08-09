@@ -52,7 +52,7 @@ class AjiteViewController: UIViewController{
     func getData(){
         db
             .collection("users")
-            .document(UserDefaults.standard.string(forKey: "userID")!)
+            .document(myUser.documentID)
             .collection("ajites")
             .getDocuments() { (querySnapshot, err) in
             if let err = err {

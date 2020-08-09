@@ -152,15 +152,15 @@ class CreateAjiteViewController: UIViewController {
                     self.db
                         .collection("ajites")
                         .document(ref!.documentID)
-                        .collection("members").document(UserDefaults.standard.string(forKey: "userID")!)
+                        .collection("members").document(myUser.documentID)
                         .setData([
-                            "userID" : user.profile.email as Any,
-                            "name" : user.profile.name as Any
+                            "userID" : myUser.userID as Any,
+                            "name" : myUser.name as Any
                         ])
                     
                     self.db
                         .collection("users")
-                        .document(UserDefaults.standard.string(forKey: "userID")!)
+                        .document(myUser.documentID)
                         .collection("ajites").document(ref!.documentID)
                         .setData([
                             "name" : self.ajiteName.text as Any,

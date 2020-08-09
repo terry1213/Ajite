@@ -612,10 +612,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulx-t9-Wab">
-                                <rect key="frame" x="21" y="234" width="333" height="344"/>
+                                <rect key="frame" x="21" y="184" width="333" height="444"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sS5-aD-ktf">
-                                        <rect key="frame" x="20" y="-27" width="293" height="358"/>
+                                        <rect key="frame" x="20" y="73" width="293" height="358"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="358" id="Oab-Lf-xvu"/>
@@ -645,7 +645,7 @@
                                                             <state key="selected" image="checked"/>
                                                             <state key="highlighted" image="checked"/>
                                                             <connections>
-                                                                <action selector="pressedCheckbox:" destination="Lcm-Or-IK4" eventType="touchUpInside" id="prG-sv-sVA"/>
+                                                                <action selector="checkBox:" destination="Lcm-Or-IK4" eventType="touchUpInside" id="sNC-g7-gF9"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -676,7 +676,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow8-cx-DvG">
-                                <rect key="frame" x="297" y="586" width="37" height="30"/>
+                                <rect key="frame" x="297" y="636" width="37" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -702,7 +702,7 @@
                             <constraint firstItem="ulx-t9-Wab" firstAttribute="centerY" secondItem="4rh-c1-cQf" secondAttribute="centerY" id="peA-MP-Pua"/>
                             <constraint firstItem="LzV-a0-1J0" firstAttribute="trailing" secondItem="ulx-t9-Wab" secondAttribute="trailing" constant="21" id="s7z-nD-ufa"/>
                             <constraint firstItem="sS5-aD-ktf" firstAttribute="trailing" secondItem="Ow8-cx-DvG" secondAttribute="trailing" id="sKk-AN-Ppv"/>
-                            <constraint firstItem="ulx-t9-Wab" firstAttribute="top" secondItem="LzV-a0-1J0" secondAttribute="top" constant="190" id="w1D-vv-Khw"/>
+                            <constraint firstItem="ulx-t9-Wab" firstAttribute="top" secondItem="LzV-a0-1J0" secondAttribute="top" constant="140" id="w1D-vv-Khw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LzV-a0-1J0"/>
                     </view>
@@ -1570,7 +1570,7 @@
                                 <rect key="frame" x="0.0" y="178" width="375" height="541"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="496.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="498"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.63666866987179482" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="85" id="Vc0-eS-SLG" customClass="songTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1637,7 +1637,7 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YST-Sf-ILA">
-                                        <rect key="frame" x="148" y="504.33333333333343" width="79" height="36.666666666666686"/>
+                                        <rect key="frame" x="148" y="506" width="79" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1991,7 +1991,6 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="friendName" destination="DOm-ir-lqi" id="MdF-nG-YB2"/>
                                                             <outlet property="myFriendsName" destination="DOm-ir-lqi" id="C9b-O5-NYd"/>
                                                             <outlet property="myFriendsProfile" destination="22p-Oc-eiK" id="kwu-hb-D68"/>
                                                         </connections>

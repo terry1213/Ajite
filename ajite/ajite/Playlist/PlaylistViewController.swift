@@ -40,7 +40,7 @@ class PlaylistViewController: UIViewController{
     //getting data from database
     func getData(){
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("playlists").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -99,7 +99,7 @@ class PlaylistViewController: UIViewController{
             var ref: DocumentReference? = nil
             //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
             ref = self.db
-                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("users").document(myUser.documentID)
                 .collection("playlists").addDocument(data: [
                     //입력한 이름을 등록
                     "name": newPlaylist,
@@ -173,7 +173,7 @@ extension PlaylistViewController: UITableViewDataSource {
             
             //현재 플레이리스트와 해당 플레이리스트에 속해있는 노래들을 삭제한다.
             self.db
-                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("users").document(myUser.documentID)
                 .collection("playlists").document(playlists[indexPath.row].id)
                 .delete()
             

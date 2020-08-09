@@ -14,6 +14,8 @@ import GoogleSignIn
 import FirebaseAuth
 import FirebaseFirestore
 
+var myUser = User()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -21,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             return
         }
+        
+        myUser.documentID = user.userID
+        myUser.userID = user.profile.email
+        myUser.name = user.profile.name
         
         guard let authentification = user.authentication else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: authentification.idToken, accessToken: authentification.accessToken)
@@ -35,30 +41,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             //유저 로그인 후
-            let db = Firestore.firestore()
             
-            var ref: DocumentReference? = nil
-            db.collection("users").whereField("userID", isEqualTo: user.profile.email)
+            let db = Firestore.firestore()
+            db.collection("users").whereField("userID", isEqualTo: myUser.userID as Any)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
                         if querySnapshot!.documents.count == 0 {
-                            ref = db.collection("users").addDocument(data: [
-                                "userID": user.profile.email,
-                                "name": user.profile.name,
-                                "documentID": ref!.documentID
+                            db.collection("users").document(myUser.documentID).setData([
+                                "userID": myUser.userID as Any,
+                                "name": myUser.name as Any
                             ]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {
-                                    print("Document added with ID: \(ref!.documentID)")
-                                    UserDefaults.standard.set(ref!.documentID, forKey: "userID")
+                                    print("User document added")
                                 }
                             }
-                        }
-                        else {
-                            UserDefaults.standard.set(querySnapshot!.documents[0].documentID, forKey: "userID")
                         }
                     }
             }
