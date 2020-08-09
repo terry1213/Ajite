@@ -202,7 +202,7 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
             //유저의, 현재 플레이리스트의, 노래 목록에 선택한 노래를 추가한다.
             ref = db
                 .collection("users")
-                .document(UserDefaults.standard.string(forKey: "userID")!)
+                .document(myUser.documentID)
                 .collection("playlists")
                 .document(playlistID)
                 .collection("songs")

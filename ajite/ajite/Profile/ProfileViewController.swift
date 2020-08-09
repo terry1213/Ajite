@@ -9,8 +9,6 @@
 import UIKit
 import GoogleSignIn
 
-var myUser =  User()
-
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var addFriend: UIButton!
@@ -28,8 +26,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userNameLabel.text = user.profile.name
-        myUser.name = user.profile.name
+        userNameLabel.text = myUser.name
         getData()
         bio.text = myUser.bio
     }
@@ -54,7 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func getData(){
             db
-                .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+                .collection("users").document(myUser.documentID)
                 .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")

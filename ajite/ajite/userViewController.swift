@@ -15,7 +15,6 @@ import GoogleSignIn
 import FirebaseFirestore
 
 let db = Firestore.firestore()
-let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
 var users: [User] = []
 
 class userViewController: UIViewController {
@@ -38,7 +37,7 @@ class userViewController: UIViewController {
                 for document in snap.documents {
                     let data = document.data()
                     //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
-                    if data["userID"] as? String == user.profile.email {
+                    if data["userID"] as? String == myUser.userID {
                         continue
                     }
                     let username = data["name"] as? String
@@ -117,9 +116,9 @@ extension userViewController: TableViewUser {
         print(displayUsers[index].documentID)
         db
             .collection("users").document(displayUsers[index].documentID)
-            .collection("friends").document(UserDefaults.standard.string(forKey: "userID")!).setData([
-                "userID" : user.profile.email as Any,
-                "name" : user.profile.name as Any,
+            .collection("friends").document(myUser.documentID).setData([
+                "userID" : myUser.userID as Any,
+                "name" : myUser.name as Any,
                 /*
                  친구 state 설명:
                     0 = 친구 신청 보냄
@@ -136,7 +135,7 @@ extension userViewController: TableViewUser {
                 }
             }
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("friends").document(displayUsers[index].documentID).setData([
                 "userID" : displayUsers[index].userID as Any,
                 "name" : displayUsers[index].name as Any,

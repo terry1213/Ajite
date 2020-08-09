@@ -41,7 +41,7 @@ class PlaylistSongListViewController: UIViewController {
     func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("playlists").document(source.id)
             .collection("songs").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -116,7 +116,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         guard editingStyle == .delete else { return }
         //선택한 노래를 현재 플레이리스트로부터 삭제한다.
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("playlists").document(source.id)
             .collection("songs").document(source.songs[indexPath.row].songID)
             .delete()

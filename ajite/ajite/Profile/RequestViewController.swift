@@ -22,7 +22,7 @@ class RequestViewController: UIViewController{
     
     func getUserRequest(){
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("friends").whereField("state", isEqualTo: 1).getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -75,7 +75,7 @@ extension RequestViewController: RequestTableViewUser {
     func AcceptClickCell(index: Int) {
         db
             .collection("users").document(RequestUsers[index].documentID)
-            .collection("friends").document(UserDefaults.standard.string(forKey: "userID")!).updateData([
+            .collection("friends").document(myUser.documentID).updateData([
                 /*
                  친구 state 설명:
                     0 = 친구 신청 보냄
@@ -92,7 +92,7 @@ extension RequestViewController: RequestTableViewUser {
                 }
             }
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("friends").document(RequestUsers[index].documentID).updateData([
                 /*
                  친구 state 설명:
@@ -116,7 +116,7 @@ extension RequestViewController: RequestTableViewUser {
     func DeclineClickCell(index: Int) {
         db
             .collection("users").document(RequestUsers[index].documentID)
-            .collection("friends").document(UserDefaults.standard.string(forKey: "userID")!).delete() { err in
+            .collection("friends").document(myUser.documentID).delete() { err in
                 if let err = err {
                     print("Error deleting document: \(err)")
                 } else {
@@ -124,7 +124,7 @@ extension RequestViewController: RequestTableViewUser {
                 }
             }
         db
-            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("users").document(myUser.documentID)
             .collection("friends").document(RequestUsers[index].documentID).delete() { err in
                 if let err = err {
                     print("Error deleting document: \(err)")
