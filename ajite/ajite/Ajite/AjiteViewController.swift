@@ -107,8 +107,14 @@ extension AjiteViewController : UITableViewDataSource{
           
           deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
               guard editingStyle == .delete else { return }
+            
+    //!!!!!!!!!!데이터베이스에서 빼버려주세요!!!!!!!!!!!!!!!1
+          /* self.db
+                           .collection("users").document(myUser.documentID)
+                           .collection("ajites").document(ajites[indexPath.row].ajiteID)
+                           .delete()
               ajites.remove(at: indexPath.row)
-              self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
+              self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)*/
               
           }))
           deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
@@ -123,7 +129,9 @@ extension AjiteViewController : UITableViewDataSource{
           }
 }
 
-extension AjiteViewController : UITableViewDelegate{
+    
+    
+extension AjiteViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let dataToSend = ajites[indexPath.row]
     self.performSegue(withIdentifier: "intoAjite", sender: dataToSend)
