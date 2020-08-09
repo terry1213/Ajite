@@ -43,11 +43,11 @@ class userViewController: UIViewController {
                     }
                     let username = data["name"] as? String
                     let userID = data["userID"] as? String
-                    let documentID = data["documentID"] as? String
+                    let documentID = document.documentID
                     let temUser = User()
                     temUser.name = username!
                     temUser.userID = userID!
-                    temUser.documentID = documentID!
+                    temUser.documentID = documentID
                     
                     
                     
@@ -115,14 +115,46 @@ extension userViewController: UISearchBarDelegate {
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
         print(displayUsers[index].documentID)
-        
-        db.collection("users").document(displayUsers[index].documentID as String).setData([
-            "userID":  displayUsers[index].userID,
-            "name": displayUsers[index].name,
-            
-            "documentID": displayUsers[index].documentID,
-            "request": user.profile.name as Any
-        ])
+        db
+            .collection("users").document(displayUsers[index].documentID)
+            .collection("friends").document(UserDefaults.standard.string(forKey: "userID")!).setData([
+                "userID" : user.profile.email as Any,
+                "name" : user.profile.name as Any,
+                /*
+                 친구 state 설명:
+                    0 = 친구 신청 보냄
+                    1 = 친구 신청 받음
+                    2 = 친구 상태
+                    거절하면 document 자체를 삭제
+                 */
+                "state" : 1
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added")
+                }
+            }
+        db
+            .collection("users").document(UserDefaults.standard.string(forKey: "userID")!)
+            .collection("friends").document(displayUsers[index].documentID).setData([
+                "userID" : displayUsers[index].userID as Any,
+                "name" : displayUsers[index].name as Any,
+                /*
+                 친구 state 설명:
+                    0 = 친구 신청 보냄
+                    1 = 친구 신청 받음
+                    2 = 친구 상태
+                    거절하면 document 자체를 삭제
+                 */
+                "state" : 0
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added")
+                }
+            }
     }
 }
 
