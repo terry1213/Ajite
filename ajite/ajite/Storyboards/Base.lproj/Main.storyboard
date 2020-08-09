@@ -1307,7 +1307,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8B-Os-R7F">
-                                <rect key="frame" x="20" y="184" width="335" height="395"/>
+                                <rect key="frame" x="20" y="184" width="335" height="444"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azt-9V-hMC">
                                         <rect key="frame" x="20" y="33" width="253" height="34"/>
@@ -1328,7 +1328,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-5k-chS" customClass="YoutubeVideoSearchTableView" customModule="ajite" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="86" width="295" height="289"/>
+                                        <rect key="frame" x="20" y="86" width="295" height="338"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YoutubeVideoSearchTableViewCell" rowHeight="58" id="LPM-jS-59R" customClass="YoutubeVideoSearchTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1591,7 +1591,7 @@
                                                                     </constraints>
                                                                     <state key="normal" image="plus-purple"/>
                                                                     <connections>
-                                                                        <action selector="pressedPlus:" destination="lyK-Vm-Yth" eventType="touchUpInside" id="fsO-TW-BUI"/>
+                                                                        <action selector="plusTouched:" destination="Vc0-eS-SLG" eventType="touchUpInside" id="oxY-ey-obg"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-u8-UlK">
@@ -2268,9 +2268,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xEi-qz-IQe"/>
-        <segue reference="YzI-Ue-2oM"/>
-        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="KTm-i4-nT0"/>
+        <segue reference="MaB-sY-zyl"/>
+        <segue reference="RTc-KO-dhc"/>
         <segue reference="Fvk-M5-njC"/>
     </inferredMetricsTieBreakers>
     <resources>
