@@ -82,13 +82,13 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
+        let cell = userTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
         
         cell.nameLabel?.text = displayUsers[indexPath.row].name
         cell.userIdLabel.text = displayUsers[indexPath.row].userID
         cell.cellDelegate = self
         cell.index = indexPath
-        
+        cell.delegate = self
         return cell
     }
     
@@ -158,3 +158,11 @@ extension userViewController: TableViewUser {
     }
 }
 
+extension userViewController : UserTableViewCellDelegate{
+    func sendMessage(_ UserTableViewCell: UserTableViewCell) {
+        let alert = UIAlertController (title: "Sent Request!", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+}

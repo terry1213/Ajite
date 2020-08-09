@@ -19,6 +19,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
     var cellDelegate: TableViewUser?
+    weak var delegate : UserTableViewCellDelegate?
     var index: IndexPath?
     
     
@@ -27,10 +28,18 @@ class UserTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func sendRequest(_ sender: Any) {
+    @IBAction func sendRequest(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
-        let alert = UIAlertController (title: "Sent Request!", message: nil, preferredStyle: .alert)
-               alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+   
     }
     
+    @IBAction func popUpAlert(_ sender: Any) {
+       if let delegate = delegate{
+            self.delegate?.sendMessage(self)
+        }
+    }
+}
+
+protocol UserTableViewCellDelegate : AnyObject{
+    func sendMessage(_ UserTableViewCell: UserTableViewCell)
 }

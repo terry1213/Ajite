@@ -396,7 +396,7 @@
                                             <constraint firstAttribute="width" secondItem="KTU-Jw-QzQ" secondAttribute="height" multiplier="2:1" id="Wmv-6X-doe"/>
                                         </constraints>
                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                        <state key="normal" image="enter-purple">
+                                        <state key="normal" image="enter blue">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -425,7 +425,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                                        <state key="normal" image="addpink">
+                                                        <state key="normal" image="addblue">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -994,6 +994,7 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="popUpAlert:" destination="aqZ-UF-bkQ" eventType="touchUpInside" id="I1Y-Re-xm1"/>
                                                         <action selector="sendRequest:" destination="aqZ-UF-bkQ" eventType="touchUpInside" id="LSd-Ye-wpi"/>
                                                     </connections>
                                                 </button>
@@ -1305,7 +1306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8B-Os-R7F">
-                                <rect key="frame" x="20" y="184" width="335" height="395"/>
+                                <rect key="frame" x="20" y="184" width="335" height="444"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azt-9V-hMC">
                                         <rect key="frame" x="20" y="33" width="253" height="34"/>
@@ -1326,7 +1327,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-5k-chS" customClass="YoutubeVideoSearchTableView" customModule="ajite" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="86" width="295" height="289"/>
+                                        <rect key="frame" x="20" y="86" width="295" height="338"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YoutubeVideoSearchTableViewCell" rowHeight="58" id="LPM-jS-59R" customClass="YoutubeVideoSearchTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1527,7 +1528,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JtA-iD-fBq">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="A3N-ul-FN4">
-                            <color key="tintColor" red="0.85514575240000001" green="0.65517836809999996" blue="0.88237583639999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="plusTapped:" destination="C3e-7u-qmp" id="1iz-YN-4e9"/>
                             </connections>
@@ -1936,7 +1937,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll1" translatesAutoresizingMaskIntoConstraints="NO" id="1ox-Nk-ZMg" userLabel="Background Image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="1ox-Nk-ZMg" userLabel="Background Image">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.90376268696581197" green="0.88464343550000002" blue="0.99217289689999999" alpha="0.84284855769230771" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -2267,19 +2268,19 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xEi-qz-IQe"/>
+        <segue reference="KTm-i4-nT0"/>
         <segue reference="YzI-Ue-2oM"/>
-        <segue reference="ZOl-UM-4IR"/>
-        <segue reference="sCn-aX-fjh"/>
+        <segue reference="RTc-KO-dhc"/>
+        <segue reference="Fvk-M5-njC"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="addpink" width="100" height="50"/>
+        <image name="addblue" width="100" height="50"/>
         <image name="addpurple" width="100" height="50"/>
         <image name="ajitelogo" width="200" height="200"/>
         <image name="background" width="2100" height="2800"/>
         <image name="check" width="200" height="200"/>
         <image name="checked" width="200" height="200"/>
-        <image name="enter-purple" width="100" height="50"/>
+        <image name="enter blue" width="100" height="50"/>
         <image name="hello" width="2069" height="5928"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
@@ -2291,7 +2292,6 @@
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus-purple" width="200" height="200"/>
-        <image name="scroll1" width="2100" height="3000"/>
         <image name="settings-blue" width="30" height="30"/>
         <image name="share-purple" width="100" height="50"/>
         <image name="youtube-purple" width="200" height="200"/>
