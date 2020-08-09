@@ -18,6 +18,7 @@ class AjiteRoomViewController: UIViewController {
     var currentAjite = Ajite()
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet weak var sharedSongsView: UIView!
+    @IBOutlet weak var background: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,9 @@ class AjiteRoomViewController: UIViewController {
         sharedSongsView.layer.shadowOpacity = 0.45
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
-
+        var random = arc4random_uniform(4)
+        var imageName = "scroll\(random)"
+        background.image = UIImage(named:imageName)
     }
     
     

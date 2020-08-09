@@ -16,17 +16,20 @@ class CreateAjiteViewController: UIViewController {
     var tempAjite = Ajite()
     var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
     
-    
+    private let imageViews: [UIImageView] = [.init(), .init()]
+   
 //==========================애니메이션==========================
     
     
   //Outlet들
-    @IBOutlet weak var addedFriendsTableView: UITableView!
-    @IBOutlet weak var searchFriendsTableView: UITableView!
+ 
+  
+ 
+    @IBOutlet weak var backgroundImage1: UIImageView!
+    @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
-    @IBOutlet weak var searchFriendsField: UITextField!
     @IBOutlet weak var ajiteName: UITextField!
-    @IBOutlet weak var doorImage: UIImageView!
+    
     
     //==============필요한 Outlet 과 변수들================
     
@@ -35,15 +38,31 @@ class CreateAjiteViewController: UIViewController {
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
+      
     }
-    
+  
     override func viewWillAppear(_ animated: Bool) {
-           var random = arc4random_uniform(3)
+        backgroundImage1.frame = CGRect(x: backgroundImage1.frame.origin.x, y: backgroundImage1.frame.origin.y, width: backgroundImage0.frame.size.width, height: backgroundImage0.frame.size.height)
+           var random = arc4random_uniform(4)
             imageName = "\(random)"
-            doorImage.image = UIImage(named: "door-\(imageName)")
-       }
+}
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 8.0, delay: 0.0, options:[ .autoreverse, .repeat] , animations: {
     
-    
+         var topFrame = self.backgroundImage0.frame
+            topFrame.origin.y -= topFrame.size.height
+         
+            var bottomframe = self.backgroundImage1.frame
+            
+            bottomframe.origin.y -=  bottomframe.size.height
+         self.backgroundImage0.frame = topFrame
+            self.backgroundImage1.frame = bottomframe
+       }, completion: { finished in
+         print("Napkins opened!")
+       })
+        
+    }
+  
 //=================여기부터애니메이션=======================//
     
     
