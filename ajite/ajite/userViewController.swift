@@ -115,11 +115,12 @@ extension userViewController: UISearchBarDelegate {
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
         print(displayUsers[index].documentID)
-        db.collection("users").document("\(displayUsers[index].documentID)").updateData([
-            /*"userID":  displayUsers[index].userID,
+        
+        db.collection("users").document(displayUsers[index].documentID as String).setData([
+            "userID":  displayUsers[index].userID,
             "name": displayUsers[index].name,
             
-            "documentID": displayUsers[index].documentID,*/
+            "documentID": displayUsers[index].documentID,
             "request": user.profile.name as Any
         ])
     }
