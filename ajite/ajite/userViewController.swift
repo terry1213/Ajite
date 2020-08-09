@@ -69,6 +69,7 @@ class userViewController: UIViewController {
         getUserData()
     }
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

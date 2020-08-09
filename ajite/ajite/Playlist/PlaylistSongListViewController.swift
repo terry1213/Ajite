@@ -19,6 +19,8 @@ class PlaylistSongListViewController: UIViewController {
     @IBOutlet weak var playlistName: UILabel!
     
     override func viewDidLoad() {
+         getData()
+         self.songListTableView.reloadData()
         super.viewDidLoad()
         playlistName.text = source.playlistName
           self.songListTableView.dataSource = self
@@ -30,7 +32,10 @@ class PlaylistSongListViewController: UIViewController {
         self.songListTableView.reloadData()
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+         getData()
+        self.songListTableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
            return .none
        }
@@ -124,5 +129,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        songListTableView.deselectRow(at: indexPath, animated: true)
+    }
 }
