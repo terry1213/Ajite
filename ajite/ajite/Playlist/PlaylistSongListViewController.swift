@@ -117,8 +117,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
     }
     

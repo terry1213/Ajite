@@ -14,7 +14,8 @@ class CreateAjiteViewController: UIViewController {
     let db = Firestore.firestore()
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
-    var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
+    var imageName = String()
+     var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
     
     private let imageViews: [UIImageView] = [.init(), .init()]
    
@@ -29,7 +30,6 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
-     var topFrame = CGRect()
     //==============필요한 Outlet 과 변수들================
     
     
@@ -37,7 +37,8 @@ class CreateAjiteViewController: UIViewController {
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       let random = arc4random_uniform(4)
+       imageName = "\(random)"
         
      
     }
