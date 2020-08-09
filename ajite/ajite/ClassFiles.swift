@@ -16,6 +16,7 @@ class User {
     var userID = String()
     var bio = String()
     var documentID = String()
+    var request = String()
 }
 
 

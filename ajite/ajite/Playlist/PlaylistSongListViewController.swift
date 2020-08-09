@@ -21,12 +21,13 @@ class PlaylistSongListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playlistName.text = source.playlistName
-        self.songListTableView.dataSource = self
+          self.songListTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear (_ animated: Bool){
         getData()
+        self.songListTableView.reloadData()
     }
     
     
