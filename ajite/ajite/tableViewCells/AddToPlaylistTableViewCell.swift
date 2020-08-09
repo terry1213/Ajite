@@ -8,10 +8,18 @@
 
 import UIKit
 
+protocol AddToPlaylistProtocol {
+    func checkPlaylist(index: Int)
+    func uncheckPlaylist(index: Int)
+}
+
 class AddToPlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var playlistName: UILabel!
+    var checked : Bool = false
+    var cellDelegate: AddToPlaylistProtocol?
+    var index: IndexPath?
     
     //weak var delegate : AddToPlaylistTableViewCellDelegate?
     
@@ -26,12 +34,15 @@ class AddToPlaylistTableViewCell: UITableViewCell {
     }
     
     @IBAction func checkBox(_ sender: UIButton) {
-        if checkBoxButton.image(for: .normal) == UIImage(named: "check") {
+        if checked == false {
             checkBoxButton.setImage(UIImage(named: "checked"), for: .normal)
+            cellDelegate?.checkPlaylist(index: (index?.row)!)
         }
         else {
             checkBoxButton.setImage(UIImage(named: "check"), for: .normal)
+            cellDelegate?.uncheckPlaylist(index: (index?.row)!)
         }
+        checked = !checked
     }
 }
 
