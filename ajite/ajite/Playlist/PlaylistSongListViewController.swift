@@ -22,22 +22,16 @@ class PlaylistSongListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playlistName.text = source.playlistName
-          self.songListTableView.dataSource = self
+        self.songListTableView.dataSource = self
+        self.songListTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear (_ animated: Bool){
-        getData()
+        self.getData()
         self.songListTableView.reloadData()
     }
     
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-           return .none
-       }
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
     
     func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
@@ -125,7 +119,20 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        songListTableView.deselectRow(at: indexPath, animated: true)
+    }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+             return .none
+         }
+      func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+          return false
+      }
+      
+}
+
+extension PlaylistSongListViewController : UITableViewDelegate{
     
 }
 
