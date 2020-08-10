@@ -114,9 +114,8 @@ extension userViewController: UISearchBarDelegate {
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
         print(displayUsers[index].documentID)
-        db
-            .collection("users").document(displayUsers[index].documentID)
-            .collection("friends").document(myUser.documentID).setData([
+        
+        db.collection("users").document(displayUsers[index].documentID).collection("friends").document(myUser.documentID).setData([
                 "userID" : myUser.userID as Any,
                 "name" : myUser.name as Any,
                 /*
