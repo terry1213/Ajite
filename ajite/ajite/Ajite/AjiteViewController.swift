@@ -17,7 +17,6 @@ var ajites :[Ajite] = []
 class AjiteViewController: UIViewController{
     
     @IBOutlet weak var ajiteTable: UITableView!
-    let db = Firestore.firestore()
     
  // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     override func viewDidLoad() {
@@ -107,13 +106,36 @@ extension AjiteViewController : UITableViewDataSource{
           deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
               guard editingStyle == .delete else { return }
             
-    //!!!!!!!!!!데이터베이스에서 빼버려주세요!!!!!!!!!!!!!!!1
-          /* self.db
-                           .collection("users").document(myUser.documentID)
-                           .collection("ajites").document(ajites[indexPath.row].ajiteID)
-                           .delete()
-              ajites.remove(at: indexPath.row)
-              self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)*/
+            let ajiteIDToDelete = ajites[indexPath.row].ajiteID
+            
+            db
+                .collection("users").document(myUser.documentID)
+                .collection("ajites").document(ajiteIDToDelete)
+                .delete()
+            db
+                .collection("ajites").document(ajiteIDToDelete)
+                .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    if document.data()!["memberNum"] as! Int == 1 {
+                        db
+                            .collection("ajites").document(ajiteIDToDelete)
+                            .delete()
+                    }
+                    else {
+                        db
+                            .collection("ajites").document(ajiteIDToDelete)
+                            .updateData([
+                            "memberNum" : FieldValue.increment(Int64(-1))
+                        ])
+                    }
+                    ajites.remove(at: indexPath.row)
+                    self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    print("Document does not exist")
+                }
+            }
               
           }))
           deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))

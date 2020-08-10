@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import youtube_ios_player_helper
+import FirebaseFirestore
 
 //var songs: [Song] = []
 
@@ -124,10 +125,21 @@ extension PlaylistSongListViewController : UITableViewDataSource{
             .collection("playlists").document(source.id)
             .collection("songs").document(source.songs[indexPath.row].songID)
             .delete()
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").document(source.id).updateData([
+                "songNum" : FieldValue.increment(Int64(-1))
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("SongNum successfully updated")
+                }
+            }
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
     }
     
