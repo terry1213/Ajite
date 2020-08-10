@@ -227,29 +227,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="I8z-vR-dY7">
-                                <rect key="frame" x="16" y="106" width="343" height="567.33333333333337"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5u-mG-8Eq">
+                                <rect key="frame" x="15.999999999999993" y="60" width="120.33333333333331" height="23"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" id="BIA-gD-0v9">
+                                <rect key="frame" x="8" y="95" width="359" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <nil key="scopeBarBackgroundImage"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="VWf-su-mRG" id="9vz-83-ukU"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-dc-9AT" userLabel="Add">
+                                <rect key="frame" x="259" y="674" width="100" height="50"/>
+                                <state key="normal" image="addpurple"/>
+                                <connections>
+                                    <action selector="invitation:" destination="cQm-Tp-JFH" eventType="touchUpInside" id="L3M-Bj-Gq1"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I8z-vR-dY7">
+                                <rect key="frame" x="16" y="165.99999999999997" width="343" height="491.33333333333326"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VWf-su-mRG" userLabel="Search List">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="228"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <searchBar key="tableHeaderView" contentMode="redraw" id="BIA-gD-0v9">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <nil key="scopeBarBackgroundImage"/>
-                                            </variation>
-                                            <connections>
-                                                <outlet property="delegate" destination="VWf-su-mRG" id="9vz-83-ukU"/>
-                                            </connections>
-                                        </searchBar>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFriends" id="gEa-2r-lI0" customClass="searchFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="72" width="343" height="42"/>
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gEa-2r-lI0" id="KlX-q0-3mq" customClass="searchFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xI0-I6-RyM" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
@@ -259,35 +272,23 @@
                                                                 <constraint firstAttribute="height" constant="35" id="kJq-xV-MG5"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vs-eE-iKR">
-                                                            <rect key="frame" x="60" y="11" width="101" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Member Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vs-eE-iKR">
+                                                            <rect key="frame" x="58" y="12" width="101" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQJ-26-cmz">
-                                                            <rect key="frame" x="292" y="5" width="36" height="33"/>
-                                                            <state key="normal" image="checked">
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="addToUnderTable:" destination="gEa-2r-lI0" eventType="touchUpInside" id="gLo-LA-5Td"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="8Vs-eE-iKR" secondAttribute="bottom" constant="2" id="FPj-9d-Aqq"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Vs-eE-iKR" secondAttribute="trailing" constant="20" symbolic="YES" id="GBL-JM-FiP"/>
-                                                        <constraint firstItem="8Vs-eE-iKR" firstAttribute="leading" secondItem="xI0-I6-RyM" secondAttribute="trailing" constant="10" id="PCJ-zn-QxI"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Vs-eE-iKR" secondAttribute="trailing" constant="20" symbolic="YES" id="CYR-3s-bbb"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="8Vs-eE-iKR" secondAttribute="bottom" constant="2" id="cm1-t6-reo"/>
                                                         <constraint firstItem="xI0-I6-RyM" firstAttribute="top" secondItem="KlX-q0-3mq" secondAttribute="top" constant="4" id="iV2-Nn-UyC"/>
-                                                        <constraint firstItem="qQJ-26-cmz" firstAttribute="trailing" secondItem="KlX-q0-3mq" secondAttribute="trailingMargin" id="lvp-bK-Jlq"/>
-                                                        <constraint firstItem="8Vs-eE-iKR" firstAttribute="top" secondItem="KlX-q0-3mq" secondAttribute="topMargin" id="q9x-xG-ai5"/>
-                                                        <constraint firstItem="qQJ-26-cmz" firstAttribute="top" secondItem="xI0-I6-RyM" secondAttribute="top" constant="1" id="sEh-nb-2Di"/>
+                                                        <constraint firstItem="8Vs-eE-iKR" firstAttribute="top" secondItem="KlX-q0-3mq" secondAttribute="topMargin" constant="2" id="sWm-PB-vgS"/>
+                                                        <constraint firstItem="8Vs-eE-iKR" firstAttribute="leading" secondItem="xI0-I6-RyM" secondAttribute="trailing" constant="16" id="xbe-AE-aKd"/>
                                                         <constraint firstItem="xI0-I6-RyM" firstAttribute="leading" secondItem="KlX-q0-3mq" secondAttribute="leading" constant="15" id="y33-Jf-PP9"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="addButton" destination="qQJ-26-cmz" id="aEi-89-OZJ"/>
                                                     <outlet property="searchFriendImage" destination="xI0-I6-RyM" id="VSA-5i-KIJ"/>
                                                     <outlet property="searchFriendName" destination="8Vs-eE-iKR" id="MWH-Qb-q2F"/>
                                                 </connections>
@@ -295,13 +296,13 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dds-xR-MpU">
-                                        <rect key="frame" x="0.0" y="271" width="56.333333333333336" height="23.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="233" width="56.333333333333336" height="23.333333333333314"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yac-kF-M5j" userLabel="Added Members">
-                                        <rect key="frame" x="0.0" y="337.33333333333331" width="343" height="229.99999999999994"/>
+                                        <rect key="frame" x="0.0" y="261.33333333333331" width="343" height="230"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="229.99999999999994" id="JFg-3L-HFN"/>
@@ -314,13 +315,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="43.333332061767578"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHv-Q4-MjY" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHv-Q4-MjY" userLabel="Profile Picture" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                             <rect key="frame" x="15" y="4" width="35" height="35.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="35" id="yVe-i3-ikN"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rw7-Y8-L0B" userLabel="Added Friends">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rw7-Y8-L0B" userLabel="Added Friends">
                                                             <rect key="frame" x="66" y="11.666666666666666" width="41.666666666666657" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -349,33 +350,17 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Yac-kF-M5j" firstAttribute="top" secondItem="I8z-vR-dY7" secondAttribute="top" constant="337.33333333333326" id="GXk-dr-49f"/>
-                                    <constraint firstAttribute="bottom" secondItem="Yac-kF-M5j" secondAttribute="bottom" id="Zyn-p5-Jvy"/>
-                                    <constraint firstItem="Yac-kF-M5j" firstAttribute="leading" secondItem="I8z-vR-dY7" secondAttribute="leading" id="cIK-Ks-re9"/>
-                                    <constraint firstItem="Yac-kF-M5j" firstAttribute="trailing" secondItem="VWf-su-mRG" secondAttribute="trailing" id="neV-mD-Nfd"/>
-                                    <constraint firstAttribute="trailing" secondItem="Yac-kF-M5j" secondAttribute="trailing" id="uZA-AF-zKj"/>
-                                </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5u-mG-8Eq">
-                                <rect key="frame" x="15.999999999999993" y="60.000000000000007" width="120.33333333333331" height="23.333333333333336"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-dc-9AT" userLabel="Add">
-                                <rect key="frame" x="259" y="674" width="100" height="50"/>
-                                <state key="normal" image="addpurple"/>
-                                <connections>
-                                    <action selector="invitation:" destination="cQm-Tp-JFH" eventType="touchUpInside" id="L3M-Bj-Gq1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="t4e-dc-9AT" firstAttribute="bottom" secondItem="NeK-dR-gJA" secondAttribute="bottom" id="2FA-2y-stt"/>
                             <constraint firstItem="I8z-vR-dY7" firstAttribute="leading" secondItem="NeK-dR-gJA" secondAttribute="leading" constant="16" id="ELh-jP-fAu"/>
-                            <constraint firstItem="t4e-dc-9AT" firstAttribute="top" secondItem="I8z-vR-dY7" secondAttribute="bottom" constant="0.66666666666662877" id="NA8-fF-ng2"/>
+                            <constraint firstItem="t4e-dc-9AT" firstAttribute="top" secondItem="I8z-vR-dY7" secondAttribute="bottom" constant="16.670000000000002" id="Ohn-uP-wF2"/>
+                            <constraint firstItem="NeK-dR-gJA" firstAttribute="trailing" secondItem="I8z-vR-dY7" secondAttribute="trailing" constant="16" id="Tmd-fI-6JA"/>
+                            <constraint firstItem="BIA-gD-0v9" firstAttribute="top" secondItem="s5u-mG-8Eq" secondAttribute="bottom" constant="12" id="Ur1-y1-Ux6"/>
+                            <constraint firstItem="I8z-vR-dY7" firstAttribute="top" secondItem="BIA-gD-0v9" secondAttribute="bottom" constant="15" id="bGb-YU-aKi"/>
+                            <constraint firstItem="I8z-vR-dY7" firstAttribute="leading" secondItem="NeK-dR-gJA" secondAttribute="leading" constant="16" id="c58-m7-oWH"/>
                             <constraint firstItem="s5u-mG-8Eq" firstAttribute="leading" secondItem="NeK-dR-gJA" secondAttribute="leading" constant="16" id="d19-HR-6ib"/>
                             <constraint firstItem="NeK-dR-gJA" firstAttribute="trailing" secondItem="t4e-dc-9AT" secondAttribute="trailing" constant="16" id="eMj-XU-mY9"/>
                             <constraint firstItem="s5u-mG-8Eq" firstAttribute="top" secondItem="NeK-dR-gJA" secondAttribute="top" constant="60" id="oRO-n6-TwU"/>
@@ -530,7 +515,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Ajite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-YE-B15" userLabel="Logo Ajite">
-                                        <rect key="frame" x="70.999999999999986" y="63.666666666666657" width="207.66666666666663" height="46.666666666666657"/>
+                                        <rect key="frame" x="66.666666666666671" y="61.333333333333343" width="216.66666666666663" height="49"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1487,14 +1472,14 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="631.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-84-hBt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="46.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="40"/>
                                         <color key="textColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
-                                        <rect key="frame" x="0.0" y="56.666666666666686" width="375" height="574.66666666666652"/>
+                                        <rect key="frame" x="0.0" y="59" width="375" height="572.33333333333337"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>

@@ -17,77 +17,95 @@ import FirebaseFirestore
 class FriendsToAjiteViewController: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
-    
-    var addingMembers = [User]()
+    var vcindex = 0
+    //if vcindex = 0 this request is from CreateAjite
+    //if vcindex = 1 this request is from AjiteRoomView
     var displayUsers: [User] = []
-    var addedMembers = [User]()
+    var addedMembers = [User]() //아지트에 새로 넣을 멤버들
+    var alreadyMembers = [String]() // 이미 아지트에 있는 멤버들 (vcindex == 1인 경우)
+    var createAjiteVC : CreateAjiteViewController? = nil
+    let userRef = db.collection("users")
+    var currentAjite = Ajite()
     
+      override func viewDidLoad() {
+          super.viewDidLoad()
+          self.addedMembersTable.dataSource = self
+          self.addedMembersTable.delegate = self
+          self.searchFriendsTable.dataSource = self
+          self.searchFriendsTable.delegate = self
+          getUserData()
+      }
+
     @IBAction func invitation(_ sender: Any) {
-        let inviteAlert = UIAlertController(title: "Invite to Ajite", message: "Would you like to invite friends whom you selected to your ajite?", preferredStyle: UIAlertController.Style.alert)
-        
-        inviteAlert.addAction(UIAlertAction(title: "Yes",style: .default, handler: {(action: UIAlertAction!) in
+        if vcindex == 1 {
+            let inviteAlert = UIAlertController(title: "Invite to Ajite", message: "Would you like to invite friends to your ajite?", preferredStyle: UIAlertController.Style.alert)
+            inviteAlert.addAction(UIAlertAction(title: "Add",style: .default, handler: {(action: UIAlertAction!) in
             
-            for addedUser in self.addedMembers{
-                self.userRef.document(addedUser.documentID).collection("invitation").document(addedUser.name).setData([
+                for addedUser in self.addedMembers{
+                    self.userRef.document(addedUser.documentID).collection("invitation").document(addedUser.documentID).setData([
                     "host" : myUser.name,
                     "stateInvite" : 0
-                ])
-            }
-            
-            print("invited!")
-            
-            
-            
-        }))
-        
-        inviteAlert.addAction(UIAlertAction(title: "No",style: .cancel, handler: {(action: UIAlertAction!) in
-            
-            print("invitation canceled!")
-        }))
+                    ])
+                }
+            }))
+            inviteAlert.addAction(UIAlertAction(title: "Cancel",style: .cancel, handler: nil))
+        }
+    else {
+            createAjiteVC?.addingMembers = addedMembers
+        }
     }
-    
-     let userRef = db.collection("users")
+     
     
     func getUserData(){
         
-        userRef.getDocuments{ (snapshot, error) in
-            if let err = error {
-                debugPrint("Error fetching docs: \(err)")
-            }
-            else {
-                guard let snap = snapshot else {return}
-                for document in snap.documents {
-                    let data = document.data()
-                    //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
-                    if data["userID"] as? String == myUser.userID {
-                        continue
+        if vcindex == 1 {
+            db
+                .collection("ajites").document(currentAjite.ajiteID)
+                .collection("members").getDocuments{ (snapshot, error) in
+                    if let err = error {
+                        debugPrint("Error fetching docs: \(err)")
                     }
-                    
-                    let username = data["name"] as? String
-                    let userID = data["userID"] as? String
-                    let documentID = document.documentID
-                    let temUser = User()
-                    temUser.name = username!
-                    temUser.userID = userID!
-                    temUser.documentID = documentID
-                    //전체 유저 목록에 추가
-                    self.addingMembers.append(temUser)
+                    else {
+                        guard let snap = snapshot else {return}
+                        for document in snap.documents {
+                            self.alreadyMembers.append(document.documentID)
+                        }
+                    }
                 }
-            }
-            self.searchFriendsTable.reloadData()
         }
+            userRef.document(myUser.documentID)
+                .collection("friends").getDocuments{ (snapshot, error) in
+                if let err = error {
+                    debugPrint("Error fetching docs: \(err)")
+                }
+                else {
+                    guard let snap = snapshot else {return}
+                    for document in snap.documents {
+                        let data = document.data()
+                        //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
+                        if data["userID"] as? String == myUser.userID || self.alreadyMembers.contains(document.documentID) {
+                            continue
+                        }
+                        let username = data["name"] as? String
+                        let userID = data["userID"] as? String
+                        let documentID = document.documentID
+                        let temUser = User()
+                        temUser.name = username!
+                        temUser.userID = userID!
+                        temUser.documentID = documentID
+                        //전체 유저 목록에 추가
+                        self.displayUsers.append(temUser)
+                    }
+                }
+                self.searchFriendsTable.reloadData()
+                self.addedMembersTable.reloadData()
+            }
+        
     }
     
     @IBOutlet weak var searchFriendsTable: UITableView!
     @IBOutlet weak var addedMembersTable: UITableView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.addedMembersTable.dataSource = self
-        self.addedMembersTable.delegate = self
-        self.searchFriendsTable.dataSource = self
-        self.searchFriendsTable.delegate = self
-        getUserData()
-    }
+  
 }
 
 
@@ -105,15 +123,24 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
-            return 60
+            return 55
          }
     
     
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            if tableView == self.addedMembersTable{
+                addedMembersTable.deselectRow(at: indexPath, animated: true)
+            }
+            else{
+                searchFriendsTable.deselectRow(at: indexPath, animated: true)
+            }
+         }
         
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if tableView == self.addedMembersTable{
-            let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
-            cell.addedMembersLabel.text = addedMembers[indexPath.row].name
+                let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
+                cell.addedMembersLabel.text = addedMembers[indexPath.row].name
             //!!!!!!!!!!!구현하기 유저 이미지 불러오기 !!!!!!!  cell.addedFriendsProfile.image = UIImage(named: addedMembers[indexPath.row].)
        
             }
@@ -126,34 +153,23 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             }
             return UITableViewCell()
     }
+    
         
-        
-    // 플레이리스트를 삭제할 때 사용하는 코드
+//search bar 에서 실수로 추가한 아이가 있으면 실수로 added member에 추가된 유저를 다시 삭제하는 기능
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
            
             if tableView == self.addedMembersTable{
-                
                 guard editingStyle == .delete else { return }
-               addedMembers.remove(at: indexPath.row)
+                displayUsers.append(addedMembers[indexPath.row])
+                addedMembers.remove(at: indexPath.row)
                 
                 self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
             }
-    }
-        
-        func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-            let movedObject = addedMembers[fromIndexPath.row]
-               addedMembers.remove(at: fromIndexPath.row)
-               addedMembers.insert(movedObject, at: to.row)
-            }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.searchFriendsTable{
-            //여기에 먼저 해당 아지트의 멤버를 뒤진다
-            //해당 아지트에 멤버가 없으면 addingMembers에 append한다
-            
+            searchFriendsTable.reloadData()
+            addedMembersTable.reloadData()
         }
         
-    }
+    
 }
 
 
@@ -181,5 +197,9 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
 extension FriendsToAjiteViewController: searchUser{
     func onClickCell(index: Int) {
         addedMembers.append(displayUsers[index])
+        displayUsers.remove(at: index)
+        searchFriendsTable.reloadData()
+        addedMembersTable.reloadData()
+        
     }
 }

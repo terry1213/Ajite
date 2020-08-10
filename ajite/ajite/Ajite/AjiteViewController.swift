@@ -19,7 +19,6 @@ class AjiteViewController: UIViewController{
     @IBOutlet weak var ajiteTable: UITableView!
     let db = Firestore.firestore()
     
-    
  // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     override func viewDidLoad() {
         super.viewDidLoad()
