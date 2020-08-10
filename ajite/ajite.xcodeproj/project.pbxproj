@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16157E8424E0D8DC00C850C7 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */; };
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
 		1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */; };
@@ -82,6 +83,7 @@
 		08125D956A5BDEFF9E72F287 /* Pods-ajite-ajiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.release.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		08CE5227FC726640CFE6A21B /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SongCollectionViewCell.swift; path = ajite/tableViewCells/SongCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = "ajite/UIResources Swift/made.otf"; sourceTree = SOURCE_ROOT; };
 		1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		1658B1E324DC7BC80023469B /* tableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */,
 				165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */,
 				1658B1E624DC95D20023469B /* MyFriendsTableViewCell.swift */,
 				1658B1E424DC8A630023469B /* AddToPlaylistTableViewCell.swift */,
@@ -265,10 +268,10 @@
 				1698669424D9569800946C2F /* ClassFiles.swift */,
 				1658B1DA24DC3AF70023469B /* Ajite */,
 				161C12D624CC97B5002E9246 /* Storyboards */,
-				16C133DE24D84EBE00DA4177 /* Playlist */,
 				1658B1EA24DC9A440023469B /* Profile */,
 				164B126624D17AC00069B5EC /* TabBar Item VC */,
 				1658B1E324DC7BC80023469B /* tableViewCells */,
+				16C133DE24D84EBE00DA4177 /* Playlist */,
 				16C133D524D71BD700DA4177 /* UIResources Swift */,
 				1658B1E124DC7ADC0023469B /* Assets.xcassets */,
 				16AE4AFA24CC761800807ECB /* Info.plist */,
@@ -643,6 +646,7 @@
 				6EE115E824DF0ECD00CA4170 /* RequestTableViewCell.swift in Sources */,
 				164B126124D17A640069B5EC /* HomeViewController.swift in Sources */,
 				16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */,
+				16157E8424E0D8DC00C850C7 /* SongCollectionViewCell.swift in Sources */,
 				DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */,
 				1645EB1424D6B246007ACBF5 /* CircleImageView.swift in Sources */,
 				DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */,

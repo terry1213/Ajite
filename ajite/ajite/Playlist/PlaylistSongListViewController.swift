@@ -28,9 +28,8 @@ class PlaylistSongListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear (_ animated: Bool){
+    override func viewDidAppear (_ animated: Bool){
         self.getData()
-        self.songListTableView.reloadData()
     }
     
     
@@ -75,9 +74,12 @@ class PlaylistSongListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ShareSongsViewController {
             vc.playlistID = source.id
+            vc.listVC = self
+
         }
         else if let vc = segue.destination as? AddToPlaylistViewController {
             vc.addingSong = source.songs[nextSourceIndex]
+             vc.listVC = self
         }
     }
 }
@@ -120,9 +122,9 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+ /*   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
-    }
+    }*/
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
              return .none

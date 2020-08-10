@@ -10,7 +10,7 @@ import UIKit
 
 //:::::::::::::아지트 방 안을 보여주는 뷰 컨트롤러 :::::::::::
 
-
+var sharedSongs = [Song]()
 class AjiteRoomViewController: UIViewController {
     
     
@@ -19,10 +19,15 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet weak var sharedSongsView: UIView!
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var songCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let layout = songCollection.collectionViewLayout as! UICollectionViewFlowLayout
+        songCollection.translatesAutoresizingMaskIntoConstraints = false
+        songCollection.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: "collection")
+        songCollection.delegate = self
+        songCollection.dataSource = self
         //아지트이름 뽑아옴
         ajiteName.text = currentAjite.name
         //shared Songs View 에 섀도우 집어넣음
@@ -31,7 +36,7 @@ class AjiteRoomViewController: UIViewController {
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
         var random = arc4random_uniform(2)
-        var randomBackground = "scroll\(random)"
+        let randomBackground = "scroll\(random)"
         background.image = UIImage(named:randomBackground)
     }
     
@@ -48,13 +53,29 @@ class AjiteRoomViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          switch segue.identifier {
                case "viewMembers":
-                   var vc = segue.destination as! MemberViewController
+                   let vc = segue.destination as! MemberViewController
                    vc.memberViewAjite = currentAjite
                default:
-                   print("Undefined Segue indentifier: \(segue.identifier)")
+                print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
                }
 
     }
 
     
+}
+
+extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sharedSongs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        let width = view.frame.size.width/1.3
+        return CGSize (width: width , height: width/2.3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection", for: indexPath) as! SongCollectionViewCell
+        return cell
+    }
 }
