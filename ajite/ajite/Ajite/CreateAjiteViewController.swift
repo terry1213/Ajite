@@ -33,7 +33,25 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
     //==============필요한 Outlet 과 변수들================
-    
+    override func viewDidAppear(_ animated: Bool) {
+        db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
+            if let err = error {
+                debugPrint("Error fetching docs: \(err)")
+            }
+            else {
+                let invitationAlert = UIAlertController(title:"You are invited!!!", message: "Would you like to accept invitation?",preferredStyle: UIAlertController.Style.alert)
+                invitationAlert.addAction(UIAlertAction(title:"Yes",style: .default, handler: {(action:UIAlertAction!)in
+                    
+                    
+                }))
+                invitationAlert.addAction(UIAlertAction(title:"No",style: .cancel, handler: {
+                    (action:UIAlertAction!)
+                    in
+                }))
+            }
+            
+        }
+    }
     
     
     //로드가 되었을 때
