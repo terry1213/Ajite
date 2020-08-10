@@ -127,12 +127,8 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
- /*   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
-    }*/
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
     }
     
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
@@ -141,7 +137,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func addChildVC() {
         addChild(youtubePlayerViewController)
-        view.addSubview(youtubePlayerViewController.view)
+       // UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
+         //   self.view.addSubview(self.youtubePlayerViewController.view)
+        //       }, completion: nil)
+       view.addSubview(youtubePlayerViewController.view)
         youtubePlayerViewController.didMove(toParent: self)
         setYoutubePlayerVCConstraints()
     }
@@ -180,10 +179,13 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
     func toYoutubePlayer(index: Int) {
         if self.children.count > 0 {
             if youtubePlayerViewController.index == index {
+
                 let viewControllers:[UIViewController] = self.children
+                print(viewControllers)
                 for viewContoller in viewControllers{
                     viewContoller.willMove(toParent: nil)
-                    viewContoller.view.removeFromSuperview()
+                 
+                   viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                 }
             }

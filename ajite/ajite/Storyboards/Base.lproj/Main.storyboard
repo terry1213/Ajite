@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -24,8 +24,9 @@
                             <userLayoutGuide location="16" affinity="minX"/>
                         </userGuides>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="aQ7-zq-nMy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hello" translatesAutoresizingMaskIntoConstraints="NO" id="akh-wF-DBU">
+                                <rect key="frame" x="-441" y="0.0" width="1257" height="5252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-IK-pcj">
                                 <rect key="frame" x="0.0" y="94" width="375" height="684"/>
@@ -92,16 +93,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Onb-IK-pcj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="D2g-n3-aou"/>
-                            <constraint firstItem="aQ7-zq-nMy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rr3-tM-kPQ"/>
-                            <constraint firstItem="aQ7-zq-nMy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="WIo-CQ-NNz"/>
                             <constraint firstItem="Onb-IK-pcj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="WJu-7p-4Do"/>
-                            <constraint firstItem="aQ7-zq-nMy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="Wfc-a1-cRt"/>
-                            <constraint firstItem="aQ7-zq-nMy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eXF-7t-rz1"/>
                             <constraint firstItem="Onb-IK-pcj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="r03-uL-QKW"/>
                             <constraint firstItem="Onb-IK-pcj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="yYq-Vw-h4b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImage0" destination="akh-wF-DBU" id="jCl-tc-bZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,7 +384,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hello" translatesAutoresizingMaskIntoConstraints="NO" id="ydA-1S-WKt">
-                                <rect key="frame" x="-730" y="0.0" width="1561" height="5535"/>
+                                <rect key="frame" x="-499" y="0.0" width="1257" height="5535"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyj-Ef-ZIL" userLabel="Create Ajite View ">
@@ -2287,7 +2287,7 @@
         <segue reference="xEi-qz-IQe"/>
         <segue reference="YzI-Ue-2oM"/>
         <segue reference="ZOl-UM-4IR"/>
-        <segue reference="sCn-aX-fjh"/>
+        <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
