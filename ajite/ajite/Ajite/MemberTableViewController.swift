@@ -46,6 +46,7 @@ class MemberViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        member.removeAll()
         memberTableView.dataSource = self
         memberTableView.delegate = self
         getUserRequest()
@@ -80,6 +81,13 @@ extension MemberViewController : UITableViewDataSource{
        indexPath: IndexPath) -> CGFloat {
                return 60
             }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addMembersOriginal"{
+            let vc = segue.destination as! FriendsToAjiteViewController
+            vc.vcindex = 1
+            vc.currentAjite = currentAjite
+        }
+    }
 }
 
 extension MemberViewController: memberTableView {

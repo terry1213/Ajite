@@ -13,12 +13,13 @@ import FirebaseFirestore
 
 
 class CreateAjiteViewController: UIViewController {
-    let db = Firestore.firestore()
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
     var imageName = String()
      var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
-   
+   var addingMembers = [User]()
+     let userRef = db.collection("users")
+    //FriendstoAjite Controller 에서 adding Member epdlxj qkedkdhfEo dldyd
 //==========================애니메이션==========================
     
     
@@ -142,7 +143,6 @@ class CreateAjiteViewController: UIViewController {
     //아지트 버튼 "Enter" 누를 때 등장
     @IBAction func pressedEnter(_ sender: Any) {
         
-        
     //아지트 이름 생성할때 이름 text field 에 아무것도 없으면
         if ajiteName.text!.trimmingCharacters(in: .whitespaces).isEmpty{
             //alert 메세지가 뜬다
@@ -171,7 +171,7 @@ class CreateAjiteViewController: UIViewController {
                     
                     //현재 아지트 아이디
                     
-                    self.db
+                    db
                         .collection("ajites")
                         .document(ref!.documentID)
                         .collection("members").document(myUser.documentID)
@@ -180,7 +180,7 @@ class CreateAjiteViewController: UIViewController {
                             "name" : myUser.name as Any
                         ])
                     
-                    self.db
+                    db
                         .collection("users")
                         .document(myUser.documentID)
                         .collection("ajites").document(ref!.documentID)
@@ -188,7 +188,13 @@ class CreateAjiteViewController: UIViewController {
                             "name" : self.ajiteName.text as Any,
                             "ajiteImageString" : self.imageName
                         ])
-                    
+                    for addingUser in self.addingMembers{
+                        self.userRef.document(addingUser.documentID)
+                        .collection("invitation").document(addingUser.documentID).setData([
+                                       "host" : myUser.name,
+                                       "stateInvite" : 0
+                                       ])
+                    }
                     let newAjite = Ajite()
                     newAjite.name = self.ajiteName.text!
                     //newAjite.members = []
@@ -228,7 +234,7 @@ class CreateAjiteViewController: UIViewController {
         if var vc = segue.destination as? AjiteRoomViewController{
         vc.currentAjite = tempAjite
         } else if var vc = segue.destination as? FriendsToAjiteViewController {
-            print("hi")
+            vc.vcindex = 0
         }
     }
 }
