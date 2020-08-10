@@ -16,7 +16,6 @@ class BiographyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
     
@@ -35,7 +34,17 @@ class BiographyViewController: UIViewController {
     
     @IBAction func pressedDone(_ sender: Any) {
         if changed {
-        myUser.bio = biographyTF.text!
+            myUser.bio = biographyTF.text!
+            db
+                .collection("users").document(myUser.documentID).updateData([
+                    "bio" : biographyTF.text!
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("User's bio successfully updated")
+                    }
+                }
         }
         dismiss(animated: true)
     }
