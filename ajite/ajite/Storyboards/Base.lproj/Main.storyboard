@@ -553,7 +553,6 @@
                                     <constraint firstItem="wGP-Fu-HOd" firstAttribute="leading" secondItem="Xyj-Ef-ZIL" secondAttribute="leading" constant="50" id="Xgj-nA-HU3"/>
                                     <constraint firstItem="wGP-Fu-HOd" firstAttribute="top" secondItem="ger-qG-bCn" secondAttribute="bottom" constant="20.670000000000002" id="h5h-fL-P5E"/>
                                     <constraint firstItem="ger-qG-bCn" firstAttribute="centerX" secondItem="Liw-YE-B15" secondAttribute="centerX" id="m7y-od-6Zz"/>
-                                    <constraint firstItem="ger-qG-bCn" firstAttribute="top" secondItem="Liw-YE-B15" secondAttribute="bottom" constant="36" id="mvx-21-Wdg"/>
                                     <constraint firstItem="ger-qG-bCn" firstAttribute="top" secondItem="Liw-YE-B15" secondAttribute="bottom" constant="36" id="nnq-rg-LtV"/>
                                     <constraint firstAttribute="trailing" secondItem="wGP-Fu-HOd" secondAttribute="trailing" constant="50" id="rLv-oN-k78"/>
                                     <constraint firstItem="S7g-9t-oiv" firstAttribute="top" secondItem="ger-qG-bCn" secondAttribute="bottom" constant="78" id="sy9-9D-8wk"/>
@@ -1102,7 +1101,7 @@
                                                     <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="aGs-fq-yYE">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="collection" id="aGs-fq-yYE" customClass="SongCollectionViewCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="9" width="300" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uo1-OE-VoH">
@@ -1201,6 +1200,13 @@
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="300" height="128"/>
+                                                        <connections>
+                                                            <outlet property="artistName" destination="ZHx-pX-z6m" id="cD3-dN-QN0"/>
+                                                            <outlet property="sharedMember" destination="sHF-Ic-d1q" id="qh7-EO-kug"/>
+                                                            <outlet property="songImage" destination="XF1-FA-2ZT" id="HsY-RE-UIp"/>
+                                                            <outlet property="songName" destination="bt0-zX-uaB" id="P3t-mk-31C"/>
+                                                            <outlet property="tappedPlus" destination="Wh2-C4-vsW" id="2Hd-fd-Kux"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -1295,6 +1301,7 @@
                         <outlet property="ajiteName" destination="yMw-Ha-biV" id="Uh8-BF-5A8"/>
                         <outlet property="background" destination="6uQ-Yk-hKk" id="5jV-ry-M8p"/>
                         <outlet property="sharedSongsView" destination="JY2-Bh-xfF" id="mE6-Px-hzI"/>
+                        <outlet property="songCollection" destination="nPd-RD-SgJ" id="Pz8-wR-VwW"/>
                         <segue destination="3ve-0e-ZXD" kind="presentation" identifier="viewMembers" id="9cY-5Y-XQE"/>
                     </connections>
                 </viewController>
@@ -1311,7 +1318,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8B-Os-R7F">
-                                <rect key="frame" x="20" y="184" width="335" height="444"/>
+                                <rect key="frame" x="20" y="184" width="335" height="395"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azt-9V-hMC">
                                         <rect key="frame" x="20" y="33" width="253" height="34"/>
@@ -1332,7 +1339,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-5k-chS" customClass="YoutubeVideoSearchTableView" customModule="ajite" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="86" width="295" height="338"/>
+                                        <rect key="frame" x="20" y="86" width="295" height="289"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YoutubeVideoSearchTableViewCell" rowHeight="58" id="LPM-jS-59R" customClass="YoutubeVideoSearchTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1573,19 +1580,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2uQ-ld-cEQ">
                                 <rect key="frame" x="0.0" y="178" width="375" height="541"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-OE-UTt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="498"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.63666866987179482" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="60" id="Vc0-eS-SLG" customClass="songTableViewCell" customModule="ajite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="76" id="Vc0-eS-SLG" customClass="songTableViewCell" customModule="ajite" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="76"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vc0-eS-SLG" id="JV1-SG-Wk7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XxK-WI-Pp9" userLabel="Button Stack">
-                                                            <rect key="frame" x="277" y="12.666666666666664" width="78" height="35"/>
+                                                            <rect key="frame" x="277" y="20.666666666666671" width="78" height="35"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54d-l0-7D6">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -1612,13 +1619,13 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGO-uo-oyq">
-                                                            <rect key="frame" x="14.999999999999996" y="20" width="39.666666666666657" height="20.333333333333329"/>
+                                                            <rect key="frame" x="14.999999999999996" y="28" width="39.666666666666657" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swB-Dq-v9i">
-                                                            <rect key="frame" x="15" y="45.666666666666664" width="33" height="4"/>
+                                                            <rect key="frame" x="15" y="53.666666666666664" width="33" height="11.999999999999993"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1679,7 +1686,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="pD6-GM-ggr">
                             <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="YTT-Lv-6TJ" kind="showDetail" id="KTm-i4-nT0"/>
+                                <segue destination="YTT-Lv-6TJ" kind="presentation" id="KTm-i4-nT0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2277,10 +2284,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KTm-i4-nT0"/>
-        <segue reference="MaB-sY-zyl"/>
-        <segue reference="RTc-KO-dhc"/>
-        <segue reference="reF-Mh-huZ"/>
+        <segue reference="xEi-qz-IQe"/>
+        <segue reference="YzI-Ue-2oM"/>
+        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="sCn-aX-fjh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>

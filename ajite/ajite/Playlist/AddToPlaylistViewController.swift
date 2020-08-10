@@ -14,6 +14,7 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     var addOrNot : [Bool] = []
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!
+    var listVC: PlaylistSongListViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
                     ])
             }
         }
+        listVC?.getData()
         dismiss(animated: true)
     }
 }

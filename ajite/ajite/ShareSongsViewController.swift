@@ -72,7 +72,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var youtubeVideoTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
+    var listVC: PlaylistSongListViewController? = nil
     //검색된 결과(유튜브 데이터 모델)
     var youTubeModel: YouTubeModel?
     //기본 url, 마지막 'q=' 이후에 검색어 붙여서 사용
@@ -96,6 +96,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func pressShare(_ sender: Any) {
+        listVC?.getData()
         dismiss(animated: true)
     }
     
