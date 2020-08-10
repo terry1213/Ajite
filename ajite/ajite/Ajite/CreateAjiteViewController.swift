@@ -145,7 +145,8 @@ class CreateAjiteViewController: UIViewController {
             var ref: DocumentReference? = nil
             ref = db.collection("ajites").addDocument(data: [
                 "name": ajiteName.text as Any,
-                "ajiteImageString": imageName
+                "ajiteImageString": imageName,
+                "memberNum" : 1
             ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
