@@ -196,8 +196,11 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
             }
         }
         else {
-            youtubePlayerViewController.index = index
             addChildVC()
+            if youtubePlayerViewController.index != index {
+                youtubePlayerViewController.index = index
+                youtubePlayerViewController.playCertainVideo()
+            }
         }
         toggleSongListTableViewConstraints()
     }
