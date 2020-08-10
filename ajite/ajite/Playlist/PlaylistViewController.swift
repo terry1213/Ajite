@@ -16,6 +16,11 @@ class PlaylistViewController: UIViewController{
 
     //outlets and variables
     @IBOutlet weak var playlistTableView: UITableView!
+    
+    var playlistTableViewShortConstraint: NSLayoutConstraint?
+    var playlistTableViewFullConstraint : NSLayoutConstraint?
+    
+    
     var shouldAnimateFirstRow = false
     let db = Firestore.firestore()
     
@@ -24,10 +29,7 @@ class PlaylistViewController: UIViewController{
         super.viewDidLoad()
         self.playlistTableView.dataSource = self
         self.playlistTableView.delegate = self
-     
-        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
-       
-      
+        //내비게이션 컨트롤러를 transparent 하게 바꿔준다
 
     }
     
@@ -133,9 +135,6 @@ class PlaylistViewController: UIViewController{
           }
           destination.source = sendingPlaylist
       }
-
-    
-   
     
 }
 extension PlaylistViewController: UITableViewDataSource {
