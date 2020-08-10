@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import youtube_ios_player_helper
 
 var songs: [Song] = []
 
@@ -15,28 +16,23 @@ class PlaylistSongListViewController: UIViewController {
     
     //outlet & variables
     var source = Playlist()
+    var nextSourceIndex : Int = -1
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var playlistName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playlistName.text = source.playlistName
-          self.songListTableView.dataSource = self
+        self.songListTableView.dataSource = self
+        self.songListTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear (_ animated: Bool){
-        getData()
+        self.getData()
         self.songListTableView.reloadData()
     }
     
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-           return .none
-       }
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
     
     func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
@@ -76,13 +72,12 @@ class PlaylistSongListViewController: UIViewController {
         }
     }
     
-    @IBAction func pressedPlus(_ sender: Any) {
-       performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ShareSongsViewController {
             vc.playlistID = source.id
+        }
+        else if let vc = segue.destination as? AddToPlaylistViewController {
+            vc.addingSong = source.songs[nextSourceIndex]
         }
     }
 }
@@ -104,6 +99,8 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         cell.songName.text = source.songs[indexPath.row].name
         //해당 노래의 아티스트(채널) 이름을 라벨에 적음
         cell.artistName.text = source.songs[indexPath.row].artist
+        cell.cellDelegate = self
+        cell.index = indexPath
         return cell
     }
     
@@ -123,6 +120,29 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        songListTableView.deselectRow(at: indexPath, animated: true)
+    }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+             return .none
+         }
+      func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+          return false
+      }
+      
+}
+
+extension PlaylistSongListViewController : UITableViewDelegate{
     
+}
+
+extension PlaylistSongListViewController : PlaylistSongListProtocol {
+    func toAddToPlaylist(index: Int) {
+        nextSourceIndex = index
+        performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
+    }
+    func toYoutubePlayer(index: Int) {
+        
+    }
 }

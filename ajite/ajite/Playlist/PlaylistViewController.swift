@@ -16,6 +16,11 @@ class PlaylistViewController: UIViewController{
 
     //outlets and variables
     @IBOutlet weak var playlistTableView: UITableView!
+    
+    var playlistTableViewShortConstraint: NSLayoutConstraint?
+    var playlistTableViewFullConstraint : NSLayoutConstraint?
+    
+    
     var shouldAnimateFirstRow = false
     let db = Firestore.firestore()
     
@@ -24,16 +29,12 @@ class PlaylistViewController: UIViewController{
         super.viewDidLoad()
         self.playlistTableView.dataSource = self
         self.playlistTableView.delegate = self
-     
-        //내비게이션 컨트롤러를 transparent 하게 바꿔줌
-       
-      
+        //내비게이션 컨트롤러를 transparent 하게 바꿔준다
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.getData()
-        self.playlistTableView.reloadData()
     }
     
    
@@ -96,6 +97,8 @@ class PlaylistViewController: UIViewController{
             
             let random = arc4random_uniform(4)
             let imageName = "\(random)"
+            
+            
             var ref: DocumentReference? = nil
             //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
             ref = self.db
@@ -132,9 +135,6 @@ class PlaylistViewController: UIViewController{
           }
           destination.source = sendingPlaylist
       }
-
-    
-   
     
 }
 extension PlaylistViewController: UITableViewDataSource {
@@ -150,7 +150,7 @@ extension PlaylistViewController: UITableViewDataSource {
         //해당 플레이리스트 이름을 라벨에 적음
         cell.playlistName.text = playlists[indexPath.row].playlistName
         //해당 플레이리스트에 속한 노래의 개수를 적음
-        cell.numberOfSongsInPlaylist.text = " \(playlists[indexPath.row].songs.count) songs"
+        cell.numberOfSongsInPlaylist.text = "\(playlists[indexPath.row].songs.count) songs"
         //해당 플레이리스트의 이미지를 불러온다.
         cell.playlistImage.image = UIImage(named: "record-\( playlists[indexPath.row].playlistImageString)")
         return cell
@@ -210,3 +210,11 @@ extension PlaylistViewController: UITableViewDelegate {
    
 }
 
+extension PlaylistViewController : songTableViewCellDelegate{
+    func toYoutubePlayer(index: Int) {
+             let alert = UIAlertController (title: "Sent Request!", message: nil, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+           self.present(alert, animated: true, completion: nil)
+    }
+    
+}

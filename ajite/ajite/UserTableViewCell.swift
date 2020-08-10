@@ -17,7 +17,9 @@ class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var sendButton: UIButton!
     var cellDelegate: TableViewUser?
+    weak var delegate : UserTableViewCellDelegate?
     var index: IndexPath?
     
     
@@ -26,8 +28,18 @@ class UserTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func sendRequest(_ sender: Any) {
+    @IBAction func sendRequest(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
+   
     }
     
+    @IBAction func popUpAlert(_ sender: Any) {
+       if let delegate = delegate{
+            self.delegate?.sendMessage(self)
+        }
+    }
+}
+
+protocol UserTableViewCellDelegate : AnyObject{
+    func sendMessage(_ UserTableViewCell: UserTableViewCell)
 }

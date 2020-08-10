@@ -14,6 +14,7 @@ class FriendsToAjiteViewController: UIViewController {
     var addingMembers = [User]()
     var addedMembers = [User]()
     
+    
     @IBOutlet weak var searchFriendsTable: UITableView!
     @IBOutlet weak var addedMembersTable: UITableView!
     override func viewDidLoad() {

@@ -16,7 +16,8 @@ class CreateAjiteViewController: UIViewController {
     let db = Firestore.firestore()
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
-    var imageName = String() //생성되는 아지트에 이미지 집어 넣을때
+    var imageName = String()
+     var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
     
     private let imageViews: [UIImageView] = [.init(), .init()]
    
@@ -27,12 +28,10 @@ class CreateAjiteViewController: UIViewController {
  
   
  
-    @IBOutlet weak var backgroundImage1: UIImageView!
+  
     @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
-    
-    
     //==============필요한 Outlet 과 변수들================
     
     
@@ -40,34 +39,36 @@ class CreateAjiteViewController: UIViewController {
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+       let random = arc4random_uniform(4)
+       imageName = "\(random)"
+        
+     
     }
   
     override func viewWillAppear(_ animated: Bool) {
-        backgroundImage1.frame = CGRect(x: backgroundImage1.frame.origin.x, y: backgroundImage1.frame.origin.y, width: backgroundImage0.frame.size.width, height: backgroundImage0.frame.size.height)
-           var random = arc4random_uniform(4)
-            imageName = "\(random)"
-}
-    override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 8.0, delay: 0.0, options:[ .autoreverse, .repeat] , animations: {
-    
-         var topFrame = self.backgroundImage0.frame
-            topFrame.origin.y -= topFrame.size.height
-         
-            var bottomframe = self.backgroundImage1.frame
-            
-            bottomframe.origin.y -=  bottomframe.size.height
-         self.backgroundImage0.frame = topFrame
-            self.backgroundImage1.frame = bottomframe
-       }, completion: { finished in
-         print("Napkins opened!")
-       })
+        self.backgroundImage0.transform = .identity
+        animateView()
         
+}
+    
+    func animateView(){
+        UIView.animate(withDuration: 20.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
+                      self.topFrame = self.backgroundImage0.frame
+
+            self.topFrame.origin.y -= self.topFrame.size.height/1.3
+                            
+                              
+                      self.backgroundImage0.frame = self.topFrame
+                            
+        }, completion: { finished in
+            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.3        })
     }
   
 //=================여기부터애니메이션=======================//
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.layer.removeAllAnimations()
+    }
     
     //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
 /* @IBAction func add(_ sender: Any) {
@@ -207,8 +208,11 @@ class CreateAjiteViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! AjiteRoomViewController
+        if var vc = segue.destination as? AjiteRoomViewController{
         vc.currentAjite = tempAjite
+        } else if var vc = segue.destination as? FriendsToAjiteViewController {
+            print("hi")
+        }
     }
 }
 

@@ -73,4 +73,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
         }
     }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myFriendsTableView.deselectRow(at: indexPath, animated: true)
+    }
 }

@@ -30,9 +30,9 @@ class AjiteRoomViewController: UIViewController {
         sharedSongsView.layer.shadowOpacity = 0.45
         sharedSongsView.layer.shadowOffset = .zero
         sharedSongsView.layer.shadowRadius = 5
-        var random = arc4random_uniform(4)
-        var imageName = "scroll\(random)"
-        background.image = UIImage(named:imageName)
+        var random = arc4random_uniform(2)
+        var randomBackground = "scroll\(random)"
+        background.image = UIImage(named:randomBackground)
     }
     
     
