@@ -7,18 +7,25 @@
 
 import UIKit
 
+protocol memberTableView{
+    func OnClickCell(index: Int)
+}
+
 class memberInAjiteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memberProfile: CircleImageView!
     @IBOutlet weak var memberName: UILabel!
+    var cellDelegate: memberTableView?
+    var index: IndexPath?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    //+버튼을 누를시 동작하는 메서드
+    @IBAction func sendMemberToAjite(_ selected: Any) {
+        cellDelegate?.OnClickCell(index: (index?.row)!)
         // Configure the view for the selected state
     }
 
