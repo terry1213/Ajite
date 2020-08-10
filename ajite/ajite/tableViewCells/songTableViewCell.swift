@@ -10,6 +10,7 @@ import UIKit
 
 protocol PlaylistSongListProtocol {
     func toAddToPlaylist(index: Int)
+    func toYoutubePlayer(index: Int)
 }
 
 class songTableViewCell: UITableViewCell {
@@ -37,7 +38,7 @@ class songTableViewCell: UITableViewCell {
     }
     
     @IBAction func youtubeTouched(_ sender: Any) {
-        if let delegate = delegate{ self.delegate?.toYoutubePlayer(index: index!.row)}
+        cellDelegate?.toYoutubePlayer(index: (index?.row)!)
     }
 }
 

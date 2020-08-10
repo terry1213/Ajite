@@ -72,11 +72,11 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var youtubeVideoTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
+    var listVC: PlaylistSongListViewController? = nil
     //검색된 결과(유튜브 데이터 모델)
     var youTubeModel: YouTubeModel?
     //기본 url, 마지막 'q=' 이후에 검색어 붙여서 사용
-    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id(videoId),snippet(channelTitle,title,thumbnails(default(url))))&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg&q="
+    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id(videoId),snippet(channelTitle,title,thumbnails(default(url))))&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyA56mjgLpsdf1Sz6AqKuNSTIIuyQHpED2c&q="
     /*
      keys
         AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg
@@ -96,6 +96,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func pressShare(_ sender: Any) {
+        listVC?.getData()
         dismiss(animated: true)
     }
     

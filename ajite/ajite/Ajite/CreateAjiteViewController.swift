@@ -18,8 +18,6 @@ class CreateAjiteViewController: UIViewController {
     var tempAjite = Ajite()
     var imageName = String()
      var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
-    
-    private let imageViews: [UIImageView] = [.init(), .init()]
    
 //==========================애니메이션==========================
     

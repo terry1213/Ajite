@@ -26,8 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //이전 아이디로 로그인
             signIn.restorePreviousSignIn()
             //로그인 화면을 root view로 설정
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
-            window?.rootViewController = mainTabBarController
+//            let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+//            window?.rootViewController = mainTabBarController
         }
         else {
             //로그인 화면을 root view로 설정

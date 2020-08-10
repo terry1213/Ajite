@@ -43,12 +43,14 @@ class Playlist {
 }
 
 class Song {
+    var sharedPerson : String
     var name : String
     var artist : String
     var thumbnailImageUrl : String
     var videoID : String
     var songID : String
     init(){
+        sharedPerson = ""
         name = ""
         artist = ""
         thumbnailImageUrl = ""

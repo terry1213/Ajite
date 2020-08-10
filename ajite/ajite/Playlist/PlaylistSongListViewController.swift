@@ -10,11 +10,14 @@ import UIKit
 import Firebase
 import youtube_ios_player_helper
 
-var songs: [Song] = []
+//var songs: [Song] = []
 
 class PlaylistSongListViewController: UIViewController {
     
     //outlet & variables
+    let youtubePlayerViewController = YoutubePlayerViewController()
+    var songListShortConstraint: NSLayoutConstraint?
+    var songListFullConstraint: NSLayoutConstraint?
     var source = Playlist()
     var nextSourceIndex : Int = -1
     @IBOutlet weak var songListTableView: UITableView!
@@ -25,12 +28,13 @@ class PlaylistSongListViewController: UIViewController {
         playlistName.text = source.playlistName
         self.songListTableView.dataSource = self
         self.songListTableView.delegate = self
+        setSongListTableViewConstraints()
+        youtubePlayerViewController.youtubeVideos = source
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear (_ animated: Bool){
+    override func viewDidAppear (_ animated: Bool){
         self.getData()
-        self.songListTableView.reloadData()
     }
     
     
@@ -75,9 +79,12 @@ class PlaylistSongListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ShareSongsViewController {
             vc.playlistID = source.id
+            vc.listVC = self
+
         }
         else if let vc = segue.destination as? AddToPlaylistViewController {
             vc.addingSong = source.songs[nextSourceIndex]
+             vc.listVC = self
         }
     }
 }
@@ -106,7 +113,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
-            return 60
+            return 70
          }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -120,17 +127,44 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-             return .none
-         }
-      func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-          return false
-      }
-      
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func addChildVC() {
+        addChild(youtubePlayerViewController)
+       // UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
+         //   self.view.addSubview(self.youtubePlayerViewController.view)
+        //       }, completion: nil)
+       view.addSubview(youtubePlayerViewController.view)
+        youtubePlayerViewController.didMove(toParent: self)
+        setYoutubePlayerVCConstraints()
+    }
+    
+    func setYoutubePlayerVCConstraints() {
+        youtubePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90).isActive = true
+        youtubePlayerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        youtubePlayerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
+    }
+    
+    func setSongListTableViewConstraints() {
+        songListTableView.translatesAutoresizingMaskIntoConstraints = false
+        songListFullConstraint = view.constraints.first { $0.identifier == "SongListTableViewTop" }
+        songListFullConstraint?.isActive = true
+        songListShortConstraint = songListTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 290)
+        songListShortConstraint?.isActive = false
+    }
+    
+    func toggleSongListTableViewConstraints() {
+        songListFullConstraint?.isActive = !(songListFullConstraint?.isActive)!
+        songListShortConstraint?.isActive = !(songListShortConstraint?.isActive)!
+    }
 }
 
 extension PlaylistSongListViewController : UITableViewDelegate{
@@ -143,6 +177,31 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
         performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
     func toYoutubePlayer(index: Int) {
-        
+        if self.children.count > 0 {
+            if youtubePlayerViewController.index == index {
+
+                let viewControllers:[UIViewController] = self.children
+                print(viewControllers)
+                for viewContoller in viewControllers{
+                    viewContoller.willMove(toParent: nil)
+                 
+                   viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                }
+            }
+            else {
+                youtubePlayerViewController.index = index
+                youtubePlayerViewController.playCertainVideo()
+                return
+            }
+        }
+        else {
+            addChildVC()
+            if youtubePlayerViewController.index != index {
+                youtubePlayerViewController.index = index
+                youtubePlayerViewController.playCertainVideo()
+            }
+        }
+        toggleSongListTableViewConstraints()
     }
 }
