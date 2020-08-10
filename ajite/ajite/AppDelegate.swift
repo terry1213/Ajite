@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 "userID": myUser.userID as Any,
                 "name": myUser.name as Any,
                 "profileImageURL": myUser.profileImageURL as Any
-            ]) { err in
+            ], merge: true) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {

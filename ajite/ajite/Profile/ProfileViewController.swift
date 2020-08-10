@@ -11,6 +11,7 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    @IBOutlet weak var friendNumLabel: UILabel!
     @IBOutlet weak var addFriend: UIButton!
     @IBOutlet weak var myFriendsTableView: UITableView!
     @IBOutlet weak var bio: UILabel!
@@ -26,9 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userNameLabel.text = myUser.name
         getData()
-        bio.text = myUser.bio
         let data = try? Data(contentsOf: URL(string: myUser.profileImageURL)!)
         DispatchQueue.main.async {
             self.profilePicture.image = UIImage(data: data!)
@@ -56,12 +55,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getData(){
             db
                 .collection("users").document(myUser.documentID)
+                .getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        myUser.bio = document.data()!["bio"] == nil ? "" : document.data()!["bio"] as! String
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+            db
+                .collection("users").document(myUser.documentID)
                 .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     myUser.friends.removeAll()
                     var temUser : User
+                    self.friendNumLabel.text = "(\(querySnapshot!.documents.count))"
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         temUser = User()
@@ -72,6 +81,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                     DispatchQueue.main.async{
                         //테이블에 불러온 정보를 보여준다.
+                        self.userNameLabel.text = myUser.name
+                        self.bio.text = myUser.bio
                         self.myFriendsTableView.reloadData()
                     }
                 }
