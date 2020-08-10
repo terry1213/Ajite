@@ -53,7 +53,9 @@ class FriendsToAjiteViewController: UIViewController {
     else {
             createAjiteVC?.addingMembers = addedMembers
         }
+        dismiss(animated: true)
     }
+    
      
     
     func getUserData(){
@@ -129,10 +131,15 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if tableView == self.addedMembersTable{
-                addedMembersTable.deselectRow(at: indexPath, animated: true)
+               
+               // addedMembersTable.deselectRow(at: indexPath, animated: true)
             }
             else{
-                searchFriendsTable.deselectRow(at: indexPath, animated: true)
+                addedMembers.append(displayUsers[indexPath.row])
+                displayUsers.remove(at: indexPath.row)
+              //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
+                searchFriendsTable.reloadData()
+                addedMembersTable.reloadData()
             }
          }
         
