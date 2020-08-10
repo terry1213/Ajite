@@ -17,6 +17,7 @@ class User {
     var bio = String()
     var documentID = String()
     var request = String()
+    var profileImageURL = String()
 }
 
 

@@ -29,6 +29,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         userNameLabel.text = myUser.name
         getData()
         bio.text = myUser.bio
+        let data = try? Data(contentsOf: URL(string: myUser.profileImageURL)!)
+        DispatchQueue.main.async {
+            self.profilePicture.image = UIImage(data: data!)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
