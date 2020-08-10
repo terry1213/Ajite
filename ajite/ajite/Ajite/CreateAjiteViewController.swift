@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+
+
 class CreateAjiteViewController: UIViewController {
     let db = Firestore.firestore()
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
@@ -150,6 +152,8 @@ class CreateAjiteViewController: UIViewController {
                 } else {
                     print("Ajite added with ID: \(ref!.documentID)")
                     
+                    //현재 아지트 아이디
+                    
                     self.db
                         .collection("ajites")
                         .document(ref!.documentID)
@@ -174,7 +178,7 @@ class CreateAjiteViewController: UIViewController {
                     newAjite.sharedSongs = []
                     newAjite.ajiteImageString = self.imageName
                     newAjite.ajiteID = ref!.documentID
-
+                    //currentAjite.append(newAjite)
                     //"create" segue 를 이용해 그 세그와 연결된 뷰 컨트롤러로 이동함
                     self.tempAjite = newAjite
                     self.performSegue(withIdentifier: "create", sender: self)

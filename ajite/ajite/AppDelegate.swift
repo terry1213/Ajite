@@ -42,26 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             //유저 로그인 후
             
-            let db = Firestore.firestore()
-            db.collection("users").whereField("userID", isEqualTo: myUser.userID as Any)
-                .getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    } else {
-                        if querySnapshot!.documents.count == 0 {
-                            db.collection("users").document(myUser.documentID).setData([
-                                "userID": myUser.userID as Any,
-                                "name": myUser.name as Any
-                            ]) { err in
-                                if let err = err {
-                                    print("Error adding document: \(err)")
-                                } else {
-                                    print("User document added")
-                                }
-                            }
-                        }
-                    }
-            }
+//            let db = Firestore.firestore()
+//            db.collection("users").document(myUser.documentID).setData([
+//                "userID": myUser.userID as Any,
+//                "name": myUser.name as Any
+//            ]) { err in
+//                if let err = err {
+//                    print("Error adding document: \(err)")
+//                } else {
+//                    print("User document added")
+//                }
+//            }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
@@ -72,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
         // Perform any operations when the user disconnects from app here.
         // ...
     }

@@ -47,7 +47,7 @@ class AjiteRoomViewController: UIViewController {
     
     //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
     @IBAction func pressedMembers(_ sender: Any) {
-    performSegue(withIdentifier: "viewMembers", sender: self)
+        performSegue(withIdentifier: "viewMembers", sender: currentAjite)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,8 +60,7 @@ class AjiteRoomViewController: UIViewController {
                }
 
     }
-
-    
+ 
 }
 
 extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
