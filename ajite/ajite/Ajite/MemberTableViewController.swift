@@ -46,6 +46,7 @@ class MemberViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        member.removeAll()
         memberTableView.dataSource = self
         memberTableView.delegate = self
         getUserRequest()
