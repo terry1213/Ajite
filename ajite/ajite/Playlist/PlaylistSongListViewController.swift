@@ -149,10 +149,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func addChildVC() {
         addChild(youtubePlayerViewController)
-       // UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
-         //   self.view.addSubview(self.youtubePlayerViewController.view)
-        //       }, completion: nil)
-       view.addSubview(youtubePlayerViewController.view)
+       UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
+           self.view.addSubview(self.youtubePlayerViewController.view)
+              }, completion: nil)
+     //  view.addSubview(youtubePlayerViewController.view)
         youtubePlayerViewController.didMove(toParent: self)
         setYoutubePlayerVCConstraints()
     }
@@ -193,7 +193,6 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
             if youtubePlayerViewController.index == index {
 
                 let viewControllers:[UIViewController] = self.children
-                print(viewControllers)
                 for viewContoller in viewControllers{
                     viewContoller.willMove(toParent: nil)
                  
