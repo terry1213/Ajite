@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import youtube_ios_player_helper
+import FirebaseFirestore
 
 //var songs: [Song] = []
 
@@ -124,10 +125,21 @@ extension PlaylistSongListViewController : UITableViewDataSource{
             .collection("playlists").document(source.id)
             .collection("songs").document(source.songs[indexPath.row].songID)
             .delete()
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").document(source.id).updateData([
+                "songNum" : FieldValue.increment(Int64(-1))
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("SongNum successfully updated")
+                }
+            }
         source.songs.remove(at: indexPath.row)
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songListTableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -137,10 +149,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func addChildVC() {
         addChild(youtubePlayerViewController)
-       // UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
-         //   self.view.addSubview(self.youtubePlayerViewController.view)
-        //       }, completion: nil)
-       view.addSubview(youtubePlayerViewController.view)
+       UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
+           self.view.addSubview(self.youtubePlayerViewController.view)
+              }, completion: nil)
+     //  view.addSubview(youtubePlayerViewController.view)
         youtubePlayerViewController.didMove(toParent: self)
         setYoutubePlayerVCConstraints()
     }
@@ -181,7 +193,6 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
             if youtubePlayerViewController.index == index {
 
                 let viewControllers:[UIViewController] = self.children
-                print(viewControllers)
                 for viewContoller in viewControllers{
                     viewContoller.willMove(toParent: nil)
                  

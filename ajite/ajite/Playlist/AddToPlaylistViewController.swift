@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     
@@ -39,7 +40,24 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
                         "artist" : addingSong.artist,
                         "thumbnailImageUrl" : addingSong.thumbnailImageUrl,
                         "videoID" : addingSong.videoID
-                    ])
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Song successfully added to playlist")
+                        }
+                    }
+                db
+                    .collection("users").document(myUser.documentID)
+                    .collection("playlists").document(playlists[index].id).updateData([
+                        "songNum" : FieldValue.increment(Int64(1))
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("SongNum successfully updated")
+                        }
+                    }
             }
         }
         listVC?.getData()

@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         myUser.documentID = user.userID
         myUser.userID = user.profile.email
         myUser.name = user.profile.name
+        myUser.profileImageURL = user.profile.imageURL(withDimension: 200).absoluteString
         
         guard let authentification = user.authentication else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: authentification.idToken, accessToken: authentification.accessToken)
@@ -42,17 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             //유저 로그인 후
             
-//            let db = Firestore.firestore()
-//            db.collection("users").document(myUser.documentID).setData([
-//                "userID": myUser.userID as Any,
-//                "name": myUser.name as Any
-//            ]) { err in
-//                if let err = err {
-//                    print("Error adding document: \(err)")
-//                } else {
-//                    print("User document added")
-//                }
-//            }
+            let db = Firestore.firestore()
+            db.collection("users").document(myUser.documentID).setData([
+                "userID": myUser.userID as Any,
+                "name": myUser.name as Any,
+                "profileImageURL": myUser.profileImageURL as Any
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("User document added")
+                }
+            }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")

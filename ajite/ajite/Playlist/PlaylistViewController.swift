@@ -59,6 +59,7 @@ class PlaylistViewController: UIViewController{
                     //플레이리스트 이미지 이름 받기
                     temPlaylist.playlistImageString = document.data()["playlistImageString"] as! String
                     //플레이리스트 아이디 받기
+                    temPlaylist.songNum = document.data()["songNum"] as! Int
                     temPlaylist.id = document.documentID
                     //플레이리스트 목록에 추가
                     playlists.append(temPlaylist)
@@ -107,7 +108,8 @@ class PlaylistViewController: UIViewController{
                     //입력한 이름을 등록
                     "name": newPlaylist,
                     //랜덤으로 선택된 이미지의 이름을 등록
-                    "playlistImageString": imageName
+                    "playlistImageString": imageName,
+                    "songNum": 0
             ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
@@ -150,7 +152,7 @@ extension PlaylistViewController: UITableViewDataSource {
         //해당 플레이리스트 이름을 라벨에 적음
         cell.playlistName.text = playlists[indexPath.row].playlistName
         //해당 플레이리스트에 속한 노래의 개수를 적음
-        cell.numberOfSongsInPlaylist.text = "\(playlists[indexPath.row].songs.count) songs"
+        cell.numberOfSongsInPlaylist.text = "\(playlists[indexPath.row].songNum) songs"
         //해당 플레이리스트의 이미지를 불러온다.
         cell.playlistImage.image = UIImage(named: "record-\( playlists[indexPath.row].playlistImageString)")
         return cell
@@ -188,7 +190,7 @@ extension PlaylistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let movedObject = playlists[fromIndexPath.row]
-           playlists.remove(at: fromIndexPath.row)
+            playlists.remove(at: fromIndexPath.row)
             playlists.insert(movedObject, at: to.row)
         }
     
