@@ -28,11 +28,7 @@ class userViewController: UIViewController {
           self.view.endEditing(true)
 
     }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     let userRef = db.collection("users")
     
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)

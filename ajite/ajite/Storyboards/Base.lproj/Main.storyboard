@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="894.20289855072474" y="93.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Notification View Controller-->
         <scene sceneID="r4J-cE-W8B">
             <objects>
-                <viewController id="tVI-51-YZm" sceneMemberID="viewController">
+                <viewController id="tVI-51-YZm" customClass="notificationViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFX-g8-ePi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
                                 <rect key="frame" x="0.0" y="136" width="414" height="635"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="1GC-UR-K3G">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCell" rowHeight="60" id="1GC-UR-K3G" customClass="notificationCell" customModule="ajite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1GC-UR-K3G" id="And-ah-o3z">
@@ -184,8 +184,15 @@
                                                 <constraint firstItem="1Hy-NK-e5w" firstAttribute="leading" secondItem="cDb-xs-E0J" secondAttribute="trailing" constant="8" id="wzq-ga-Gvs"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ajiteName" destination="1Hy-NK-e5w" id="55r-es-IXr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tVI-51-YZm" id="dWA-gG-PIs"/>
+                                    <outlet property="delegate" destination="tVI-51-YZm" id="RNg-E7-zsl"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -201,6 +208,9 @@
                         <viewLayoutGuide key="safeArea" id="cLs-d2-gsC"/>
                     </view>
                     <navigationItem key="navigationItem" id="kCP-wu-cVo"/>
+                    <connections>
+                        <outlet property="notificationTV" destination="yoF-qu-LHl" id="Iqi-yu-mTi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52W-5i-bp5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -327,7 +337,7 @@
                                 </constraints>
                                 <state key="normal" image="addpurple"/>
                                 <connections>
-                                    <action selector="invitation:" destination="cQm-Tp-JFH" eventType="touchUpInside" id="L3M-Bj-Gq1"/>
+                                    <action selector="invitation:" destination="cQm-Tp-JFH" eventType="touchUpInside" id="rQa-BU-iFc"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VWf-su-mRG" userLabel="Search List">
@@ -2561,7 +2571,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fv8-EL-tzo"/>
         <segue reference="xEi-qz-IQe"/>
-        <segue reference="MaB-sY-zyl"/>
+        <segue reference="YzI-Ue-2oM"/>
         <segue reference="ZOl-UM-4IR"/>
         <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>

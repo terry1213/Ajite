@@ -51,6 +51,8 @@
 		16F1C0FA24DE549B00DEF4F5 /* ManageFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1C0F924DE549B00DEF4F5 /* ManageFriendsViewController.swift */; };
 		16F1C0FC24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1C0FB24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift */; };
 		6E38B3F424DB0A3000208254 /* UserlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */; };
+		6E94FD8524E2C360002FCC34 /* notificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E94FD8424E2C360002FCC34 /* notificationViewController.swift */; };
+		6E94FD8A24E2D5BB002FCC34 /* notificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E94FD8924E2D5BB002FCC34 /* notificationCell.swift */; };
 		6EC6260224DD5A5F00B7555B /* userViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC6260024DD5A5F00B7555B /* userViewController.swift */; };
 		6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */; };
 		6EE115E824DF0ECD00CA4170 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */; };
@@ -137,6 +139,8 @@
 		2FBFF8655778FA2B7DA06F6D /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
 		4B2E9E9C741E25598B70FDB2 /* Pods_ajiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserlistTableViewCell.swift; path = ajite/tableViewCells/UserlistTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		6E94FD8424E2C360002FCC34 /* notificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationViewController.swift; sourceTree = "<group>"; };
+		6E94FD8924E2D5BB002FCC34 /* notificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationCell.swift; sourceTree = "<group>"; };
 		6EC6260024DD5A5F00B7555B /* userViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userViewController.swift; sourceTree = "<group>"; };
 		6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				165E15FC24DE89C500CD4F03 /* FriendsToAjiteViewController.swift */,
 				16CE647824DB9C97001F9383 /* MemberTableViewController.swift */,
 				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
+				6E94FD8424E2C360002FCC34 /* notificationViewController.swift */,
 				164B126224D17A6F0069B5EC /* AjiteViewController.swift */,
 				164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */,
 			);
@@ -223,6 +228,7 @@
 				167BC0A524DB01030041A510 /* songTableViewCell.swift */,
 				6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */,
 				DEADE04924E25E2200DB5ED2 /* MyFriendsTableViewCell.swift */,
+				6E94FD8924E2D5BB002FCC34 /* notificationCell.swift */,
 			);
 			path = tableViewCells;
 			sourceTree = "<group>";
@@ -667,6 +673,7 @@
 				16F1C0FA24DE549B00DEF4F5 /* ManageFriendsViewController.swift in Sources */,
 				1695F5AA24DAB13700B9601E /* AjiteTableViewCell.swift in Sources */,
 				16E0094B24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift in Sources */,
+				6E94FD8A24E2D5BB002FCC34 /* notificationCell.swift in Sources */,
 				164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */,
 				6E38B3F424DB0A3000208254 /* UserlistTableViewCell.swift in Sources */,
 				16C133E624D852C200DA4177 /* PlaylistSongListViewController.swift in Sources */,
@@ -678,6 +685,7 @@
 				1658B1DC24DC3BC90023469B /* memberInAjiteTableViewCell.swift in Sources */,
 				DEADE04A24E25E2200DB5ED2 /* MyFriendsTableViewCell.swift in Sources */,
 				6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */,
+				6E94FD8524E2C360002FCC34 /* notificationViewController.swift in Sources */,
 				165E15FF24DE8B7200CD4F03 /* searchFriendsTableView.swift in Sources */,
 				DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */,
 				165E15FD24DE89C500CD4F03 /* FriendsToAjiteViewController.swift in Sources */,
