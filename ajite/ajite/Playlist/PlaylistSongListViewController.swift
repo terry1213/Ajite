@@ -19,6 +19,7 @@ class PlaylistSongListViewController: UIViewController {
     let youtubePlayerViewController = YoutubePlayerViewController()
     var songListShortConstraint: NSLayoutConstraint?
     var songListFullConstraint: NSLayoutConstraint?
+    var currentUser = User()
     var source = Playlist()
     var nextSourceIndex : Int = -1
     @IBOutlet weak var songListTableView: UITableView!
@@ -42,7 +43,7 @@ class PlaylistSongListViewController: UIViewController {
     func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
         db
-            .collection("users").document(myUser.documentID)
+            .collection("users").document(currentUser.documentID)
             .collection("playlists").document(source.id)
             .collection("songs").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -68,7 +69,7 @@ class PlaylistSongListViewController: UIViewController {
                     //노래 목록에 받아온 노래 추가
                     self.source.songs.append(temSong)
                 }
-                print("The number of playlists is \(playlists.count)")
+                print("The number of playlists is \(self.source.songs.count)")
                 DispatchQueue.main.async{
                     //새로 받아온 정보로 테이블 업데이트
                     self.songListTableView.reloadData()
@@ -121,12 +122,12 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         guard editingStyle == .delete else { return }
         //선택한 노래를 현재 플레이리스트로부터 삭제한다.
         db
-            .collection("users").document(myUser.documentID)
+            .collection("users").document(currentUser.documentID)
             .collection("playlists").document(source.id)
             .collection("songs").document(source.songs[indexPath.row].songID)
             .delete()
         db
-            .collection("users").document(myUser.documentID)
+            .collection("users").document(currentUser.documentID)
             .collection("playlists").document(source.id).updateData([
                 "songNum" : FieldValue.increment(Int64(-1))
             ]) { err in
