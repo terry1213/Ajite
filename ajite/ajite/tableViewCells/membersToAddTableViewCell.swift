@@ -1,19 +1,17 @@
 //
-//  AddedFriendsTableViewCell.swift
+//  membersToAddTableViewCell.swift
 //  ajite
 //
-//  Created by 노은솔 on 2020/08/08.
+//  Created by 노은솔 on 2020/08/11.
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 
-class AddedFriendsTableViewCell: UITableViewCell {
+class membersToAddTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addedFriendsProfile: CircleImageView!
-    @IBOutlet weak var addedMembersLabel: UILabel!
-    
-    
+    @IBOutlet weak var memberName: UILabel!
+    @IBOutlet weak var memberImage: CircleImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +24,5 @@ class AddedFriendsTableViewCell: UITableViewCell {
     }
 
 }
-
-//소속:
-//Description:
+//소속: CreateAjiteViewConrtoller
+//Description: 생성될 아지트 화면에 확실하게 추가되는 멤버들을 보여주는 화면
