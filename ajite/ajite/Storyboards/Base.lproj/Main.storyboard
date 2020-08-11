@@ -2152,14 +2152,14 @@
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="TPV-cN-wzZ">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="settings-blue" id="IFb-ea-AjY">
+                            <barButtonItem title="Item" image="settings-navy" id="IFb-ea-AjY">
                                 <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="Obz-hZ-rO8" kind="show" id="Bpx-mS-o5w"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="paperplane" catalog="system" id="PMJ-yh-V2J">
-                                <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="Xch-ak-g1h" kind="show" id="tky-2I-NLI"/>
                                 </connections>
@@ -2374,13 +2374,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(# of Playlists) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZ0-Ac-D5X">
-                                                <rect key="frame" x="105" y="8" width="97.666666666666686" height="19.666666666666671"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2457,7 +2450,6 @@
                     <navigationItem key="navigationItem" id="ZNk-ye-9pF"/>
                     <connections>
                         <outlet property="bio" destination="UAX-Z5-UaQ" id="5uo-ue-FQs"/>
-                        <outlet property="playlistNumLabel" destination="HZ0-Ac-D5X" id="NdH-7J-HWW"/>
                         <outlet property="profilePicture" destination="usc-Ux-ww1" id="8gN-JY-aI8"/>
                         <outlet property="userNameLabel" destination="3wH-dU-a8J" id="Fxz-sp-m8x"/>
                         <outlet property="userPlaylistsTableView" destination="RvS-oC-Ckg" id="c6z-43-MvQ"/>
@@ -2514,7 +2506,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus-navy" width="200" height="200"/>
         <image name="plus-purple" width="200" height="200"/>
-        <image name="settings-blue" width="30" height="30"/>
+        <image name="settings-navy" width="30" height="30"/>
         <image name="share-purple" width="100" height="50"/>
         <image name="youtube-purple" width="200" height="200"/>
     </resources>
