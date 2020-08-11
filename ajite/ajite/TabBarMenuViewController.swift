@@ -16,8 +16,17 @@ class TabBarMenuViewController: UITabBarController {
         delegate = self
         // Do any additional setup after loading the view.
     }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
 
+    }
 
 }
 
@@ -37,7 +46,8 @@ class TabBarMenuViewController: UITabBarController {
 
 extension TabBarMenuViewController: UITabBarControllerDelegate  {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-
+        
+        
         guard let fromView = selectedViewController?.view, let toView = viewController.view else {
           return false // Make sure you want this as false
         }

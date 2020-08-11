@@ -16,7 +16,16 @@ import FirebaseFirestore
 
 
 class FriendsToAjiteViewController: UIViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
+
+    }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     @IBOutlet var searchBar: UISearchBar!
     var vcindex = 0
     //if vcindex = 0 this request is from CreateAjite
