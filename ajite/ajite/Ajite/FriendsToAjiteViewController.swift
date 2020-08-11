@@ -14,6 +14,7 @@ import FirebaseDatabase
 import GoogleSignIn
 import FirebaseFirestore
 
+
 class FriendsToAjiteViewController: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
@@ -23,7 +24,7 @@ class FriendsToAjiteViewController: UIViewController {
     var displayUsers: [User] = []
     var addedMembers = [User]() //아지트에 새로 넣을 멤버들
     var alreadyMembers = [String]() // 이미 아지트에 있는 멤버들 (vcindex == 1인 경우)
-    var createAjiteVC : CreateAjiteViewController? = nil
+    var delegate : FriendsToAjiteDelegate?
     let userRef = db.collection("users")
     var currentAjite = Ajite()
     
@@ -51,7 +52,9 @@ class FriendsToAjiteViewController: UIViewController {
             inviteAlert.addAction(UIAlertAction(title: "Cancel",style: .cancel, handler: nil))
         }
     else {
-            createAjiteVC?.addingMembers = addedMembers
+            
+            self.delegate?.sendUsersBack(sendingMembers: addedMembers)
+          
         }
         dismiss(animated: true)
     }
@@ -132,7 +135,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if tableView == self.addedMembersTable{
                
-               // addedMembersTable.deselectRow(at: indexPath, animated: true)
+                addedMembersTable.deselectRow(at: indexPath, animated: true)
             }
             else{
                 addedMembers.append(displayUsers[indexPath.row])
@@ -201,7 +204,7 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
     }
 }
 
-extension FriendsToAjiteViewController: searchUser{
+/*extension FriendsToAjiteViewController: searchUser{
     func onClickCell(index: Int) {
         addedMembers.append(displayUsers[index])
         displayUsers.remove(at: index)
@@ -209,4 +212,9 @@ extension FriendsToAjiteViewController: searchUser{
         addedMembersTable.reloadData()
         
     }
+}*/
+
+
+protocol FriendsToAjiteDelegate {
+    func sendUsersBack(sendingMembers : [User])
 }

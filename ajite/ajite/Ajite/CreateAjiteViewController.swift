@@ -12,13 +12,14 @@ import FirebaseFirestore
 
 
 
-class CreateAjiteViewController: UIViewController {
+class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
+
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
     var imageName = String()
-     var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
-   var addingMembers = [User]()
-     let userRef = db.collection("users")
+    var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
+    var addingMembers = [User]()
+    let userRef = db.collection("users")
     //FriendstoAjite Controller 에서 adding Member epdlxj qkedkdhfEo dldyd
 //==========================애니메이션==========================
     
@@ -32,6 +33,7 @@ class CreateAjiteViewController: UIViewController {
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
     //==============필요한 Outlet 과 변수들================
+    
     override func viewDidAppear(_ animated: Bool) {
         db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
             if let err = error {
@@ -63,8 +65,10 @@ class CreateAjiteViewController: UIViewController {
     }
   
     override func viewWillAppear(_ animated: Bool) {
+        print(addingMembers.first?.name)
         self.backgroundImage0.transform = .identity
         animateView()
+        
         
 }
     
@@ -81,68 +85,23 @@ class CreateAjiteViewController: UIViewController {
             self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.3        })
     }
   
-//=================여기부터애니메이션=======================//
     
     override func viewWillDisappear(_ animated: Bool) {
         self.view.layer.removeAllAnimations()
     }
+
     
-    //"add" 버튼을 누르면 들어가는 애니메이션이 동작한다
-/* @IBAction func add(_ sender: Any) {
-        animateIn(desiredView: blurEffect)
-        animateIn(desiredView: popUpView)
+    func sendUsersBack(sendingMembers: [User]) {
+        addingMembers = sendingMembers
+        memberTableView.reloadData()
     }
-    //popup 에 있는 "add" 버튼을 누르면 애니메이션 동작함
-    @IBAction func finished(_ sender: Any) {
-        animateOut(desiredView: popUpView)
-        animateOut(desiredView: blurEffect)
-    }
-    
-    
-    func animateIn (desiredView : UIView){
-        let backgroundview = self.view!
-        //팝업이 들어오기 전 상태
-        backgroundview.addSubview(desiredView)
-        desiredView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        desiredView.alpha = 0
-        desiredView.center = backgroundview.center
-        //팝업 애니메이션 후 상태
-        UIView.animate(withDuration: 0.6, animations: {
-            desiredView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                   desiredView.alpha = 1
-        })
-    }
-    
-    
-    //친구 추가 다했을 때 팝업 창을 닫게 됨
-    func animateOut (desiredView: UIView){
-        UIView.animate(withDuration: 0.6, animations: {desiredView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            desiredView.alpha = 0}, completion: { _ in
-                desiredView.removeFromSuperview()
-        })
-        
-    }
-    
-    //다른 곳에 터지 하면 일어남
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first! as UITouch
-        
-        if touch.view != popUpView{
-            animateOut(desiredView: popUpView)
-            animateOut(desiredView: blurEffect)
-        }
-    }
-    
-    */
-//=================여기까지 애니메이션=======================//
-    
     
     
     
     
     //아지트 버튼 "Enter" 누를 때 등장
     @IBAction func pressedEnter(_ sender: Any) {
-        
+
     //아지트 이름 생성할때 이름 text field 에 아무것도 없으면
         if ajiteName.text!.trimmingCharacters(in: .whitespaces).isEmpty{
             //alert 메세지가 뜬다
@@ -212,30 +171,40 @@ class CreateAjiteViewController: UIViewController {
     
     
     
-    //새로운 멤버 추가하기 ! 이 방법은 아마 난중에 바꿔야할 것 같다.
-    func addMember (newAjite: Ajite, newUser: User){
-//        if newAjite.members.contains(newUser){
-//            let alert = UIAlertController(title: "Existing Member", message: "This member is already part of your Ajite! ", preferredStyle: .alert)
-//                //alert 액션이다.
-//            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-//                NSLog("The \"OK\" alert occured.")}))
-//                
-//            self.present(alert, animated: true, completion: nil)
-//                return
-//        }
-//        else{
-//            newAjite.members.append(newUser)
-//        }
-    }
-
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var vc = segue.destination as? AjiteRoomViewController{
+        if let vc = segue.destination as? AjiteRoomViewController{
         vc.currentAjite = tempAjite
-        } else if var vc = segue.destination as? FriendsToAjiteViewController {
+        } else if let vc = segue.destination as? FriendsToAjiteViewController {
+            vc.delegate = self
             vc.vcindex = 0
         }
     }
+}
+
+
+extension CreateAjiteViewController : UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return addingMembers.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+                  return 1
+              }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = memberTableView.dequeueReusableCell(withIdentifier: "members", for: indexPath) as! membersToAddTableViewCell
+        cell.memberName.text = addingMembers[indexPath.row].name
+        //연우오빠 여기 프로필 집어넣어주세용 !!!!! memberImage.image = UIImage(named:)
+        return cell
+       
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt
+     indexPath: IndexPath) -> CGFloat {
+             return 60
+          }
+    
 }
 
