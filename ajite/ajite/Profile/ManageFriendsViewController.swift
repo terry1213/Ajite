@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import UIKit
 import Firebase
 import CoreData
 import FirebaseDatabase
 import GoogleSignIn
 import FirebaseFirestore
 
-class ManageFriendsViewController: UIViewController, UITableViewDelegate {
+class ManageFriendsViewController: UIViewController{
     
     let userRef = db.collection("users")
     func getFriendData(){
@@ -42,6 +41,7 @@ class ManageFriendsViewController: UIViewController, UITableViewDelegate {
             self.manageFriendsTableView.reloadData()
         }
     }
+    
     @IBOutlet weak var manageFriendsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -54,10 +54,32 @@ class ManageFriendsViewController: UIViewController, UITableViewDelegate {
         print(myUser.friends.count)
         // Do any additional setup after loading the view.
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
 }
 //manageFriendProfile //manageFriendsName
-extension ManageFriendsViewController : UITableViewDataSource, FriendUser {
+extension ManageFriendsViewController : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myUser.friends.count
+    }
+    
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = manageFriendsTableView.dequeueReusableCell(withIdentifier: "manageFriendsCell", for: indexPath) as! ManageFriendsTableViewCell
+         cell.manageFriendsName.text = myUser.friends[indexPath.row].name
+        //cell.manageFriendProfile.image = UIImage(named: playlists[indexPath.row].playlistImageString)
+        cell.cellDelegate = self
+        cell.index = indexPath
+        cell.cellDelegate = self
+        return cell
+    }
+    
+    
+    /*
     func onClickCell(index: Int) {
         let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
          
@@ -75,7 +97,7 @@ extension ManageFriendsViewController : UITableViewDataSource, FriendUser {
          deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
          self.present(deleteAlert, animated: true, completion: nil)
         
-    }
+    }*/
     
     /*
     func deletion(index: Int) {
@@ -115,18 +137,6 @@ extension ManageFriendsViewController : UITableViewDataSource, FriendUser {
     func numberOfSections(in tableView: UITableView) -> Int {
        return 1
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myUser.friends.count
-    }
-    
-        
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = manageFriendsTableView.dequeueReusableCell(withIdentifier: "manageFriendsCell", for: indexPath) as! ManageFriendsTableViewCell
-         cell.manageFriendsName.text = myUser.friends[indexPath.row].name
-        //cell.manageFriendProfile.image = UIImage(named: playlists[indexPath.row].playlistImageString)
-        return cell
-    }
         
         func tableView(_ tableView: UITableView, heightForRowAt
         indexPath: IndexPath) -> CGFloat {
@@ -146,4 +156,40 @@ extension ManageFriendsViewController : UITableViewDataSource, FriendUser {
         }
 }
 
+extension ManageFriendsViewController: FriendUser{
+    func onClickCell(index: Int) {
+        let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
+            
+           myUser.friends.remove(at: index)
+           //self.manageFriendsTableView.deleteRows(at: [IndexPath], with: .automatic)
+            
+            db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
+            
+            db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
+            
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    
+}
 
+extension ManageFriendsViewController: ManageFriendViewCellDelegate {
+    func deletion(_ ManageFriendsTableViewCell: ManageFriendsTableViewCell, index: Int) {
+        
+        print("clicked")
+    
+        db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
+        
+        db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
+        myUser.friends.remove(at: index)
+        //self.manageFriendsTableView.deleteRows(at: [IndexPath], with: .automatic)
+
+    
+    //deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+    }
+}

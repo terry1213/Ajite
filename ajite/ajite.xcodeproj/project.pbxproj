@@ -279,8 +279,8 @@
 				6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */,
 				6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */,
 				6EC6260024DD5A5F00B7555B /* userViewController.swift */,
-				1654349224D9936E001B05C2 /* ShareSongsViewController.swift */,
 				DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */,
+				1654349224D9936E001B05C2 /* ShareSongsViewController.swift */,
 			);
 			path = ajite;
 			sourceTree = "<group>";

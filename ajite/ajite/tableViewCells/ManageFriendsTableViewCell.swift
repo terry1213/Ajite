@@ -5,25 +5,27 @@
 //  Created by 노은솔 on 2020/08/08.
 //  Copyright © 2020 ajite. All rights reserved.
 //
+
+import UIKit
 protocol FriendUser {
     func onClickCell(index: Int)
 }
 
-import UIKit
 
 class ManageFriendsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var manageFriendProfile: UIImageView!
-     
     @IBOutlet weak var manageFriendsName: UILabel!
+    
     var cellDelegate : FriendUser?
-    var delegate : ManageFriendViewCellDelegate?
+    
+    @IBOutlet var deleteButton: UIButton!
     var index: IndexPath?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    @IBAction func deleteFriends(_ sender: Any) {
+    @IBAction func deleteFriends(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
     }
     
@@ -36,5 +38,5 @@ class ManageFriendsTableViewCell: UITableViewCell {
 }
 
 protocol ManageFriendViewCellDelegate: AnyObject{
-    func deletion(_ ManageFriendsTableViewCell: ManageFriendsTableViewCell)
+    func deletion(_ ManageFriendsTableViewCell: ManageFriendsTableViewCell, index: Int)
 }
