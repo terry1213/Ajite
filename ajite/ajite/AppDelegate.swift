@@ -86,6 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
         
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().clipsToBounds = true
+        UITabBar.appearance().tintColor = .white
         // Override point for customization after application launch.
         
         return true

@@ -36,8 +36,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
     
 
     override func viewDidAppear(_ animated: Bool) {
-        print("Appear")
-        print(addingMembers.first?.name)
+        
         db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")

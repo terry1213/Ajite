@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profilePicture: CircleImageView!
     
     override func viewDidLoad() {
+         UITabBar.appearance().tintColor =  .white
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         addFriend.imageView?.contentMode = .scaleAspectFit

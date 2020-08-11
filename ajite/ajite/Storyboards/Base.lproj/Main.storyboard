@@ -496,7 +496,7 @@
                                                 </prototypes>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="20"/>
+                                                        <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </tableView>
@@ -1086,9 +1086,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-Yk-hKk" userLabel="Background Image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll0" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-Yk-hKk" userLabel="Background Image">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUv-1u-85N">
                                 <rect key="frame" x="0.0" y="133" width="375" height="679"/>
@@ -1580,7 +1579,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="9LM-NK-9rj">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll0" translatesAutoresizingMaskIntoConstraints="NO" id="9LM-NK-9rj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.51139467949999995" green="0.57121837139999998" blue="0.73861511749999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -1979,7 +1978,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="1ox-Nk-ZMg" userLabel="Background Image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll0" translatesAutoresizingMaskIntoConstraints="NO" id="1ox-Nk-ZMg" userLabel="Background Image">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.90376268696581197" green="0.88464343550000002" blue="0.99217289689999999" alpha="0.84284855769230771" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -1987,10 +1986,10 @@
                                 <rect key="frame" x="0.0" y="288" width="375" height="441"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgr-Uo-Yep" userLabel="Friends View">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="326"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="411"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-LH-7Su" userLabel="Friends Table View">
-                                                <rect key="frame" x="0.0" y="38.666666666666686" width="375" height="372.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="34.666666666666686" width="375" height="289.33333333333331"/>
                                                 <color key="backgroundColor" white="1" alpha="0.44187366452991456" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendsCell" rowHeight="60" id="wGo-B5-PcN" userLabel="Friends Table View Cell" customClass="MyFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -2039,16 +2038,16 @@
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuE-Tp-4UM">
-                                                <rect key="frame" x="20" y="6" width="60" height="25"/>
+                                                <rect key="frame" x="20" y="6" width="60" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-nC-tmr" userLabel="Add Friend">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-nC-tmr" userLabel="Add Friend">
                                                 <rect key="frame" x="306" y="-2" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="6pJ-IB-Vp8"/>
-                                                    <constraint firstAttribute="width" constant="59" id="fGJ-36-96U"/>
+                                                    <constraint firstAttribute="height" constant="40" id="6pJ-IB-Vp8"/>
+                                                    <constraint firstAttribute="width" constant="40" id="fGJ-36-96U"/>
                                                 </constraints>
                                                 <state key="normal" image="plus-navy"/>
                                                 <connections>
@@ -2056,7 +2055,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(# of Members) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlg-Zj-HQx">
-                                                <rect key="frame" x="96" y="11.000000000000002" width="97.666666666666686" height="19.666666666666671"/>
+                                                <rect key="frame" x="96" y="11" width="97.666666666666686" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2072,14 +2071,15 @@
                                             <constraint firstItem="zuE-Tp-4UM" firstAttribute="leading" secondItem="hgr-Uo-Yep" secondAttribute="leading" constant="20" id="Ocr-Wf-1fh"/>
                                             <constraint firstAttribute="trailing" secondItem="ogD-LH-7Su" secondAttribute="trailing" id="T5S-N0-XIe"/>
                                             <constraint firstItem="ogD-LH-7Su" firstAttribute="leading" secondItem="hgr-Uo-Yep" secondAttribute="leading" id="ZRK-sj-lZu"/>
-                                            <constraint firstAttribute="trailing" secondItem="eW0-nC-tmr" secondAttribute="trailing" constant="15" id="ZWv-d8-PdY"/>
-                                            <constraint firstAttribute="bottom" secondItem="ogD-LH-7Su" secondAttribute="bottom" constant="-85" id="ccm-KY-eUX"/>
-                                            <constraint firstItem="eW0-nC-tmr" firstAttribute="top" secondItem="hgr-Uo-Yep" secondAttribute="top" id="dDR-M7-MRD"/>
+                                            <constraint firstAttribute="trailing" secondItem="eW0-nC-tmr" secondAttribute="trailing" constant="29" id="ZWv-d8-PdY"/>
+                                            <constraint firstAttribute="bottom" secondItem="ogD-LH-7Su" secondAttribute="bottom" constant="87" id="ccm-KY-eUX"/>
+                                            <constraint firstItem="eW0-nC-tmr" firstAttribute="top" secondItem="hgr-Uo-Yep" secondAttribute="top" constant="-2" id="dDR-M7-MRD"/>
                                             <constraint firstItem="ogD-LH-7Su" firstAttribute="top" secondItem="zuE-Tp-4UM" secondAttribute="bottom" constant="7.6666666666666714" id="dhQ-KJ-t5f"/>
                                             <constraint firstItem="ogD-LH-7Su" firstAttribute="leading" secondItem="hgr-Uo-Yep" secondAttribute="leading" id="eAr-rh-PI9"/>
                                             <constraint firstItem="Jlg-Zj-HQx" firstAttribute="top" secondItem="hgr-Uo-Yep" secondAttribute="top" constant="11" id="ejA-fH-Wql"/>
-                                            <constraint firstAttribute="bottom" secondItem="ogD-LH-7Su" secondAttribute="bottom" constant="-85" id="qvr-Uw-5RU"/>
-                                            <constraint firstItem="eW0-nC-tmr" firstAttribute="centerY" secondItem="zuE-Tp-4UM" secondAttribute="centerY" constant="-2.5" id="vB7-ER-m6p"/>
+                                            <constraint firstItem="eW0-nC-tmr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jlg-Zj-HQx" secondAttribute="trailing" constant="8" symbolic="YES" id="gKW-bP-mzV"/>
+                                            <constraint firstAttribute="bottom" secondItem="ogD-LH-7Su" secondAttribute="bottom" constant="87" id="qvr-Uw-5RU"/>
+                                            <constraint firstItem="eW0-nC-tmr" firstAttribute="centerY" secondItem="zuE-Tp-4UM" secondAttribute="centerY" constant="1.5" id="vB7-ER-m6p"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zuE-Tp-4UM" secondAttribute="trailing" constant="20" symbolic="YES" id="wtt-p7-SKQ"/>
                                         </constraints>
                                     </view>
@@ -2115,7 +2115,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hgr-Uo-Yep" secondAttribute="trailing" id="hr2-HC-z6f"/>
                                     <constraint firstItem="tTo-69-zUc" firstAttribute="centerX" secondItem="bQD-zn-eDF" secondAttribute="centerX" id="ixJ-BH-vcp"/>
                                     <constraint firstItem="tTo-69-zUc" firstAttribute="centerX" secondItem="bQD-zn-eDF" secondAttribute="centerX" id="mCC-iy-alI"/>
-                                    <constraint firstAttribute="bottom" secondItem="hgr-Uo-Yep" secondAttribute="bottom" id="pBU-jj-u9O"/>
+                                    <constraint firstAttribute="bottom" secondItem="hgr-Uo-Yep" secondAttribute="bottom" constant="-85" id="pBU-jj-u9O"/>
                                     <constraint firstItem="hgr-Uo-Yep" firstAttribute="top" secondItem="bQD-zn-eDF" secondAttribute="top" constant="115" id="vb5-om-YZR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -2192,7 +2192,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-mj-ZV0">
                                 <rect key="frame" x="20" y="133" width="133" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                <color key="textColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.58431372549019611" green="0.60392156862745094" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8n-OZ-hpz">
@@ -2267,7 +2267,9 @@
         <scene sceneID="bVJ-kN-Ujg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gDR-0f-nrj" userLabel="Item NC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="2Bv-zf-VJ3"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="2Bv-zf-VJ3">
+                        <color key="badgeColor" red="0.7514264584" green="0.83714681859999995" blue="0.97256761790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6ao-7a-rDK">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2481,10 +2483,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Fv8-EL-tzo"/>
-        <segue reference="KTm-i4-nT0"/>
-        <segue reference="MaB-sY-zyl"/>
-        <segue reference="RTc-KO-dhc"/>
-        <segue reference="sCn-aX-fjh"/>
+        <segue reference="xEi-qz-IQe"/>
+        <segue reference="YzI-Ue-2oM"/>
+        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
@@ -2506,6 +2508,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus-navy" width="200" height="200"/>
         <image name="plus-purple" width="200" height="200"/>
+        <image name="scroll0" width="2100" height="3000"/>
         <image name="settings-navy" width="30" height="30"/>
         <image name="share-purple" width="100" height="50"/>
         <image name="youtube-purple" width="200" height="200"/>
