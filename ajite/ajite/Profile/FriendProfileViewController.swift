@@ -9,8 +9,7 @@
 import UIKit
 
 class FriendProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var playlistNumLabel: UILabel!
+    
     @IBOutlet weak var userPlaylistsTableView: UITableView!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -23,7 +22,7 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
         self.userPlaylistsTableView.delegate = self
         self.userPlaylistsTableView.dataSource = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         getData()
         self.userNameLabel.text = currentUser.name
@@ -82,7 +81,6 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
                     print("Error getting documents: \(err)")
                 } else {
                     self.currentUser.playlists.removeAll()
-                    self.playlistNumLabel.text = "(\(querySnapshot!.documents.count))"
                     var temPlaylist : Playlist
                     var count = 0
                     for document in querySnapshot!.documents {
