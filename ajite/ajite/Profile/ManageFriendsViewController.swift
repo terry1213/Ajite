@@ -54,11 +54,20 @@ class ManageFriendsViewController: UIViewController{
         print(myUser.friends.count)
         // Do any additional setup after loading the view.
     }
-    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
+
+    }
 }
 //manageFriendProfile //manageFriendsName
 extension ManageFriendsViewController : UITableViewDataSource, UITableViewDelegate {
@@ -77,61 +86,6 @@ extension ManageFriendsViewController : UITableViewDataSource, UITableViewDelega
         cell.cellDelegate = self
         return cell
     }
-    
-    
-    /*
-    func onClickCell(index: Int) {
-        let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
-         
-         deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
-             
-            myUser.friends.remove(at: index)
-            //self.manageFriendsTableView.deleteRows(at: [IndexPath], with: .automatic)
-             
-             db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
-             
-             db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
-             
-         }))
-         
-         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-         self.present(deleteAlert, animated: true, completion: nil)
-        
-    }*/
-    
-    /*
-    func deletion(index: Int) {
-        // 플레이리스트를 삭제할 때 사용하는 코드
-        let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
-        
-        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
-            
-        }))
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(deleteAlert, animated: true, completion: nil)
-        
-        
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           
-            let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
-            
-            deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
-                
-                guard editingStyle == .delete else { return }
-                myUser.friends.remove(at: indexPath.row)
-                self.manageFriendsTableView.deleteRows(at: [indexPath], with: .automatic)
-                
-                db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[indexPath.row].documentID).delete()
-                
-                db.collection("users").document(myUser.friends[indexPath.row].documentID).collection("friends").document(myUser.documentID).delete()
-                
-            }))
-            
-            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            self.present(deleteAlert, animated: true, completion: nil)
-           
-        }
-    }*/
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

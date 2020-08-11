@@ -15,7 +15,12 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var profilePicture: CircleImageView!
     var currentUser = User()
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -58,6 +63,11 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
         let dataToSend = currentUser.playlists[indexPath.row]
         self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
     }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toPlaylist" else {
@@ -72,7 +82,7 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
         destination.source = sendingPlaylist
         destination.currentUser = currentUser
     }
-
+    
     func getData(){
         db
             .collection("users").document(currentUser.documentID)

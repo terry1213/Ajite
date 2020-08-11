@@ -85,6 +85,12 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     var playlistID: String!
     var ajiteID: String!
     
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func viewDidLoad() {
         print(ajiteID)
         super.viewDidLoad()
@@ -93,7 +99,12 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         //getData(from: url)
         // Do any additional setup after loading the view.
     }
-    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
     
     @IBAction func pressShare(_ sender: Any) {
         listVC?.getData()
@@ -153,13 +164,6 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         getData(from: url + searchTextField.text!.replacingOccurrences(of: " ", with: "+"))
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first! as UITouch
-        
-        if touch.view == self.view {
-            dismiss(animated: true)
-        }
-    }
     /*
     // MARK: - Navigation
 

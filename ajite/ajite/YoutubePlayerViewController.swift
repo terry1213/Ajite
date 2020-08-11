@@ -11,6 +11,18 @@ import youtube_ios_player_helper
 
 class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
+    //아무곳이나 누르면 키보드 숨겨짐
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     var youtubePlayer: YTPlayerView!
     var index: Int = 0
     var youtubeVideos = Playlist()
