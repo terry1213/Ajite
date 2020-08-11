@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1601B76124E1ADB300DD4580 /* membersToAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1601B76024E1ADB300DD4580 /* membersToAddTableViewCell.swift */; };
 		16157E8424E0D8DC00C850C7 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */; };
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
@@ -83,6 +84,7 @@
 		08125D956A5BDEFF9E72F287 /* Pods-ajite-ajiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.release.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		08CE5227FC726640CFE6A21B /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
 		0AD2B31ACFE4FB732CF68248 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1601B76024E1ADB300DD4580 /* membersToAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = membersToAddTableViewCell.swift; sourceTree = "<group>"; };
 		16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SongCollectionViewCell.swift; path = ajite/tableViewCells/SongCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = "ajite/UIResources Swift/made.otf"; sourceTree = SOURCE_ROOT; };
@@ -218,6 +220,7 @@
 				16E0094A24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift */,
 				167BC0A524DB01030041A510 /* songTableViewCell.swift */,
 				6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */,
+				1601B76024E1ADB300DD4580 /* membersToAddTableViewCell.swift */,
 			);
 			path = tableViewCells;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */,
 				167BC0A624DB01030041A510 /* songTableViewCell.swift in Sources */,
 				16CE647924DB9C97001F9383 /* MemberTableViewController.swift in Sources */,
+				1601B76124E1ADB300DD4580 /* membersToAddTableViewCell.swift in Sources */,
 				1645EB1624D6E1FE007ACBF5 /* SettingsViewController.swift in Sources */,
 				16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */,
 				16F1C0FA24DE549B00DEF4F5 /* ManageFriendsViewController.swift in Sources */,
