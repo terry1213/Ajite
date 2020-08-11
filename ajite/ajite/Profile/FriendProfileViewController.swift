@@ -51,7 +51,7 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, heightForRowAt
         indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
