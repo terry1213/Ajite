@@ -40,22 +40,25 @@ class userViewController: UIViewController {
                     if data["userID"] as? String == myUser.userID {
                         continue
                     }
-                    let username = data["name"] as? String
-                    let userID = data["userID"] as? String
-                    let documentID = document.documentID
-                    let temUser = User()
-                    temUser.name = username!
-                    temUser.userID = userID!
-                    temUser.documentID = documentID
-                    
-                    
-                    
-                    
-                    //전체 유저 목록에 추가
-                    users.append(temUser)
+                    db
+                        .collection("users").document(document.documentID).getDocument { (document, error) in
+                            var temUser : User
+                            if let document = document, document.exists {
+                                temUser = User()
+                                let data = document.data()
+                                temUser.userID = data!["userID"] as! String
+                                temUser.name = data!["name"] as! String
+                                temUser.profileImageURL = data!["profileImageURL"] as! String
+                                temUser.documentID = document.documentID
+                                //전체 유저 목록에 추가
+                                users.append(temUser)
+                                //테이블에 불러온 정보를 보여준다.
+                            } else {
+                                print("Document does not exist")
+                            }
+                        }
                 }
             }
-            self.userTable.reloadData()
         }
     }
     
@@ -82,10 +85,12 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = userTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
+        let cell = userTable.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         
         cell.nameLabel?.text = displayUsers[indexPath.row].name
         cell.userIdLabel.text = displayUsers[indexPath.row].userID
+        let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
+        cell.userProfileImage.image = UIImage(data: data!)
         cell.cellDelegate = self
         cell.index = indexPath
         cell.delegate = self

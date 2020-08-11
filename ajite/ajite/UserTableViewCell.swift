@@ -18,6 +18,8 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var userProfileImage: CircleImageView!
+    
     var cellDelegate: TableViewUser?
     weak var delegate : UserTableViewCellDelegate?
     var index: IndexPath?
