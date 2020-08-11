@@ -25,7 +25,7 @@ class User {
 class Ajite {
     var name = String ()
     var members = [User]()
-    var sharedSongs = [Song]()
+    var sharedSongs = Playlist()
     var ajiteID = String()
     var ajiteImageString = String()
     init () {
