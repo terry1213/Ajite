@@ -9,8 +9,6 @@
 import UIKit
 
 //:::::::::::::아지트 방 안을 보여주는 뷰 컨트롤러 :::::::::::
-
-var sharedSongs = [Song]()
 class AjiteRoomViewController: UIViewController {
     
     
@@ -40,10 +38,37 @@ class AjiteRoomViewController: UIViewController {
         background.image = UIImage(named:randomBackground)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
     
-    
-
-    
+    func getData() {
+        db
+            .collection("ajites").document(currentAjite.ajiteID)
+            .collection("sharedSongs").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    self.currentAjite.sharedSongs.removeAll()
+                    var temSong : Song
+                    var count = 0
+                    for document in querySnapshot!.documents {
+                        temSong = Song()
+                        let data = document.data()
+                        temSong.name = data["name"] as! String
+                        temSong.artist = data["artist"] as! String
+                        temSong.thumbnailImageUrl = data["thumbnailImageUrl"] as! String
+                        temSong.videoID = data["videoID"] as! String
+                        temSong.songID = document.documentID
+                        self.currentAjite.sharedSongs.append(temSong)
+                        count += 1
+                        if count == querySnapshot!.documents.count {
+                            self.songCollection.reloadData()
+                        }
+                    }
+                }
+            }
+    }
     
     //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
     @IBAction func pressedMembers(_ sender: Any) {
@@ -51,13 +76,17 @@ class AjiteRoomViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         switch segue.identifier {
-               case "viewMembers":
-                   let vc = segue.destination as! MemberViewController
-                   vc.memberViewAjite = currentAjite
-               default:
-                print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
-               }
+        switch segue.identifier {
+        case "viewMembers":
+            let vc = segue.destination as! MemberViewController
+            vc.memberViewAjite = currentAjite
+        case "shareSong":
+            let vc = segue.destination as! ShareSongsViewController
+            vc.ajiteID = currentAjite.ajiteID
+        default:
+            print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
+            return
+        }
 
     }
  
@@ -65,7 +94,7 @@ class AjiteRoomViewController: UIViewController {
 
 extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sharedSongs.count
+        return currentAjite.sharedSongs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
@@ -74,7 +103,13 @@ extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection", for: indexPath) as! SongCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCollectionViewCell", for: indexPath) as! SongCollectionViewCell
+        cell.songName.text = currentAjite.sharedSongs[indexPath.row].name
+        cell.artistName.text = currentAjite.sharedSongs[indexPath.row].artist
+        let data = try? Data(contentsOf: URL(string: currentAjite.sharedSongs[indexPath.row].thumbnailImageUrl)!)
+        DispatchQueue.main.async {
+            cell.songImage.image = UIImage(data: data!)
+        }
         return cell
     }
 }
