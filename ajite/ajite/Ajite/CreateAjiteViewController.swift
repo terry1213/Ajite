@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 
 
-class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
+class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITextFieldDelegate {
 
     //아지트를 넘겨주기 위해 만든 variable (sort of global within class)
     var tempAjite = Ajite()
@@ -73,7 +73,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
         
         
 }
-    
+   
     func animateView(){
         UIView.animate(withDuration: 20.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
                       self.topFrame = self.backgroundImage0.frame
