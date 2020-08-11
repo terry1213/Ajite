@@ -16,7 +16,16 @@ import FirebaseFirestore
 
 
 class FriendsToAjiteViewController: UIViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
+
+    }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     @IBOutlet var searchBar: UISearchBar!
     var vcindex = 0
     //if vcindex = 0 this request is from CreateAjite
@@ -27,6 +36,8 @@ class FriendsToAjiteViewController: UIViewController {
     var delegate : FriendsToAjiteDelegate?
     let userRef = db.collection("users")
     var currentAjite = Ajite()
+    @IBOutlet weak var searchFriendsTable: UITableView!
+    @IBOutlet weak var addedMembersTable: UITableView!
     
       override func viewDidLoad() {
           super.viewDidLoad()
@@ -107,9 +118,10 @@ class FriendsToAjiteViewController: UIViewController {
             }
         
     }
-    
-    @IBOutlet weak var searchFriendsTable: UITableView!
-    @IBOutlet weak var addedMembersTable: UITableView!
+    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.searchBar.endEditing(true)
+    }
+ 
   
 }
 

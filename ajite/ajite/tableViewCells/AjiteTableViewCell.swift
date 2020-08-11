@@ -13,7 +13,7 @@ class AjiteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ajiteImage: UIImageView!
     @IBOutlet weak var ajiteName: UILabel!
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

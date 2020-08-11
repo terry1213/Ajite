@@ -28,7 +28,17 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
    override func viewWillAppear(_ animated: Bool) {
         self.playlistView.reloadData()
     }
-        
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     @IBAction func finished(_ sender: Any) {
         for index in 0 ..< addOrNot.count {
             if addOrNot[index] == true {

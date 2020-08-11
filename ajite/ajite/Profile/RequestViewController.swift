@@ -18,6 +18,19 @@ var RequestedUsers: [User] = []
 class RequestViewController: UIViewController{
     @IBOutlet var RequestTV: UITableView!
     
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     var RequestUsers: [User] = []
     
     func getUserRequest(){

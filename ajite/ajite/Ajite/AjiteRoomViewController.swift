@@ -21,7 +21,17 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet weak var sharedSongsView: UIView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var songCollection: UICollectionView!
-    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = songCollection.collectionViewLayout as! UICollectionViewFlowLayout
