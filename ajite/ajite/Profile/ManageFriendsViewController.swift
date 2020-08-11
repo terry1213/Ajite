@@ -158,21 +158,25 @@ extension ManageFriendsViewController : UITableViewDataSource, UITableViewDelega
 
 extension ManageFriendsViewController: FriendUser{
     func onClickCell(index: Int) {
-        let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
-        
-        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
+            let deleteAlert = UIAlertController (title: "Unfollow Friend?", message: "You will no longer be able to add your friend to ajites" ,preferredStyle: UIAlertController.Style.alert)
             
-           myUser.friends.remove(at: index)
-           //self.manageFriendsTableView.deleteRows(at: [IndexPath], with: .automatic)
-            
-            db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
-            
-            db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
-            
+            deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {(action: UIAlertAction!) in
+                
+               
+                
+                db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
+                
+                db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
+                myUser.friends.remove(at: index)
+
+                let indexPath = IndexPath(item: index, section: 0)
+                self.manageFriendsTableView.deleteRows(at: [indexPath], with: .automatic)
+              
         }))
+            
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            present(deleteAlert, animated: true, completion: nil)
         
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        present(deleteAlert, animated: true, completion: nil)
     }
     
     
@@ -184,10 +188,10 @@ extension ManageFriendsViewController: ManageFriendViewCellDelegate {
         print("clicked")
     
         db.collection("users").document(myUser.documentID).collection("friends").document(myUser.friends[index].documentID).delete()
-        
+        let indexPath = IndexPath(item: index, section: 0)
         db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
         myUser.friends.remove(at: index)
-        //self.manageFriendsTableView.deleteRows(at: [IndexPath], with: .automatic)
+        self.manageFriendsTableView.deleteRows(at: [indexPath], with: .automatic)
 
     
     //deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
