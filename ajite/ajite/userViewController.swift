@@ -47,10 +47,6 @@ class userViewController: UIViewController {
                     temUser.name = username!
                     temUser.userID = userID!
                     temUser.documentID = documentID
-                    
-                    
-                    
-                    
                     //전체 유저 목록에 추가
                     users.append(temUser)
                 }
