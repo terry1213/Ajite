@@ -84,8 +84,9 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
         animateView()
         ajiteName.text = ""
         
-    }
-    
+        
+}
+   
     func animateView(){
         UIView.animate(withDuration: 20.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
                       self.topFrame = self.backgroundImage0.frame

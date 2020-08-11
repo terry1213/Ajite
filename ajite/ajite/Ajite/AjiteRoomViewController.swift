@@ -115,6 +115,7 @@ extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCollectionViewCell", for: indexPath) as! SongCollectionViewCell
         cell.songName.text = currentAjite.sharedSongs[indexPath.row].name
+       
         cell.artistName.text = currentAjite.sharedSongs[indexPath.row].artist
         let data = try? Data(contentsOf: URL(string: currentAjite.sharedSongs[indexPath.row].thumbnailImageUrl)!)
         DispatchQueue.main.async {

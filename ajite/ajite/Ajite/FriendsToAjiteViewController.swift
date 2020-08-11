@@ -36,6 +36,8 @@ class FriendsToAjiteViewController: UIViewController {
     var delegate : FriendsToAjiteDelegate?
     let userRef = db.collection("users")
     var currentAjite = Ajite()
+    @IBOutlet weak var searchFriendsTable: UITableView!
+    @IBOutlet weak var addedMembersTable: UITableView!
     
       override func viewDidLoad() {
           super.viewDidLoad()
@@ -116,9 +118,10 @@ class FriendsToAjiteViewController: UIViewController {
             }
         
     }
-    
-    @IBOutlet weak var searchFriendsTable: UITableView!
-    @IBOutlet weak var addedMembersTable: UITableView!
+    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.searchBar.endEditing(true)
+    }
+ 
   
 }
 

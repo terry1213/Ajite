@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().clipsToBounds = true
-        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().tintColor = UIColor(red: 0.58, green: 0.60, blue: 0.74, alpha: 1.00)
         // Override point for customization after application launch.
         
         return true
