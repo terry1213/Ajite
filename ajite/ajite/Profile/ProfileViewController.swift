@@ -91,6 +91,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("Error getting documents: \(err)")
                 } else {
                     myUser.friends.removeAll()
+                    //self.myFriendsTableView.reloadData()
                     self.friendNumLabel.text = "(\(querySnapshot!.documents.count))"
                     var count = 0
                     for friendDocument in querySnapshot!.documents {
@@ -108,7 +109,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     //테이블에 불러온 정보를 보여준다.
                                     count += 1
                                     if count == querySnapshot!.documents.count {
-                                        print(count)
                                         self.myFriendsTableView.reloadData()
                                     }
                                 } else {
