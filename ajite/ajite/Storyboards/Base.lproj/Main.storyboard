@@ -452,7 +452,7 @@
                                                     <constraint firstAttribute="height" constant="183" id="fEI-yB-hLa"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="members" rowHeight="60" id="Z26-gD-8Xw" customClass="memberTableViewCell" customModule="ajite" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="members" rowHeight="60" id="Z26-gD-8Xw" customClass="membersToAddTableViewCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="330" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z26-gD-8Xw" id="U2q-Zn-fGb">
@@ -489,11 +489,8 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="friendName" destination="TJX-3g-syE" id="W97-gr-JJo"/>
                                                             <outlet property="memberImage" destination="Qd7-up-o19" id="ddh-Am-aIZ"/>
                                                             <outlet property="memberName" destination="TJX-3g-syE" id="A2L-OW-839"/>
-                                                            <outlet property="profilePicture" destination="Qd7-up-o19" id="TUQ-Ko-g4Y"/>
-                                                            <outlet property="profilepicture" destination="Qd7-up-o19" id="PlG-e3-56I"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
