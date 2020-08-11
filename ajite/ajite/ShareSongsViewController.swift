@@ -76,7 +76,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     //검색된 결과(유튜브 데이터 모델)
     var youTubeModel: YouTubeModel?
     //기본 url, 마지막 'q=' 이후에 검색어 붙여서 사용
-    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id(videoId),snippet(channelTitle,title,thumbnails(default(url))))&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyA56mjgLpsdf1Sz6AqKuNSTIIuyQHpED2c&q="
+    let url: String = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id(videoId),snippet(channelTitle,title,thumbnails(default(url))))&order=viewCount&videoDefinition=high&type=video&regionCode=KR&key=AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg&q="
     /*
      keys
         AIzaSyC5dPLHRMBA3TnwI6AHu6ypUeOTF-AEGeg
@@ -86,7 +86,7 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     var ajiteID: String!
     
     override func viewDidLoad() {
-        print(playlistID)
+        print(ajiteID)
         super.viewDidLoad()
         self.youtubeVideoTableView.dataSource = self
         self.youtubeVideoTableView.delegate = self
@@ -225,6 +225,27 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
             }
         }
         else if ajiteID != nil {
+            //해당 아지트의 노래 목록에 선택한 노래를 추가한다.
+            ref = db
+                .collection("ajites")
+                .document(ajiteID)
+                .collection("sharedSongs")
+                .addDocument(data: [
+                    //노래 이름 등록
+                    "name": songNameLabel.text as Any,
+                    //아티스트(채널) 이름 등록
+                    "artist": artistLabel.text as Any,
+                    //썸네일 이미지 url 등록
+                    "thumbnailImageUrl": thumbnailImageUrl as Any,
+                    //비디오 ID 등록
+                    "videoID": videoID as Any
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
         }
     }
     
