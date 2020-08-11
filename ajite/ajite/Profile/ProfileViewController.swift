@@ -21,22 +21,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       addFriend.imageView?.contentMode = .scaleAspectFit
+        addFriend.imageView?.contentMode = .scaleAspectFit
         self.myFriendsTableView.delegate = self
         self.myFriendsTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
+        self.userNameLabel.text = myUser.name
+        self.bio.text = myUser.bio
         let data = try? Data(contentsOf: URL(string: myUser.profileImageURL)!)
-        DispatchQueue.main.async {
-            self.profilePicture.image = UIImage(data: data!)
-        }
+        self.profilePicture.image = UIImage(data: data!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-           return 1
-       }
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myUser.friends.count
     }
@@ -44,12 +45,33 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myFriendsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! MyFriendsTableViewCell
         cell.myFriendsName.text = myUser.friends[indexPath.row].name
+        let data = try? Data(contentsOf: URL(string: myUser.friends[indexPath.row].profileImageURL)!)
+        cell.myFriendsProfile.image = UIImage(data: data!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
             return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dataToSend = myUser.friends[indexPath.row]
+        self.performSegue(withIdentifier: "toFriendProfile", sender: dataToSend)
+        myFriendsTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "toFriendProfile" else {
+            return
+        }
+        guard let sendingUser = sender as? User else {
+            return
+        }
+        guard let destination = segue.destination as? FriendProfileViewController else {
+            return
+        }
+        destination.currentUser = sendingUser
     }
     
     func getData(){
@@ -69,29 +91,34 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("Error getting documents: \(err)")
                 } else {
                     myUser.friends.removeAll()
-                    var temUser : User
                     self.friendNumLabel.text = "(\(querySnapshot!.documents.count))"
-                    for document in querySnapshot!.documents {
-                        let data = document.data()
-                        temUser = User()
-                        temUser.userID = data["userID"] as! String
-                        temUser.name = data["name"] as! String
-                        temUser.documentID = document.documentID
-                        myUser.friends.append(temUser)
+                    var count = 0
+                    for friendDocument in querySnapshot!.documents {
+                        db
+                            .collection("users").document(friendDocument.documentID).getDocument { (document, error) in
+                                var temUser : User
+                                if let document = document, document.exists {
+                                    temUser = User()
+                                    let data = document.data()
+                                    temUser.userID = data!["userID"] as! String
+                                    temUser.name = data!["name"] as! String
+                                    temUser.profileImageURL = data!["profileImageURL"] as! String
+                                    temUser.documentID = document.documentID
+                                    myUser.friends.append(temUser)
+                                    //테이블에 불러온 정보를 보여준다.
+                                    count += 1
+                                    if count == querySnapshot!.documents.count {
+                                        print(count)
+                                        self.myFriendsTableView.reloadData()
+                                    }
+                                } else {
+                                    print("Document does not exist")
+                                }
+                            }
                     }
-                    DispatchQueue.main.async{
-                        //테이블에 불러온 정보를 보여준다.
-                        self.userNameLabel.text = myUser.name
-                        self.bio.text = myUser.bio
-                        self.myFriendsTableView.reloadData()
-                    }
+                    
                 }
         }
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myFriendsTableView.deselectRow(at: indexPath, animated: true)
-    }
 }
