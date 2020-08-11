@@ -95,10 +95,10 @@ class AjiteRoomViewController: UIViewController {
     
     func setYoutubePlayerVCConstraints() {
         youtubePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90).isActive = true
-        youtubePlayerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        youtubePlayerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 133).isActive = true
+        youtubePlayerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
+        youtubePlayerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
+        youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
