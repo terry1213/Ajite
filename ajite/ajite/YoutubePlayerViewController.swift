@@ -29,6 +29,8 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
     }
 
     override func loadView() {
