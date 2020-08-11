@@ -13,6 +13,7 @@ import UIKit
 class User {
     var name = String()
     var friends = [User]()
+    var playlists = [Playlist]()
     var userID = String()
     var bio = String()
     var documentID = String()

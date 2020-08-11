@@ -20,7 +20,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
     var topFrame = CGRect()//생성되는 아지트에 이미지 집어 넣을때
     var addingMembers = [User]()
     let userRef = db.collection("users")
-    //FriendstoAjite Controller 에서 adding Member epdlxj qkedkdhfEo dldyd
+    //FriendstoAjite Controller 에서 adding Member
 //==========================애니메이션==========================
     
     
@@ -34,7 +34,10 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
     @IBOutlet weak var ajiteName: UITextField!
     //==============필요한 Outlet 과 변수들================
     
+
     override func viewDidAppear(_ animated: Bool) {
+        print("Appear")
+        print(addingMembers.first?.name)
         db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -58,9 +61,9 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
     //로드가 되었을 때
     override func viewDidLoad() {
         super.viewDidLoad()
-       let random = arc4random_uniform(4)
-       imageName = "\(random)"
-        
+        let random = arc4random_uniform(4)
+        imageName = "\(random)"
+        self.memberTableView.dataSource = self
      
     }
   
@@ -93,7 +96,11 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
     
     func sendUsersBack(sendingMembers: [User]) {
         addingMembers = sendingMembers
-        memberTableView.reloadData()
+        print(addingMembers.count)
+      //  print(addingMembers.first?.name)
+        DispatchQueue.main.async {
+            self.memberTableView.reloadData()
+        }
     }
     
     
@@ -185,13 +192,14 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
 
 extension CreateAjiteViewController : UITableViewDataSource{
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return addingMembers.count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-                  return 1
-              }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "members", for: indexPath) as! membersToAddTableViewCell

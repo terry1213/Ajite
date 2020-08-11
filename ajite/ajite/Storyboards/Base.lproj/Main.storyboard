@@ -452,7 +452,7 @@
                                                     <constraint firstAttribute="height" constant="183" id="fEI-yB-hLa"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="members" rowHeight="60" id="Z26-gD-8Xw" customClass="memberTableViewCell" customModule="ajite" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="members" rowHeight="60" id="Z26-gD-8Xw" customClass="membersToAddTableViewCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="330" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z26-gD-8Xw" id="U2q-Zn-fGb">
@@ -489,11 +489,8 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="friendName" destination="TJX-3g-syE" id="W97-gr-JJo"/>
                                                             <outlet property="memberImage" destination="Qd7-up-o19" id="ddh-Am-aIZ"/>
                                                             <outlet property="memberName" destination="TJX-3g-syE" id="A2L-OW-839"/>
-                                                            <outlet property="profilePicture" destination="Qd7-up-o19" id="TUQ-Ko-g4Y"/>
-                                                            <outlet property="profilepicture" destination="Qd7-up-o19" id="PlG-e3-56I"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -975,14 +972,14 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="612"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="70" id="aqZ-UF-bkQ" customClass="UserTableViewCell" customModule="ajite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserTableViewCell" rowHeight="70" id="aqZ-UF-bkQ" customClass="UserTableViewCell" customModule="ajite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqZ-UF-bkQ" id="H01-tn-8tv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQ8-iY-e6j">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQ8-iY-e6j" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="10" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="gWq-Ix-PXi"/>
@@ -1042,6 +1039,7 @@
                                             <outlet property="nameLabel" destination="IwG-nF-lDB" id="3bm-66-s82"/>
                                             <outlet property="sendButton" destination="FEd-WX-Nl4" id="iAD-tn-1Ti"/>
                                             <outlet property="userIdLabel" destination="bJi-KC-qsd" id="Awd-Kc-cYU"/>
+                                            <outlet property="userProfileImage" destination="bQ8-iY-e6j" id="6eL-5j-rXk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2006,7 +2004,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-jI-AwG" userLabel="friends info">
                                                                     <rect key="frame" x="15.000000000000007" y="5" width="121.66666666666669" height="50"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="22p-Oc-eiK" userLabel="myFriendsProfile">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="22p-Oc-eiK" userLabel="myFriendsProfile" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="IYa-fh-irZ"/>
@@ -2155,14 +2153,14 @@
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="TPV-cN-wzZ">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="settings-blue" id="IFb-ea-AjY">
+                            <barButtonItem title="Item" image="settings-navy" id="IFb-ea-AjY">
                                 <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="Obz-hZ-rO8" kind="show" id="Bpx-mS-o5w"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="paperplane" catalog="system" id="PMJ-yh-V2J">
-                                <color key="tintColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="Xch-ak-g1h" kind="show" id="tky-2I-NLI"/>
                                 </connections>
@@ -2176,6 +2174,7 @@
                         <outlet property="myFriendsTableView" destination="ogD-LH-7Su" id="129-NQ-dzh"/>
                         <outlet property="profilePicture" destination="hxy-Ma-KkU" id="Acj-bU-ZuS"/>
                         <outlet property="userNameLabel" destination="tTo-69-zUc" id="X26-WO-eLt"/>
+                        <segue destination="F3j-hi-Slh" kind="show" identifier="toFriendProfile" id="HkT-HT-nrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZL9-YM-G4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2303,10 +2302,10 @@
             </objects>
             <point key="canvasLocation" x="1757" y="819"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Profile View Controller-->
         <scene sceneID="Gtp-W0-Fw2">
             <objects>
-                <viewController id="F3j-hi-Slh" sceneMemberID="viewController">
+                <viewController id="F3j-hi-Slh" customClass="FriendProfileViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDv-vF-kLx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2316,16 +2315,16 @@
                                 <color key="backgroundColor" red="0.90376268699999995" green="0.88464343550000002" blue="0.99217289689999999" alpha="0.8428485577" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QT-jj-Uy3">
-                                <rect key="frame" x="0.0" y="288" width="375" height="441"/>
+                                <rect key="frame" x="0.0" y="332" width="375" height="348"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mt4-Dp-SdH" userLabel="Friends View">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="326"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="233"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RvS-oC-Ckg" userLabel="Friends Table View">
-                                                <rect key="frame" x="0.0" y="37.666666666666686" width="375" height="373.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="37.666666666666686" width="375" height="280.33333333333331"/>
                                                 <color key="backgroundColor" white="1" alpha="0.44187366449999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myFriendsCell" rowHeight="60" id="Xh1-ti-r1I" userLabel="Friends Table View Cell" customClass="MyFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myFriendsCell" rowHeight="60" id="Xh1-ti-r1I" userLabel="Friends Table View Cell" customClass="PlaylistTableViewCell" customModule="ajite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xh1-ti-r1I" id="Bf9-Jd-BW9">
@@ -2364,8 +2363,8 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="myFriendsName" destination="uEk-Sj-oFP" id="god-96-RqA"/>
-                                                            <outlet property="myFriendsProfile" destination="jTc-zM-ako" id="xps-Qr-T6v"/>
+                                                            <outlet property="playlistImage" destination="jTc-zM-ako" id="7Uq-6t-Izd"/>
+                                                            <outlet property="playlistName" destination="uEk-Sj-oFP" id="jaZ-1Q-Ch4"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -2410,11 +2409,18 @@
                                             <constraint firstAttribute="width" secondItem="usc-Ux-ww1" secondAttribute="height" multiplier="1:1" id="cdk-44-GRb"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAX-Z5-UaQ">
+                                        <rect key="frame" x="169" y="77" width="24.333333333333343" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3wH-dU-a8J" firstAttribute="centerX" secondItem="4QT-jj-Uy3" secondAttribute="centerX" id="2oE-ko-M0A"/>
                                     <constraint firstItem="3wH-dU-a8J" firstAttribute="centerX" secondItem="4QT-jj-Uy3" secondAttribute="centerX" id="3ZN-ta-c2z"/>
                                     <constraint firstItem="usc-Ux-ww1" firstAttribute="centerX" secondItem="4QT-jj-Uy3" secondAttribute="centerX" id="9JF-FJ-iw9"/>
+                                    <constraint firstAttribute="centerX" secondItem="UAX-Z5-UaQ" secondAttribute="centerX" constant="6.3333333333333144" id="FYM-C9-oTC"/>
                                     <constraint firstItem="3wH-dU-a8J" firstAttribute="top" secondItem="4QT-jj-Uy3" secondAttribute="top" constant="25" id="WbA-3O-XZN"/>
                                     <constraint firstAttribute="bottom" secondItem="mt4-Dp-SdH" secondAttribute="bottom" id="b5t-s3-hPJ"/>
                                     <constraint firstAttribute="trailing" secondItem="mt4-Dp-SdH" secondAttribute="trailing" id="bZt-Zy-3HP"/>
@@ -2428,17 +2434,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAX-Z5-UaQ">
-                                <rect key="frame" x="175" y="369" width="24.333333333333343" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="kgb-Gl-KuY" firstAttribute="bottom" secondItem="4QT-jj-Uy3" secondAttribute="bottom" constant="49" id="11W-Sy-5Cq"/>
-                            <constraint firstItem="4QT-jj-Uy3" firstAttribute="centerX" secondItem="UAX-Z5-UaQ" secondAttribute="centerX" id="5No-WB-gL8"/>
                             <constraint firstItem="ltd-UE-TLK" firstAttribute="trailing" secondItem="kgb-Gl-KuY" secondAttribute="trailing" id="EsT-Vq-BBy"/>
                             <constraint firstItem="ltd-UE-TLK" firstAttribute="leading" secondItem="kgb-Gl-KuY" secondAttribute="leading" id="JWC-Sb-rTK"/>
                             <constraint firstAttribute="bottom" secondItem="ltd-UE-TLK" secondAttribute="bottom" id="dRi-9Y-NOH"/>
@@ -2449,6 +2448,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kgb-Gl-KuY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZNk-ye-9pF"/>
+                    <connections>
+                        <outlet property="bio" destination="UAX-Z5-UaQ" id="5uo-ue-FQs"/>
+                        <outlet property="profilePicture" destination="usc-Ux-ww1" id="8gN-JY-aI8"/>
+                        <outlet property="userNameLabel" destination="3wH-dU-a8J" id="Fxz-sp-m8x"/>
+                        <outlet property="userPlaylistsTableView" destination="RvS-oC-Ckg" id="c6z-43-MvQ"/>
+                        <segue destination="lyK-Vm-Yth" kind="show" identifier="toPlaylist" id="Fv8-EL-tzo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9i7-qu-Qwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2474,10 +2481,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xEi-qz-IQe"/>
-        <segue reference="YzI-Ue-2oM"/>
-        <segue reference="ZOl-UM-4IR"/>
-        <segue reference="reF-Mh-huZ"/>
+        <segue reference="Fv8-EL-tzo"/>
+        <segue reference="KTm-i4-nT0"/>
+        <segue reference="MaB-sY-zyl"/>
+        <segue reference="RTc-KO-dhc"/>
+        <segue reference="sCn-aX-fjh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addblue" width="100" height="50"/>
@@ -2499,7 +2507,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus-navy" width="200" height="200"/>
         <image name="plus-purple" width="200" height="200"/>
-        <image name="settings-blue" width="30" height="30"/>
+        <image name="settings-navy" width="30" height="30"/>
         <image name="share-purple" width="100" height="50"/>
         <image name="youtube-purple" width="200" height="200"/>
     </resources>

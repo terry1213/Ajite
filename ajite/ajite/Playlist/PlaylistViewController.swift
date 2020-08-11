@@ -127,16 +127,17 @@ class PlaylistViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toPlaylist" else {
-              return
-          }
-          guard let sendingPlaylist = sender as? Playlist else {
-              return
-          }
-          guard let destination = segue.destination as? PlaylistSongListViewController else {
-              return
-          }
-          destination.source = sendingPlaylist
-      }
+            return
+        }
+        guard let sendingPlaylist = sender as? Playlist else {
+            return
+        }
+        guard let destination = segue.destination as? PlaylistSongListViewController else {
+            return
+        }
+        destination.source = sendingPlaylist
+        destination.currentUser = myUser
+    }
     
 }
 extension PlaylistViewController: UITableViewDataSource {

@@ -118,17 +118,15 @@ extension AjiteViewController : UITableViewDataSource{
                 if let document = document, document.exists {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     print("Document data: \(dataDescription)")
+                    db
+                        .collection("ajites").document(ajiteIDToDelete)
+                        .updateData([
+                        "memberNum" : FieldValue.increment(Int64(-1))
+                    ])
                     if document.data()!["memberNum"] as! Int == 1 {
                         db
                             .collection("ajites").document(ajiteIDToDelete)
                             .delete()
-                    }
-                    else {
-                        db
-                            .collection("ajites").document(ajiteIDToDelete)
-                            .updateData([
-                            "memberNum" : FieldValue.increment(Int64(-1))
-                        ])
                     }
                     ajites.remove(at: indexPath.row)
                     self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
