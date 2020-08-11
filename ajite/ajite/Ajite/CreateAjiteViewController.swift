@@ -163,7 +163,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate {
                     let newAjite = Ajite()
                     newAjite.name = self.ajiteName.text!
                     //newAjite.members = []
-                    newAjite.sharedSongs = []
+                    newAjite.sharedSongs.songs = []
                     newAjite.ajiteImageString = self.imageName
                     newAjite.ajiteID = ref!.documentID
                     //currentAjite.append(newAjite)
