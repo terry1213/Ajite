@@ -157,6 +157,10 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rww-Pv-kR0">
                                                     <rect key="frame" x="20" y="5.5" width="20" height="49.5"/>
                                                     <color key="tintColor" red="0.58431372550000005" green="0.60392156860000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="4CQ-eH-uPc"/>
+                                                        <constraint firstAttribute="width" constant="20" id="QwU-qh-qvh"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have been invited to " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDb-xs-E0J">
                                                     <rect key="frame" x="60" y="20" width="191" height="21"/>
@@ -164,7 +168,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hy-NK-e5w">
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hy-NK-e5w">
                                                     <rect key="frame" x="259" y="20" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.60392156860000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -245,7 +249,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dli-5q-54Y" userLabel="AjiteLabels">
                                                     <rect key="frame" x="95" y="14" width="85" height="53"/>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AjiteName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDs-1m-uUB">
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AjiteName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDs-1m-uUB">
                                                     <rect key="frame" x="110" y="14" width="231" height="53"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="0.51139467949999995" green="0.57121837139999998" blue="0.73861511752136755" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -362,7 +366,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vs-eE-iKR">
-                                                    <rect key="frame" x="82" y="18.5" width="106" height="18"/>
+                                                    <rect key="frame" x="82" y="18.5" width="101" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -370,9 +374,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8Vs-eE-iKR" firstAttribute="leading" secondItem="xI0-I6-RyM" secondAttribute="trailing" constant="16" id="D9O-xa-C81"/>
+                                                <constraint firstItem="8Vs-eE-iKR" firstAttribute="top" secondItem="KlX-q0-3mq" secondAttribute="topMargin" constant="7.5" id="DHP-M0-1KM"/>
                                                 <constraint firstItem="xI0-I6-RyM" firstAttribute="leading" secondItem="KlX-q0-3mq" secondAttribute="leading" constant="16" id="IYS-w4-Hig"/>
-                                                <constraint firstItem="8Vs-eE-iKR" firstAttribute="centerY" secondItem="KlX-q0-3mq" secondAttribute="centerY" id="esc-vV-rZe"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8Vs-eE-iKR" secondAttribute="trailing" constant="140" id="fdd-G9-471"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8Vs-eE-iKR" secondAttribute="bottom" constant="7.5" id="VNX-LG-c5e"/>
+                                                <constraint firstAttribute="bottom" secondItem="xI0-I6-RyM" secondAttribute="bottom" constant="2.5" id="gSC-5x-J3P"/>
+                                                <constraint firstItem="xI0-I6-RyM" firstAttribute="top" secondItem="KlX-q0-3mq" secondAttribute="top" constant="2.5" id="hvm-Xn-LpE"/>
                                                 <constraint firstItem="xI0-I6-RyM" firstAttribute="centerY" secondItem="KlX-q0-3mq" secondAttribute="centerY" id="snJ-f3-MwV"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -822,13 +828,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-ww-9FB" userLabel="profileImage" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-ww-9FB" userLabel="profileImage" customClass="CircleImageView" customModule="ajite" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="5" width="50" height="50.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="Yki-U3-Fvh"/>
+                                                        <constraint firstAttribute="height" constant="50" id="h8b-uM-JU3"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-oj-kLw">
-                                                    <rect key="frame" x="79" y="20" width="42" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-oj-kLw">
+                                                    <rect key="frame" x="78" y="20" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -860,9 +868,16 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5Ce-ww-9FB" firstAttribute="leading" secondItem="00T-DZ-p1Q" secondAttribute="leading" constant="20" id="4tH-9S-oMC"/>
+                                                <constraint firstItem="5Ce-ww-9FB" firstAttribute="top" secondItem="00T-DZ-p1Q" secondAttribute="top" constant="5" id="BIS-al-kJr"/>
+                                                <constraint firstItem="3ef-HW-Qp8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nhL-oj-kLw" secondAttribute="trailing" constant="8" symbolic="YES" id="DWR-jn-dri"/>
+                                                <constraint firstItem="nhL-oj-kLw" firstAttribute="top" secondItem="00T-DZ-p1Q" secondAttribute="topMargin" constant="9" id="FBR-sW-vX5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3ef-HW-Qp8" secondAttribute="bottom" constant="5.5" id="H8i-Tk-V9P"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nhL-oj-kLw" secondAttribute="bottom" constant="8.5" id="Jx8-tb-zjn"/>
                                                 <constraint firstItem="3ef-HW-Qp8" firstAttribute="top" secondItem="00T-DZ-p1Q" secondAttribute="topMargin" constant="5.5" id="Q5a-xD-XZy"/>
+                                                <constraint firstItem="nhL-oj-kLw" firstAttribute="leading" secondItem="5Ce-ww-9FB" secondAttribute="trailing" constant="8" id="Yqg-m4-C2J"/>
                                                 <constraint firstItem="3ef-HW-Qp8" firstAttribute="trailing" secondItem="00T-DZ-p1Q" secondAttribute="trailingMargin" id="b7C-i1-kXi"/>
+                                                <constraint firstAttribute="bottom" secondItem="5Ce-ww-9FB" secondAttribute="bottom" constant="4.5" id="bg0-4d-pja"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
