@@ -82,6 +82,7 @@ extension MemberViewController : UITableViewDataSource{
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! memberInAjiteTableViewCell
        
         cell.memberName.text =  member[indexPath.row].name
+        
         return cell
     }
     

@@ -181,6 +181,13 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
                             "userID":addingUser.userID,
                             
                         ])
+                        
+                        db.collection("users").document(addingUser.documentID).collection("ajites").document(ref!.documentID).setData([
+                            "name" : self.ajiteName.text as Any,
+                            "ajiteImageString" : self.imageName
+                        ])
+                        
+                        
                         memberNum = memberNum + 1
                     }
                     

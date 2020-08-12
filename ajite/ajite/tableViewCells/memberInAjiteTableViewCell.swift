@@ -17,6 +17,7 @@ class memberInAjiteTableViewCell: UITableViewCell {
     @IBOutlet weak var memberName: UILabel!
     var cellDelegate: memberTableView?
     var index: IndexPath?
+    @IBOutlet var sendFriendRequestButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,11 +25,15 @@ class memberInAjiteTableViewCell: UITableViewCell {
     }
 
     //+버튼을 누를시 동작하는 메서드
-    @IBAction func sendMemberToAjite(_ selected: Any) {
+    @IBAction func sendFriendRequest(_ selected: Any) {
         cellDelegate?.OnClickCell(index: (index?.row)!)
         // Configure the view for the selected state
     }
 
+}
+
+protocol memberInAjiteCellDelegate: AnyObject{
+    func sendRequest(_ memberInAjiteTableViewCell: memberInAjiteTableViewCell, index: Int)
 }
 
 //소속: MemberViewController
