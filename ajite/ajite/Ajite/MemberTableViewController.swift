@@ -10,8 +10,6 @@ import UIKit
 
 //:::::::::::::해당아지트에 속한 멤버들을 보여주는 뷰 컨트롤러 :::::::::::::::::::
 
-var member: [User] = []
-
 class MemberViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var memberTableView: UITableView!
     @IBOutlet weak var numberOfMembersLabel: UILabel!
@@ -45,12 +43,12 @@ class MemberViewController: UIViewController, UITableViewDelegate {
                                 temUser.documentID = document.documentID
                                 //유저 본인일 경우 제일 앞에 추가
                                 if temUser.documentID == myUser.documentID {
-                                    member.insert(temUser, at: 0)
+                                    self.currentAjite.members.insert(temUser, at: 0)
                                     self.friendOrNot.insert(true, at: 0)
                                 }
                                 else {
                                     //아지트 맴버 목록에 추가
-                                    member.append(temUser)
+                                    self.currentAjite.members.append(temUser)
                                     if self.friendsID.contains(temUser.documentID) {
                                         self.friendOrNot.append(true)
                                     }
@@ -87,7 +85,7 @@ class MemberViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        member.removeAll()
+        currentAjite.members.removeAll()
         memberTableView.dataSource = self
         memberTableView.delegate = self
         getfriendsData()
@@ -107,13 +105,13 @@ extension MemberViewController : UITableViewDataSource{
            return 1
        }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return member.count
+            return currentAjite.members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! memberInAjiteTableViewCell
-        cell.memberName.text =  member[indexPath.row].name
-        let data = try? Data(contentsOf: URL(string: member[indexPath.row].profileImageURL)!)
+        cell.memberName.text =  currentAjite.members[indexPath.row].name
+        let data = try? Data(contentsOf: URL(string: currentAjite.members[indexPath.row].profileImageURL)!)
         cell.memberProfile.image = UIImage(data: data!)
         if friendOrNot[indexPath.row] == true {
             cell.sendFriendRequestButton.isHidden = true
