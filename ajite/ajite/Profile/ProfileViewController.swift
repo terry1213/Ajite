@@ -86,6 +86,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if let document = document, document.exists {
                     //전역 변수인 myUser에 데이터 저장
                     myUser.bio = document.data()!["bio"] == nil ? "" : document.data()!["bio"] as! String
+                    self.bio.text = myUser.bio
                 } else {
                     print("Document does not exist")
                 }
