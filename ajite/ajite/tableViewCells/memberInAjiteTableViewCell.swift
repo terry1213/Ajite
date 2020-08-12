@@ -18,16 +18,21 @@ class memberInAjiteTableViewCell: UITableViewCell {
     @IBOutlet weak var plusButton: UIButton!
     var cellDelegate: memberTableView?
     var index: IndexPath?
+    @IBOutlet var sendFriendRequestButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     //+버튼을 누를시 동작하는 메서드
-    @IBAction func sendMemberToAjite(_ selected: Any) {
+    @IBAction func sendFriendRequest(_ selected: Any) {
         cellDelegate?.OnClickCell(index: (index?.row)!)
     }
 
+}
+
+protocol memberInAjiteCellDelegate: AnyObject{
+    func sendRequest(_ memberInAjiteTableViewCell: memberInAjiteTableViewCell, index: Int)
 }
 
 //소속: MemberViewController
