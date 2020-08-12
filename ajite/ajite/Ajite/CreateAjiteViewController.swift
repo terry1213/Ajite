@@ -25,10 +25,6 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     
     
   //Outlet들
- 
-  
- 
-  
     @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
@@ -210,7 +206,16 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
         }
     }
     
-    //==============필요한 Outlet 과 변수들================
+    //아지트 이름은 최대 20자 이상은 못 받게 함
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = ajiteName.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= 20
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
           self.view.endEditing(true)
