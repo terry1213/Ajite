@@ -14,23 +14,19 @@ import FirebaseFirestore
 //var songs: [Song] = []
 
 class PlaylistSongListViewController: UIViewController {
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     //outlet & variables
+    //유튜브 플레이어를 올리기 위한 UIView Controller이다.
     let youtubePlayerViewController = YoutubePlayerViewController()
+    //유튜브 플레이어가 올라올 시, 노래 리스트 테이블의 위치를 나타내는 constraint
     var songListShortConstraint: NSLayoutConstraint?
+    //유튜브 플레이어가 없을 시, 노래 리스트 테이블의 위치를 나타내는 constraint
     var songListFullConstraint: NSLayoutConstraint?
+    //현재 들어와있는 플레이리스트의 주인
     var currentUser = User()
+    //현재 플레이리스트
     var source = Playlist()
+    //유튜브 플레이어에 보낼 노래의 인덱스
     var nextSourceIndex : Int = -1
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var playlistName: UILabel!
@@ -40,9 +36,10 @@ class PlaylistSongListViewController: UIViewController {
         playlistName.text = source.playlistName
         self.songListTableView.dataSource = self
         self.songListTableView.delegate = self
+        //
         setSongListTableViewConstraints()
+        //유뷰트에 현재 플레이리스트를 보낸다.
         youtubePlayerViewController.youtubeVideos = source
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear (_ animated: Bool){
@@ -125,8 +122,13 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
-            return 70
-         }
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard currentUser.documentID == myUser.documentID else { return false }
+        return true
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
@@ -136,6 +138,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
             .collection("playlists").document(source.id)
             .collection("songs").document(source.songs[indexPath.row].songID)
             .delete()
+        //현재 플레이리스트의 노래 개수를 하나 줄인다.
         db
             .collection("users").document(currentUser.documentID)
             .collection("playlists").document(source.id).updateData([
@@ -147,7 +150,9 @@ extension PlaylistSongListViewController : UITableViewDataSource{
                     print("SongNum successfully updated")
                 }
             }
+        //현재 플레이리스트를 담고 있는 플레이리스트 변수에서도 해당 노래를 제거한다.
         source.songs.remove(at: indexPath.row)
+        //테이블에서도 해당 노래를 제거한다.
         songListTableView.deleteRows(at: [indexPath], with: .automatic)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -160,14 +165,14 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     
     func addChildVC() {
         addChild(youtubePlayerViewController)
-       UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
-           self.view.addSubview(self.youtubePlayerViewController.view)
-              }, completion: nil)
-     //  view.addSubview(youtubePlayerViewController.view)
+        UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
+            self.view.addSubview(self.youtubePlayerViewController.view)
+        }, completion: nil)
         youtubePlayerViewController.didMove(toParent: self)
         setYoutubePlayerVCConstraints()
     }
     
+    //유튜브 플레이어 뷰 constraints 초기 설정
     func setYoutubePlayerVCConstraints() {
         youtubePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
         youtubePlayerViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90).isActive = true
@@ -176,6 +181,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
     }
     
+    //노래 리스트 테이블 뷰 constraints 초기 설정
     func setSongListTableViewConstraints() {
         songListTableView.translatesAutoresizingMaskIntoConstraints = false
         songListFullConstraint = view.constraints.first { $0.identifier == "SongListTableViewTop" }
@@ -184,9 +190,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         songListShortConstraint?.isActive = false
     }
     
+    //노래 리스트 테이블 뷰를 유튜브 플레이어에 생성과 삭제에 맞춰서 toggle
     func toggleSongListTableViewConstraints() {
-        songListFullConstraint?.isActive = !(songListFullConstraint?.isActive)!
-        songListShortConstraint?.isActive = !(songListShortConstraint?.isActive)!
+        songListFullConstraint?.isActive.toggle()
+        songListShortConstraint?.isActive.toggle()
     }
 }
 
@@ -200,30 +207,39 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
         performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
     func toYoutubePlayer(index: Int) {
+        //child view controller가 존재한다면
         if self.children.count > 0 {
+            //유뷰트 플레이어 뷰 컨트롤러의 노래와 지금 재생하려는 노래가 같을 경우(index가 같은 경우) -> 이미 해당 영상이 재생되고 있는 상황이기 때문에 유튜브 플레이어를 내린다.
             if youtubePlayerViewController.index == index {
-
                 let viewControllers:[UIViewController] = self.children
                 for viewContoller in viewControllers{
                     viewContoller.willMove(toParent: nil)
-                 
                    viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                 }
             }
+            //유뷰트 플레이어 뷰 컨트롤러의 노래와 지금 재생하려는 노래가 다른 경우(index가 다른 경우)
             else {
+                //유뷰트 플레이어 뷰 컨트롤러의 인덱스를 재생하려는 노래의 인덱스로 바꿔주고
                 youtubePlayerViewController.index = index
+                //해당 노래를 튼다.
                 youtubePlayerViewController.playCertainVideo()
                 return
             }
         }
+        //child view controller가 없다면
         else {
+            //child view controller를 추가하고
             addChildVC()
+            //유뷰트 플레이어 뷰 컨트롤러의 노래와 지금 재생하려는 노래가 다른 경우(index가 다른 경우)
             if youtubePlayerViewController.index != index {
+                //유뷰트 플레이어 뷰 컨트롤러의 인덱스를 재생하려는 노래의 인덱스로 바꿔주고
                 youtubePlayerViewController.index = index
+                //해당 노래를 튼다.
                 youtubePlayerViewController.playCertainVideo()
             }
         }
+        //노래 리스트 테이블 뷰의 constraints를 toggle시킨다.
         toggleSongListTableViewConstraints()
     }
 }

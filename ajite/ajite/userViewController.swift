@@ -22,48 +22,34 @@ class userViewController: UIViewController {
     @IBOutlet var userTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    
     let userRef = db.collection("users")
     
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
     var displayUsers: [User] = []
     
     func getUserData(){
+        //모든 유저 정보를 불러온다.
         userRef.getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
             }
             else {
                 guard let snap = snapshot else {return}
+                var temUser : User
                 for document in snap.documents {
                     let data = document.data()
                     //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
                     if data["userID"] as? String == myUser.userID {
                         continue
                     }
-                    db
-                        .collection("users").document(document.documentID).getDocument { (document, error) in
-                            var temUser : User
-                            if let document = document, document.exists {
-                                temUser = User()
-                                let data = document.data()
-                                temUser.userID = data!["userID"] as! String
-                                temUser.name = data!["name"] as! String
-                                temUser.profileImageURL = data!["profileImageURL"] as! String
-                                temUser.documentID = document.documentID
-                                //전체 유저 목록에 추가
-                                users.append(temUser)
-                                //테이블에 불러온 정보를 보여준다.
-                            } else {
-                                print("Document does not exist")
-                            }
-                        }
+                    temUser = User()
+                    temUser.userID = data["userID"] as! String
+                    temUser.name = data["name"] as! String
+                    temUser.profileImageURL = data["profileImageURL"] as! String
+                    temUser.documentID = document.documentID
+                    //전체 유저 목록에 추가
+                    users.append(temUser)
+                    //테이블에 불러온 정보를 보여준다.
                 }
             }
         }
@@ -76,12 +62,23 @@ class userViewController: UIViewController {
         users.removeAll()
         userTable.delegate = self
         userTable.dataSource = self
+        //모든 유저 정보를 불러온다.
         getUserData()
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
@@ -126,8 +123,7 @@ extension userViewController: UISearchBarDelegate {
 
 extension userViewController: TableViewUser {
     func onClickCell(index: Int){
-        print(displayUsers[index].documentID)
-        
+        //친구 신청을 받는 유저의 friends collection에 friend document를 생성한다. state = 1
         db.collection("users").document(displayUsers[index].documentID).collection("friends").document(myUser.documentID).setData([
                 "userID" : myUser.userID as Any,
                 "name" : myUser.name as Any,
@@ -146,6 +142,7 @@ extension userViewController: TableViewUser {
                     print("Document added")
                 }
             }
+        //친구 신청을 하는 유저의 friends collection에 friend document를 생성한다. state = 0
         db
             .collection("users").document(myUser.documentID)
             .collection("friends").document(displayUsers[index].documentID).setData([

@@ -15,17 +15,7 @@ import FirebaseFirestore
 var ajites :[Ajite] = []
 
 class AjiteViewController: UIViewController{
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     @IBOutlet weak var ajiteTable: UITableView!
     
  // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들

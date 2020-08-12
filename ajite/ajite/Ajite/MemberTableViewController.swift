@@ -15,16 +15,7 @@ var member: [User] = []
 class MemberViewController: UIViewController, UITableViewDelegate {
     var memberViewAjite = Ajite()
     @IBOutlet var memberTableView: UITableView!
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     let currentAjite = Ajite()
     func getUserRequest(){
         db
@@ -33,22 +24,34 @@ class MemberViewController: UIViewController, UITableViewDelegate {
                 debugPrint("Error fetching docs: \(err)")
             }
             else {
-                
                 guard let snap = snapshot else {return}
+                var count = 0
                 for document in snap.documents {
                     print("member document loading")
-                    let data = document.data()
-                    let membername = data["name"] as? String
-                    let memberID = data["userID"] as? String
-                    let temUser = User()
-                    temUser.name = membername!
-                    temUser.userID = memberID!
-                    //전체 유저 목록에 추가
-                    print("\(String(describing: membername))")
-                    member.append(temUser)
+                    db
+                        .collection("users").document(document.documentID).getDocument { (document, error) in
+                            var temUser : User
+                            print(document!.documentID)
+                            if let document = document, document.exists {
+                                temUser = User()
+                                let data = document.data()
+                                temUser = User()
+                                temUser.name = data!["name"] as! String
+                                temUser.userID = data!["userID"] as! String
+                                temUser.profileImageURL = data!["profileImageURL"] as! String
+                                temUser.documentID = document.documentID
+                                //아지트 맴버 목록에 추가
+                                member.append(temUser)
+                                count += 1
+                                if count == snap.documents.count {
+                                    self.memberTableView.reloadData()
+                                }
+                            } else {
+                                print("Document does not exist")
+                            }
+                        }
                 }
             }
-            self.memberTableView.reloadData()
         }
     }
     
@@ -80,9 +83,9 @@ extension MemberViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! memberInAjiteTableViewCell
-       
         cell.memberName.text =  member[indexPath.row].name
-        
+        let data = try? Data(contentsOf: URL(string: member[indexPath.row].profileImageURL)!)
+        cell.memberProfile.image = UIImage(data: data!)
         return cell
     }
     

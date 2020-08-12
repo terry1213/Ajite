@@ -27,16 +27,14 @@ class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     @IBAction func sendRequest(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
-   
     }
     
     @IBAction func popUpAlert(_ sender: Any) {
-       if let delegate = delegate{
+        if let delegate = delegate{
             self.delegate?.sendMessage(self)
         }
     }

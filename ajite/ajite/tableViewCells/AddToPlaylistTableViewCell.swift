@@ -9,7 +9,9 @@
 import UIKit
 
 protocol AddToPlaylistProtocol {
+    //체크했다는 것을 table view controller에 알려준다.
     func checkPlaylist(index: Int)
+    //체크가 해제되었다는 것을 table view controller에 알려준다.
     func uncheckPlaylist(index: Int)
 }
 
@@ -30,19 +32,25 @@ class AddToPlaylistTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
     
+    //check box를 클릭했을 때
     @IBAction func checkBox(_ sender: UIButton) {
+        //체크가 되어 있지 않다면,
         if checked == false {
+            //버튼 이미지를 체크된 것으로 교체하고
             checkBoxButton.setImage(UIImage(named: "checked"), for: .normal)
+            //체크했다는 것을 table view controller에 알려준다.
             cellDelegate?.checkPlaylist(index: (index?.row)!)
         }
+        //체크가 되어 있다면,
         else {
+            //버튼 이미지를 체크되지 않은 것으로 교체하고
             checkBoxButton.setImage(UIImage(named: "check"), for: .normal)
+            //체크가 해제되었다는 것을 table view controller에 알려준다.
             cellDelegate?.uncheckPlaylist(index: (index?.row)!)
         }
-        checked = !checked
+        checked.toggle()
     }
 }
 

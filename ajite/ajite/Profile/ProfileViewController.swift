@@ -17,30 +17,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var profilePicture: CircleImageView!
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     override func viewDidLoad() {
-         UITabBar.appearance().tintColor =  .white
+        UITabBar.appearance().tintColor =  .white
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         addFriend.imageView?.contentMode = .scaleAspectFit
         self.myFriendsTableView.delegate = self
         self.myFriendsTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //데이터 불러오기
         getData()
+        //Label에 이름 적기
         self.userNameLabel.text = myUser.name
+        //Label에 biography 적기
         self.bio.text = myUser.bio
+        //UIImage에 유저 프로필 사진 넣기
         let data = try? Data(contentsOf: URL(string: myUser.profileImageURL)!)
         self.profilePicture.image = UIImage(data: data!)
     }
@@ -86,49 +79,61 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func getData(){
-            db
-                .collection("users").document(myUser.documentID)
-                .getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        myUser.bio = document.data()!["bio"] == nil ? "" : document.data()!["bio"] as! String
-                    } else {
-                        print("Document does not exist")
-                    }
-                }
-            db
-                .collection("users").document(myUser.documentID)
-                .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
+        //유저 정보 불러오기
+        db
+            .collection("users").document(myUser.documentID)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    //전역 변수인 myUser에 데이터 저장
+                    myUser.bio = document.data()!["bio"] == nil ? "" : document.data()!["bio"] as! String
                 } else {
-                    myUser.friends.removeAll()
-                    //self.myFriendsTableView.reloadData()
-                    self.friendNumLabel.text = "(\(querySnapshot!.documents.count))"
-                    var count = 0
-                    for friendDocument in querySnapshot!.documents {
-                        db
-                            .collection("users").document(friendDocument.documentID).getDocument { (document, error) in
-                                var temUser : User
-                                if let document = document, document.exists {
-                                    temUser = User()
-                                    let data = document.data()
-                                    temUser.userID = data!["userID"] as! String
-                                    temUser.name = data!["name"] as! String
-                                    temUser.profileImageURL = data!["profileImageURL"] as! String
-                                    temUser.documentID = document.documentID
-                                    myUser.friends.append(temUser)
-                                    //테이블에 불러온 정보를 보여준다.
-                                    count += 1
-                                    if count == querySnapshot!.documents.count {
-                                        self.myFriendsTableView.reloadData()
-                                    }
-                                } else {
-                                    print("Document does not exist")
-                                }
-                            }
-                    }
-                    
+                    print("Document does not exist")
                 }
+            }
+        //유저 documentID를 통해 친구 목록에서 친구 사이의 유저 documentID를 불러온다.
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                //데이터 중복을 막기 위해 원래 불러왔던 친구 목록을 삭제한다.
+                myUser.friends.removeAll()
+                //친구 숫자를 Label에 저장
+                self.friendNumLabel.text = "(\(querySnapshot!.documents.count))"
+                var count = 0
+                for friendDocument in querySnapshot!.documents {
+                    //친구의 documentID를 통해 친구의 users document 정보 접근
+                    db
+                        .collection("users").document(friendDocument.documentID).getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                let data = document.data()
+                                //임시로 저장할 유저 변수 생성
+                                let temUser = User()
+                                //유저 이메일 아이디 저장
+                                temUser.userID = data!["userID"] as! String
+                                //유저 이름 저장
+                                temUser.name = data!["name"] as! String
+                                //유저의 프로필 이미지 url 저장
+                                temUser.profileImageURL = data!["profileImageURL"] as! String
+                                //유저의 documentID 저장
+                                temUser.documentID = document.documentID
+                                //친구 목록에 추가
+                                myUser.friends.append(temUser)
+                                //테이블에 불러온 정보를 보여준다.
+                                count += 1
+                                //모든 친구 목록을 불러왔을 경우,
+                                if count == querySnapshot!.documents.count {
+                                    //테이블에 불러온 정보를 보여준다.
+                                    self.myFriendsTableView.reloadData()
+                                }
+                            } else {
+                                print("Document does not exist")
+                            }
+                        }
+                }
+                
+            }
         }
     }
     

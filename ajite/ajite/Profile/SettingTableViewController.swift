@@ -11,17 +11,7 @@ import FirebaseAuth
 import GoogleSignIn
 
 class SettingTableViewController: UITableViewController {
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,6 +39,7 @@ class SettingTableViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 0 {
             //구글 로그아웃 작업 실행
             GIDSignIn.sharedInstance().signOut()
+            //firebase 로그아웃
             let firebaseAuth = Auth.auth()
             do {
               try firebaseAuth.signOut()

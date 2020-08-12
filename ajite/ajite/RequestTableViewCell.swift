@@ -13,14 +13,14 @@ protocol RequestTableViewUser {
 }
 
 class RequestTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var nameBox: UILabel!
+    @IBOutlet weak var profileImage: CircleImageView!
     var cellDelegate: RequestTableViewUser?
     var index: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     @IBAction func accept(_ sender: Any) {

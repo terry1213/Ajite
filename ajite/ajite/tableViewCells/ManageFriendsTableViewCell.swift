@@ -14,16 +14,14 @@ protocol FriendUser {
 
 class ManageFriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var manageFriendProfile: UIImageView!
+    @IBOutlet weak var manageFriendProfile: CircleImageView!
     @IBOutlet weak var manageFriendsName: UILabel!
-    
-    var cellDelegate : FriendUser?
-    
     @IBOutlet var deleteButton: UIButton!
+    var cellDelegate : FriendUser?
     var index: IndexPath?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     @IBAction func deleteFriends(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
@@ -31,8 +29,6 @@ class ManageFriendsTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

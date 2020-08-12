@@ -16,16 +16,7 @@ import FirebaseFirestore
 
 
 class FriendsToAjiteViewController: UIViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
     @IBOutlet var searchBar: UISearchBar!
     var vcindex = 0
     //if vcindex = 0 this request is from CreateAjite
@@ -101,38 +92,61 @@ class FriendsToAjiteViewController: UIViewController {
                 }
         }
             userRef.document(myUser.documentID)
-                .collection("friends").getDocuments{ (snapshot, error) in
+                .collection("friends").whereField("state", isEqualTo: 2).getDocuments{ (snapshot, error) in
                 if let err = error {
                     debugPrint("Error fetching docs: \(err)")
                 }
                 else {
                     guard let snap = snapshot else {return}
+                    var count = 0
                     for document in snap.documents {
-                        let data = document.data()
                         //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
-                        if data["userID"] as? String == myUser.userID || self.alreadyMembers.contains(document.documentID) {
+                        if document.documentID == myUser.documentID || self.alreadyMembers.contains(document.documentID) {
                             continue
                         }
-                        let username = data["name"] as? String
-                        let userID = data["userID"] as? String
-                        let documentID = document.documentID
-                        let temUser = User()
-                        temUser.name = username!
-                        temUser.userID = userID!
-                        temUser.documentID = documentID
-                        //전체 유저 목록에 추가
-                        self.displayUsers.append(temUser)
+                        db
+                            .collection("users").document(document.documentID).getDocument { (document, error) in
+                                var temUser : User
+                                if let document = document, document.exists {
+                                    temUser = User()
+                                    let data = document.data()
+                                    temUser = User()
+                                    temUser.name = data!["name"] as! String
+                                    temUser.userID = data!["userID"] as! String
+                                    temUser.profileImageURL = data!["profileImageURL"] as! String
+                                    temUser.documentID = document.documentID
+                                    //전체 유저 목록에 추가
+                                    self.displayUsers.append(temUser)
+                                    //테이블에 불러온 정보를 보여준다.
+                                    count += 1
+                                    if count == snap.documents.count {
+                                        self.searchFriendsTable.reloadData()
+                                        self.addedMembersTable.reloadData()
+                                    }
+                                } else {
+                                    print("Document does not exist")
+                                }
+                            }
                     }
                 }
-                self.searchFriendsTable.reloadData()
-                self.addedMembersTable.reloadData()
             }
         
     }
+    
     func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.searchBar.endEditing(true)
     }
- 
+    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
   
 }
 
@@ -174,14 +188,15 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             if tableView == self.addedMembersTable{
                 let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
                 cell.addedMembersLabel.text = addedMembers[indexPath.row].name
-            //!!!!!!!!!!!구현하기 유저 이미지 불러오기 !!!!!!!  cell.addedFriendsProfile.image = UIImage(named: addedMembers[indexPath.row].)
-       
+                let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
+                cell.addedFriendsProfile.image = UIImage(data: data!)
             }
             else if tableView == self.searchFriendsTable{
                 let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
                 cell.searchFriendName.text = displayUsers[indexPath.row].name
                 //     cell.searchUser = myUser.friendds 에 저장
-                 //!!!!!!!!!!!구현하기 유저 이미지 불러오기 !!!!!!!      cell.playlistImage.image = UIImage(named: playlists[indexPath.row].playlistImageString)
+                let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
+                cell.searchFriendImage.image = UIImage(data: data!)
                 return cell
             }
             return UITableViewCell()

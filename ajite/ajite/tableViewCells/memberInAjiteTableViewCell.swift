@@ -21,13 +21,11 @@ class memberInAjiteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     //+버튼을 누를시 동작하는 메서드
     @IBAction func sendFriendRequest(_ selected: Any) {
         cellDelegate?.OnClickCell(index: (index?.row)!)
-        // Configure the view for the selected state
     }
 
 }
