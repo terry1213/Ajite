@@ -11,18 +11,6 @@ import youtube_ios_player_helper
 
 class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
-    //아무곳이나 누르면 키보드 숨겨짐
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
     var youtubePlayer: YTPlayerView!
     var index: Int = 0
     var youtubeVideos = Playlist()
@@ -43,15 +31,22 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
         view = youtubePlayer
     }
     
+    //유튜브 플레이어 뷰가 준비 되면 실행될 함수
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        //영상을 자동으로 재생한다.
         youtubePlayer.playVideo()
     }
     
+    //유트브 플레이어 상태가 변하면 실행될 함수
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        //유튜브 플레이어 상태가 '영상 종료'일 경우
         if state == YTPlayerState.ended {
+            //인덱스 1 증가
             index += 1
             print("\(index)번째 비디오 종료")
+            //뒤에 노래가 남았으면
             if index < youtubeVideos.songs.count{
+                //해당 노래를 불러온다.
                 self.youtubePlayer.load(withVideoId: youtubeVideos.songs[index].videoID, playerVars: [
                     "controls": 1,  //0: 영상 컨트롤 바 사라짐, 1: 컨트롤 바 생성
                     "playsinline": 1,   //0: 전체 화면 재생, 1: playerView 화면 내애서 재생
@@ -60,6 +55,7 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
         }
     }
     
+    //특정 비디오를 재생하기 위해 사용하는 함수
     func playCertainVideo() {
         self.youtubePlayer.load(withVideoId: youtubeVideos.songs[index].videoID, playerVars: [
             "controls": 1,  //0: 영상 컨트롤 바 사라짐, 1: 컨트롤 바 생성

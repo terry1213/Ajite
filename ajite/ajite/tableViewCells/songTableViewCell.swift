@@ -9,7 +9,9 @@
 import UIKit
 
 protocol PlaylistSongListProtocol {
+    //해당 노래를 플레이리스트에 추가할 것이라고 table view controller에 알려준다.
     func toAddToPlaylist(index: Int)
+    //해당 노래를 유튜브 플레이어 통해서 재생할 것이라고 table view controller에 알려준다.
     func toYoutubePlayer(index: Int)
 }
 
@@ -25,19 +27,19 @@ class songTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
     @IBAction func plusTouched(_ sender: Any) {
+        //해당 노래를 플레이리스트에 추가할 것이라고 table view controller에 알려준다.
         cellDelegate?.toAddToPlaylist(index: (index?.row)!)
     }
     
     @IBAction func youtubeTouched(_ sender: Any) {
+        //해당 노래를 유튜브 플레이어 통해서 재생할 것이라고 table view controller에 알려준다.
         cellDelegate?.toYoutubePlayer(index: (index?.row)!)
     }
 }

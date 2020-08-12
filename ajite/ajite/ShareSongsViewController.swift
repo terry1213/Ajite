@@ -85,12 +85,6 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     var playlistID: String!
     var ajiteID: String!
     
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
     override func viewDidLoad() {
         print(ajiteID)
         super.viewDidLoad()
@@ -98,12 +92,6 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         self.youtubeVideoTableView.delegate = self
         //getData(from: url)
         // Do any additional setup after loading the view.
-    }
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
     }
     
     @IBAction func pressShare(_ sender: Any) {
@@ -162,6 +150,17 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func searchAction(_ sender: Any) {
         //url을 통한 검색을 위해 space( )를 plus(+)로 전환
         getData(from: url + searchTextField.text!.replacingOccurrences(of: " ", with: "+"))
+    }
+    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     /*
