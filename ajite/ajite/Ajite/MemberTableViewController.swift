@@ -14,6 +14,7 @@ var member: [User] = []
 
 class MemberViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var memberTableView: UITableView!
+    @IBOutlet weak var numberOfMembersLabel: UILabel!
     
     var currentAjite = Ajite()
     var friendsID : [String] = []
@@ -29,6 +30,7 @@ class MemberViewController: UIViewController, UITableViewDelegate {
                 var count = 0
                 for document in snap.documents {
                     print("member document loading")
+                    self.numberOfMembersLabel.text = "(\(snap.documents.count))"
                     db
                         .collection("users").document(document.documentID).getDocument { (document, error) in
                             var temUser : User

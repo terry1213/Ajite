@@ -1056,6 +1056,7 @@
                     <navigationItem key="navigationItem" id="xjB-WO-HdU"/>
                     <connections>
                         <outlet property="memberTableView" destination="vcu-Kh-WgW" id="sF5-UV-NNZ"/>
+                        <outlet property="numberOfMembersLabel" destination="4ud-hO-nIb" id="Lxh-ud-q7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4G-yr-jie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
