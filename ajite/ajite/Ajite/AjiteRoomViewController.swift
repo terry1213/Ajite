@@ -123,6 +123,9 @@ class AjiteRoomViewController: UIViewController {
         case "shareSong":
             let vc = segue.destination as! ShareSongsViewController
             vc.ajiteID = currentAjite.ajiteID
+        case "addToPlaylistSegue":
+            let vc = segue.destination as! AddToPlaylistViewController
+            vc.addingSong = currentAjite.sharedSongs.songs[nextSourceIndex]
         default:
             print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
             return

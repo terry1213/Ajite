@@ -21,12 +21,37 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         self.playlistView.dataSource = self
         self.playlistView.delegate = self
-        //어떤 플레이리스트에 담을 것인지를 bool 값으로 표현, 플레이리스트의 개수만큼 array에 담고 있다.
-        addOrNot = Array(repeating: false, count: myUser.playlists.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.playlistView.reloadData()
+        getData()
+    }
+    
+    func getData() {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        myUser.playlists.removeAll()
+                        var count = 0
+                        var temPlaylist : Playlist
+                        for document in querySnapshot!.documents {
+                            temPlaylist = Playlist()
+                            let data = document.data()
+                            temPlaylist.playlistName = data["name"] as! String
+                            temPlaylist.id = document.documentID
+                            myUser.playlists.append(temPlaylist)
+                            count += 1
+                            if count == querySnapshot!.documents.count {
+                                self.playlistView.reloadData()
+                                //어떤 플레이리스트에 담을 것인지를 bool 값으로 표현, 플레이리스트의 개수만큼 array에 담고 있다.
+                                self.addOrNot = Array(repeating: false, count: myUser.playlists.count)
+                            }
+                        }
+                    }
+            }
     }
     
     @IBAction func finished(_ sender: Any) {

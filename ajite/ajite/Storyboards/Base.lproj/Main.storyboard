@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -799,6 +799,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LzV-a0-1J0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ezm-LL-v0P"/>
                     <connections>
                         <outlet property="newPlaylist" destination="ulx-t9-Wab" id="PlV-89-zUM"/>
                         <outlet property="playlistView" destination="sS5-aD-ktf" id="MYx-B4-It9"/>
@@ -1284,7 +1285,6 @@
                                                                             <state key="normal" image="plus-purple"/>
                                                                             <connections>
                                                                                 <action selector="plusTouched:" destination="aGs-fq-yYE" eventType="touchUpInside" id="e2A-Gs-wjm"/>
-                                                                                <segue destination="BBK-6o-Sj2" kind="presentation" id="ZOl-UM-4IR"/>
                                                                             </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZk-XA-kL0">
@@ -1420,6 +1420,7 @@
                         <outlet property="sharedSongsView" destination="JY2-Bh-xfF" id="mE6-Px-hzI"/>
                         <outlet property="songCollection" destination="nPd-RD-SgJ" id="Pz8-wR-VwW"/>
                         <segue destination="3ve-0e-ZXD" kind="presentation" identifier="viewMembers" id="9cY-5Y-XQE"/>
+                        <segue destination="BBK-6o-Sj2" kind="presentation" identifier="addToPlaylistSegue" id="hSO-J2-vjJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChS-bh-KpG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2588,7 +2589,7 @@
         <segue reference="Fv8-EL-tzo"/>
         <segue reference="xEi-qz-IQe"/>
         <segue reference="YzI-Ue-2oM"/>
-        <segue reference="ZOl-UM-4IR"/>
+        <segue reference="hSO-J2-vjJ"/>
         <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>
     <resources>
