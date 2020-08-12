@@ -1,1 +1,0 @@
-Ajite test file
