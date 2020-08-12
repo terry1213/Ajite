@@ -152,9 +152,16 @@ class ShareSongsViewController: UIViewController, UITableViewDataSource, UITable
         getData(from: url + searchTextField.text!.replacingOccurrences(of: " ", with: "+"))
     }
     
-    //keyboard 아무 곳이나 터치하면 내려감
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
+        //keyboard 아무 곳이나 터치하면 내려감
+        self.view.endEditing(true)
+        //유튜브 검색 테이블 뷰 밖을 터치하면
+        let touch: UITouch? = touches.first!
+        if touch?.view != youtubeVideoTableView {
+            //유튜브 검색 테이블 뷰 없애기
+            dismiss(animated: true)
+        }
     }
     
     //keyboard return누르면 숨겨짐
@@ -253,7 +260,9 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
                     //썸네일 이미지 url 등록
                     "thumbnailImageUrl": thumbnailImageUrl as Any,
                     //비디오 ID 등록
-                    "videoID": videoID as Any
+                    "videoID": videoID as Any,
+                    //공유한 사람 등록
+                    "sharedPerson": myUser.documentID
             ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
