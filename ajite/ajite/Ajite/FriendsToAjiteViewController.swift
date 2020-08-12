@@ -16,6 +16,7 @@ import FirebaseFirestore
 
 
 class FriendsToAjiteViewController: UIViewController {
+    
 
     @IBOutlet var searchBar: UISearchBar!
     var vcindex = 0
@@ -34,12 +35,12 @@ class FriendsToAjiteViewController: UIViewController {
         displayUsers.removeAll()
         addedMembers.removeAll()
         alreadyMembers.removeAll()
-          super.viewDidLoad()
-          self.addedMembersTable.dataSource = self
-          self.addedMembersTable.delegate = self
-          self.searchFriendsTable.dataSource = self
-          self.searchFriendsTable.delegate = self
-          getUserData()
+        super.viewDidLoad()
+        self.addedMembersTable.dataSource = self
+        self.addedMembersTable.delegate = self
+        self.searchFriendsTable.dataSource = self
+        self.searchFriendsTable.delegate = self
+        getUserData()
       }
     
     
@@ -94,6 +95,7 @@ class FriendsToAjiteViewController: UIViewController {
                             let data = document.data()
                                 temMemberName = data["name"] as! String
                                 self.alreadyMembers.append(temMemberName)
+                                print("member: ", temMemberName)
                         }
                     }
                 }
@@ -207,6 +209,9 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 //     cell.searchUser = myUser.friendds 에 저장
                 let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
                 cell.searchFriendImage.image = UIImage(data: data!)
+                //cell.cellDelegate = self
+                cell.index = indexPath
+                //cell.delegate = self
                 return cell
             }
             return UITableViewCell()
@@ -245,11 +250,26 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
         searchFriendsTable.reloadData()
     }
     
+    
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //검색어 입력 칸을 비운다.
         searchBar.text = ""
     }
+    
+    /*
+    
+    //친구 추가 알림
+    func sendToAddedTable(_ searchFriendsTableViewCell: searchFriendsTableViewCell) {
+        
+    }
+    
+    
+    func onClickCell(index: Int) {
+        
+    }
+ 
+    */
 }
 
 /*extension FriendsToAjiteViewController: searchUser{
@@ -265,4 +285,5 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
 
 protocol FriendsToAjiteDelegate {
     func sendUsersBack(sendingMembers : [User])
+    
 }

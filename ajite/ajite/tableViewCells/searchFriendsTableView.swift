@@ -8,17 +8,18 @@
 
 import UIKit
 
+/*
 protocol searchUser {
     func onClickCell(index: Int)
-}
+}*/
 
 class searchFriendsTableViewCell: UITableViewCell {
 
     @IBOutlet var searchFriendImage: CircleImageView!
     
     @IBOutlet var searchFriendName: UILabel!
-    var cellDelegate: searchUser?
-    weak var delegate: searchTableViewCellDelegate?
+    //var cellDelegate: searchUser?
+    //weak var delegate: searchTableViewCellDelegate?
     var index: IndexPath?
     
     let searchUser = User()
@@ -36,8 +37,9 @@ class searchFriendsTableViewCell: UITableViewCell {
     }
 
 }
+/*
 protocol searchTableViewCellDelegate: AnyObject{
     func sendToAddedTable(_ searchFriendsTableViewCell: searchFriendsTableViewCell)
-}
+}*/
 //소속: FriendsToAjiteViewController
 //Description: 아지트에 멤버 추가할때 추가할 자기 친구들을 여기에 집어 넣는다 

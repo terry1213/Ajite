@@ -218,10 +218,10 @@
 			children = (
 				1643B52B24E26ED700548D00 /* membersToAddTableViewCell.swift */,
 				16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */,
-				165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */,
 				1658B1E424DC8A630023469B /* AddToPlaylistTableViewCell.swift */,
 				1695F5A924DAB13700B9601E /* AjiteTableViewCell.swift */,
 				16F1C0FB24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift */,
+				165E15FE24DE8B7200CD4F03 /* searchFriendsTableView.swift */,
 				1658B1DB24DC3BC90023469B /* memberInAjiteTableViewCell.swift */,
 				1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */,
 				16E0094A24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift */,

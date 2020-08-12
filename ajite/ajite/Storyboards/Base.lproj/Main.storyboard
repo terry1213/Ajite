@@ -341,14 +341,25 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VWf-su-mRG" userLabel="Search List">
-                                <rect key="frame" x="16" y="150" width="343" height="228"/>
+                                <rect key="frame" x="16" y="97" width="343" height="281"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="228" id="qgZ-il-VNG"/>
+                                    <constraint firstAttribute="height" constant="281" id="qgZ-il-VNG"/>
                                 </constraints>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="BIA-gD-0v9">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <nil key="scopeBarBackgroundImage"/>
+                                    </variation>
+                                    <connections>
+                                        <outlet property="delegate" destination="VWf-su-mRG" id="SmW-1Q-Dzh"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFriends" rowHeight="55" id="gEa-2r-lI0" customClass="searchFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="55"/>
+                                        <rect key="frame" x="0.0" y="84" width="343" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gEa-2r-lI0" id="KlX-q0-3mq" customClass="searchFriendsTableViewCell" customModule="ajite" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="55"/>
@@ -389,17 +400,6 @@
                                 <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" id="BIA-gD-0v9">
-                                <rect key="frame" x="16" y="78" width="343" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <nil key="scopeBarBackgroundImage"/>
-                                </variation>
-                                <connections>
-                                    <outlet property="delegate" destination="VWf-su-mRG" id="9vz-83-ukU"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yac-kF-M5j" userLabel="Added Members">
                                 <rect key="frame" x="16" y="433.5" width="343" height="149.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -447,7 +447,6 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="BIA-gD-0v9" firstAttribute="top" secondItem="s5u-mG-8Eq" secondAttribute="bottom" constant="12" id="3P5-We-zof"/>
                             <constraint firstItem="t4e-dc-9AT" firstAttribute="top" secondItem="Yac-kF-M5j" secondAttribute="bottom" constant="8" id="4HO-2y-9E8"/>
                             <constraint firstItem="t4e-dc-9AT" firstAttribute="bottom" secondItem="NeK-dR-gJA" secondAttribute="bottom" id="4wz-sg-qfp"/>
                             <constraint firstItem="VWf-su-mRG" firstAttribute="leading" secondItem="NeK-dR-gJA" secondAttribute="leading" constant="16" id="BYf-l6-k7c"/>
@@ -462,19 +461,19 @@
                             <constraint firstItem="NeK-dR-gJA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dds-xR-MpU" secondAttribute="trailing" symbolic="YES" id="l6C-pK-aQ3"/>
                             <constraint firstItem="Yac-kF-M5j" firstAttribute="top" secondItem="dds-xR-MpU" secondAttribute="bottom" constant="16" id="lMa-Nz-qrE"/>
                             <constraint firstItem="Yac-kF-M5j" firstAttribute="leading" secondItem="NeK-dR-gJA" secondAttribute="leading" constant="16" id="s4E-fC-2F9"/>
-                            <constraint firstItem="VWf-su-mRG" firstAttribute="top" secondItem="BIA-gD-0v9" secondAttribute="bottom" constant="16" id="sMW-zQ-Zx7"/>
+                            <constraint firstItem="VWf-su-mRG" firstAttribute="top" secondItem="s5u-mG-8Eq" secondAttribute="bottom" constant="31" id="xpB-zK-WTI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NeK-dR-gJA"/>
                     </view>
                     <connections>
                         <outlet property="addedMembersTable" destination="Yac-kF-M5j" id="xPs-Qn-cUc"/>
-                        <outlet property="searchBar" destination="BIA-gD-0v9" id="6TW-Nk-p2y"/>
+                        <outlet property="searchBar" destination="BIA-gD-0v9" id="Tyr-l4-jVt"/>
                         <outlet property="searchFriendsTable" destination="VWf-su-mRG" id="aG2-FD-nbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWT-cR-vol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3610.4000000000001" y="-2389.655172413793"/>
+            <point key="canvasLocation" x="3610.4000000000001" y="-2389.6551724137935"/>
         </scene>
         <!--Create Ajite VC-->
         <scene sceneID="Qul-JJ-ZJT">
