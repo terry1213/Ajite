@@ -9,26 +9,17 @@
 import UIKit
 
 class BiographyViewController: UIViewController {
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-   
+    
     @IBOutlet weak var biographyTF: UITextField!
     var changed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //유저의 기존 biography 불러오기
+        biographyTF.text = myUser.bio
     }
-    // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
     
+    // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = biographyTF.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
@@ -44,6 +35,7 @@ class BiographyViewController: UIViewController {
     
     @IBAction func pressedDone(_ sender: Any) {
         if changed {
+            //전역 변수에 biography 새로 저장
             myUser.bio = biographyTF.text!
             db
                 .collection("users").document(myUser.documentID).updateData([
@@ -56,8 +48,21 @@ class BiographyViewController: UIViewController {
                     }
                 }
         }
+        //화면 내리기
         dismiss(animated: true)
     }
+    
+    //keyboard 아무 곳이나 터치하면 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
+          self.view.endEditing(true)
+
+    }
+    
+    //keyboard return누르면 숨겨짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
 
