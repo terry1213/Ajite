@@ -952,7 +952,7 @@
                                                             </constraints>
                                                             <state key="normal" image="plus-purple"/>
                                                             <connections>
-                                                                <action selector="sendMemberToAjite:" destination="eYV-hw-6XE" eventType="touchUpInside" id="wU7-gE-wMq"/>
+                                                                <action selector="sendFriendRequest:" destination="eYV-hw-6XE" eventType="touchUpInside" id="bM0-lQ-JwX"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -966,7 +966,7 @@
                                                 <connections>
                                                     <outlet property="memberName" destination="Cop-z7-8rq" id="zWs-Fd-hQy"/>
                                                     <outlet property="memberProfile" destination="svF-uc-r5c" id="eVN-bV-fCg"/>
-                                                    <outlet property="plusButton" destination="zLK-As-guE" id="df5-tj-jx9"/>
+                                                    <outlet property="sendFriendRequestButton" destination="zLK-As-guE" id="DW7-7e-k0K"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1977,7 +1977,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78C-sU-beY">
-                                                    <rect key="frame" x="175" y="11.5" width="64" height="21"/>
+                                                    <rect key="frame" x="155.5" y="11.5" width="64" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
