@@ -6,7 +6,7 @@
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
-import UIKit
+
 import UIKit
 import Firebase
 import CoreData
@@ -39,9 +39,8 @@ class FriendsToAjiteViewController: UIViewController {
         self.addedMembersTable.delegate = self
         self.searchFriendsTable.dataSource = self
         self.searchFriendsTable.delegate = self
+        searchBar.delegate = self
         getUserData()
-        print(displayUsers.count)
-        print(totalUser.count)
       }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,15 +149,11 @@ class FriendsToAjiteViewController: UIViewController {
             }
     }
     
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.searchBar.endEditing(true)
-    }
-    
     //keyboard 아무 곳이나 터치하면 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
+
     //keyboard return누르면 숨겨짐
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -176,7 +171,9 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.addedMembersTable{
             return addedMembers.count
-        } else {return displayUsers.count}
+        } else {
+            return displayUsers.count
+        }
     }
     
     
@@ -217,6 +214,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 //cell.cellDelegate = self
                 cell.index = indexPath
                 //cell.delegate = self
+                print(1)
                 return cell
             }
             return UITableViewCell()
@@ -249,10 +247,11 @@ extension FriendsToAjiteViewController: UITableViewDelegate {
    // }
 }
 
-extension FriendsToAjiteViewController: UISearchBarDelegate{
+extension FriendsToAjiteViewController: UISearchBarDelegate {
     
     //필터링
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(2)
         displayUsers = totalUser.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         searchFriendsTable.reloadData()
     }
@@ -260,33 +259,10 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //검색어 입력 칸을 비운다.
+        print(3)
         searchBar.text = ""
     }
-    
-    /*
-    
-    //친구 추가 알림
-    func sendToAddedTable(_ searchFriendsTableViewCell: searchFriendsTableViewCell) {
-        
-    }
-    
-    
-    func onClickCell(index: Int) {
-        
-    }
- 
-    */
 }
-
-/*extension FriendsToAjiteViewController: searchUser{
-    func onClickCell(index: Int) {
-        addedMembers.append(displayUsers[index])
-        displayUsers.remove(at: index)
-        searchFriendsTable.reloadData()
-        addedMembersTable.reloadData()
-        
-    }
-}*/
 
 
 protocol FriendsToAjiteDelegate {
