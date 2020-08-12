@@ -17,6 +17,8 @@ class MemberViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var memberTableView: UITableView!
     
     let currentAjite = Ajite()
+    var friendsID : [String] = []
+    var friendOrNot : [Bool] = []
     func getUserRequest(){
         db
             .collection("ajites").document(memberViewAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
@@ -40,8 +42,21 @@ class MemberViewController: UIViewController, UITableViewDelegate {
                                 temUser.userID = data!["userID"] as! String
                                 temUser.profileImageURL = data!["profileImageURL"] as! String
                                 temUser.documentID = document.documentID
-                                //아지트 맴버 목록에 추가
-                                member.append(temUser)
+                                //유저 본인일 경우 제일 앞에 추가
+                                if temUser.documentID == myUser.documentID {
+                                    member.insert(temUser, at: 0)
+                                    self.friendOrNot.insert(true, at: 0)
+                                }
+                                else {
+                                    //아지트 맴버 목록에 추가
+                                    member.append(temUser)
+                                    if self.friendsID.contains(temUser.documentID) {
+                                        self.friendOrNot.append(true)
+                                    }
+                                    else {
+                                        self.friendOrNot.append(false)
+                                    }
+                                }
                                 count += 1
                                 if count == snap.documents.count {
                                     self.memberTableView.reloadData()
@@ -55,19 +70,32 @@ class MemberViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    func getfriendsData() {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("friends").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.friendsID.append(document.documentID)
+                    }
+                }
+            }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         member.removeAll()
         memberTableView.dataSource = self
         memberTableView.delegate = self
+        getfriendsData()
         getUserRequest()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            
            //self.memberTableView.reloadData()
-       }
+    }
     
      
 }
@@ -86,6 +114,9 @@ extension MemberViewController : UITableViewDataSource{
         cell.memberName.text =  member[indexPath.row].name
         let data = try? Data(contentsOf: URL(string: member[indexPath.row].profileImageURL)!)
         cell.memberProfile.image = UIImage(data: data!)
+        if friendOrNot[indexPath.row] == true {
+            cell.sendFriendRequestButton.isHidden = true
+        }
         return cell
     }
     

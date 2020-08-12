@@ -15,9 +15,9 @@ class memberInAjiteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memberProfile: CircleImageView!
     @IBOutlet weak var memberName: UILabel!
+    @IBOutlet var sendFriendRequestButton: UIButton!
     var cellDelegate: memberTableView?
     var index: IndexPath?
-    @IBOutlet var sendFriendRequestButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

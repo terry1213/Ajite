@@ -226,6 +226,18 @@ class YoutubeVideoSearchTableViewCell: UITableViewCell {
                     print("Document added with ID: \(ref!.documentID)")
                 }
             }
+            
+            db
+                .collection("users").document(myUser.documentID)
+                .collection("playlists").document(playlistID).updateData([
+                    "songNum" : FieldValue.increment(Int64(1))
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
         }
         else if ajiteID != nil {
             //해당 아지트의 노래 목록에 선택한 노래를 추가한다.

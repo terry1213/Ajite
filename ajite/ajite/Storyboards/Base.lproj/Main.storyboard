@@ -952,7 +952,7 @@
                                                             </constraints>
                                                             <state key="normal" image="plus-purple"/>
                                                             <connections>
-                                                                <action selector="sendMemberToAjite:" destination="eYV-hw-6XE" eventType="touchUpInside" id="wU7-gE-wMq"/>
+                                                                <action selector="sendFriendRequest:" destination="eYV-hw-6XE" eventType="touchUpInside" id="bM0-lQ-JwX"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -966,7 +966,7 @@
                                                 <connections>
                                                     <outlet property="memberName" destination="Cop-z7-8rq" id="zWs-Fd-hQy"/>
                                                     <outlet property="memberProfile" destination="svF-uc-r5c" id="eVN-bV-fCg"/>
-                                                    <outlet property="sendFriendRequestButton" destination="zLK-As-guE" id="Hsn-3v-qOI"/>
+                                                    <outlet property="sendFriendRequestButton" destination="zLK-As-guE" id="DW7-7e-k0K"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
