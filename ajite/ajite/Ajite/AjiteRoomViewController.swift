@@ -100,7 +100,7 @@ class AjiteRoomViewController: UIViewController {
         switch segue.identifier {
         case "viewMembers":
             let vc = segue.destination as! MemberViewController
-            vc.memberViewAjite = currentAjite
+            vc.currentAjite = currentAjite
         case "shareSong":
             let vc = segue.destination as! ShareSongsViewController
             vc.ajiteID = currentAjite.ajiteID
