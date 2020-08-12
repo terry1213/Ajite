@@ -204,6 +204,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 cell.addedMembersLabel.text = addedMembers[indexPath.row].name
                 let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
                 cell.addedFriendsProfile.image = UIImage(data: data!)
+                return cell
             }
             else if tableView == self.searchFriendsTable{
                 let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
@@ -212,9 +213,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
                 cell.searchFriendImage.image = UIImage(data: data!)
                 //cell.cellDelegate = self
-                cell.index = indexPath
                 //cell.delegate = self
-                print(1)
                 return cell
             }
             return UITableViewCell()
@@ -251,7 +250,6 @@ extension FriendsToAjiteViewController: UISearchBarDelegate {
     
     //필터링
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(2)
         displayUsers = totalUser.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         searchFriendsTable.reloadData()
     }
@@ -259,7 +257,6 @@ extension FriendsToAjiteViewController: UISearchBarDelegate {
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //검색어 입력 칸을 비운다.
-        print(3)
         searchBar.text = ""
     }
 }
