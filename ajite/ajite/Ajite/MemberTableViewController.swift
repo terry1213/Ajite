@@ -13,15 +13,14 @@ import UIKit
 var member: [User] = []
 
 class MemberViewController: UIViewController, UITableViewDelegate {
-    var memberViewAjite = Ajite()
     @IBOutlet var memberTableView: UITableView!
     
-    let currentAjite = Ajite()
+    var currentAjite = Ajite()
     var friendsID : [String] = []
     var friendOrNot : [Bool] = []
     func getUserRequest(){
         db
-            .collection("ajites").document(memberViewAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
+            .collection("ajites").document(currentAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
             }
