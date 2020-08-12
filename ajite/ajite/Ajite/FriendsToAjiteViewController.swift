@@ -15,8 +15,9 @@ import GoogleSignIn
 import FirebaseFirestore
 
 
+var totalUser: [User] = []
+
 class FriendsToAjiteViewController: UIViewController {
-    
 
     @IBOutlet var searchBar: UISearchBar!
     var vcindex = 0
@@ -32,19 +33,24 @@ class FriendsToAjiteViewController: UIViewController {
     @IBOutlet weak var addedMembersTable: UITableView!
     
       override func viewDidLoad() {
-        displayUsers.removeAll()
-        addedMembers.removeAll()
-        alreadyMembers.removeAll()
+        
         super.viewDidLoad()
         self.addedMembersTable.dataSource = self
         self.addedMembersTable.delegate = self
         self.searchFriendsTable.dataSource = self
         self.searchFriendsTable.delegate = self
         getUserData()
+        print(displayUsers.count)
+        print(totalUser.count)
       }
     
+    override func viewWillAppear(_ animated: Bool) {
+        displayUsers.removeAll()
+        addedMembers.removeAll()
+        alreadyMembers.removeAll()
+        totalUser.removeAll()
+    }
     
-
     @IBAction func invitation(_ sender: UIButton) {
         if vcindex == 1 {
             print("vcindex = 1")
@@ -128,7 +134,7 @@ class FriendsToAjiteViewController: UIViewController {
                                     temUser.profileImageURL = data!["profileImageURL"] as! String
                                     temUser.documentID = document.documentID
                                     //전체 유저 목록에 추가
-                                    self.displayUsers.append(temUser)
+                                   totalUser.append(temUser)
                                     //테이블에 불러온 정보를 보여준다.
                                     count += 1
                                     if count == snap.documents.count {
@@ -142,7 +148,6 @@ class FriendsToAjiteViewController: UIViewController {
                     }
                 }
             }
-        
     }
     
     func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -206,7 +211,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             else if tableView == self.searchFriendsTable{
                 let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
                 cell.searchFriendName.text = displayUsers[indexPath.row].name
-                //     cell.searchUser = myUser.friendds 에 저장
+                //     cell.searchUser = myUser.friends 에 저장
                 let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
                 cell.searchFriendImage.image = UIImage(data: data!)
                 //cell.cellDelegate = self
@@ -245,11 +250,12 @@ extension FriendsToAjiteViewController: UITableViewDelegate {
 }
 
 extension FriendsToAjiteViewController: UISearchBarDelegate{
+    
+    //필터링
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        displayUsers = users.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
+        displayUsers = totalUser.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         searchFriendsTable.reloadData()
     }
-    
     
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
