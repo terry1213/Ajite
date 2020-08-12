@@ -25,25 +25,10 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     
     
   //Outlet들
- 
-  
- 
-  
     @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
-    //==============필요한 Outlet 과 변수들================
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
     
-    func textFieldShouldReturn(_ ajiteName: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
     override func viewDidAppear(_ animated: Bool) {
         
         db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
@@ -181,6 +166,13 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
                             "userID":addingUser.userID,
                             
                         ])
+                        
+                        db.collection("users").document(addingUser.documentID).collection("ajites").document(ref!.documentID).setData([
+                            "name" : self.ajiteName.text as Any,
+                            "ajiteImageString" : self.imageName
+                        ])
+                        
+                        
                         memberNum = memberNum + 1
                     }
                     
@@ -205,9 +197,6 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
         }
     }
     
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AjiteRoomViewController{
         vc.currentAjite = tempAjite
@@ -215,6 +204,28 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
             vc.delegate = self
             vc.vcindex = 0
         }
+    }
+    
+    //아지트 이름은 최대 20자 이상은 못 받게 함
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = ajiteName.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= 20
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    //keyboard return누르면 숨겨짐
+    
+    func textFieldShouldReturn(_ ajiteName: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
 
@@ -233,7 +244,8 @@ extension CreateAjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "members", for: indexPath) as! membersToAddTableViewCell
         cell.memberName.text = addingMembers[indexPath.row].name
-        //연우오빠 여기 프로필 집어넣어주세용 !!!!! memberImage.image = UIImage(named:)
+        let data = try? Data(contentsOf: URL(string: addingMembers[indexPath.row].profileImageURL)!)
+        cell.memberImage.image = UIImage(data: data!)
         return cell
        
     }

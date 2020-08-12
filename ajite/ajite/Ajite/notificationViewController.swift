@@ -38,10 +38,7 @@ class notificationViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
     
-        
-    
-    
-    @IBOutlet var notificationTV: UITableView!
+@IBOutlet var notificationTV: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayAjites.count

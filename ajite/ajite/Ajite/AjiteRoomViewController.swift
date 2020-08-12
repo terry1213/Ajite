@@ -21,17 +21,7 @@ class AjiteRoomViewController: UIViewController {
     @IBOutlet weak var sharedSongsView: UIView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var songCollection: UICollectionView!
-    //keyboard 아무 곳이나 터치하면 내려감
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = songCollection.collectionViewLayout as! UICollectionViewFlowLayout
@@ -73,15 +63,34 @@ class AjiteRoomViewController: UIViewController {
                         temSong.artist = data["artist"] as! String
                         temSong.thumbnailImageUrl = data["thumbnailImageUrl"] as! String
                         temSong.videoID = data["videoID"] as! String
+                        temSong.sharedPerson = data["sharedPerson"] as! String
                         temSong.songID = document.documentID
                         self.currentAjite.sharedSongs.songs.append(temSong)
                         count += 1
                         if count == querySnapshot!.documents.count {
-                            self.songCollection.reloadData()
+                            self.getSharedPerson()
                         }
                     }
                 }
             }
+    }
+    
+    func getSharedPerson() {
+        var count = 0
+        for sharedSong in currentAjite.sharedSongs.songs {
+            db
+                .collection("users").document(sharedSong.sharedPerson).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        sharedSong.sharedPerson = document.data()!["name"] as! String
+                        count += 1
+                        if count == self.currentAjite.sharedSongs.songs.count {
+                            self.songCollection.reloadData()
+                        }
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+        }
     }
     
     func addChildVC() {
@@ -110,7 +119,7 @@ class AjiteRoomViewController: UIViewController {
         switch segue.identifier {
         case "viewMembers":
             let vc = segue.destination as! MemberViewController
-            vc.memberViewAjite = currentAjite
+            vc.currentAjite = currentAjite
         case "shareSong":
             let vc = segue.destination as! ShareSongsViewController
             vc.ajiteID = currentAjite.ajiteID
@@ -137,6 +146,7 @@ extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCollectionViewCell", for: indexPath) as! SongCollectionViewCell
         cell.songName.text = currentAjite.sharedSongs.songs[indexPath.row].name
         cell.artistName.text = currentAjite.sharedSongs.songs[indexPath.row].artist
+        cell.sharedMember.text = currentAjite.sharedSongs.songs[indexPath.row].sharedPerson
         let data = try? Data(contentsOf: URL(string: currentAjite.sharedSongs.songs[indexPath.row].thumbnailImageUrl)!)
         DispatchQueue.main.async {
             cell.songImage.image = UIImage(data: data!)

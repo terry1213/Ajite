@@ -8,40 +8,31 @@
 
 import UIKit
 
+/*
 protocol searchUser {
     func onClickCell(index: Int)
-}
+}*/
 
 class searchFriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet var searchFriendImage: CircleImageView!
+    @IBOutlet weak var searchFriendImage: CircleImageView!
+    @IBOutlet weak var searchFriendName: UILabel!
     
-    @IBOutlet var searchFriendName: UILabel!
-    var cellDelegate: searchUser?
-    weak var delegate: searchTableViewCellDelegate?
-    var index: IndexPath?
+    //var cellDelegate: searchUser?
+    //weak var delegate: searchTableViewCellDelegate?
     
-    let searchUser = User()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-    
-    @IBAction func addToUnderTable(_ sender: Any) {
-        
-    }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-            
-        // Configure the view for the selected state
     }
 
 }
-
-//소속: FriendsToAjiteViewController
-//Description: 아지트에 멤버 추가할때 추가할 자기 친구들을 여기에 집어 넣는다 
+/*
 protocol searchTableViewCellDelegate: AnyObject{
     func sendToAddedTable(_ searchFriendsTableViewCell: searchFriendsTableViewCell)
-}
+}*/
+//소속: FriendsToAjiteViewController
+//Description: 아지트에 멤버 추가할때 추가할 자기 친구들을 여기에 집어 넣는다

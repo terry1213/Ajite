@@ -10,61 +10,91 @@ import UIKit
 
 //:::::::::::::해당아지트에 속한 멤버들을 보여주는 뷰 컨트롤러 :::::::::::::::::::
 
-var member: [User] = []
-
 class MemberViewController: UIViewController, UITableViewDelegate {
-    var memberViewAjite = Ajite()
     @IBOutlet var memberTableView: UITableView!
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
-    //keyboard return누르면 숨겨짐
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    let currentAjite = Ajite()
+    @IBOutlet weak var numberOfMembersLabel: UILabel!
+    
+    var currentAjite = Ajite()
+    var friendsID : [String] = []
+    var friendOrNot : [Bool] = []
     func getUserRequest(){
         db
-            .collection("ajites").document(memberViewAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
+            .collection("ajites").document(currentAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
             }
             else {
-                
                 guard let snap = snapshot else {return}
+                var count = 0
                 for document in snap.documents {
                     print("member document loading")
-                    let data = document.data()
-                    let membername = data["name"] as? String
-                    let memberID = data["userID"] as? String
-                    let temUser = User()
-                    temUser.name = membername!
-                    temUser.userID = memberID!
-                    //전체 유저 목록에 추가
-                    print("\(String(describing: membername))")
-                    member.append(temUser)
+                    self.numberOfMembersLabel.text = "(\(snap.documents.count))"
+                    db
+                        .collection("users").document(document.documentID).getDocument { (document, error) in
+                            var temUser : User
+                            print(document!.documentID)
+                            if let document = document, document.exists {
+                                temUser = User()
+                                let data = document.data()
+                                temUser = User()
+                                temUser.name = data!["name"] as! String
+                                temUser.userID = data!["userID"] as! String
+                                temUser.profileImageURL = data!["profileImageURL"] as! String
+                                temUser.documentID = document.documentID
+                                //유저 본인일 경우 제일 앞에 추가
+                                if temUser.documentID == myUser.documentID {
+                                    self.currentAjite.members.insert(temUser, at: 0)
+                                    self.friendOrNot.insert(true, at: 0)
+                                }
+                                else {
+                                    //아지트 맴버 목록에 추가
+                                    self.currentAjite.members.append(temUser)
+                                    if self.friendsID.contains(temUser.documentID) {
+                                        self.friendOrNot.append(true)
+                                    }
+                                    else {
+                                        self.friendOrNot.append(false)
+                                    }
+                                }
+                                count += 1
+                                if count == snap.documents.count {
+                                    self.memberTableView.reloadData()
+                                }
+                            } else {
+                                print("Document does not exist")
+                            }
+                        }
                 }
             }
-            self.memberTableView.reloadData()
         }
+    }
+    
+    func getfriendsData() {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("friends").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.friendsID.append(document.documentID)
+                    }
+                }
+            }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        member.removeAll()
+        currentAjite.members.removeAll()
         memberTableView.dataSource = self
         memberTableView.delegate = self
+        getfriendsData()
         getUserRequest()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            
            //self.memberTableView.reloadData()
-       }
+    }
     
      
 }
@@ -75,13 +105,17 @@ extension MemberViewController : UITableViewDataSource{
            return 1
        }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return member.count
+            return currentAjite.members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! memberInAjiteTableViewCell
-       
-        cell.memberName.text =  member[indexPath.row].name
+        cell.memberName.text =  currentAjite.members[indexPath.row].name
+        let data = try? Data(contentsOf: URL(string: currentAjite.members[indexPath.row].profileImageURL)!)
+        cell.memberProfile.image = UIImage(data: data!)
+        if friendOrNot[indexPath.row] == true {
+            cell.sendFriendRequestButton.isHidden = true
+        }
         return cell
     }
     

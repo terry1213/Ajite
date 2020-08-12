@@ -19,10 +19,12 @@ class SongCollectionViewCell: UICollectionViewCell {
     var index: IndexPath?
     
     @IBAction func plusTouched(_ sender: Any) {
+        //플레이리스트에 추가하는 뷰 띄우기
         cellDelegate?.toAddToPlaylist(index: (index?.row)!)
     }
     
     @IBAction func youtubeTouched(_ sender: Any) {
+        //유튜브 플레이어에 해당 노래 띄우기
         cellDelegate?.toYoutubePlayer(index: (index?.row)!)
     }
 }
