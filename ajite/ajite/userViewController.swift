@@ -26,6 +26,21 @@ class userViewController: UIViewController {
     
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
     var displayUsers: [User] = []
+    var friendsID : [String] = []
+    var ref: DocumentReference? = nil
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        users.removeAll()
+        userTable.delegate = self
+        userTable.dataSource = self
+        //모든 친구 목록을 불러온다.
+        getfriendsData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     func getUserData(){
         //모든 유저 정보를 불러온다.
@@ -49,25 +64,25 @@ class userViewController: UIViewController {
                     temUser.documentID = document.documentID
                     //전체 유저 목록에 추가
                     users.append(temUser)
-                    //테이블에 불러온 정보를 보여준다.
                 }
             }
         }
     }
     
-    var ref: DocumentReference? = nil
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        users.removeAll()
-        userTable.delegate = self
-        userTable.dataSource = self
-        //모든 유저 정보를 불러온다.
-        getUserData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func getfriendsData() {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("friends").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.friendsID.append(document.documentID)
+                    }
+                    //모든 유저 정보를 불러온다.
+                    self.getUserData()
+                }
+            }
     }
     
     //keyboard 아무 곳이나 터치하면 내려감
@@ -96,8 +111,14 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
         let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
         cell.userProfileImage.image = UIImage(data: data!)
         cell.cellDelegate = self
-        cell.index = indexPath
         cell.delegate = self
+        cell.index = indexPath
+        if self.friendsID.contains(displayUsers[indexPath.row].documentID) {
+            cell.sendButton.isHidden = true
+        }
+        else {
+            cell.sendButton.isHidden = false
+        }
         return cell
     }
     
