@@ -111,6 +111,8 @@ class PlaylistViewController: UIViewController{
             }
         }
         alert.addAction(action)
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancel)
         present(alert, animated: true)
     }
     

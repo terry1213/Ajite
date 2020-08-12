@@ -6,7 +6,7 @@
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
-import UIKit
+
 import UIKit
 import Firebase
 import CoreData
@@ -40,9 +40,8 @@ class FriendsToAjiteViewController: UIViewController {
         self.addedMembersTable.delegate = self
         self.searchFriendsTable.dataSource = self
         self.searchFriendsTable.delegate = self
+        searchBar.delegate = self
         getUserData()
-        print(displayUsers.count)
-        print(totalUser.count)
       }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -188,15 +187,11 @@ class FriendsToAjiteViewController: UIViewController {
         }
     }
     
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.searchBar.endEditing(true)
-    }
-    
     //keyboard 아무 곳이나 터치하면 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
+
     //keyboard return누르면 숨겨짐
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -214,7 +209,9 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.addedMembersTable{
             return addedMembers.count
-        } else {return displayUsers.count}
+        } else {
+            return displayUsers.count
+        }
     }
     
     
@@ -249,6 +246,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 cell.addedMembersLabel.text = addedMembers[indexPath.row].name
                 let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
                 cell.addedFriendsProfile.image = UIImage(data: data!)
+                return cell
             }
             else if tableView == self.searchFriendsTable{
                 let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
@@ -257,7 +255,6 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
                 let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
                 cell.searchFriendImage.image = UIImage(data: data!)
                 //cell.cellDelegate = self
-                cell.index = indexPath
                 //cell.delegate = self
                 return cell
             }
@@ -291,7 +288,7 @@ extension FriendsToAjiteViewController: UITableViewDelegate {
    // }
 }
 
-extension FriendsToAjiteViewController: UISearchBarDelegate{
+extension FriendsToAjiteViewController: UISearchBarDelegate {
     
     //필터링
     
@@ -301,31 +298,7 @@ extension FriendsToAjiteViewController: UISearchBarDelegate{
         //검색어 입력 칸을 비운다.
         searchBar.text = ""
     }
-    
-    /*
-    
-    //친구 추가 알림
-    func sendToAddedTable(_ searchFriendsTableViewCell: searchFriendsTableViewCell) {
-        
-    }
-    
-    
-    func onClickCell(index: Int) {
-        
-    }
- 
-    */
 }
-
-/*extension FriendsToAjiteViewController: searchUser{
-    func onClickCell(index: Int) {
-        addedMembers.append(displayUsers[index])
-        displayUsers.remove(at: index)
-        searchFriendsTable.reloadData()
-        addedMembersTable.reloadData()
-        
-    }
-}*/
 
 
 protocol FriendsToAjiteDelegate {
