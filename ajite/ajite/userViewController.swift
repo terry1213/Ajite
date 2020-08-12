@@ -130,6 +130,7 @@ extension userViewController: UISearchBarDelegate {
         displayUsers = users.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
         userTable.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt
     indexPath: IndexPath) -> CGFloat {
             return 70
