@@ -966,6 +966,7 @@
                                                 <connections>
                                                     <outlet property="memberName" destination="Cop-z7-8rq" id="zWs-Fd-hQy"/>
                                                     <outlet property="memberProfile" destination="svF-uc-r5c" id="eVN-bV-fCg"/>
+                                                    <outlet property="plusButton" destination="zLK-As-guE" id="df5-tj-jx9"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

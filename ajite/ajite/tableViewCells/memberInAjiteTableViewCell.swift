@@ -15,6 +15,7 @@ class memberInAjiteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memberProfile: CircleImageView!
     @IBOutlet weak var memberName: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
     var cellDelegate: memberTableView?
     var index: IndexPath?
     

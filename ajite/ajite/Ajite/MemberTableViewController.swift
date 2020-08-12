@@ -40,8 +40,14 @@ class MemberViewController: UIViewController, UITableViewDelegate {
                                 temUser.userID = data!["userID"] as! String
                                 temUser.profileImageURL = data!["profileImageURL"] as! String
                                 temUser.documentID = document.documentID
-                                //아지트 맴버 목록에 추가
-                                member.append(temUser)
+                                //유저 본인일 경우 제일 앞에 추가
+                                if temUser.documentID == myUser.documentID {
+                                    member.insert(temUser, at: 0)
+                                }
+                                else {
+                                    //아지트 맴버 목록에 추가
+                                    member.append(temUser)
+                                }
                                 count += 1
                                 if count == snap.documents.count {
                                     self.memberTableView.reloadData()
@@ -86,6 +92,9 @@ extension MemberViewController : UITableViewDataSource{
         cell.memberName.text =  member[indexPath.row].name
         let data = try? Data(contentsOf: URL(string: member[indexPath.row].profileImageURL)!)
         cell.memberProfile.image = UIImage(data: data!)
+        if indexPath.row == 0 {
+            cell.plusButton.isHidden = true
+        }
         return cell
     }
     
