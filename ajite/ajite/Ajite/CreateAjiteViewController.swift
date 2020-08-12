@@ -138,6 +138,9 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
                     
                     //현재 아지트 아이디
                     
+                    //멤버 숫자
+                    var memberNum = 1
+                    
                     db
                         .collection("ajites")
                         .document(ref!.documentID)
@@ -155,13 +158,27 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
                             "name" : self.ajiteName.text as Any,
                             "ajiteImageString" : self.imageName
                         ])
+                    //멤버 초대 및 추가
                     for addingUser in self.addingMembers{
                         self.userRef.document(addingUser.documentID)
-                        .collection("invitation").document(addingUser.documentID).setData([
-                                       "host" : myUser.name,
-                                       "stateInvite" : 0
+                            .collection("invitation").document(ref!.documentID).setData([
+                                       "ajiteDocumentID" :  ref!.documentID,
+                                       "ajiteName" : self.ajiteName.text as Any
                                        ])
+                        db.collection("ajites").document(ref!.documentID).collection("members").document(addingUser.documentID).setData([
+                            "name":addingUser.name,
+                            "userID":addingUser.userID,
+                            
+                        ])
+                        memberNum = memberNum + 1
                     }
+                    
+                    //멤버 숫자 늘이는 코드, 수정필요...
+                    ref?.collection("ajites").document(ref!.documentID).updateData([
+                        "memberNum" : memberNum
+                    ])
+                    
+                    
                     let newAjite = Ajite()
                     newAjite.name = self.ajiteName.text!
                     //newAjite.members = []

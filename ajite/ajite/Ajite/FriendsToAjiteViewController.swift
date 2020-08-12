@@ -38,20 +38,31 @@ class FriendsToAjiteViewController: UIViewController {
           self.searchFriendsTable.delegate = self
           getUserData()
       }
+    
+    
 
-    @IBAction func invitation(_ sender: Any) {
+    @IBAction func invitation(_ sender: UIButton) {
         if vcindex == 1 {
+            print("vcindex = 1")
             let inviteAlert = UIAlertController(title: "Invite to Ajite", message: "Would you like to invite friends to your ajite?", preferredStyle: UIAlertController.Style.alert)
             inviteAlert.addAction(UIAlertAction(title: "Add",style: .default, handler: {(action: UIAlertAction!) in
             
+                
                 for addedUser in self.addedMembers{
                     self.userRef.document(addedUser.documentID).collection("invitation").document(addedUser.documentID).setData([
-                    "host" : myUser.name,
-                    "stateInvite" : 0
+                        "ajite" :  self.currentAjite.name,
+                        "profileImageURL" : addedUser.profileImageURL
+                    ])
+                    db.collection("ajites").document(self.currentAjite.ajiteID).collection("members").document(addedUser.documentID).updateData([
+                        "name":addedUser.name,
+                        "userID":addedUser.userID,
+                        
                     ])
                 }
             }))
             inviteAlert.addAction(UIAlertAction(title: "Cancel",style: .cancel, handler: nil))
+            
+            self.present(inviteAlert, animated: true, completion: nil)
         }
     else {
             
