@@ -63,15 +63,34 @@ class AjiteRoomViewController: UIViewController {
                         temSong.artist = data["artist"] as! String
                         temSong.thumbnailImageUrl = data["thumbnailImageUrl"] as! String
                         temSong.videoID = data["videoID"] as! String
+                        temSong.sharedPerson = data["sharedPerson"] as! String
                         temSong.songID = document.documentID
                         self.currentAjite.sharedSongs.songs.append(temSong)
                         count += 1
                         if count == querySnapshot!.documents.count {
-                            self.songCollection.reloadData()
+                            self.getSharedPerson()
                         }
                     }
                 }
             }
+    }
+    
+    func getSharedPerson() {
+        var count = 0
+        for sharedSong in currentAjite.sharedSongs.songs {
+            db
+                .collection("users").document(sharedSong.sharedPerson).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        sharedSong.sharedPerson = document.data()!["name"] as! String
+                        count += 1
+                        if count == self.currentAjite.sharedSongs.songs.count {
+                            self.songCollection.reloadData()
+                        }
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+        }
     }
     
     func addChildVC() {
@@ -127,6 +146,7 @@ extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCollectionViewCell", for: indexPath) as! SongCollectionViewCell
         cell.songName.text = currentAjite.sharedSongs.songs[indexPath.row].name
         cell.artistName.text = currentAjite.sharedSongs.songs[indexPath.row].artist
+        cell.sharedMember.text = currentAjite.sharedSongs.songs[indexPath.row].sharedPerson
         let data = try? Data(contentsOf: URL(string: currentAjite.sharedSongs.songs[indexPath.row].thumbnailImageUrl)!)
         DispatchQueue.main.async {
             cell.songImage.image = UIImage(data: data!)
