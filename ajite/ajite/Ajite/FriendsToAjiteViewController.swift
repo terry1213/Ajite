@@ -19,7 +19,7 @@ var totalUser: [User] = []
 
 class FriendsToAjiteViewController: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
+    
     var vcindex = 0
     //if vcindex = 0 this request is from CreateAjite
     //if vcindex = 1 this request is from AjiteRoomView
@@ -31,6 +31,7 @@ class FriendsToAjiteViewController: UIViewController {
     var currentAjite = Ajite()
     @IBOutlet weak var searchFriendsTable: UITableView!
     @IBOutlet weak var addedMembersTable: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     
       override func viewDidLoad() {
         
@@ -83,29 +84,69 @@ class FriendsToAjiteViewController: UIViewController {
      
     
     func getUserData(){
-        
         if vcindex == 1 {
-            db
-                .collection("ajites").document(currentAjite.ajiteID)
-                .collection("members").getDocuments{ (snapshot, error) in
-                    if let err = error {
-                        debugPrint("Error fetching docs: \(err)")
-                    }
-                    else {
-                        guard let snap = snapshot else {return}
-                        
-                        for document in
-                            snap.documents {
+            db.collection("ajites").document(currentAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
+                if let err = error {
+                    debugPrint("Error fetching docs: \(err)")
+                }
+                else {
+                    self.userRef.getDocuments{ (snapshot, error) in
+                        if let err = error {
+                            debugPrint("Error fetching docs: \(err)")
+                        }
+                        else {
+                            guard let snap = snapshot else {return}
+                            for document in snap.documents {
                                 var temMemberName : String
-                            let data = document.data()
+                                let data = document.data()
                                 temMemberName = data["name"] as! String
                                 self.alreadyMembers.append(temMemberName)
                                 print("member: ", temMemberName)
+                                self.userRef.document(myUser.documentID).collection("friends").whereField("state", isEqualTo: 2).getDocuments{ (snapshot, error) in
+                                    if let err = error {
+                                        debugPrint("Error fetching docs: \(err)")
+                                    }
+                                    else {
+                                        guard let snap = snapshot else {return}
+                                        var count = 0
+                                        for document in snap.documents {
+                                            //유저가 멤버에 있을 때 넘어간다
+                                            if self.alreadyMembers.contains(document.documentID) {
+                                                continue
+                                            }
+                                            db.collection("users").document(document.documentID).getDocument { (document, error) in
+                                                var tempUser : User
+                                                if let document = document, document.exists {
+                                                    tempUser = User()
+                                                    let data = document.data()
+                                                    tempUser = User()
+                                                    tempUser.name = data!["name"] as! String
+                                                    tempUser.userID = data!["userID"] as! String
+                                                    tempUser.profileImageURL = data!["profileImageURL"] as! String
+                                                    tempUser.documentID = document.documentID
+                                                    //전체 유저 목록에 추가
+                                                    totalUser.append(tempUser)
+                                                    //테이블에 불러온 정보를 보여준다.
+                                                    count += 1
+                                                    if count == snap.documents.count {
+                                                        self.searchFriendsTable.reloadData()
+                                                        self.addedMembersTable.reloadData()
+                                                    }
+                                                }
+                                                else {
+                                                    print("Document does not exist")
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+            }
         }
-        
+        else{
             userRef.document(myUser.documentID)
                 .collection("friends").whereField("state", isEqualTo: 2).getDocuments{ (snapshot, error) in
                 if let err = error {
@@ -117,36 +158,33 @@ class FriendsToAjiteViewController: UIViewController {
                     for document in snap.documents {
                         //유저가 본인일 경우 리스트에 추가하지 않고 다음으로 넘어간다.
                         //유저가 멤버에 있을 때에도 넘어간다
-                        if document.documentID == myUser.documentID || self.alreadyMembers.contains(document.documentID) {
-                            continue
-                        }
-                        
-                        db
-                            .collection("users").document(document.documentID).getDocument { (document, error) in
-                                var temUser : User
-                                if let document = document, document.exists {
-                                    temUser = User()
-                                    let data = document.data()
-                                    temUser = User()
-                                    temUser.name = data!["name"] as! String
-                                    temUser.userID = data!["userID"] as! String
-                                    temUser.profileImageURL = data!["profileImageURL"] as! String
-                                    temUser.documentID = document.documentID
-                                    //전체 유저 목록에 추가
-                                   totalUser.append(temUser)
-                                    //테이블에 불러온 정보를 보여준다.
-                                    count += 1
-                                    if count == snap.documents.count {
-                                        self.searchFriendsTable.reloadData()
-                                        self.addedMembersTable.reloadData()
-                                    }
-                                } else {
+                        db.collection("users").document(document.documentID).getDocument { (document, error) in
+                            var temUser : User
+                            if let document = document, document.exists {
+                                temUser = User()
+                                let data = document.data()
+                                temUser = User()
+                                temUser.name = data!["name"] as! String
+                                temUser.userID = data!["userID"] as! String
+                                temUser.profileImageURL = data!["profileImageURL"] as! String
+                                temUser.documentID = document.documentID
+                                //전체 유저 목록에 추가
+                               totalUser.append(temUser)
+                                //테이블에 불러온 정보를 보여준다.
+                                count += 1
+                                if count == snap.documents.count {
+                                    self.searchFriendsTable.reloadData()
+                                    self.addedMembersTable.reloadData()
+                                }
+                            }
+                            else {
                                     print("Document does not exist")
                             }
                         }
                     }
                 }
             }
+        }
     }
     
     //keyboard 아무 곳이나 터치하면 내려감
@@ -197,7 +235,11 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             }
          }
         
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        displayUsers = totalUser.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
+        searchFriendsTable.reloadData()
+    }
+
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if tableView == self.addedMembersTable{
                 let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
@@ -249,10 +291,7 @@ extension FriendsToAjiteViewController: UITableViewDelegate {
 extension FriendsToAjiteViewController: UISearchBarDelegate {
     
     //필터링
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        displayUsers = totalUser.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
-        searchFriendsTable.reloadData()
-    }
+    
     
     //검색 종료 버튼을 눌렀을 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
