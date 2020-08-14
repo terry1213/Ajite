@@ -11,12 +11,37 @@ import UIKit
 //:::::::::::::해당아지트에 속한 멤버들을 보여주는 뷰 컨트롤러 :::::::::::::::::::
 
 class MemberViewController: UIViewController, UITableViewDelegate {
-    @IBOutlet var memberTableView: UITableView!
-    @IBOutlet weak var numberOfMembersLabel: UILabel!
+    
+    // ======================> 변수, outlet 선언
     
     var currentAjite = Ajite()
     var friendsID : [String] = []
     var friendOrNot : [Bool] = []
+    
+    @IBOutlet var memberTableView: UITableView!
+    @IBOutlet weak var numberOfMembersLabel: UILabel!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        currentAjite.members.removeAll()
+        memberTableView.dataSource = self
+        memberTableView.delegate = self
+        getfriendsData()
+        getUserRequest()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           //self.memberTableView.reloadData()
+    }
+
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
+    
     func getUserRequest(){
         db
             .collection("ajites").document(currentAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
@@ -83,20 +108,8 @@ class MemberViewController: UIViewController, UITableViewDelegate {
             }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        currentAjite.members.removeAll()
-        memberTableView.dataSource = self
-        memberTableView.delegate = self
-        getfriendsData()
-        getUserRequest()
-    }
+    // ==================================================================>
     
-    override func viewWillAppear(_ animated: Bool) {
-           //self.memberTableView.reloadData()
-    }
-    
-     
 }
 
 

@@ -13,14 +13,20 @@ import youtube_ios_player_helper
 class AjiteRoomViewController: UIViewController {
     
     
-   //아웃렛과 변수들
+    // ======================> 변수, outlet 선언
+    
     let youtubePlayerViewController = YoutubePlayerViewController()
     var currentAjite = Ajite()
     var nextSourceIndex : Int = -1
+    
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet weak var sharedSongsView: UIView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var songCollection: UICollectionView!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +51,36 @@ class AjiteRoomViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         getData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "viewMembers":
+            let vc = segue.destination as! MemberViewController
+            vc.currentAjite = currentAjite
+        case "shareSong":
+            let vc = segue.destination as! ShareSongsViewController
+            vc.ajiteID = currentAjite.ajiteID
+        case "addToPlaylistSegue":
+            let vc = segue.destination as! AddToPlaylistViewController
+            vc.addingSong = currentAjite.sharedSongs.songs[nextSourceIndex]
+        default:
+            print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
+            return
+        }
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
+    @IBAction func pressedMembers(_ sender: Any) {
+        performSegue(withIdentifier: "viewMembers", sender: currentAjite)
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData() {
         db
@@ -93,6 +129,10 @@ class AjiteRoomViewController: UIViewController {
         }
     }
     
+    // ==================================================================>
+    
+    // ======================> 유튜브 플레이어를 띄우기 위한 함수들
+    
     func addChildVC() {
         addChild(youtubePlayerViewController)
         UIView.transition(with: self.view, duration: 0.8, options: [.transitionCrossDissolve], animations: {
@@ -110,29 +150,8 @@ class AjiteRoomViewController: UIViewController {
         youtubePlayerViewController.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
-    //아지트 오른쪽 상단에 있는 member 버튼을 누르면 이 함수가 불러짐
-    @IBAction func pressedMembers(_ sender: Any) {
-        performSegue(withIdentifier: "viewMembers", sender: currentAjite)
-    }
+    // ==================================================================>
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "viewMembers":
-            let vc = segue.destination as! MemberViewController
-            vc.currentAjite = currentAjite
-        case "shareSong":
-            let vc = segue.destination as! ShareSongsViewController
-            vc.ajiteID = currentAjite.ajiteID
-        case "addToPlaylistSegue":
-            let vc = segue.destination as! AddToPlaylistViewController
-            vc.addingSong = currentAjite.sharedSongs.songs[nextSourceIndex]
-        default:
-            print("Undefined Segue indentifier: \(String(describing: segue.identifier))")
-            return
-        }
-
-    }
- 
 }
 
 extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -161,10 +180,12 @@ extension AjiteRoomViewController : UICollectionViewDelegateFlowLayout, UICollec
 }
 
 extension AjiteRoomViewController : PlaylistSongListProtocol {
+    
     func toAddToPlaylist(index: Int) {
         nextSourceIndex = index
         performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
+    
     func toYoutubePlayer(index: Int) {
         if self.children.count > 0 {
             if youtubePlayerViewController.index == index {
@@ -191,4 +212,5 @@ extension AjiteRoomViewController : PlaylistSongListProtocol {
             }
         }
     }
+    
 }

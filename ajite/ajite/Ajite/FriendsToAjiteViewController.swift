@@ -18,11 +18,13 @@ var totalUser: [User] = []
 
 class FriendsToAjiteViewController: UIViewController {
     
+    // ======================> 변수, outlet 선언
+    
+    // if vcindex = 0 this request is from CreateAjite
+    // if vcindex = 1 this request is from AjiteRoomView
     var vcindex = 0
-    //if vcindex = 0 this request is from CreateAjite
-    //if vcindex = 1 this request is from AjiteRoomView
     var displayUsers: [User] = []
-    var addedMembers = [User]() //아지트에 새로 넣을 멤버들
+    var addedMembers = [User]() // 아지트에 새로 넣을 멤버들
     var alreadyMembers = [String]() // 이미 아지트에 있는 멤버들 (vcindex == 1인 경우)
     var delegate : FriendsToAjiteDelegate?
     let userRef = db.collection("users")
@@ -31,6 +33,10 @@ class FriendsToAjiteViewController: UIViewController {
     @IBOutlet weak var searchFriendsTable: UITableView!
     @IBOutlet weak var addedMembersTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,10 @@ class FriendsToAjiteViewController: UIViewController {
         alreadyMembers.removeAll()
         totalUser.removeAll()
     }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
     
     @IBAction func invitation(_ sender: UIButton) {
         if vcindex == 1 {
@@ -76,7 +86,11 @@ class FriendsToAjiteViewController: UIViewController {
         }
         dismiss(animated: true)
     }
-
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
+    
     func getUserData(){
         if vcindex == 1 {
             db.collection("ajites").document(currentAjite.ajiteID).collection("members").getDocuments{ (snapshot, error) in
@@ -145,6 +159,8 @@ class FriendsToAjiteViewController: UIViewController {
             }
     }
     
+    // ==================================================================>
+    
     //keyboard 아무 곳이나 터치하면 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -160,9 +176,10 @@ class FriendsToAjiteViewController: UIViewController {
 
 
 extension FriendsToAjiteViewController : UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-               return 1
-           }
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.addedMembersTable{
@@ -173,72 +190,62 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     }
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt
-    indexPath: IndexPath) -> CGFloat {
-            return 55
-         }
-    
-    
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if tableView == self.addedMembersTable{
-               
-                addedMembersTable.deselectRow(at: indexPath, animated: true)
-            }
-            else{
-                addedMembers.append(displayUsers[indexPath.row])
-                displayUsers.remove(at: indexPath.row)
-              //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
-                searchFriendsTable.reloadData()
-                addedMembersTable.reloadData()
-            }
-         }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if tableView == self.addedMembersTable{
-                let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
-                cell.addedMembersLabel.text = addedMembers[indexPath.row].name
-                let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
-                cell.addedFriendsProfile.image = UIImage(data: data!)
-                return cell
-            }
-            else if tableView == self.searchFriendsTable{
-                let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
-                cell.searchFriendName.text = displayUsers[indexPath.row].name
-                //     cell.searchUser = myUser.friends 에 저장
-                let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
-                cell.searchFriendImage.image = UIImage(data: data!)
-                //cell.cellDelegate = self
-                //cell.delegate = self
-                return cell
-            }
-            return UITableViewCell()
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
     
-        
-//search bar 에서 실수로 추가한 아이가 있으면 실수로 added member에 추가된 유저를 다시 삭제하는 기능
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           
-            if tableView == self.addedMembersTable{
-                guard editingStyle == .delete else { return }
-                displayUsers.append(addedMembers[indexPath.row])
-                addedMembers.remove(at: indexPath.row)
-                
-                self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
-            }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.addedMembersTable{
+            addedMembersTable.deselectRow(at: indexPath, animated: true)
+        }
+        else{
+            addedMembers.append(displayUsers[indexPath.row])
+            displayUsers.remove(at: indexPath.row)
+            //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
             searchFriendsTable.reloadData()
             addedMembersTable.reloadData()
         }
-        
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == self.addedMembersTable{
+            let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
+            cell.addedMembersLabel.text = addedMembers[indexPath.row].name
+            let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
+            cell.addedFriendsProfile.image = UIImage(data: data!)
+            return cell
+        }
+        else if tableView == self.searchFriendsTable{
+            let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
+            cell.searchFriendName.text = displayUsers[indexPath.row].name
+            //     cell.searchUser = myUser.friends 에 저장
+            let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
+            cell.searchFriendImage.image = UIImage(data: data!)
+            //cell.cellDelegate = self
+            //cell.delegate = self
+            return cell
+        }
+        return UITableViewCell()
+    }
     
+    //search bar 에서 실수로 추가한 아이가 있으면 실수로 added member에 추가된 유저를 다시 삭제하는 기능
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == self.addedMembersTable{
+            guard editingStyle == .delete else { return }
+            displayUsers.append(addedMembers[indexPath.row])
+            addedMembers.remove(at: indexPath.row)
+            
+            self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
+        }
+        searchFriendsTable.reloadData()
+        addedMembersTable.reloadData()
+    }
+        
 }
 
 
 extension FriendsToAjiteViewController: UITableViewDelegate {
-  /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let dataToSend = playlists[indexPath.row]
-    self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)*/
-    //위 코드는 segue를 통해 데이터를 다른 뷰 컨트롤러로 보내는건데 우리의 경우에는 createAjiteViewController이면 생성될 아지트의 멤버 옵젝트와 연결하는게 맞고 segue가 이미 생성된 아지트 내에 추가적으로 애드 할 거면 이제 그 생성될 아지트 내에 멤버 오브젝트에 추가하는게 맞고 ㅇㅇ
-   // }
 }
 
 extension FriendsToAjiteViewController: UISearchBarDelegate {
@@ -254,9 +261,11 @@ extension FriendsToAjiteViewController: UISearchBarDelegate {
         //검색어 입력 칸을 비운다.
         searchBar.text = ""
     }
+    
 }
 
 protocol FriendsToAjiteDelegate {
+    
     func sendUsersBack(sendingMembers : [User])
     
 }
