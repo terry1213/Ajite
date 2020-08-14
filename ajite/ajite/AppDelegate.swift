@@ -15,6 +15,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 var myUser = User()
+let db = Firestore.firestore()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
