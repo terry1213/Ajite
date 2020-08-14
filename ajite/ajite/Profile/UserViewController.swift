@@ -1,5 +1,5 @@
 //
-//  userViewController.swift
+//  UserViewController.swift
 //  ajite
 //
 //  Created by Chanwoong Ahn on 2020/08/07.
@@ -14,20 +14,24 @@ import FirebaseDatabase
 import GoogleSignIn
 import FirebaseFirestore
 
-let db = Firestore.firestore()
 var users: [User] = []
 
-class userViewController: UIViewController {
+class UserViewController: UIViewController {
     
-    @IBOutlet var userTable: UITableView!
-    @IBOutlet var searchBar: UISearchBar!
+    // ======================> 변수, outlet 선언
     
     let userRef = db.collection("users")
-    
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
     var displayUsers: [User] = []
     var friendsID : [String] = []
     var ref: DocumentReference? = nil
+    
+    @IBOutlet var userTable: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +41,14 @@ class userViewController: UIViewController {
         //모든 친구 목록을 불러온다.
         getfriendsData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getUserData(){
         //모든 유저 정보를 불러온다.
@@ -85,6 +93,12 @@ class userViewController: UIViewController {
             }
     }
     
+    // ==================================================================>
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     //keyboard 아무 곳이나 터치하면 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
@@ -97,7 +111,7 @@ class userViewController: UIViewController {
     }
 }
 
-extension userViewController: UITableViewDataSource, UITableViewDelegate {
+extension UserViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayUsers.count
     }
@@ -124,7 +138,7 @@ extension userViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension userViewController: UISearchBarDelegate {
+extension UserViewController: UISearchBarDelegate {
     //검색창에 키 입력이 될 시
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         displayUsers = users.filter{ $0.name.contains(searchBar.text!) || $0.userID.contains(searchBar.text!) }
@@ -143,7 +157,7 @@ extension userViewController: UISearchBarDelegate {
     }
 }
 
-extension userViewController: TableViewUser {
+extension UserViewController: TableViewUser {
     func onClickCell(index: Int){
         //친구 신청을 받는 유저의 friends collection에 friend document를 생성한다. state = 1
         db.collection("users").document(displayUsers[index].documentID).collection("friends").document(myUser.documentID).setData([
@@ -163,7 +177,7 @@ extension userViewController: TableViewUser {
                 } else {
                     print("Document added")
                 }
-            }
+        }
         //친구 신청을 하는 유저의 friends collection에 friend document를 생성한다. state = 0
         db
             .collection("users").document(myUser.documentID)
@@ -184,11 +198,12 @@ extension userViewController: TableViewUser {
                 } else {
                     print("Document added")
                 }
-            }
+        }
     }
 }
 
-extension userViewController : UserTableViewCellDelegate{
+extension UserViewController : UserTableViewCellDelegate{
+    
     func sendMessage(_ UserTableViewCell: UserTableViewCell) {
         let alert = UIAlertController (title: "Sent Request!", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))

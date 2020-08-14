@@ -15,9 +15,35 @@ import FirebaseFirestore
 
 class RequestViewController: UIViewController{
     
-    @IBOutlet var RequestTV: UITableView!
+    // ======================> 변수, outlet 선언
+    
     //나에게 친구 신청을 보낸 사람들 목록
     var requestUsers : [User] = []
+    
+    @IBOutlet var RequestTV: UITableView!
+
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.RequestTV.delegate = self
+        self.RequestTV.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //유저의 정보를 가져온다.
+        getUserRequest()
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getUserRequest(){
         //친구 목록중에 나에게 친구 신청을 보낸(state = 1) 유저의 documentID를 불러온다.
@@ -62,17 +88,8 @@ class RequestViewController: UIViewController{
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.RequestTV.delegate = self
-        self.RequestTV.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //유저의 정보를 가져온다.
-        getUserRequest()
-    }
-    
+    // ==================================================================>
+        
 }
 
 extension RequestViewController: UITableViewDataSource, UITableViewDelegate {

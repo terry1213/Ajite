@@ -8,13 +8,20 @@
 
 import UIKit
 
-class FriendProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FriendProfileViewController: UIViewController {
+    
+    // ======================> 변수, outlet 선언
+    
+    var currentUser = User()
     
     @IBOutlet weak var userPlaylistsTableView: UITableView!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var profilePicture: CircleImageView!
-    var currentUser = User()
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,34 +40,6 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
         let data = try? Data(contentsOf: URL(string: currentUser.profileImageURL)!)
         self.profilePicture.image = UIImage(data: data!)
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentUser.playlists.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = userPlaylistsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! PlaylistTableViewCell
-        //해당 플레이리스트 이름을 라벨에 적음
-        cell.playlistName.text = currentUser.playlists[indexPath.row].playlistName
-        //해당 플레이리스트의 이미지를 불러온다.
-        cell.playlistImage.image = UIImage(named: "record-\( currentUser.playlists[indexPath.row].playlistImageString)")
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt
-        indexPath: IndexPath) -> CGFloat {
-        return 65
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //보낼 플래이리스트를 담는다.
-        let dataToSend = currentUser.playlists[indexPath.row]
-        //플레이리스트 내부 뷰로 이동
-        self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toPlaylist" else {
@@ -77,6 +56,16 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
         //플레이리스트 내부 뷰에 플레이리스트 주인 정보 전송
         destination.currentUser = currentUser
     }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData(){
         //현재 유저의 documentID를 통해 해당 유저 소유의 플레이리스트 목록에 접근
@@ -114,10 +103,44 @@ class FriendProfileViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
     }
+    
+    // ==================================================================>
+    
+}
 
+extension FriendProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentUser.playlists.count
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userPlaylistsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! PlaylistTableViewCell
+        //해당 플레이리스트 이름을 라벨에 적음
+        cell.playlistName.text = currentUser.playlists[indexPath.row].playlistName
+        //해당 플레이리스트의 이미지를 불러온다.
+        cell.playlistImage.image = UIImage(named: "record-\( currentUser.playlists[indexPath.row].playlistImageString)")
+        return cell
+    }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        userPlaylistsTableView.deselectRow(at: indexPath, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt
+        indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //보낼 플래이리스트를 담는다.
+        let dataToSend = currentUser.playlists[indexPath.row]
+        //플레이리스트 내부 뷰로 이동
+        self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
+    }
+
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        userPlaylistsTableView.deselectRow(at: indexPath, animated: true)
+    //    }
+    
 }

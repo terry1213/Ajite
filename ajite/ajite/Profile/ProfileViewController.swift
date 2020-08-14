@@ -9,14 +9,20 @@
 import UIKit
 import GoogleSignIn
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
+class ProfileViewController: UIViewController {
+    
+    // ======================> 변수, outlet 선언
+    
     @IBOutlet weak var friendNumLabel: UILabel!
     @IBOutlet weak var addFriend: UIButton!
     @IBOutlet weak var myFriendsTableView: UITableView!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var profilePicture: CircleImageView!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         UITabBar.appearance().tintColor =  .white
@@ -38,33 +44,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.profilePicture.image = UIImage(data: data!)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myUser.friends.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myFriendsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! MyFriendsTableViewCell
-        cell.myFriendsName.text = myUser.friends[indexPath.row].name
-        let data = try? Data(contentsOf: URL(string: myUser.friends[indexPath.row].profileImageURL)!)
-        cell.myFriendsProfile.image = UIImage(data: data!)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt
-    indexPath: IndexPath) -> CGFloat {
-            return 65
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataToSend = myUser.friends[indexPath.row]
-        self.performSegue(withIdentifier: "toFriendProfile", sender: dataToSend)
-        myFriendsTableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toFriendProfile" else {
             return
@@ -77,6 +56,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         destination.currentUser = sendingUser
     }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData(){
         //유저 정보 불러오기
@@ -136,6 +125,38 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
         }
+    }
+    
+    // ==================================================================>
+    
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myUser.friends.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = myFriendsTableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! MyFriendsTableViewCell
+        cell.myFriendsName.text = myUser.friends[indexPath.row].name
+        let data = try? Data(contentsOf: URL(string: myUser.friends[indexPath.row].profileImageURL)!)
+        cell.myFriendsProfile.image = UIImage(data: data!)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 65
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dataToSend = myUser.friends[indexPath.row]
+        self.performSegue(withIdentifier: "toFriendProfile", sender: dataToSend)
+        myFriendsTableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

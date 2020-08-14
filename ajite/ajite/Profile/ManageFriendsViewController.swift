@@ -15,7 +15,13 @@ import FirebaseFirestore
 
 class ManageFriendsViewController: UIViewController{
     
+    // ======================> 변수, outlet 선언
+    
     @IBOutlet weak var manageFriendsTableView: UITableView!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         myUser.friends.removeAll()
@@ -28,9 +34,15 @@ class ManageFriendsViewController: UIViewController{
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     //친구 데이터 가져오기
     func getFriendData(){
@@ -71,13 +83,20 @@ class ManageFriendsViewController: UIViewController{
                             } else {
                                 print("Document does not exist")
                             }
-                        }
+                    }
                 }
             }
         }
     }
+    
+    // ==================================================================>
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }
-//manageFriendProfile //manageFriendsName
+
 extension ManageFriendsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,8 +156,8 @@ extension ManageFriendsViewController: FriendUser{
               
         }))
             
-            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            present(deleteAlert, animated: true, completion: nil)
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        present(deleteAlert, animated: true, completion: nil)
     }
 }
 
@@ -150,6 +169,6 @@ extension ManageFriendsViewController: ManageFriendViewCellDelegate {
         db.collection("users").document(myUser.friends[index].documentID).collection("friends").document(myUser.documentID).delete()
         myUser.friends.remove(at: index)
         self.manageFriendsTableView.deleteRows(at: [indexPath], with: .automatic)
-    //deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        //deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
     }
 }

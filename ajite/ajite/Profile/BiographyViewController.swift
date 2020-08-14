@@ -10,8 +10,14 @@ import UIKit
 
 class BiographyViewController: UIViewController {
     
-    @IBOutlet weak var biographyTF: UITextField!
+    // ======================> 변수, outlet 선언
+    
     var changed = false
+    @IBOutlet weak var biographyTF: UITextField!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +25,9 @@ class BiographyViewController: UIViewController {
         biographyTF.text = myUser.bio
     }
     
-    // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = biographyTF.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-        
-         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        
-        return updatedText.count <= 100
-    }
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
     
     @IBAction func changedBio(_ sender: Any) {
         changed = true
@@ -37,19 +37,39 @@ class BiographyViewController: UIViewController {
         if changed {
             //전역 변수에 biography 새로 저장
             myUser.bio = biographyTF.text!
-            db
-                .collection("users").document(myUser.documentID).updateData([
-                    "bio" : biographyTF.text!
-                ]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        print("User's bio successfully updated")
-                    }
-                }
         }
         //화면 내리기
         dismiss(animated: true)
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
+    
+    func chageBio() {
+        db
+            .collection("users").document(myUser.documentID).updateData([
+                "bio" : biographyTF.text!
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("User's bio successfully updated")
+                }
+        }
+    }
+    
+    // ==================================================================>
+    
+    
+    // 바이오그래피는 최소 100자 100자 이상은 못 받게 함
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = biographyTF.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= 100
     }
     
     //keyboard 아무 곳이나 터치하면 내려감
