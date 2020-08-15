@@ -85,6 +85,34 @@ class AjiteViewController: UIViewController{
         }
     }
     
+    func deleteAjiteFromUser(ajiteIDToDelete: String) {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("ajites").document(ajiteIDToDelete)
+            .delete()
+    }
+    
+    func deleteUserFromAjite(ajiteIDToDelete: String) {
+        db
+            .collection("ajites").document(ajiteIDToDelete)
+            .collection("members").document(myUser.documentID)
+            .delete()
+    }
+    
+    func reduceMemberNum(ajiteIDToDelete: String) {
+        db
+            .collection("ajites").document(ajiteIDToDelete)
+            .updateData([
+            "memberNum" : FieldValue.increment(Int64(-1))
+        ])
+    }
+    
+    func deleteAjite(ajiteIDToDelete: String) {
+        db
+            .collection("ajites").document(ajiteIDToDelete)
+            .delete()
+    }
+    
     // ==================================================================>
     
 }
@@ -120,26 +148,23 @@ extension AjiteViewController : UITableViewDataSource{
             
             let ajiteIDToDelete = ajites[indexPath.row].ajiteID
             
-            db
-                .collection("users").document(myUser.documentID)
-                .collection("ajites").document(ajiteIDToDelete)
-                .delete()
+            self.deleteAjiteFromUser(ajiteIDToDelete: ajiteIDToDelete)
+            
+            self.deleteUserFromAjite(ajiteIDToDelete: ajiteIDToDelete)
+            
             db
                 .collection("ajites").document(ajiteIDToDelete)
                 .getDocument { (document, error) in
                 if let document = document, document.exists {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     print("Document data: \(dataDescription)")
-                    db
-                        .collection("ajites").document(ajiteIDToDelete)
-                        .updateData([
-                        "memberNum" : FieldValue.increment(Int64(-1))
-                    ])
+                    
+                    self.reduceMemberNum(ajiteIDToDelete: ajiteIDToDelete)
+                    
                     if document.data()!["memberNum"] as! Int == 1 {
-                        db
-                            .collection("ajites").document(ajiteIDToDelete)
-                            .delete()
+                        self.deleteAjite(ajiteIDToDelete: ajiteIDToDelete)
                     }
+                    
                     ajites.remove(at: indexPath.row)
                     self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
                 } else {
