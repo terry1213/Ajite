@@ -8,7 +8,7 @@
 
 import UIKit
 
-class membersToAddTableViewCell: UITableViewCell {
+class MembersToAddTableViewCell: UITableViewCell {
     
     // ======================> 변수, outlet 선언
     

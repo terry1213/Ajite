@@ -122,7 +122,7 @@ extension MemberViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! memberInAjiteTableViewCell
+        let cell = memberTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! MemberInAjiteTableViewCell
         cell.memberName.text =  currentAjite.members[indexPath.row].name
         let data = try? Data(contentsOf: URL(string: currentAjite.members[indexPath.row].profileImageURL)!)
         cell.memberProfile.image = UIImage(data: data!)

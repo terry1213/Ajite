@@ -15,7 +15,7 @@ protocol PlaylistSongListProtocol {
     func toYoutubePlayer(index: Int)
 }
 
-class songTableViewCell: UITableViewCell {
+class SongTableViewCell: UITableViewCell {
     
     // ======================> 변수, outlet 선언
     

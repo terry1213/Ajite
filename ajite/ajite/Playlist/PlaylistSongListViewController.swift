@@ -183,7 +183,7 @@ extension PlaylistSongListViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = songListTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! songTableViewCell
+        let cell = songListTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! SongTableViewCell
         //해당 노래 이름을 라벨에 적음
         cell.songName.text = source.songs[indexPath.row].name
         //해당 노래의 아티스트(채널) 이름을 라벨에 적음

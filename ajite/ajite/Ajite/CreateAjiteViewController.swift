@@ -250,7 +250,7 @@ extension CreateAjiteViewController : UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = memberTableView.dequeueReusableCell(withIdentifier: "members", for: indexPath) as! membersToAddTableViewCell
+        let cell = memberTableView.dequeueReusableCell(withIdentifier: "members", for: indexPath) as! MembersToAddTableViewCell
         cell.memberName.text = addingMembers[indexPath.row].name
         let data = try? Data(contentsOf: URL(string: addingMembers[indexPath.row].profileImageURL)!)
         cell.memberImage.image = UIImage(data: data!)

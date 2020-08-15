@@ -11,7 +11,7 @@ protocol memberTableView{
     func OnClickCell(index: Int)
 }
 
-class memberInAjiteTableViewCell: UITableViewCell {
+class MemberInAjiteTableViewCell: UITableViewCell {
     
     // ======================> 변수, outlet 선언
     
@@ -44,7 +44,7 @@ class memberInAjiteTableViewCell: UITableViewCell {
 }
 
 protocol memberInAjiteCellDelegate: AnyObject{
-    func sendRequest(_ memberInAjiteTableViewCell: memberInAjiteTableViewCell, index: Int)
+    func sendRequest(_ memberInAjiteTableViewCell: MemberInAjiteTableViewCell, index: Int)
 }
 
 //소속: MemberViewController

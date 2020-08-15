@@ -217,7 +217,7 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             return cell
         }
         else if tableView == self.searchFriendsTable{
-            let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! searchFriendsTableViewCell
+            let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! SearchFriendsTableViewCell
             cell.searchFriendName.text = displayUsers[indexPath.row].name
             //     cell.searchUser = myUser.friends 에 저장
             let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)

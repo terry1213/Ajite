@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class notificationViewController: UIViewController {
+class NotificationViewController: UIViewController {
     
     // ======================> 변수, outlet 선언
     
@@ -65,21 +65,21 @@ class notificationViewController: UIViewController {
     
 }
 
-extension notificationViewController: UITableViewDataSource {
+extension NotificationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayAjites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! notificationCell
+        let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
         return cell
     }
     
 }
 
-extension notificationViewController: UITableViewDelegate {
+extension NotificationViewController: UITableViewDelegate {
     
 }
 
