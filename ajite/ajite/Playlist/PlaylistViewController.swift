@@ -11,11 +11,16 @@ import Firebase
 import FirebaseFirestore
 
 class PlaylistViewController: UIViewController{
-
-    //outlets and variables
-    @IBOutlet weak var playlistTableView: UITableView!
+    
+    // ======================> 변수, outlet 선언
     
     var shouldAnimateFirstRow = false
+    
+    @IBOutlet weak var playlistTableView: UITableView!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +33,61 @@ class PlaylistViewController: UIViewController{
         self.getData()
     }
     
-   
-    //getting data from database
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "toPlaylist" else {
+            return
+        }
+        guard let sendingPlaylist = sender as? Playlist else {
+            return
+        }
+        guard let destination = segue.destination as? PlaylistSongListViewController else {
+            return
+        }
+        //플레이리스트 내부 뷰에 플레이리스트 전송
+        destination.source = sendingPlaylist
+        //플레이리스트 내부 뷰에 플레이리스트 주인 정보 전달
+        destination.currentUser = myUser
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    //adding to array of playlist classes
+    @IBAction func plusTapped(_ sender: Any) {
+        let alert = UIAlertController (title: "New Playlist", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (playlistTextField) in
+            playlistTextField.placeholder = "Enter Playlist Name"
+        })
+        
+        
+        let action = UIAlertAction(title: "Add", style: .default){(_) in guard let newPlaylist = alert.textFields?.first?.text else{return}
+            
+            if newPlaylist.trimmingCharacters(in: .whitespaces).isEmpty{
+                         let nameIsEmpty = UIAlertController(title: "Empty Name Field", message: "Your Playlist must have a name.", preferredStyle: .alert)
+                         
+                         nameIsEmpty.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                                    NSLog("The \"OK\" alert occured.")}))
+                                    
+                                 self.present(nameIsEmpty, animated: true, completion: nil)
+                                    return
+                }
+            //랜덤으로 플레이리스트 이미지를 정한다.
+            let random = arc4random_uniform(4)
+            let imageName = "\(random)"
+            
+            self.makeNewPlaylist(newPlaylistName: newPlaylist, imageName: imageName)
+        }
+        alert.addAction(action)
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
+    
     func getData(){
         db
             .collection("users").document(myUser.documentID)
@@ -64,81 +122,37 @@ class PlaylistViewController: UIViewController{
         }
     }
     
-//************ 관련된 Action들 ********
-    
-    
-    //adding to array of playlist classes
-    @IBAction func plusTapped(_ sender: Any) {
-        let alert = UIAlertController (title: "New Playlist", message: nil, preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { (playlistTextField) in
-            playlistTextField.placeholder = "Enter Playlist Name"
-        })
-        
-        
-        let action = UIAlertAction(title: "Add", style: .default){(_) in guard let newPlaylist = alert.textFields?.first?.text else{return}
-            
-            if newPlaylist.trimmingCharacters(in: .whitespaces).isEmpty{
-                         let nameIsEmpty = UIAlertController(title: "Empty Name Field", message: "Your Playlist must have a name.", preferredStyle: .alert)
-                         
-                         nameIsEmpty.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                                    NSLog("The \"OK\" alert occured.")}))
-                                    
-                                 self.present(nameIsEmpty, animated: true, completion: nil)
-                                    return
-                }
-            //랜덤으로 플레이리스트 이미지를 정한다.
-            let random = arc4random_uniform(4)
-            let imageName = "\(random)"
-            
-            
-            var ref: DocumentReference? = nil
-            //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
-            ref = db
-                .collection("users").document(myUser.documentID)
-                .collection("playlists").addDocument(data: [
-                    //입력한 이름을 등록
-                    "name": newPlaylist,
-                    //랜덤으로 선택된 이미지의 이름을 등록
-                    "playlistImageString": imageName,
-                    "songNum": 0
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Playlist added with ID: \(ref!.documentID)")
-                    self.getData()
-                }
+    func makeNewPlaylist(newPlaylistName: String, imageName: String) {
+        var ref: DocumentReference? = nil
+        //본인의 플레이리스트 collection에 새로운 플레이리스트 추가
+        ref = db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").addDocument(data: [
+                //입력한 이름을 등록
+                "name": newPlaylistName,
+                //랜덤으로 선택된 이미지의 이름을 등록
+                "playlistImageString": imageName,
+                "songNum": 0
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Playlist added with ID: \(ref!.documentID)")
+                self.getData()
             }
         }
-        alert.addAction(action)
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alert.addAction(cancel)
-        present(alert, animated: true)
     }
     
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toPlaylist" else {
-            return
-        }
-        guard let sendingPlaylist = sender as? Playlist else {
-            return
-        }
-        guard let destination = segue.destination as? PlaylistSongListViewController else {
-            return
-        }
-        //플레이리스트 내부 뷰에 플레이리스트 전송
-        destination.source = sendingPlaylist
-        //플레이리스트 내부 뷰에 플레이리스트 주인 정보 전달
-        destination.currentUser = myUser
-    }
+    // ==================================================================>
     
 }
+
 extension PlaylistViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-           return 1
-       }
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myUser.playlists.count
     }
@@ -155,12 +169,10 @@ extension PlaylistViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 96
-         }
-    
+        return 96
+    }
     
     // 플레이리스트를 삭제할 때 사용하는 코드
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
         let deleteAlert = UIAlertController (title: "Delete Playlist", message: "Would you like to delete your playlist?" ,preferredStyle: UIAlertController.Style.alert)
@@ -185,22 +197,22 @@ extension PlaylistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let movedObject = myUser.playlists[fromIndexPath.row]
-            myUser.playlists.remove(at: fromIndexPath.row)
-            myUser.playlists.insert(movedObject, at: to.row)
-        }
+        myUser.playlists.remove(at: fromIndexPath.row)
+        myUser.playlists.insert(movedObject, at: to.row)
+    }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
     
-}
-
-extension PlaylistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //전송할 플레이리스트 할당
         let dataToSend = myUser.playlists[indexPath.row]
         //플레이리스트 내부 뷰로 이동
         self.performSegue(withIdentifier: "toPlaylist", sender: dataToSend)
     }
+}
+
+extension PlaylistViewController: UITableViewDelegate {
 }

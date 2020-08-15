@@ -11,11 +11,18 @@ import FirebaseFirestore
 
 class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     
+    // ======================> 변수, outlet 선언
+    
     var addingSong = Song()
     var addOrNot : [Bool] = []
+    var listVC: PlaylistSongListViewController? = nil
+    
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!
-    var listVC: PlaylistSongListViewController? = nil
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,31 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         getData()
     }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    @IBAction func finished(_ sender: Any) {
+        //어떤 플레이리스트에 담을 것인지 알기 위해 bool array를 확인한다.
+        for index in 0 ..< addOrNot.count {
+            //true = 담기
+            if addOrNot[index] == true {
+                //해당 플레이리스트 document에 노래 document를 추가한다.
+                self.addNewSongToPlaylist(index: index)
+                
+                //해당 플레이리스트 document의 songNum field를 1 늘려준다.
+                self.addSongNum(index: index)
+            }
+        }
+        //해당 플레이리스트 창으로 돌아가기 전에 노래 리스트를 다시 불러온다.
+        listVC?.getData()
+        dismiss(animated: true)
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData() {
         db
@@ -54,55 +86,54 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
             }
     }
     
-    @IBAction func finished(_ sender: Any) {
-        //어떤 플레이리스트에 담을 것인지 알기 위해 bool array를 확인한다.
-        for index in 0 ..< addOrNot.count {
-            //true = 담기
-            if addOrNot[index] == true {
-                //해당 플레이리스트 document에 추가하려는 노래 document를 생성한다.
-                db
-                    .collection("users").document(myUser.documentID)
-                    .collection("playlists").document(myUser.playlists[index].id)
-                    .collection("songs").addDocument(data:[
-                        "name" : addingSong.name,
-                        "artist" : addingSong.artist,
-                        "thumbnailImageUrl" : addingSong.thumbnailImageUrl,
-                        "videoID" : addingSong.videoID
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Song successfully added to playlist")
-                        }
-                    }
-                //해당 플레이리스트 document의 songNum field를 1 늘려준다.
-                db
-                    .collection("users").document(myUser.documentID)
-                    .collection("playlists").document(myUser.playlists[index].id).updateData([
-                        "songNum" : FieldValue.increment(Int64(1))
-                    ]) { err in
-                        if let err = err {
-                            print("Error updating document: \(err)")
-                        } else {
-                            print("SongNum successfully updated")
-                        }
-                    }
-            }
+    //해당 플레이리스트 document에 노래 document를 추가한다.
+    func addNewSongToPlaylist(index: Int) {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").document(myUser.playlists[index].id)
+            .collection("songs").addDocument(data:[
+                "name" : addingSong.name,
+                "artist" : addingSong.artist,
+                "thumbnailImageUrl" : addingSong.thumbnailImageUrl,
+                "videoID" : addingSong.videoID
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Song successfully added to playlist")
+                }
         }
-        //해당 플레이리스트 창으로 돌아가기 전에 노래 리스트를 다시 불러온다.
-        listVC?.getData()
-        dismiss(animated: true)
     }
+    
+    //해당 플레이리스트 document의 songNum field를 1 늘려준다.
+    func addSongNum(index: Int) {
+        db
+            .collection("users").document(myUser.documentID)
+            .collection("playlists").document(myUser.playlists[index].id).updateData([
+                "songNum" : FieldValue.increment(Int64(1))
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("SongNum successfully updated")
+                }
+        }
+    }
+    
+    // ==================================================================>
+    
 }
 
 extension AddToPlaylistViewController : UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-             return 1
-         }
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myUser.playlists.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = playlistView.dequeueReusableCell(withIdentifier: "addToPlaylist", for: indexPath) as! AddToPlaylistTableViewCell
         //Label에 플레이리스트 이름을 적는다.
@@ -112,19 +143,24 @@ extension AddToPlaylistViewController : UITableViewDataSource{
         cell.index = indexPath
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt
         indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
 }
 
 extension AddToPlaylistViewController: AddToPlaylistProtocol{
+    
     //플레이리스트가 체크되었기 때문에 해당 셀의 인덱스에 맞는 bool 값을 true로 만들어준다.
     func checkPlaylist(index: Int) {
         addOrNot[index] = true
     }
+    
     //플레이리스트가 체크 해제되었기 때문에 해당 셀의 인덱스에 맞는 bool 값을 false로 만들어준다.
     func uncheckPlaylist(index: Int) {
         addOrNot[index] = false
     }
+    
 }

@@ -11,11 +11,10 @@ import Firebase
 import youtube_ios_player_helper
 import FirebaseFirestore
 
-//var songs: [Song] = []
-
 class PlaylistSongListViewController: UIViewController {
     
-    //outlet & variables
+    // ======================> 변수, outlet 선언
+    
     //유튜브 플레이어를 올리기 위한 UIView Controller이다.
     let youtubePlayerViewController = YoutubePlayerViewController()
     //유튜브 플레이어가 올라올 시, 노래 리스트 테이블의 위치를 나타내는 constraint
@@ -28,8 +27,13 @@ class PlaylistSongListViewController: UIViewController {
     var source = Playlist()
     //유튜브 플레이어에 보낼 노래의 인덱스
     var nextSourceIndex : Int = -1
+    
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var playlistName: UILabel!
+    
+    // ==================================================================>
+    
+    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,27 @@ class PlaylistSongListViewController: UIViewController {
         self.getData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ShareSongsViewController {
+            vc.playlistID = source.id
+            vc.listVC = self
+
+        }
+        else if let vc = segue.destination as? AddToPlaylistViewController {
+            vc.addingSong = source.songs[nextSourceIndex]
+             vc.listVC = self
+        }
+    }
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    
+    
+    // ==================================================================>
+    
+    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
@@ -85,59 +110,16 @@ class PlaylistSongListViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ShareSongsViewController {
-            vc.playlistID = source.id
-            vc.listVC = self
-
-        }
-        else if let vc = segue.destination as? AddToPlaylistViewController {
-            vc.addingSong = source.songs[nextSourceIndex]
-             vc.listVC = self
-        }
-    }
-}
-
-extension PlaylistSongListViewController : UITableViewDataSource{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return source.songs.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = songListTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! songTableViewCell
-        //해당 노래 이름을 라벨에 적음
-        cell.songName.text = source.songs[indexPath.row].name
-        //해당 노래의 아티스트(채널) 이름을 라벨에 적음
-        cell.artistName.text = source.songs[indexPath.row].artist
-        cell.cellDelegate = self
-        cell.index = indexPath
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt
-    indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard currentUser.documentID == myUser.documentID else { return false }
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
+    func deleteSong(index: Int) {
         //선택한 노래를 현재 플레이리스트로부터 삭제한다.
         db
             .collection("users").document(currentUser.documentID)
             .collection("playlists").document(source.id)
-            .collection("songs").document(source.songs[indexPath.row].songID)
+            .collection("songs").document(source.songs[index].songID)
             .delete()
+    }
+    
+    func reduceSongNum() {
         //현재 플레이리스트의 노래 개수를 하나 줄인다.
         db
             .collection("users").document(currentUser.documentID)
@@ -149,19 +131,10 @@ extension PlaylistSongListViewController : UITableViewDataSource{
                 } else {
                     print("SongNum successfully updated")
                 }
-            }
-        //현재 플레이리스트를 담고 있는 플레이리스트 변수에서도 해당 노래를 제거한다.
-        source.songs.remove(at: indexPath.row)
-        //테이블에서도 해당 노래를 제거한다.
-        songListTableView.deleteRows(at: [indexPath], with: .automatic)
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        songListTableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+    // ==================================================================>
     
     func addChildVC() {
         addChild(youtubePlayerViewController)
@@ -195,6 +168,61 @@ extension PlaylistSongListViewController : UITableViewDataSource{
         songListFullConstraint?.isActive.toggle()
         songListShortConstraint?.isActive.toggle()
     }
+    
+}
+
+extension PlaylistSongListViewController : UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return source.songs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = songListTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! songTableViewCell
+        //해당 노래 이름을 라벨에 적음
+        cell.songName.text = source.songs[indexPath.row].name
+        //해당 노래의 아티스트(채널) 이름을 라벨에 적음
+        cell.artistName.text = source.songs[indexPath.row].artist
+        cell.cellDelegate = self
+        cell.index = indexPath
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard currentUser.documentID == myUser.documentID else { return false }
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        //선택한 노래를 현재 플레이리스트로부터 삭제한다.
+        self.deleteSong(index: indexPath.row)
+        //현재 플레이리스트의 노래 개수를 하나 줄인다.
+        self.reduceSongNum()
+        
+        //현재 플레이리스트를 담고 있는 플레이리스트 변수에서도 해당 노래를 제거한다.
+        source.songs.remove(at: indexPath.row)
+        //테이블에서도 해당 노래를 제거한다.
+        songListTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        songListTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
 }
 
 extension PlaylistSongListViewController : UITableViewDelegate{
@@ -202,10 +230,12 @@ extension PlaylistSongListViewController : UITableViewDelegate{
 }
 
 extension PlaylistSongListViewController : PlaylistSongListProtocol {
+    
     func toAddToPlaylist(index: Int) {
         nextSourceIndex = index
         performSegue(withIdentifier: "addToPlaylistSegue", sender: self)
     }
+    
     func toYoutubePlayer(index: Int) {
         //child view controller가 존재한다면
         if self.children.count > 0 {
@@ -242,4 +272,5 @@ extension PlaylistSongListViewController : PlaylistSongListProtocol {
         //노래 리스트 테이블 뷰의 constraints를 toggle시킨다.
         toggleSongListTableViewConstraints()
     }
+    
 }
