@@ -132,7 +132,7 @@
         <!--Notification View Controller-->
         <scene sceneID="r4J-cE-W8B">
             <objects>
-                <viewController id="tVI-51-YZm" customClass="notificationViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tVI-51-YZm" customClass="NotificationViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFX-g8-ePi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1055,7 +1055,7 @@
         <!--Find Friends-->
         <scene sceneID="Oev-fL-2oC">
             <objects>
-                <viewController id="mSL-Oh-ks7" customClass="userViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mSL-Oh-ks7" customClass="UserViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="36C-MT-Fiw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
