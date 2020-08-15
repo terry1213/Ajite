@@ -13,22 +13,30 @@ protocol TableViewUser {
 }
 
 class UserTableViewCell: UITableViewCell {
-
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var userIdLabel: UILabel!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var userProfileImage: CircleImageView!
+    
+    // ======================> 변수, outlet 선언
     
     var cellDelegate: TableViewUser?
     weak var delegate : UserTableViewCellDelegate?
     var index: IndexPath?
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var userProfileImage: CircleImageView!
+    
+    // ==================================================================>
+    
+    // ======================> 초기화 함수
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
     @IBAction func sendRequest(_ sender: UIButton) {
         cellDelegate?.onClickCell(index: (index?.row)!)
     }
@@ -38,6 +46,9 @@ class UserTableViewCell: UITableViewCell {
             self.delegate?.sendMessage(self)
         }
     }
+    
+    // ==================================================================>
+    
 }
 
 protocol UserTableViewCellDelegate : AnyObject{

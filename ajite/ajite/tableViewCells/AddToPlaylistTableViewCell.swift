@@ -16,23 +16,28 @@ protocol AddToPlaylistProtocol {
 }
 
 class AddToPlaylistTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var checkBoxButton: UIButton!
-    @IBOutlet weak var playlistName: UILabel!
+    
+    // ======================> 변수, outlet 선언
+    
     var checked : Bool = false
     var cellDelegate: AddToPlaylistProtocol?
     var index: IndexPath?
     
-    //weak var delegate : AddToPlaylistTableViewCellDelegate?
+    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var playlistName: UILabel!
+    
+    // ==================================================================>
+    
+    // ======================> 초기화 함수
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
     
     //check box를 클릭했을 때
     @IBAction func checkBox(_ sender: UIButton) {
@@ -52,6 +57,13 @@ class AddToPlaylistTableViewCell: UITableViewCell {
         }
         checked.toggle()
     }
+    
+    // ==================================================================>
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
 }
 
 //소속: AddToPlaylistViewController

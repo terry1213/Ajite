@@ -9,17 +9,29 @@
 import UIKit
 
 class notificationCell: UITableViewCell {
-
+    
+    // ======================> 변수, outlet 선언
+    
     @IBOutlet var ajiteName: UILabel!
+    
+    // ==================================================================>
+    
+    // ======================> 초기화 함수
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
+    
+    
+    // ==================================================================>
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
 }

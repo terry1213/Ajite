@@ -12,22 +12,35 @@ protocol memberTableView{
 }
 
 class memberInAjiteTableViewCell: UITableViewCell {
-
+    
+    // ======================> 변수, outlet 선언
+    
+    var cellDelegate: memberTableView?
+    var index: IndexPath?
+    
     @IBOutlet weak var memberProfile: CircleImageView!
     @IBOutlet weak var memberName: UILabel!
     @IBOutlet var sendFriendRequestButton: UIButton!
-    var cellDelegate: memberTableView?
-    var index: IndexPath?
+    
+    // ==================================================================>
+    
+    // ======================> 초기화 함수
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    // ==================================================================>
+    
+    // ======================> Event가 일어난 경우 호출되는 Action 함수들
+    
     //+버튼을 누를시 동작하는 메서드
     @IBAction func sendFriendRequest(_ selected: Any) {
         cellDelegate?.OnClickCell(index: (index?.row)!)
     }
-
+    
+    // ==================================================================>
+    
 }
 
 protocol memberInAjiteCellDelegate: AnyObject{
