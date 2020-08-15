@@ -11,9 +11,15 @@ import youtube_ios_player_helper
 
 class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
+    // ======================> 변수, outlet 선언
+    
     var youtubePlayer: YTPlayerView!
     var index: Int = 0
     var youtubeVideos = Playlist()
+    
+    // ==================================================================>
+    
+    // ======================> ViewController와 View 관련 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +36,10 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
         ])
         view = youtubePlayer
     }
+    
+    // ==================================================================>
+    
+    // ======================> 유튜브 영상 재생 관련 함수
     
     //유튜브 플레이어 뷰가 준비 되면 실행될 함수
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
@@ -62,4 +72,7 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
             "playsinline": 1,   //0: 전체 화면 재생, 1: playerView 화면 내애서 재생
         ])
     }
+    
+    // ==================================================================>
+    
 }
