@@ -37,6 +37,7 @@ class BiographyViewController: UIViewController {
         if changed {
             //전역 변수에 biography 새로 저장
             myUser.bio = biographyTF.text!
+            changeBio()
         }
         //화면 내리기
         dismiss(animated: true)
@@ -46,7 +47,7 @@ class BiographyViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func chageBio() {
+    func changeBio() {
         db
             .collection("users").document(myUser.documentID).updateData([
                 "bio" : biographyTF.text!
