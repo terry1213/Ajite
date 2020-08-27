@@ -18,8 +18,10 @@ class AjiteViewController: UIViewController{
     
     // ======================> 변수, outlet 선언
     
+    @IBOutlet weak var ajiteSearchBar: UISearchBar!
+    @IBOutlet weak var updatedAjite: UICollectionView!
     @IBOutlet weak var ajiteTable: UITableView!
-    
+    @IBOutlet weak var order: UIButton!
     // ==================================================================>
     
     // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
@@ -131,6 +133,7 @@ extension AjiteViewController : UITableViewDataSource{
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
         cell.ajiteImage.image = UIImage(named: "door-\(ajites[indexPath.row].ajiteImageString)")
+        //cell.ajiteNumber.text = ajites[indexPath.row].numOfMembers
         return cell
     }
     

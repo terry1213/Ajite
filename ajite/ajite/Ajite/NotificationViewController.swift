@@ -74,6 +74,8 @@ extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
+        //cell.초대자.text = displayAjites[indexPath.row].초대자이름
+        //cell.timeInvited.text = displayAjites[indexPath.row].timeInvited
         return cell
     }
     
