@@ -29,7 +29,7 @@ class Ajite {
     var sharedSongs = Playlist()
     var ajiteID = String()
     var ajiteImageString = String()
-   //!!! var creator = String()
+   //!!! var creator = User()
    //!!! var timestamp : Date
     init () {
         name = ""

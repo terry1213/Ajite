@@ -120,7 +120,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
             "ajiteImageString": imageName,
             "memberNum" : 1,
         // !!!! "timestamp": ServerValue.timestamp(),
-        //!!!!    "creator": myUser.userID
+        //!!!!    "creator": myUser
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
