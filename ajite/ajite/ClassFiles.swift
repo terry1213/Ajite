@@ -30,9 +30,10 @@ class Ajite {
     var ajiteID = String()
     var ajiteImageString = String()
    //!!! var creator = String()
-   //!!! var timestamp = Date()
+   //!!! var timestamp : Date
     init () {
         name = ""
+    //!!!    self.timestamp = Date(timeIntervalSince1970: timestamp /1000)
     }
 }
 

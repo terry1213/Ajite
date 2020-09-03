@@ -52,14 +52,14 @@
                                                 <rect key="frame" x="16" y="236" width="343" height="173"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXR-8w-wt6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="73.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="60"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                         <size key="shadowOffset" width="2" height="1"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XC-P4-OGX" customClass="GIDSignInButton">
-                                                        <rect key="frame" x="0.0" y="123.33333333333333" width="343" height="49.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="120" width="343" height="53"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                 </subviews>
@@ -328,19 +328,19 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ajites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sK-fG-hA4">
-                                <rect key="frame" x="26.000000000000007" y="302" width="127.66666666666669" height="36.666666666666686"/>
+                                <rect key="frame" x="26.000000000000007" y="303.33333333333331" width="127.66666666666669" height="36.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated !" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01v-oU-yoR">
-                                <rect key="frame" x="26" y="159" width="135" height="37"/>
+                                <rect key="frame" x="26" y="159" width="134.66666666666666" height="36.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gdr-wF-Kdj">
-                                <rect key="frame" x="26" y="204" width="322" height="90"/>
+                                <rect key="frame" x="26" y="205.33333333333334" width="322" height="90.000000000000028"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="R5g-Bs-F2x"/>
@@ -364,27 +364,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="play.circle.fill" catalog="system"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ajite Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxn-tB-dy6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxn-tB-dy6">
                                                     <rect key="frame" x="8" y="7" width="66" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-dm-gC6">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-dm-gC6">
                                                     <rect key="frame" x="8" y="27" width="66" height="55"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCj-5S-DiU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Video Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCj-5S-DiU">
                                                     <rect key="frame" x="82" y="30" width="69" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Channel Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acy-OG-8IJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Channel Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acy-OG-8IJ">
                                                     <rect key="frame" x="82" y="47" width="71" height="12"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -395,6 +391,19 @@
                                                     <state key="normal" image="text.badge.plus" catalog="system"/>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nTJ-dm-gC6" firstAttribute="leading" secondItem="FzT-ZZ-EBH" secondAttribute="leading" constant="8" id="60Q-Bl-Jik"/>
+                                                <constraint firstItem="vxn-tB-dy6" firstAttribute="top" secondItem="FzT-ZZ-EBH" secondAttribute="top" constant="7" id="8HI-Fv-V8I"/>
+                                                <constraint firstItem="dCj-5S-DiU" firstAttribute="top" secondItem="FzT-ZZ-EBH" secondAttribute="top" constant="30" id="GZv-Te-M9v"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dCj-5S-DiU" secondAttribute="trailing" constant="20" symbolic="YES" id="M6X-Bp-Rg7"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Acy-OG-8IJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Sga-cj-GXq"/>
+                                                <constraint firstItem="dCj-5S-DiU" firstAttribute="leading" secondItem="nTJ-dm-gC6" secondAttribute="trailing" constant="8" id="TK5-CI-sgr"/>
+                                                <constraint firstItem="nTJ-dm-gC6" firstAttribute="top" secondItem="vxn-tB-dy6" secondAttribute="bottom" constant="4" id="VaZ-sV-4ft"/>
+                                                <constraint firstItem="vxn-tB-dy6" firstAttribute="leading" secondItem="FzT-ZZ-EBH" secondAttribute="leading" constant="8" id="WKg-53-biR"/>
+                                                <constraint firstItem="Acy-OG-8IJ" firstAttribute="top" secondItem="dCj-5S-DiU" secondAttribute="bottom" constant="2" id="riu-Jm-9O4"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vxn-tB-dy6" secondAttribute="trailing" constant="20" symbolic="YES" id="tvt-cQ-Wwi"/>
+                                                <constraint firstItem="Acy-OG-8IJ" firstAttribute="leading" secondItem="nTJ-dm-gC6" secondAttribute="trailing" constant="8" id="via-vY-mHd"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="236" height="90"/>
                                     </collectionViewCell>
@@ -405,7 +414,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Fp-gjD">
-                                <rect key="frame" x="324.33333333333331" y="310" width="23.666666666666686" height="22"/>
+                                <rect key="frame" x="324.33333333333331" y="311.33333333333331" width="23.666666666666686" height="22"/>
                                 <state key="normal" image="arrow.up.arrow.down" catalog="system"/>
                             </button>
                         </subviews>
@@ -418,7 +427,7 @@
                             <constraint firstItem="01v-oU-yoR" firstAttribute="top" secondItem="oNo-6I-HHz" secondAttribute="bottom" constant="3" id="Gqm-X9-HiV"/>
                             <constraint firstItem="oNo-6I-HHz" firstAttribute="trailing" secondItem="TX8-mk-8ls" secondAttribute="trailing" id="IFP-xm-4fy"/>
                             <constraint firstItem="8sK-fG-hA4" firstAttribute="top" secondItem="gdr-wF-Kdj" secondAttribute="bottom" constant="8" id="Id9-ac-1TD"/>
-                            <constraint firstItem="gdr-wF-Kdj" firstAttribute="top" secondItem="01v-oU-yoR" secondAttribute="bottom" constant="8" id="QQx-Du-ntc"/>
+                            <constraint firstItem="gdr-wF-Kdj" firstAttribute="top" secondItem="01v-oU-yoR" secondAttribute="bottom" constant="9.6666666666666572" id="QQx-Du-ntc"/>
                             <constraint firstItem="8sK-fG-hA4" firstAttribute="leading" secondItem="TX8-mk-8ls" secondAttribute="leading" constant="26" id="SZD-On-j3R"/>
                             <constraint firstItem="TX8-mk-8ls" firstAttribute="trailing" secondItem="gdr-wF-Kdj" secondAttribute="trailing" constant="27" id="WWN-NN-QXG"/>
                             <constraint firstItem="oNo-6I-HHz" firstAttribute="top" secondItem="TX8-mk-8ls" secondAttribute="top" constant="12" id="bAZ-Yj-bG7"/>
@@ -738,7 +747,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-YE-B15" userLabel="Logo Ajite">
-                                        <rect key="frame" x="133.33333333333334" y="61.333333333333343" width="83.333333333333343" height="49"/>
+                                        <rect key="frame" x="136" y="63.666666666666657" width="78" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1324,7 +1333,7 @@
                                 <rect key="frame" x="16" y="133" width="343" height="679"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AjiteName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-Ha-biV">
-                                        <rect key="frame" x="18" y="27.666666666666657" width="139.33333333333334" height="35"/>
+                                        <rect key="frame" x="18" y="27.666666666666657" width="133.33333333333334" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="LTa-qH-CFe"/>
                                         </constraints>
@@ -1702,14 +1711,14 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="631.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-84-hBt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="46.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="40"/>
                                         <color key="textColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-iD-W4a">
-                                        <rect key="frame" x="0.0" y="59" width="375" height="572.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666686" width="375" height="574.66666666666652"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -1814,7 +1823,7 @@
                                 <color key="backgroundColor" red="0.51139467949999995" green="0.57121837139999998" blue="0.73861511749999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bV-4r-0p7">
-                                <rect key="frame" x="26" y="118" width="138.33333333333334" height="47"/>
+                                <rect key="frame" x="26.000000000000007" y="118" width="126.66666666666669" height="47"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="ivT-lv-y4l"/>
@@ -1898,7 +1907,7 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YST-Sf-ILA">
-                                        <rect key="frame" x="148" y="541" width="79" height="0.0"/>
+                                        <rect key="frame" x="148.33333333333334" y="541" width="78.333333333333343" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2315,7 +2324,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTo-69-zUc">
-                                        <rect key="frame" x="114.66666666666667" y="24.999999999999996" width="145.66666666666663" height="36.666666666666657"/>
+                                        <rect key="frame" x="116.33333333333333" y="25" width="142.33333333333337" height="35"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2624,7 +2633,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wH-dU-a8J">
-                                        <rect key="frame" x="114.66666666666667" y="24.999999999999996" width="145.66666666666663" height="36.666666666666657"/>
+                                        <rect key="frame" x="116.33333333333333" y="25" width="142.33333333333337" height="35"/>
                                         <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2642,7 +2651,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAX-Z5-UaQ">
-                                        <rect key="frame" x="169" y="77" width="24.333333333333343" height="20.333333333333329"/>
+                                        <rect key="frame" x="169" y="75.333333333333314" width="24.333333333333343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

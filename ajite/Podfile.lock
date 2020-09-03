@@ -225,23 +225,23 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - DynamicCodable (1.0)
-  - Firebase/Analytics (6.31.0):
+  - Firebase/Analytics (6.31.1):
     - Firebase/Core
-  - Firebase/Auth (6.31.0):
+  - Firebase/Auth (6.31.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.0)
-  - Firebase/Core (6.31.0):
+  - Firebase/Core (6.31.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.8.0)
-  - Firebase/CoreOnly (6.31.0):
+  - Firebase/CoreOnly (6.31.1):
     - FirebaseCore (= 6.10.1)
-  - Firebase/Database (6.31.0):
+  - Firebase/Database (6.31.1):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.5.0)
-  - Firebase/Firestore (6.31.0):
+  - Firebase/Firestore (6.31.1):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.17.0)
-  - Firebase/Messaging (6.31.0):
+  - Firebase/Messaging (6.31.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.6.2)
   - FirebaseAnalytics (6.8.0):
@@ -300,9 +300,9 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - Protobuf (>= 3.9.2, ~> 3.9)
-  - GoogleAPIClientForREST/Core (1.4.2):
+  - GoogleAPIClientForREST/Core (1.4.3):
     - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAPIClientForREST/YouTube (1.4.2):
+  - GoogleAPIClientForREST/YouTube (1.4.3):
     - GoogleAPIClientForREST/Core
     - GTMSessionFetcher (>= 1.1.7)
   - GoogleAppMeasurement (6.8.0):
@@ -468,7 +468,7 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   DynamicCodable: 2cf558d057b3e6540552943254e1c9eeb706dde2
-  Firebase: 87483fa19acfdf99244523f2389e931927b91457
+  Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
   FirebaseAnalytics: 0ca9aa2af7cc4dc92392b7a78bfc49feaa2eb60f
   FirebaseAuth: 09f086fae98643f1ef235674cf3ae171ce26f5ba
   FirebaseCore: 6fb954e350af0885803d5aa49865d15d9a6b264c
@@ -478,7 +478,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseInstanceID: 84f5f5762f1bee94ca2254f693bbf5aec6666504
   FirebaseMessaging: 82d75b3770a78bbce470769a6980429608b4c407
-  GoogleAPIClientForREST: 9f49df9fac7867b459187e687fed3066b2be049a
+  GoogleAPIClientForREST: e2d95a611ac06a90d143c93bfd8597719f8b0938
   GoogleAppMeasurement: ecc30d0ab5b66d7d18e85ce1b8e2b345db60626d
   GoogleDataTransport: e85fb700c9b027079ce182c3d08e12e0f9618bb4
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213

@@ -84,7 +84,7 @@ extension NotificationViewController: UITableViewDataSource {
         let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
        //!!!! cell.초대자.text = displayAjites[indexPath.row].creator
-        //!!!!cell.timeInvited.text = displayAjites[indexPath.row].timestamp
+        //!!!!cell.timeInvited.text = displayAjites[indexPath.row].timestamp.calendarTimeSinceNow()
         return cell
     }
     
@@ -93,5 +93,39 @@ extension NotificationViewController: UITableViewDataSource {
 extension NotificationViewController: UITableViewDelegate {
     
 }
+
+/*extension Date{
+    func calendarTimeSinceNow() ->String
+    {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self, to: Date())
+        
+        let years = components.year!
+        let months = components.month!
+        let days = components.day!
+        let hours =  components.hour!
+        let minutes = components.minute!
+        
+        if years > 0{
+            return years == 1 ? "1 year ago" : "\(years) years ago"
+        }
+        else if months > 0{
+            return months == 1 ? "1 month ago" : "\(months) months ago"
+        }
+        else if days >= 7 {
+            let weeks = days / 7
+            return weeks == 1 ? "1 week ago" : "\(weeks) weeks ago"
+        }
+        else if hours > 0{
+            return hours == 1 ? "1 hour ago" : "\(hours) ago"
+        }
+        else if minutes > 0 {
+            return minutes == 1 ? "1 minute ago" : "\(minutes) ago"
+        }
+        else {
+            return " a few seconds ago"
+        }
+    }
+}*/
 
 
