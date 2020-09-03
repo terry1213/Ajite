@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseFirestore
 
 class LoginViewController: UIViewController{
     
@@ -41,4 +42,9 @@ class LoginViewController: UIViewController{
     override func viewWillDisappear(_ animated: Bool) {
            self.view.layer.removeAllAnimations()
        }
+    
+    @IBAction func kakaoLogin(_ sender: Any) {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.kakaoLogin()
+        //(UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.kakaotalkLogin()
+    }
 }
