@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,21 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // add these lines
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
-        guard let signIn = GIDSignIn.sharedInstance() else { return }
-        //만약 이미 로그인을 한 유저라면
-        if (signIn.hasPreviousSignIn()) {
-            //이전 아이디로 로그인
-            signIn.restorePreviousSignIn()
-            //로그인 화면을 root view로 설정
-//            let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
-//            window?.rootViewController = mainTabBarController
-        }
-        else {
-            //로그인 화면을 root view로 설정
-            let loginController = storyboard.instantiateViewController(identifier: "LoginViewControllers")
-            window?.rootViewController = loginController
-        }
+        
+        //카카오톡 자동 로그인
+        self.autoKakaoLogin()
+        
+        //구글 자동 로그인
+        self.autoGoogleLogin()
     }
     
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
@@ -82,6 +75,76 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
- 
-
+    
+    func kakaoLogin() {
+        AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("loginWithKakaoAccount() success.")
+                self.getKakaoUserData()
+            }
+        }
+    }
+    
+    func autoGoogleLogin() {
+        //이미 로그인한 구글 계정이 있다면
+        guard let signIn = GIDSignIn.sharedInstance() else { return }
+        //만약 이미 로그인을 한 유저라면
+        if (signIn.hasPreviousSignIn()) {
+            //이전 아이디로 로그인
+            signIn.restorePreviousSignIn()
+        }
+    }
+    
+    func autoKakaoLogin() {
+        //이미 로그인된 카카오톡 계정이 있다면
+        UserApi.shared.accessTokenInfo {(accessTokenInfo, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("accessTokenInfo() success.")
+                self.getKakaoUserData()
+            }
+        }
+    }
+    
+    func getKakaoUserData() {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("me() success.")
+                //user?.kakaoAccount?.email as! String
+                myUser = User()
+                myUser.documentID = "\(user?.id ?? 0)"
+                myUser.userID = "\(user?.id ?? 0)"
+                myUser.name = user?.kakaoAccount?.profile?.nickname as! String
+                myUser.profileImageURL = user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString as! String
+                
+                
+                let db = Firestore.firestore()
+                db.collection("users").document(myUser.documentID).setData([
+                    "userID": myUser.userID as Any,
+                    "name": myUser.name as Any,
+                    "profileImageURL": myUser.profileImageURL as Any
+                ], merge: true) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("User document added")
+                    }
+                }
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+                        
+                //root view controller를 LoginViewControllers에서 TabBarMenuViewController로 전환
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarMenuViewController)
+            }
+        }
+    }
 }
