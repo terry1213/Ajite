@@ -115,7 +115,10 @@ class AjiteViewController: UIViewController{
     // ==================================================================>
     
     
-
+    @IBAction func order(_ sender: Any) {
+        
+    }
+    
     
 }
 

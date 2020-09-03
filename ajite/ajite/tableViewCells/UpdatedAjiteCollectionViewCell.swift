@@ -14,7 +14,7 @@ class UpdatedAjiteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
     
-    override func viewDidLoad(){
+    func viewDidLoad(){
     }
     
     @IBAction func playVideo(_ sender: Any) {

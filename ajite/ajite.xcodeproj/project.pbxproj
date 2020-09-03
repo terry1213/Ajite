@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1623F4E82501210400FCD17F /* popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623F4E72501210400FCD17F /* popup.swift */; };
 		1623F4EC2501297100FCD17F /* UpdatedAjiteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623F4EB2501297000FCD17F /* UpdatedAjiteCollectionViewCell.swift */; };
+		1623F4EF25012B4B00FCD17F /* HalfModal in Frameworks */ = {isa = PBXBuildFile; productRef = 1623F4EE25012B4B00FCD17F /* HalfModal */; };
 		1643B52C24E26ED800548D00 /* MembersToAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643B52B24E26ED700548D00 /* MembersToAddTableViewCell.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
 		1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */; };
@@ -165,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91BA44026F44390CF0A18A1 /* Pods_ajite.framework in Frameworks */,
+				1623F4EF25012B4B00FCD17F /* HalfModal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +389,9 @@
 			dependencies = (
 			);
 			name = ajite;
+			packageProductDependencies = (
+				1623F4EE25012B4B00FCD17F /* HalfModal */,
+			);
 			productName = ajite;
 			productReference = 16AE4AE624CC761400807ECB /* ajite.app */;
 			productType = "com.apple.product-type.application";
@@ -466,6 +471,9 @@
 				Base,
 			);
 			mainGroup = 16AE4ADD24CC761400807ECB;
+			packageReferences = (
+				1623F4ED25012B4B00FCD17F /* XCRemoteSwiftPackageReference "HalfModal" */,
+			);
 			productRefGroup = 16AE4AE724CC761400807ECB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1031,6 +1039,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1623F4ED25012B4B00FCD17F /* XCRemoteSwiftPackageReference "HalfModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ViktorMaric/HalfModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1623F4EE25012B4B00FCD17F /* HalfModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1623F4ED25012B4B00FCD17F /* XCRemoteSwiftPackageReference "HalfModal" */;
+			productName = HalfModal;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		16AE4AF224CC761400807ECB /* ajite.xcdatamodeld */ = {

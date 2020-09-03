@@ -149,11 +149,11 @@
             <objects>
                 <viewController id="tVI-51-YZm" customClass="NotificationViewController" customModule="ajite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFX-g8-ePi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yoF-qu-LHl">
-                                <rect key="frame" x="0.0" y="171.66666666666669" width="375" height="520.33333333333326"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yoF-qu-LHl">
+                                <rect key="frame" x="0.0" y="83.666666666666686" width="375" height="603.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCell" rowHeight="60" id="1GC-UR-K3G" customClass="NotificationCell" customModule="ajite" customModuleProvider="target">
@@ -231,7 +231,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajite Invitations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oK-Fx-cPd">
-                                <rect key="frame" x="15.999999999999986" y="123.00000000000001" width="245.66666666666663" height="40.666666666666671"/>
+                                <rect key="frame" x="15.999999999999986" y="35" width="245.66666666666663" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <color key="textColor" red="0.58596712350000002" green="0.60573637489999999" blue="0.74119347329999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -428,6 +428,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Fp-gjD">
                                 <rect key="frame" x="324.33333333333331" y="311.33333333333331" width="23.666666666666686" height="22"/>
                                 <state key="normal" image="arrow.up.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="order:" destination="Y4O-hJ-6lO" eventType="touchUpInside" id="7jv-fV-0B3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -453,7 +456,7 @@
                     <navigationItem key="navigationItem" title="Ajite" id="cKr-4l-CYg">
                         <barButtonItem key="rightBarButtonItem" image="bell" catalog="system" id="b2h-6V-e9n">
                             <connections>
-                                <segue destination="tVI-51-YZm" kind="show" id="qvU-1e-brK"/>
+                                <segue destination="tVI-51-YZm" kind="presentation" id="qvU-1e-brK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
