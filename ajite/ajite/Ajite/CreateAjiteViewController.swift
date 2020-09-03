@@ -59,6 +59,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
         imageName = "\(random)"
         self.memberTableView.dataSource = self
         ajiteName.delegate = self
+        
     }
       
     override func viewWillAppear(_ animated: Bool) {
@@ -110,12 +111,16 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func makeNewAjite() {
+      
         //새로운 아지트 생성함
+        
         var ref: DocumentReference? = nil
         ref = db.collection("ajites").addDocument(data: [
             "name": ajiteName.text as Any,
             "ajiteImageString": imageName,
-            "memberNum" : 1
+            "memberNum" : 1,
+        // !!!! "timestamp": ServerValue.timestamp(),
+        //!!!!    "creator": myUser.userID
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -139,6 +144,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     func addMemberToAjite(ajiteID : String) {
         
         //멤버 숫자
+        
         var memberNum = 1
         
         db
@@ -261,6 +267,7 @@ extension CreateAjiteViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
     
 }
 

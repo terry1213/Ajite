@@ -61,6 +61,15 @@ class NotificationViewController: UIViewController {
         }
     }
     
+    func convertTimestamp(serverTimestamp: Double) -> String {
+        let x = serverTimestamp / 1000
+        let date = NSDate(timeIntervalSince1970: x)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+
+        return formatter.string(from: date as Date)
+    }
     // ==================================================================>
     
 }
@@ -74,8 +83,8 @@ extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
-        //cell.초대자.text = displayAjites[indexPath.row].초대자이름
-        //cell.timeInvited.text = displayAjites[indexPath.row].timeInvited
+       //!!!! cell.초대자.text = displayAjites[indexPath.row].creator
+        //!!!!cell.timeInvited.text = displayAjites[indexPath.row].timestamp
         return cell
     }
     
