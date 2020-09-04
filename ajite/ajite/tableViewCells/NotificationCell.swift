@@ -14,6 +14,7 @@ class NotificationCell: UITableViewCell {
     
     @IBOutlet var ajiteName: UILabel!
     @IBOutlet weak var 초대자: UILabel!
+    @IBOutlet weak var 초대자profile: UIImageView!
     @IBOutlet weak var timeInvited: UILabel!
     // ==================================================================>
     

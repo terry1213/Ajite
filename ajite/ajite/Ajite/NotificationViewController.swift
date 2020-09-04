@@ -83,8 +83,10 @@ extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
-       //!!!! cell.초대자.text = displayAjites[indexPath.row].creator.name 
+       //!!!! cell.초대자.text = "by \(displayAjites[indexPath.row].creator.name)"
         //!!!!cell.timeInvited.text = displayAjites[indexPath.row].timestamp.calendarTimeSinceNow()
+        // let data = try? Data(contentsOf: URL(string: displayAjites[indexPath.row].creator.profileImageURL)!)
+        //!!!!  cell.초대자profile.image = UIImage(named: data!)
         return cell
     }
     
