@@ -109,23 +109,23 @@ extension NotificationViewController: UITableViewDelegate {
         let minutes = components.minute!
         
         if years > 0{
-            return years == 1 ? "1 year ago" : "\(years) years ago"
+            return years == 1 ? "1 year ago" : "\(years) years"
         }
         else if months > 0{
-            return months == 1 ? "1 month ago" : "\(months) months ago"
+            return months == 1 ? "1 month ago" : "\(months) months"
         }
         else if days >= 7 {
             let weeks = days / 7
-            return weeks == 1 ? "1 week ago" : "\(weeks) weeks ago"
+            return weeks == 1 ? "1 week ago" : "\(weeks) weeks"
         }
         else if hours > 0{
-            return hours == 1 ? "1 hour ago" : "\(hours) ago"
+            return hours == 1 ? "1 hour ago" : "\(hours)"
         }
         else if minutes > 0 {
-            return minutes == 1 ? "1 minute ago" : "\(minutes) ago"
+            return minutes == 1 ? "1 minute ago" : "\(minutes)"
         }
         else {
-            return " a few seconds ago"
+            return " a few seconds"
         }
     }
 }*/
