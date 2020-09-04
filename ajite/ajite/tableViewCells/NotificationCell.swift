@@ -13,7 +13,9 @@ class NotificationCell: UITableViewCell {
     // ======================> 변수, outlet 선언
     
     @IBOutlet var ajiteName: UILabel!
-    
+    @IBOutlet weak var 초대자: UILabel!
+    @IBOutlet weak var 초대자profile: UIImageView!
+    @IBOutlet weak var timeInvited: UILabel!
     // ==================================================================>
     
     // ======================> 초기화 함수

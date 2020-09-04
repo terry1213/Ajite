@@ -25,11 +25,15 @@ class User {
 class Ajite {
     var name = String ()
     var members = [User]()
+    var numOfMembers = Int()
     var sharedSongs = Playlist()
     var ajiteID = String()
     var ajiteImageString = String()
+   //!!! var creator = User()
+   //!!! var timestamp : Date
     init () {
         name = ""
+    //!!!    self.timestamp = Date(timeIntervalSince1970: timestamp /1000)
     }
 }
 

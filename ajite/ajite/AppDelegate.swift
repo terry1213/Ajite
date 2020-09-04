@@ -13,6 +13,9 @@ import FirebaseCore
 import GoogleSignIn
 import FirebaseAuth
 import FirebaseFirestore
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 var myUser = User()
 let db = Firestore.firestore()
@@ -25,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
         
+        myUser = User()
         myUser.documentID = user.userID
         myUser.userID = user.profile.email
         myUser.name = user.profile.name
@@ -82,6 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
+        
+        KakaoSDKCommon.initSDK(appKey: "4d77205fd48a3dd4e5d0393637255814")
+        
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = .clear
@@ -98,6 +105,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url)
+        }
         return GIDSignIn.sharedInstance().handle(url)
     }
     

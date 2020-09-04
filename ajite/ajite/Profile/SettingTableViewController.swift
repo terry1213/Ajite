@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import KakaoSDKUser
 
 class SettingTableViewController: UITableViewController {
     
@@ -49,6 +50,16 @@ class SettingTableViewController: UITableViewController {
               try firebaseAuth.signOut()
             } catch let signOutError as NSError {
               print ("Error signing out: %@", signOutError)
+            }
+            
+            //카카오톡 로그아웃
+            UserApi.shared.logout {(error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("logout() success.")
+                }
             }
             
             //로그인 화면으로 이동

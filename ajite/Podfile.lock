@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - Alamofire (5.2.2)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -366,6 +367,36 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - KakaoSDK (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
+    - KakaoSDKLink (= 2.0.2)
+    - KakaoSDKNavi (= 2.0.2)
+    - KakaoSDKStory (= 2.0.2)
+    - KakaoSDKTalk (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+    - KakaoSDKUser (= 2.0.2)
+  - KakaoSDKAuth (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKCommon (2.0.2):
+    - Alamofire (~> 5.1)
+  - KakaoSDKLink (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+  - KakaoSDKNavi (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKStory (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKTalk (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+  - KakaoSDKTemplate (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKUser (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
   - leveldb-library (1.22)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -385,11 +416,13 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleAPIClientForREST/YouTube
   - GoogleSignIn (~> 5.0)
-  - youtube-ios-player-helper (~> 1.0.2)
+  - KakaoSDK
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
     - abseil
+    - Alamofire
     - AppAuth
     - BoringSSL-GRPC
     - Firebase
@@ -411,6 +444,15 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -419,6 +461,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
@@ -440,12 +483,21 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  KakaoSDK: 5ef36912e9cbeda1206de9979e7daa832981611b
+  KakaoSDKAuth: 69698a4a6726f2b43fb43246891a1a747343935e
+  KakaoSDKCommon: 2226e13fbbd4a875826c7a348cf4f535392a4b8f
+  KakaoSDKLink: aa202aee73d5234184043f4c8a01fb7d6d46ee87
+  KakaoSDKNavi: 5ca916988d7d12ba5286dd7b8dc6b89156eb5900
+  KakaoSDKStory: a98a90cdcbb44211b8bb228afcdb9b4d0b789ba7
+  KakaoSDKTalk: af761ee90ff9bc732cc2e5515ad5e0b3cbf81480
+  KakaoSDKTemplate: c68a1c313211c7f925d297ff0aaae741b4b48c4f
+  KakaoSDKUser: a4a82ba374e0b3478be3f66307943e85542149ee
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   youtube-ios-player-helper: 40b96e52c22445f0fdc43731cefa32c67075ff81
 
-PODFILE CHECKSUM: 43adc2a03e992bc99840818e501e6877e2f9f494
+PODFILE CHECKSUM: c3f7b4e2a43665a8157a5b551a1660d412ac9f92
 
 COCOAPODS: 1.9.3

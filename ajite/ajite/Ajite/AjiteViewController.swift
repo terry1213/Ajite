@@ -18,9 +18,10 @@ class AjiteViewController: UIViewController{
     
     // ======================> 변수, outlet 선언
     
+    @IBOutlet weak var ajiteSearchBar: UISearchBar!
+    @IBOutlet weak var updatedAjite: UICollectionView!
     @IBOutlet weak var ajiteTable: UITableView!
-    
-    // ==================================================================>
+// ==================================================================>
     
     // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
@@ -28,6 +29,7 @@ class AjiteViewController: UIViewController{
         super.viewDidLoad()
         self.ajiteTable.dataSource = self
         self.ajiteTable.delegate = self
+      
         // Do any additional setup after loading the view.
     }
     
@@ -48,11 +50,7 @@ class AjiteViewController: UIViewController{
         destination.currentAjite = sendingAjite
     }
     
-    // ==================================================================>
-    
-    // ======================> Event가 일어난 경우 호출되는 Action 함수들
-    
-    // ==================================================================>
+  
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
@@ -74,6 +72,7 @@ class AjiteViewController: UIViewController{
                     //newAjite.members = []
                     //temAjite.sharedSongs = document.data()["sharedSongs"] as! [String]
                     temAjite.ajiteImageString = document.data()["ajiteImageString"] as! String
+                //    temAjite.numOfMembers = document.data()["memberNum"] as! Int
                     temAjite.ajiteID = document.documentID
                     ajites.append(temAjite)
                 }
@@ -115,6 +114,12 @@ class AjiteViewController: UIViewController{
     
     // ==================================================================>
     
+    
+    @IBAction func order(_ sender: Any) {
+        
+    }
+    
+    
 }
 
 extension AjiteViewController : UITableViewDataSource{
@@ -131,6 +136,7 @@ extension AjiteViewController : UITableViewDataSource{
         let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
         cell.ajiteImage.image = UIImage(named: "door-\(ajites[indexPath.row].ajiteImageString)")
+        cell.numberOfMembers.text = "\(ajites[indexPath.row].members.count)"
         return cell
     }
     

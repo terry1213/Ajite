@@ -14,7 +14,7 @@ class AjiteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ajiteImage: UIImageView!
     @IBOutlet weak var ajiteName: UILabel!
-    
+    @IBOutlet weak var numberOfMembers: UILabel!
     // ==================================================================>
     
     // ======================> 초기화 함수

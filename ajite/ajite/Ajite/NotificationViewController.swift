@@ -61,6 +61,15 @@ class NotificationViewController: UIViewController {
         }
     }
     
+    func convertTimestamp(serverTimestamp: Double) -> String {
+        let x = serverTimestamp / 1000
+        let date = NSDate(timeIntervalSince1970: x)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+
+        return formatter.string(from: date as Date)
+    }
     // ==================================================================>
     
 }
@@ -74,6 +83,10 @@ extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTV.dequeueReusableCell(withIdentifier: "notificationCell") as! NotificationCell
         cell.ajiteName.text = displayAjites[indexPath.row].name
+       //!!!! cell.초대자.text = "by \(displayAjites[indexPath.row].creator.name)"
+        //!!!!cell.timeInvited.text = displayAjites[indexPath.row].timestamp.calendarTimeSinceNow()
+        // let data = try? Data(contentsOf: URL(string: displayAjites[indexPath.row].creator.profileImageURL)!)
+        //!!!!  cell.초대자profile.image = UIImage(named: data!)
         return cell
     }
     
@@ -82,5 +95,39 @@ extension NotificationViewController: UITableViewDataSource {
 extension NotificationViewController: UITableViewDelegate {
     
 }
+
+/*extension Date{
+    func calendarTimeSinceNow() ->String
+    {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self, to: Date())
+        
+        let years = components.year!
+        let months = components.month!
+        let days = components.day!
+        let hours =  components.hour!
+        let minutes = components.minute!
+        
+        if years > 0{
+            return years == 1 ? "1 year ago" : "\(years) years"
+        }
+        else if months > 0{
+            return months == 1 ? "1 month ago" : "\(months) months"
+        }
+        else if days >= 7 {
+            let weeks = days / 7
+            return weeks == 1 ? "1 week ago" : "\(weeks) weeks"
+        }
+        else if hours > 0{
+            return hours == 1 ? "1 hour ago" : "\(hours)"
+        }
+        else if minutes > 0 {
+            return minutes == 1 ? "1 minute ago" : "\(minutes)"
+        }
+        else {
+            return " a few seconds"
+        }
+    }
+}*/
 
 
