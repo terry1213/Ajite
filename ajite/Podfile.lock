@@ -417,7 +417,7 @@ DEPENDENCIES:
   - GoogleAPIClientForREST/YouTube
   - GoogleSignIn (~> 5.0)
   - KakaoSDK
-  - youtube-ios-player-helper (~> 1.0.2)
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -498,6 +498,6 @@ SPEC CHECKSUMS:
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   youtube-ios-player-helper: 40b96e52c22445f0fdc43731cefa32c67075ff81
 
-PODFILE CHECKSUM: fd28d444f6cb233a9573146d463a4cdff32d8a7e
+PODFILE CHECKSUM: c3f7b4e2a43665a8157a5b551a1660d412ac9f92
 
 COCOAPODS: 1.10.0.beta.1
