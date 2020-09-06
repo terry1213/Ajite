@@ -123,7 +123,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 myUser.documentID = "\(user?.id ?? 0)"
                 myUser.userID = "\(user?.id ?? 0)"
                 myUser.name = user?.kakaoAccount?.profile?.nickname as! String
-                myUser.profileImageURL = user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString as! String
+                myUser.profileImageURL = user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString as? String ?? "https://firebasestorage.googleapis.com/v0/b/ajite-13729.appspot.com/o/profileImageDefault.jpeg?alt=media&token=f02f4566-3ce6-467d-a14c-e816eafd2e93"
                 
                 
                 let db = Firestore.firestore()
