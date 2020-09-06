@@ -11,6 +11,8 @@
 		16157E8424E0D8DC00C850C7 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */; };
 		161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C12E424CD9B59002E9246 /* DesignableView.swift */; };
 		1623F4E82501210400FCD17F /* popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623F4E72501210400FCD17F /* popup.swift */; };
+		163E5C2D25027C2F00A8E6D9 /* AjiteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E5C2C25027C2F00A8E6D9 /* AjiteListViewController.swift */; };
+		163E5C2F25027F1B00A8E6D9 /* UpdatedAjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E5C2E25027F1B00A8E6D9 /* UpdatedAjiteViewController.swift */; };
 		1643B52C24E26ED800548D00 /* MembersToAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643B52B24E26ED700548D00 /* MembersToAddTableViewCell.swift */; };
 		1645658424CE889100DDA830 /* made.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1645658324CE889100DDA830 /* made.otf */; };
 		1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */; };
@@ -19,7 +21,6 @@
 		164B125D24D17A240069B5EC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125C24D17A240069B5EC /* ProfileViewController.swift */; };
 		164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */; };
 		164B126124D17A640069B5EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126024D17A640069B5EC /* HomeViewController.swift */; };
-		164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126224D17A6F0069B5EC /* AjiteViewController.swift */; };
 		164B126524D17AAB0069B5EC /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B126424D17AAB0069B5EC /* PlaylistViewController.swift */; };
 		1654349324D9936E001B05C2 /* ShareSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349224D9936E001B05C2 /* ShareSongsViewController.swift */; };
 		1654349F24D9B280001B05C2 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */; };
@@ -90,7 +91,8 @@
 		16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SongCollectionViewCell.swift; path = ajite/tableViewCells/SongCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1623F4E72501210400FCD17F /* popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popup.swift; sourceTree = "<group>"; };
-		1623F4F2250258E600FCD17F /* UpdatedAjiteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatedAjiteCollectionViewCell.swift; sourceTree = "<group>"; };
+		163E5C2C25027C2F00A8E6D9 /* AjiteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteListViewController.swift; sourceTree = "<group>"; };
+		163E5C2E25027F1B00A8E6D9 /* UpdatedAjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpdatedAjiteViewController.swift; path = ajite/Ajite/UpdatedAjiteViewController.swift; sourceTree = SOURCE_ROOT; };
 		1643B52B24E26ED700548D00 /* MembersToAddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersToAddTableViewCell.swift; sourceTree = "<group>"; };
 		1645658324CE889100DDA830 /* made.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = made.otf; path = "ajite/UIResources Swift/made.otf"; sourceTree = SOURCE_ROOT; };
 		1645EB0D24D688EE007ACBF5 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +101,6 @@
 		164B125C24D17A240069B5EC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ajite/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAjiteViewController.swift; sourceTree = "<group>"; };
 		164B126024D17A640069B5EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		164B126224D17A6F0069B5EC /* AjiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjiteViewController.swift; sourceTree = "<group>"; };
 		164B126424D17AAB0069B5EC /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		1654349224D9936E001B05C2 /* ShareSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareSongsViewController.swift; path = ajite/ShareSongsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1654349E24D9B280001B05C2 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaylistTableViewCell.swift; path = ajite/tableViewCells/PlaylistTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -208,11 +209,12 @@
 		1658B1DA24DC3AF70023469B /* Ajite */ = {
 			isa = PBXGroup;
 			children = (
+				163E5C2E25027F1B00A8E6D9 /* UpdatedAjiteViewController.swift */,
 				165E15FC24DE89C500CD4F03 /* FriendsToAjiteViewController.swift */,
 				16CE647824DB9C97001F9383 /* MemberTableViewController.swift */,
 				16C133D124D70B4D00DA4177 /* AjiteRoomViewController.swift */,
 				6E94FD8424E2C360002FCC34 /* NotificationViewController.swift */,
-				164B126224D17A6F0069B5EC /* AjiteViewController.swift */,
+				163E5C2C25027C2F00A8E6D9 /* AjiteListViewController.swift */,
 				164B125E24D17A5B0069B5EC /* CreateAjiteViewController.swift */,
 			);
 			path = Ajite;
@@ -222,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */,
-				1623F4F2250258E600FCD17F /* UpdatedAjiteCollectionViewCell.swift */,
 				6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */,
 				1643B52B24E26ED700548D00 /* MembersToAddTableViewCell.swift */,
 				16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */,
@@ -675,6 +676,7 @@
 				6EC6260224DD5A5F00B7555B /* UserViewController.swift in Sources */,
 				1645EB0E24D688EE007ACBF5 /* AddToPlaylistViewController.swift in Sources */,
 				1643B52C24E26ED800548D00 /* MembersToAddTableViewCell.swift in Sources */,
+				163E5C2F25027F1B00A8E6D9 /* UpdatedAjiteViewController.swift in Sources */,
 				167BC0A624DB01030041A510 /* SongTableViewCell.swift in Sources */,
 				16CE647924DB9C97001F9383 /* MemberTableViewController.swift in Sources */,
 				DEADE04624E234AA00DB5ED2 /* FriendProfileViewController.swift in Sources */,
@@ -688,7 +690,6 @@
 				6E38B3F424DB0A3000208254 /* UserlistTableViewCell.swift in Sources */,
 				16C133E624D852C200DA4177 /* PlaylistSongListViewController.swift in Sources */,
 				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
-				164B126324D17A6F0069B5EC /* AjiteViewController.swift in Sources */,
 				1658B1E924DC9A270023469B /* BiographyViewController.swift in Sources */,
 				16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */,
 				16F1C0FC24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift in Sources */,
@@ -698,6 +699,7 @@
 				6E94FD8524E2C360002FCC34 /* NotificationViewController.swift in Sources */,
 				165E15FF24DE8B7200CD4F03 /* SearchFriendsTableView.swift in Sources */,
 				DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */,
+				163E5C2D25027C2F00A8E6D9 /* AjiteListViewController.swift in Sources */,
 				165E15FD24DE89C500CD4F03 /* FriendsToAjiteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

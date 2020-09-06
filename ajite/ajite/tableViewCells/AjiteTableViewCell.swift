@@ -37,5 +37,5 @@ class AjiteTableViewCell: UITableViewCell {
     
 }
 
-//소속: AjiteViewController
+//소속: AjiteListViewController
 //Description: 현재 유저가 소속되어 있는 아지트 정보를 담고 있는 셀
