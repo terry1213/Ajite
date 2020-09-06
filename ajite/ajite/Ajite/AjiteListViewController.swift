@@ -1,35 +1,26 @@
 //
-//  AjiteViewController.swift
+//  AjiteListViewController.swift
 //  ajite
 //
-//  Created by 노은솔 on 2020/07/29.
+//  Created by 노은솔 on 2020/09/04.
 //  Copyright © 2020 ajite. All rights reserved.
 //
 
-
 import UIKit
-import GoogleSignIn
 import Firebase
 import FirebaseFirestore
 
-var ajites :[Ajite] = []
+var ajites : [Ajite] = []
 
-class AjiteViewController: UIViewController{
+class AjiteListViewController: UIViewController {
+
     
-    // ======================> 변수, outlet 선언
-    
-    @IBOutlet weak var ajiteSearchBar: UISearchBar!
-    @IBOutlet weak var updatedAjite: UICollectionView!
-    @IBOutlet weak var ajiteTable: UITableView!
-// ==================================================================>
-    
-    // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
+    @IBOutlet weak var ajiteList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ajiteTable.dataSource = self
-        self.ajiteTable.delegate = self
-      
+        self.ajiteList.dataSource = self
+        self.ajiteList.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -50,79 +41,74 @@ class AjiteViewController: UIViewController{
         destination.currentAjite = sendingAjite
     }
     
-  
-    
-    // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
     func getData(){
-        db
-            .collection("users")
-            .document(myUser.documentID)
-            .collection("ajites")
-            .getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                ajites.removeAll()
-                var temAjite: Ajite
-                for document in querySnapshot!.documents {
-                    temAjite = Ajite()
-                    temAjite.name = document.data()["name"] as! String
-                    //newAjite.numberOfMembers = document.data()["name"]
-                    //newAjite.members = []
-                    //temAjite.sharedSongs = document.data()["sharedSongs"] as! [String]
-                    temAjite.ajiteImageString = document.data()["ajiteImageString"] as! String
-                //    temAjite.numOfMembers = document.data()["memberNum"] as! Int
-                    temAjite.ajiteID = document.documentID
-                    ajites.append(temAjite)
-                }
-                print("The number of ajite is \(ajites.count)")
-                DispatchQueue.main.async{
-                    self.ajiteTable.reloadData()
-                }
-            }
-        }
-    }
+           db
+               .collection("users")
+               .document(myUser.documentID)
+               .collection("ajites")
+               .getDocuments() { (querySnapshot, err) in
+               if let err = err {
+                   print("Error getting documents: \(err)")
+               } else {
+                   ajites.removeAll()
+                   var temAjite: Ajite
+                   for document in querySnapshot!.documents {
+                       temAjite = Ajite()
+                       temAjite.name = document.data()["name"] as! String
+                       //newAjite.numberOfMembers = document.data()["name"]
+                       //newAjite.members = []
+                       //temAjite.sharedSongs = document.data()["sharedSongs"] as! [String]
+                       temAjite.ajiteImageString = document.data()["ajiteImageString"] as! String
+                   //    temAjite.numOfMembers = document.data()["memberNum"] as! Int
+                       temAjite.ajiteID = document.documentID
+                       ajites.append(temAjite)
+                   }
+                   print("The number of ajite is \(ajites.count)")
+                   DispatchQueue.main.async{
+                       self.ajiteList.reloadData()
+                   }
+               }
+           }
+       }
     
     func deleteAjiteFromUser(ajiteIDToDelete: String) {
-        db
-            .collection("users").document(myUser.documentID)
-            .collection("ajites").document(ajiteIDToDelete)
-            .delete()
-    }
+           db
+               .collection("users").document(myUser.documentID)
+               .collection("ajites").document(ajiteIDToDelete)
+               .delete()
+       }
     
     func deleteUserFromAjite(ajiteIDToDelete: String) {
-        db
-            .collection("ajites").document(ajiteIDToDelete)
-            .collection("members").document(myUser.documentID)
-            .delete()
-    }
+           db
+               .collection("ajites").document(ajiteIDToDelete)
+               .collection("members").document(myUser.documentID)
+               .delete()
+       }
     
-    func reduceMemberNum(ajiteIDToDelete: String) {
-        db
-            .collection("ajites").document(ajiteIDToDelete)
-            .updateData([
-            "memberNum" : FieldValue.increment(Int64(-1))
-        ])
-    }
     
-    func deleteAjite(ajiteIDToDelete: String) {
-        db
-            .collection("ajites").document(ajiteIDToDelete)
-            .delete()
-    }
-    
-    // ==================================================================>
+     func reduceMemberNum(ajiteIDToDelete: String) {
+         db
+             .collection("ajites").document(ajiteIDToDelete)
+             .updateData([
+             "memberNum" : FieldValue.increment(Int64(-1))
+         ])
+     }
+     
+     func deleteAjite(ajiteIDToDelete: String) {
+         db
+             .collection("ajites").document(ajiteIDToDelete)
+             .delete()
+     }
     
     
     @IBAction func order(_ sender: Any) {
-        
+        print("Order Button pressed")
     }
-    
     
 }
 
-extension AjiteViewController : UITableViewDataSource{
+extension AjiteListViewController : UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -133,7 +119,7 @@ extension AjiteViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ajiteTable.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
+        let cell = ajiteList.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
         cell.ajiteImage.image = UIImage(named: "door-\(ajites[indexPath.row].ajiteImageString)")
         cell.numberOfMembers.text = "\(ajites[indexPath.row].members.count)"
@@ -172,7 +158,7 @@ extension AjiteViewController : UITableViewDataSource{
                     }
                     
                     ajites.remove(at: indexPath.row)
-                    self.ajiteTable.deleteRows(at: [indexPath], with: .automatic)
+                    self.ajiteList.deleteRows(at: [indexPath], with: .automatic)
                 } else {
                     print("Document does not exist")
                 }
@@ -190,7 +176,7 @@ extension AjiteViewController : UITableViewDataSource{
     }
 }
 
-extension AjiteViewController : UITableViewDelegate {
+extension AjiteListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let dataToSend = ajites[indexPath.row]
     self.performSegue(withIdentifier: "intoAjite", sender: dataToSend)
