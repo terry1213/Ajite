@@ -47,4 +47,9 @@ class LoginViewController: UIViewController{
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.kakaoLogin()
         //(UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.kakaotalkLogin()
     }
+    
+    
+    @IBAction func naverLogin(_ sender: Any) {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.naverLogin()
+    }
 }

@@ -11,6 +11,8 @@ import Firebase
 import GoogleSignIn
 import KakaoSDKAuth
 import KakaoSDKUser
+import NaverThirdPartyLogin
+import Alamofire
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,6 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //구글 자동 로그인
         self.autoGoogleLogin()
+        
+        //네이버 자동 로그인
+        self.autoNaverLogin()
     }
     
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
@@ -88,10 +93,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
+    func naverLogin() {
+        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+        loginInstance?.delegate = self
+        loginInstance?.requestThirdPartyLogin()
+    }
+    
     func autoGoogleLogin() {
         //이미 로그인한 구글 계정이 있다면
         guard let signIn = GIDSignIn.sharedInstance() else { return }
-        //만약 이미 로그인을 한 유저라면
+        //만약 이미 로그인을 한 유 저라면
         if (signIn.hasPreviousSignIn()) {
             //이전 아이디로 로그인
             signIn.restorePreviousSignIn()
@@ -108,6 +119,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("accessTokenInfo() success.")
                 self.getKakaoUserData()
             }
+        }
+    }
+    
+    func autoNaverLogin() {
+        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+        if ((loginInstance?.accessToken) != nil) {
+            naverLogin()
         }
     }
     
@@ -147,4 +165,80 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
     }
+    
+    func getNaverUserData() {
+        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+        guard let isValidAccessToken = loginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+        
+        if !isValidAccessToken {
+          return
+        }
+        
+        guard let tokenType = loginInstance?.tokenType else { return }
+        guard let accessToken = loginInstance?.accessToken else { return }
+        let urlStr = "https://openapi.naver.com/v1/nid/me"
+        let url = URL(string: urlStr)!
+        
+        let authorization = "\(tokenType) \(accessToken)"
+        
+        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+        
+        req.responseJSON { response in
+            guard let result = response.value as? [String: Any] else {loginInstance?.requestDeleteToken(); return }
+            guard let object = result["response"] as? [String: Any] else {loginInstance?.requestDeleteToken(); return }
+            guard let id = object["id"] as? String else {loginInstance?.requestDeleteToken(); return }
+            guard let name = object["name"] as? String else {loginInstance?.requestDeleteToken(); return }
+            guard let email = object["email"] as? String else {loginInstance?.requestDeleteToken(); return }
+            guard let profileImage = object["profile_image"] as? String else {loginInstance?.requestDeleteToken(); return }
+            
+            myUser = User()
+            myUser.documentID = id
+            myUser.userID = email
+            myUser.name = name
+            myUser.profileImageURL = profileImage
+            
+            let db = Firestore.firestore()
+            db.collection("users").document(myUser.documentID).setData([
+                "userID": myUser.userID as Any,
+                "name": myUser.name as Any,
+                "profileImageURL": myUser.profileImageURL as Any
+            ], merge: true) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("User document added")
+                }
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarMenuViewController = storyboard.instantiateViewController(identifier: "TabBarMenuViewController")
+                    
+            //root view controller를 LoginViewControllers에서 TabBarMenuViewController로 전환
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarMenuViewController)
+        }
+    }
+}
+
+extension SceneDelegate: NaverThirdPartyLoginConnectionDelegate {
+    
+  func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
+  }
+  
+  func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+    print("Naver Login")
+    getNaverUserData()
+  }
+  
+  func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+    getNaverUserData()
+  }
+  
+  func oauth20ConnectionDidFinishDeleteToken() {
+    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+    loginInstance?.requestDeleteToken()
+  }
+  
+  func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+    print("[Error] :", error.localizedDescription)
+  }
 }
