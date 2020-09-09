@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import KakaoSDKUser
+import NaverThirdPartyLogin
 
 class SettingTableViewController: UITableViewController {
     
@@ -61,6 +62,9 @@ class SettingTableViewController: UITableViewController {
                     print("logout() success.")
                 }
             }
+            
+            //네이버 로그아웃
+            NaverThirdPartyLoginConnection.getSharedInstance()?.requestDeleteToken()
             
             //로그인 화면으로 이동
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

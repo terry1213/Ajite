@@ -403,6 +403,7 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - naveridlogin-sdk-ios (4.1.2)
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
   - youtube-ios-player-helper (1.0.2)
@@ -417,6 +418,7 @@ DEPENDENCIES:
   - GoogleAPIClientForREST/YouTube
   - GoogleSignIn (~> 5.0)
   - KakaoSDK
+  - naveridlogin-sdk-ios
   - youtube-ios-player-helper
 
 SPEC REPOS:
@@ -455,6 +457,7 @@ SPEC REPOS:
     - KakaoSDKUser
     - leveldb-library
     - nanopb
+    - naveridlogin-sdk-ios
     - PromisesObjC
     - Protobuf
     - youtube-ios-player-helper
@@ -494,10 +497,11 @@ SPEC CHECKSUMS:
   KakaoSDKUser: a4a82ba374e0b3478be3f66307943e85542149ee
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  naveridlogin-sdk-ios: cf8afccdb1793d4ecfcd5d46aa8729d8b5058c70
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   youtube-ios-player-helper: 40b96e52c22445f0fdc43731cefa32c67075ff81
 
-PODFILE CHECKSUM: c3f7b4e2a43665a8157a5b551a1660d412ac9f92
+PODFILE CHECKSUM: 91ec376550d80465593c843b4041dda58ec069a1
 
 COCOAPODS: 1.10.0.beta.1
