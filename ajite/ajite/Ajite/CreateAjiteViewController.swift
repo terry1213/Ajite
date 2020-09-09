@@ -23,7 +23,6 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     var addingMembers = [User]()
     let userRef = db.collection("users")
     
-    @IBOutlet weak var backgroundImage0: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
     
@@ -65,8 +64,6 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     override func viewWillAppear(_ animated: Bool) {
         addingMembers.removeAll()
         memberTableView.reloadData()
-        self.backgroundImage0.transform = .identity
-        animateView()
         ajiteName.text = ""
     }
     
@@ -195,21 +192,6 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     
     // ==================================================================>
     
-    
-   
-    func animateView(){
-        UIView.animate(withDuration: 20.0, delay: 0.0, options:[ .curveLinear, .repeat] , animations: {
-                      self.topFrame = self.backgroundImage0.frame
-
-            self.topFrame.origin.y -= self.topFrame.size.height/1.3
-                            
-                              
-                      self.backgroundImage0.frame = self.topFrame
-                            
-        }, completion: { finished in
-            self.backgroundImage0.frame.origin.y += self.topFrame.size.height/1.3        })
-    }
-
     
     func sendUsersBack(sendingMembers: [User]) {
         addingMembers = sendingMembers

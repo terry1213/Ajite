@@ -31,7 +31,7 @@ class FriendsToAjiteViewController: UIViewController {
     var currentAjite = Ajite()
     
     @IBOutlet weak var searchFriendsTable: UITableView!
-    @IBOutlet weak var addedMembersTable: UITableView!
+    //  @IBOutlet weak var addedMembersTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
     // ==================================================================>
@@ -40,8 +40,8 @@ class FriendsToAjiteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addedMembersTable.dataSource = self
-        self.addedMembersTable.delegate = self
+      //  self.addedMembersTable.dataSource = self
+     //   self.addedMembersTable.delegate = self
         self.searchFriendsTable.dataSource = self
         self.searchFriendsTable.delegate = self
         searchBar.delegate = self
@@ -50,7 +50,7 @@ class FriendsToAjiteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         displayUsers.removeAll()
-        addedMembers.removeAll()
+       // addedMembers.removeAll()
         alreadyMembers.removeAll()
         totalUser.removeAll()
     }
@@ -147,7 +147,7 @@ class FriendsToAjiteViewController: UIViewController {
                                 count += 1
                                 if count == snap.documents.count {
                                     self.searchFriendsTable.reloadData()
-                                    self.addedMembersTable.reloadData()
+                                    //self.addedMembersTable.reloadData()
                                 }
                             }
                             else {
@@ -182,11 +182,12 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.addedMembersTable{
+      /* if tableView == self.addedMembersTable{
             return addedMembers.count
         } else {
             return displayUsers.count
-        }
+        }*/
+        return displayUsers.count
     }
     
     
@@ -196,27 +197,26 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.addedMembersTable{
+       /* if tableView == self.addedMembersTable{
             addedMembersTable.deselectRow(at: indexPath, animated: true)
         }
-        else{
-            addedMembers.append(displayUsers[indexPath.row])
+        else{*/
+           // addedMembers.append(displayUsers[indexPath.row])
             displayUsers.remove(at: indexPath.row)
             //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
             searchFriendsTable.reloadData()
-            addedMembersTable.reloadData()
+            //addedMembersTable.reloadData()
         }
-    }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.addedMembersTable{
+      /*  if tableView == self.addedMembersTable{
             let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
             cell.addedMembersLabel.text = addedMembers[indexPath.row].name
             let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
             cell.addedFriendsProfile.image = UIImage(data: data!)
             return cell
-        }
-        else if tableView == self.searchFriendsTable{
+        }*/
+      //  if tableView == self.searchFriendsTable{
             let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! SearchFriendsTableViewCell
             cell.searchFriendName.text = displayUsers[indexPath.row].name
             //     cell.searchUser = myUser.friends 에 저장
@@ -225,21 +225,21 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
             //cell.cellDelegate = self
             //cell.delegate = self
             return cell
-        }
-        return UITableViewCell()
+        //}
+       // return UITableViewCell()
     }
     
     //search bar 에서 실수로 추가한 아이가 있으면 실수로 added member에 추가된 유저를 다시 삭제하는 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if tableView == self.addedMembersTable{
+      /*  if tableView == self.addedMembersTable{
             guard editingStyle == .delete else { return }
             displayUsers.append(addedMembers[indexPath.row])
             addedMembers.remove(at: indexPath.row)
             
             self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
-        }
+        }*/
         searchFriendsTable.reloadData()
-        addedMembersTable.reloadData()
+     //   addedMembersTable.reloadData()
     }
         
 }

@@ -12,6 +12,7 @@ class AddedFriendsTableViewCell: UITableViewCell {
     
     // ======================> 변수, outlet 선언
     
+    @IBOutlet weak var circle: UIButton!
     @IBOutlet weak var addedFriendsProfile: CircleImageView!
     @IBOutlet weak var addedMembersLabel: UILabel!
     
