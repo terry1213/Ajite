@@ -18,6 +18,7 @@ class MemberViewController: UIViewController, UITableViewDelegate {
     var friendsID : [String] = []
     var friendOrNot : [Bool] = []
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var memberTableView: UITableView!
     @IBOutlet weak var numberOfMembersLabel: UILabel!
     

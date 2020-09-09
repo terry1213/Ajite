@@ -11,6 +11,7 @@ import UIKit
 class UpdatedAjiteViewController: UIViewController {
 
  
+    @IBOutlet weak var updatesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

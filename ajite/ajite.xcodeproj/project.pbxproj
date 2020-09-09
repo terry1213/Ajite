@@ -37,6 +37,7 @@
 		1698B9AD24DAC9BE005DE79F /* proxima-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AA24DAC9BD005DE79F /* proxima-regular.otf */; };
 		1698B9AE24DAC9BE005DE79F /* proxima-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AB24DAC9BD005DE79F /* proxima-black.otf */; };
 		1698B9AF24DAC9BE005DE79F /* proxima-thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */; };
+		16ACEC0925087329005E8AE1 /* UpdatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ACEC0825087329005E8AE1 /* UpdatedTableViewCell.swift */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
 		16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AEB24CC761400807ECB /* SceneDelegate.swift */; };
 		16AE4AEE24CC761400807ECB /* LoginViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AED24CC761400807ECB /* LoginViewControllers.swift */; };
@@ -117,6 +118,7 @@
 		1698B9AA24DAC9BD005DE79F /* proxima-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-regular.otf"; sourceTree = "<group>"; };
 		1698B9AB24DAC9BD005DE79F /* proxima-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-black.otf"; sourceTree = "<group>"; };
 		1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-thin.otf"; sourceTree = "<group>"; };
+		16ACEC0825087329005E8AE1 /* UpdatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTableViewCell.swift; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4AE924CC761400807ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AE4AEB24CC761400807ECB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		1658B1E324DC7BC80023469B /* tableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				16ACEC0825087329005E8AE1 /* UpdatedTableViewCell.swift */,
 				6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */,
 				6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */,
 				1643B52B24E26ED700548D00 /* MembersToAddTableViewCell.swift */,
@@ -691,6 +694,7 @@
 				16C133E624D852C200DA4177 /* PlaylistSongListViewController.swift in Sources */,
 				161C12E524CD9B59002E9246 /* DesignableView.swift in Sources */,
 				1658B1E924DC9A270023469B /* BiographyViewController.swift in Sources */,
+				16ACEC0925087329005E8AE1 /* UpdatedTableViewCell.swift in Sources */,
 				16AE4AF424CC761400807ECB /* ajite.xcdatamodeld in Sources */,
 				16F1C0FC24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift in Sources */,
 				1658B1DC24DC3BC90023469B /* MemberInAjiteTableViewCell.swift in Sources */,
