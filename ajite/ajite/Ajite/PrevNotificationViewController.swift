@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NotificationViewController: UIViewController {
+class PrevNotificationViewController: UIViewController {
     
     // ======================> 변수, outlet 선언
     
@@ -27,8 +27,6 @@ class NotificationViewController: UIViewController {
         displayAjites.removeAll()
         super.viewDidLoad()
         getInvitationData()
-        notificationTV.delegate = self
-        notificationTV.dataSource = self
     }
     
     // ==================================================================>
@@ -74,7 +72,7 @@ class NotificationViewController: UIViewController {
     
 }
 
-extension NotificationViewController: UITableViewDataSource {
+extension PrevNotificationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayAjites.count
@@ -92,9 +90,6 @@ extension NotificationViewController: UITableViewDataSource {
     
 }
 
-extension NotificationViewController: UITableViewDelegate {
-    
-}
 
 /*extension Date{
     func calendarTimeSinceNow() ->String

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:NotificationsTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:ajite.xcodeproj">
    </FileRef>
    <FileRef
