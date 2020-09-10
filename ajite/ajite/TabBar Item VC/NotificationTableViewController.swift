@@ -1,13 +1,14 @@
 //
-//  NotificationsTableViewController.swift
-//  
+//  NotificationTableViewController.swift
+//  ajite
 //
-//  Created by 노은솔 on 2020/09/09.
+//  Created by 노은솔 on 2020/09/10.
+//  Copyright © 2020 ajite. All rights reserved.
 //
 
 import UIKit
 
-class NotificationsTableViewController: UITableViewController {
+class NotificationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,13 +16,11 @@ class NotificationsTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-       
-        return 2
-    }
+    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -72,5 +71,6 @@ class NotificationsTableViewController: UITableViewController {
         return true
     }
     */
+
 
 }
