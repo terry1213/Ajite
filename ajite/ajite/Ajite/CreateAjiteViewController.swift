@@ -116,6 +116,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
             "name": ajiteName.text as Any,
             "ajiteImageString": imageName,
             "memberNum" : 1,
+            "songNum" : 0,
         // !!!! "timestamp": ServerValue.timestamp(),
         //!!!!    "creator": myUser
         ]) { err in

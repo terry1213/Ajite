@@ -604,6 +604,7 @@
                                             <outlet property="ajiteImage" destination="AFo-84-Vra" id="DZZ-ZB-W4D"/>
                                             <outlet property="ajiteName" destination="yKC-tS-sDG" id="O3B-Z2-EGD"/>
                                             <outlet property="numberOfMembers" destination="yky-Is-yc5" id="jOX-5C-Ztb"/>
+                                            <outlet property="numberOfSongs" destination="g4T-TG-CAV" id="OF9-7Q-lCI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -645,6 +646,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ajiteList" destination="HgH-0R-bS3" id="w0J-kC-nf9"/>
+                        <segue destination="AeW-qZ-H78" kind="show" identifier="intoAjite" id="RxA-3E-WOs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2L-Hw-R2I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2760,6 +2762,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="CqG-VZ-R0O"/>
         <segue reference="xEi-qz-IQe"/>
+        <segue reference="YzI-Ue-2oM"/>
         <segue reference="hSO-J2-vjJ"/>
         <segue reference="reF-Mh-huZ"/>
     </inferredMetricsTieBreakers>
