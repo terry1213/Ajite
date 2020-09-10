@@ -38,6 +38,7 @@
 		1698B9AE24DAC9BE005DE79F /* proxima-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AB24DAC9BD005DE79F /* proxima-black.otf */; };
 		1698B9AF24DAC9BE005DE79F /* proxima-thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */; };
 		16A36BAF2509B23B005F32DF /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A36BAE2509B23B005F32DF /* NotificationTableViewController.swift */; };
+		16A36BB12509B75E005F32DF /* SongInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A36BB02509B75E005F32DF /* SongInboxViewController.swift */; };
 		16ACEC0925087329005E8AE1 /* UpdatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ACEC0825087329005E8AE1 /* UpdatedTableViewCell.swift */; };
 		16AE4AEA24CC761400807ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AE924CC761400807ECB /* AppDelegate.swift */; };
 		16AE4AEC24CC761400807ECB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AE4AEB24CC761400807ECB /* SceneDelegate.swift */; };
@@ -121,6 +122,7 @@
 		1698B9AB24DAC9BD005DE79F /* proxima-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-black.otf"; sourceTree = "<group>"; };
 		1698B9AC24DAC9BE005DE79F /* proxima-thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-thin.otf"; sourceTree = "<group>"; };
 		16A36BAE2509B23B005F32DF /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		16A36BB02509B75E005F32DF /* SongInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInboxViewController.swift; sourceTree = "<group>"; };
 		16ACEC0825087329005E8AE1 /* UpdatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTableViewCell.swift; sourceTree = "<group>"; };
 		16AE4AE624CC761400807ECB /* ajite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ajite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE4AE924CC761400807ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,8 @@
 		164B126624D17AC00069B5EC /* TabBar Item VC */ = {
 			isa = PBXGroup;
 			children = (
+				16B04A4924DF349600824FA2 /* RequestViewController.swift */,
+				16A36BB02509B75E005F32DF /* SongInboxViewController.swift */,
 				16A36BAE2509B23B005F32DF /* NotificationTableViewController.swift */,
 				164B126024D17A640069B5EC /* HomeViewController.swift */,
 			);
@@ -249,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				6EC6260024DD5A5F00B7555B /* UserViewController.swift */,
-				16B04A4924DF349600824FA2 /* RequestViewController.swift */,
 				DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */,
 				1645EB1524D6E1FE007ACBF5 /* SettingsViewController.swift */,
 				164B125C24D17A240069B5EC /* ProfileViewController.swift */,
@@ -659,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A36BB12509B75E005F32DF /* SongInboxViewController.swift in Sources */,
 				164B125F24D17A5B0069B5EC /* CreateAjiteViewController.swift in Sources */,
 				1654349F24D9B280001B05C2 /* PlaylistTableViewCell.swift in Sources */,
 				1654349324D9936E001B05C2 /* ShareSongsViewController.swift in Sources */,
