@@ -94,10 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         instance?.isNaverAppOauthEnable = true
         instance?.isInAppOauthEnable = true
         instance?.isOnlyPortraitSupportedInIphone()
-        instance?.serviceUrlScheme = kServiceAppUrlScheme
-        instance?.consumerKey = kConsumerKey
-        instance?.consumerSecret = kConsumerSecret
-        instance?.appName = kServiceAppName
+        instance?.serviceUrlScheme = "naverlogin"
+        instance?.consumerKey = "0WE0vSiozcgvNkIksZI8"
+        instance?.consumerSecret = "EGXzwsAL3k"
+        instance?.appName = "ajite"
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
