@@ -53,12 +53,12 @@
 		16E0094B24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0094A24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift */; };
 		16F1C0FA24DE549B00DEF4F5 /* ManageFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1C0F924DE549B00DEF4F5 /* ManageFriendsViewController.swift */; };
 		16F1C0FC24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1C0FB24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift */; };
-		56B378290178516C8340F6FF /* Pods_ajite_ajiteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A809BE0F4F39867DE2851D34 /* Pods_ajite_ajiteUITests.framework */; };
+		4454D92428444DD2E94790B1 /* Pods_ajite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9E5440D1400A64D19390EB /* Pods_ajite.framework */; };
 		6E38B3F424DB0A3000208254 /* UserlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */; };
 		6EC6260224DD5A5F00B7555B /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC6260024DD5A5F00B7555B /* UserViewController.swift */; };
 		6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */; };
 		6EE115E824DF0ECD00CA4170 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */; };
-		D0D3D46A063889C9A129C082 /* Pods_ajiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946563343C4965A85C5A6971 /* Pods_ajiteTests.framework */; };
+		88E9E0386C80A66D2581E2A1 /* Pods_ajiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EDDE5E10C511E0A73FB873 /* Pods_ajiteTests.framework */; };
 		DE7E8D542502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
 		DE7E8D552502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
 		DE7E8D562502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
@@ -67,7 +67,7 @@
 		DEADE04624E234AA00DB5ED2 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADE04524E234AA00DB5ED2 /* FriendProfileViewController.swift */; };
 		DEADE04A24E25E2200DB5ED2 /* MyFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADE04924E25E2200DB5ED2 /* MyFriendsTableViewCell.swift */; };
 		DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */; };
-		FCA62159DC3DABC34DD4FCDD /* Pods_ajite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7CACB2B666C33F42DDD58C /* Pods_ajite.framework */; };
+		EDCB4B02D9684AD84FD0A9D2 /* Pods_ajite_ajiteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA573CE83B6561AC2E4F045 /* Pods_ajite_ajiteUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BE15F7BDE27FB20F5C51CB7 /* Pods-ajite-ajiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.release.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.release.xcconfig"; sourceTree = "<group>"; };
+		043B146315D5E8D49DC27CB8 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
+		0DA573CE83B6561AC2E4F045 /* Pods_ajite_ajiteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajite_ajiteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16157E8324E0D8DC00C850C7 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SongCollectionViewCell.swift; path = ajite/tableViewCells/SongCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		161C12E424CD9B59002E9246 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		1623F4E72501210400FCD17F /* popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popup.swift; sourceTree = "<group>"; };
@@ -141,24 +142,23 @@
 		16E0094A24DE8DCC0000DFAE /* AddedFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		16F1C0F924DE549B00DEF4F5 /* ManageFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManageFriendsViewController.swift; path = ajite/Profile/ManageFriendsViewController.swift; sourceTree = SOURCE_ROOT; };
 		16F1C0FB24DE55E700DEF4F5 /* ManageFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFriendsTableViewCell.swift; sourceTree = "<group>"; };
-		315AC6134D89D8D49FB8292B /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
-		59C322CDA3BE2594E9E778C0 /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
+		5E9E5440D1400A64D19390EB /* Pods_ajite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE73D4CE2190FCACFAF8390 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E38B3F324DB0A2F00208254 /* UserlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserlistTableViewCell.swift; path = ajite/tableViewCells/UserlistTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6EC6260024DD5A5F00B7555B /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
-		8F7CACB2B666C33F42DDD58C /* Pods_ajite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		946563343C4965A85C5A6971 /* Pods_ajiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E4593DF794EAF318FEC7B2 /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A809BE0F4F39867DE2851D34 /* Pods_ajite_ajiteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajite_ajiteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B28BCE5076BE4929B8810B42 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F80B9193DA2DD3C969D1B93 /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
+		AF2CD111A96A1C75C2CAF6EB /* Pods-ajiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.debug.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0E27FF20CDD238C12E8100C /* Pods-ajite-ajiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.release.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuViewController.swift; sourceTree = "<group>"; };
 		DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		DEADE04524E234AA00DB5ED2 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
 		DEADE04924E25E2200DB5ED2 /* MyFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
-		FDB3D3BC93741BF95735BAB3 /* Pods-ajiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.debug.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6EDDE5E10C511E0A73FB873 /* Pods_ajiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9DD6903A6AA1F52D69B86D0 /* Pods-ajite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.release.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA62159DC3DABC34DD4FCDD /* Pods_ajite.framework in Frameworks */,
+				4454D92428444DD2E94790B1 /* Pods_ajite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D3D46A063889C9A129C082 /* Pods_ajiteTests.framework in Frameworks */,
+				88E9E0386C80A66D2581E2A1 /* Pods_ajiteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B378290178516C8340F6FF /* Pods_ajite_ajiteUITests.framework in Frameworks */,
+				EDCB4B02D9684AD84FD0A9D2 /* Pods_ajite_ajiteUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +268,7 @@
 				16AE4B0D24CC761900807ECB /* ajiteUITests */,
 				16AE4AE724CC761400807ECB /* Products */,
 				D06289D0E54FD4FB4A9057AD /* Pods */,
-				5C37E979C130C8F9D8B85997 /* Frameworks */,
+				5A54E08F1EB05EB73CC6970A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -347,12 +347,12 @@
 			path = Playlist;
 			sourceTree = "<group>";
 		};
-		5C37E979C130C8F9D8B85997 /* Frameworks */ = {
+		5A54E08F1EB05EB73CC6970A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8F7CACB2B666C33F42DDD58C /* Pods_ajite.framework */,
-				A809BE0F4F39867DE2851D34 /* Pods_ajite_ajiteUITests.framework */,
-				946563343C4965A85C5A6971 /* Pods_ajiteTests.framework */,
+				5E9E5440D1400A64D19390EB /* Pods_ajite.framework */,
+				0DA573CE83B6561AC2E4F045 /* Pods_ajite_ajiteUITests.framework */,
+				E6EDDE5E10C511E0A73FB873 /* Pods_ajiteTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -360,12 +360,12 @@
 		D06289D0E54FD4FB4A9057AD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				315AC6134D89D8D49FB8292B /* Pods-ajite.debug.xcconfig */,
-				59C322CDA3BE2594E9E778C0 /* Pods-ajite.release.xcconfig */,
-				A6E4593DF794EAF318FEC7B2 /* Pods-ajite-ajiteUITests.debug.xcconfig */,
-				0BE15F7BDE27FB20F5C51CB7 /* Pods-ajite-ajiteUITests.release.xcconfig */,
-				FDB3D3BC93741BF95735BAB3 /* Pods-ajiteTests.debug.xcconfig */,
-				B28BCE5076BE4929B8810B42 /* Pods-ajiteTests.release.xcconfig */,
+				8F80B9193DA2DD3C969D1B93 /* Pods-ajite.debug.xcconfig */,
+				F9DD6903A6AA1F52D69B86D0 /* Pods-ajite.release.xcconfig */,
+				6BE73D4CE2190FCACFAF8390 /* Pods-ajite-ajiteUITests.debug.xcconfig */,
+				D0E27FF20CDD238C12E8100C /* Pods-ajite-ajiteUITests.release.xcconfig */,
+				AF2CD111A96A1C75C2CAF6EB /* Pods-ajiteTests.debug.xcconfig */,
+				043B146315D5E8D49DC27CB8 /* Pods-ajiteTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -377,12 +377,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16AE4B1324CC761900807ECB /* Build configuration list for PBXNativeTarget "ajite" */;
 			buildPhases = (
-				D9333E89C5653124EEBB4CE2 /* [CP] Check Pods Manifest.lock */,
+				F0D00EF2BAF82F37E2615ECE /* [CP] Check Pods Manifest.lock */,
 				16AE4AE224CC761400807ECB /* Sources */,
 				16AE4AE324CC761400807ECB /* Frameworks */,
 				16AE4AE424CC761400807ECB /* Resources */,
-				CEB1B88549502B7309295C80 /* [CP] Embed Pods Frameworks */,
-				E6A7B8F238543CC29A6DC54E /* [CP] Copy Pods Resources */,
+				3489D61DFCA6D337F0ABE855 /* [CP] Embed Pods Frameworks */,
+				414671E51715FDDB1F3FDB76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,7 +397,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16AE4B1624CC761900807ECB /* Build configuration list for PBXNativeTarget "ajiteTests" */;
 			buildPhases = (
-				C9F412EAE15E1956D7EE32F8 /* [CP] Check Pods Manifest.lock */,
+				18DE77E13882CAE9C823B993 /* [CP] Check Pods Manifest.lock */,
 				16AE4AFB24CC761900807ECB /* Sources */,
 				16AE4AFC24CC761900807ECB /* Frameworks */,
 				16AE4AFD24CC761900807ECB /* Resources */,
@@ -416,12 +416,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16AE4B1924CC761900807ECB /* Build configuration list for PBXNativeTarget "ajiteUITests" */;
 			buildPhases = (
-				A4942AE4E6973C87F767A9E9 /* [CP] Check Pods Manifest.lock */,
+				7AABDB3D720E9402918C364B /* [CP] Check Pods Manifest.lock */,
 				16AE4B0624CC761900807ECB /* Sources */,
 				16AE4B0724CC761900807ECB /* Frameworks */,
 				16AE4B0824CC761900807ECB /* Resources */,
-				314451696CB7F7B744D65690 /* [CP] Embed Pods Frameworks */,
-				7F5048F965D4605F34F62DCF /* [CP] Copy Pods Resources */,
+				040391E0B6C7BBF728DA43E8 /* [CP] Embed Pods Frameworks */,
+				71FED22A6E57A4DA9F68F6F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -515,7 +515,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		314451696CB7F7B744D65690 /* [CP] Embed Pods Frameworks */ = {
+		040391E0B6C7BBF728DA43E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -532,46 +532,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F5048F965D4605F34F62DCF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A4942AE4E6973C87F767A9E9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ajite-ajiteUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C9F412EAE15E1956D7EE32F8 /* [CP] Check Pods Manifest.lock */ = {
+		18DE77E13882CAE9C823B993 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -593,7 +554,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CEB1B88549502B7309295C80 /* [CP] Embed Pods Frameworks */ = {
+		3489D61DFCA6D337F0ABE855 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -610,7 +571,63 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9333E89C5653124EEBB4CE2 /* [CP] Check Pods Manifest.lock */ = {
+		414671E51715FDDB1F3FDB76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71FED22A6E57A4DA9F68F6F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AABDB3D720E9402918C364B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ajite-ajiteUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0D00EF2BAF82F37E2615ECE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -630,23 +647,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E6A7B8F238543CC29A6DC54E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ajite/Pods-ajite-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -873,7 +873,7 @@
 		};
 		16AE4B1424CC761900807ECB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 315AC6134D89D8D49FB8292B /* Pods-ajite.debug.xcconfig */;
+			baseConfigurationReference = 8F80B9193DA2DD3C969D1B93 /* Pods-ajite.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -893,7 +893,7 @@
 		};
 		16AE4B1524CC761900807ECB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59C322CDA3BE2594E9E778C0 /* Pods-ajite.release.xcconfig */;
+			baseConfigurationReference = F9DD6903A6AA1F52D69B86D0 /* Pods-ajite.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -913,7 +913,7 @@
 		};
 		16AE4B1724CC761900807ECB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDB3D3BC93741BF95735BAB3 /* Pods-ajiteTests.debug.xcconfig */;
+			baseConfigurationReference = AF2CD111A96A1C75C2CAF6EB /* Pods-ajiteTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -935,7 +935,7 @@
 		};
 		16AE4B1824CC761900807ECB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B28BCE5076BE4929B8810B42 /* Pods-ajiteTests.release.xcconfig */;
+			baseConfigurationReference = 043B146315D5E8D49DC27CB8 /* Pods-ajiteTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -957,7 +957,7 @@
 		};
 		16AE4B1A24CC761900807ECB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6E4593DF794EAF318FEC7B2 /* Pods-ajite-ajiteUITests.debug.xcconfig */;
+			baseConfigurationReference = 6BE73D4CE2190FCACFAF8390 /* Pods-ajite-ajiteUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -978,7 +978,7 @@
 		};
 		16AE4B1B24CC761900807ECB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BE15F7BDE27FB20F5C51CB7 /* Pods-ajite-ajiteUITests.release.xcconfig */;
+			baseConfigurationReference = D0E27FF20CDD238C12E8100C /* Pods-ajite-ajiteUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
