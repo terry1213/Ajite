@@ -10,6 +10,7 @@ import UIKit
 
 class PlaylistTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var youtube: UIImageView!
     @IBOutlet weak var numberOfSongs: UILabel!
     @IBOutlet weak var PlaylistName: UILabel!
     override func awakeFromNib() {

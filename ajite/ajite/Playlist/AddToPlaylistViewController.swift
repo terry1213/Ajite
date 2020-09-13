@@ -15,7 +15,7 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     
     var addingSong = Song()
     var addOrNot : [Bool] = []
-    var listVC: PlaylistSongListViewController? = nil
+  //!!!!!!!!! var listVC: PlaylistSongListViewController? = nil
     
     @IBOutlet weak var newPlaylist: UIView!
     @IBOutlet weak var playlistView: UITableView!
@@ -51,7 +51,7 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
             }
         }
         //해당 플레이리스트 창으로 돌아가기 전에 노래 리스트를 다시 불러온다.
-        listVC?.getData()
+     //!!!!!!!1   listVC?.getData()
         dismiss(animated: true)
     }
     
