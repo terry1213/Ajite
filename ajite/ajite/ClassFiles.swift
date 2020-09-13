@@ -27,6 +27,7 @@ class Ajite {
     var members = [User]()
     var numOfMembers = Int()
     var sharedSongs = Playlist()
+    var numOfSongs = Int()
     var ajiteID = String()
     var ajiteImageString = String()
    //!!! var creator = User()

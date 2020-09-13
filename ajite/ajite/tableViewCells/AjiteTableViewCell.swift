@@ -15,6 +15,7 @@ class AjiteTableViewCell: UITableViewCell {
     @IBOutlet weak var ajiteImage: UIImageView!
     @IBOutlet weak var ajiteName: UILabel!
     @IBOutlet weak var numberOfMembers: UILabel!
+    @IBOutlet weak var numberOfSongs: UILabel!
     // ==================================================================>
     
     // ======================> 초기화 함수
@@ -37,5 +38,5 @@ class AjiteTableViewCell: UITableViewCell {
     
 }
 
-//소속: AjiteViewController
+//소속: AjiteListViewController
 //Description: 현재 유저가 소속되어 있는 아지트 정보를 담고 있는 셀
