@@ -72,7 +72,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? AjiteRoomViewController{
+        if let vc = segue.destination as? InsideAjiteViewController{
         vc.currentAjite = tempAjite
         } else if let vc = segue.destination as? FriendsToAjiteViewController {
             vc.delegate = self

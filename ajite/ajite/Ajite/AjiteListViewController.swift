@@ -39,7 +39,7 @@ class AjiteListViewController: UIViewController {
         guard let sendingAjite = sender as? Ajite else {
             return
         }
-        guard let destination = segue.destination as? AjiteRoomViewController else{
+        guard let destination = segue.destination as? InsideAjiteViewController else{
             return
         }
         destination.currentAjite = sendingAjite
