@@ -11,7 +11,6 @@ import UIKit
 class FriendsPlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var youtubeOrNot: UIImageView!
-    
     @IBOutlet weak var numberOfSongs: UILabel!
     @IBOutlet weak var playlistName: UILabel!
     override func awakeFromNib() {
