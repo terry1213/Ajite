@@ -12,12 +12,9 @@ class PlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var youtube: UIImageView!
     @IBOutlet weak var numberOfSongs: UILabel!
-    @IBOutlet weak var PlaylistName: UILabel!
+    @IBOutlet weak var playlistName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-  
-
+    
 }
