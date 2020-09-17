@@ -66,6 +66,7 @@
 		DE7E8D562502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
 		DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */; };
 		DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */; };
+		DEBEC58425137B5200C2CBAE /* ManageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBEC58325137B5100C2CBAE /* ManageFriendsTableViewCell.swift */; };
 		DED28A6A24D926CB002CFC18 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */; };
 		E0E8B6F46BA86D0F63F2229E /* Pods_ajiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A440A7B6A6BF89866F3E5A87 /* Pods_ajiteTests.framework */; };
 /* End PBXBuildFile section */
@@ -158,6 +159,7 @@
 		DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuViewController.swift; sourceTree = "<group>"; };
 		DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		DEB48E3F4632C18AFF05EAE4 /* Pods_ajite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ajite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBEC58325137B5100C2CBAE /* ManageFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DED28A6924D926CB002CFC18 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 		1658B1E324DC7BC80023469B /* tableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				DEBEC58325137B5100C2CBAE /* ManageFriendsTableViewCell.swift */,
 				1640009F250E54350060126D /* FriendsPlaylistTableViewCell.swift */,
 				16400099250E49F90060126D /* sharedSongsTableViewCell.swift */,
 				163772AF250E4530000D4644 /* FindSongsTableViewCell.swift */,
@@ -696,6 +699,7 @@
 				16400096250E46560060126D /* FindSongsViewController.swift in Sources */,
 				163772AA250E311D000D4644 /* FriendsViewController.swift in Sources */,
 				6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */,
+				DEBEC58425137B5200C2CBAE /* ManageFriendsTableViewCell.swift in Sources */,
 				165E15FF24DE8B7200CD4F03 /* SearchFriendsTableView.swift in Sources */,
 				16502AD425091647004FB8B2 /* InvitationTableViewCell.swift in Sources */,
 				DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */,
