@@ -39,6 +39,7 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
     // ======================> Event가 일어난 경우 호출되는 Action 함수들
     
     @IBAction func finished(_ sender: Any) {
+   
         //어떤 플레이리스트에 담을 것인지 알기 위해 bool array를 확인한다.
         for index in 0 ..< addOrNot.count {
             //true = 담기
@@ -54,7 +55,6 @@ class AddToPlaylistViewController: UIViewController, UITableViewDelegate {
      //!!!!!!!1   listVC?.getData()
         dismiss(animated: true)
     }
-    
     // ==================================================================>
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
