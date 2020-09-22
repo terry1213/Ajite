@@ -39,7 +39,7 @@ class UserViewController: UIViewController {
         userTable.delegate = self
         userTable.dataSource = self
         //모든 친구 목록을 불러온다.
-        getfriendsData()
+        getfriendsList()
     }
     
     // ==================================================================>
@@ -50,8 +50,8 @@ class UserViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
+    //모든 유저 정보를 불러오는 함수
     func getUserData(){
-        //모든 유저 정보를 불러온다.
         userRef.getDocuments{ (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -77,7 +77,8 @@ class UserViewController: UIViewController {
         }
     }
     
-    func getfriendsData() {
+    // 친구 리스트를 불러오는 함수
+    func getfriendsList() {
         db
             .collection("users").document(myUser.documentID)
             .collection("friends").getDocuments() { (querySnapshot, err) in
@@ -91,6 +92,27 @@ class UserViewController: UIViewController {
                     self.getUserData()
                 }
             }
+    }
+    
+    func friendRequest(userFrom : User, userTo : User, state: Int){
+        db.collection("users").document(userTo.documentID).collection("friends").document(userFrom.documentID).setData([
+                "userID" : userFrom.userID as Any,
+                "name" : userFrom.name as Any,
+                /*
+                 친구 state 설명:
+                    0 = 친구 신청 보냄
+                    1 = 친구 신청 받음
+                    2 = 친구 상태
+                    거절하면 document 자체를 삭제
+                 */
+                "state" : state
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added")
+                }
+        }
     }
     
     // ==================================================================>
@@ -160,45 +182,13 @@ extension UserViewController: UISearchBarDelegate {
 extension UserViewController: TableViewUser {
     func onClickCell(index: Int){
         //친구 신청을 받는 유저의 friends collection에 friend document를 생성한다. state = 1
-        db.collection("users").document(displayUsers[index].documentID).collection("friends").document(myUser.documentID).setData([
-                "userID" : myUser.userID as Any,
-                "name" : myUser.name as Any,
-                /*
-                 친구 state 설명:
-                    0 = 친구 신청 보냄
-                    1 = 친구 신청 받음
-                    2 = 친구 상태
-                    거절하면 document 자체를 삭제
-                 */
-                "state" : 1
-            ]){ err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added")
-                }
-        }
+        self.friendRequest(userFrom: myUser, userTo: displayUsers[index], state: 1)
+        
         //친구 신청을 하는 유저의 friends collection에 friend document를 생성한다. state = 0
-        db
-            .collection("users").document(myUser.documentID)
-            .collection("friends").document(displayUsers[index].documentID).setData([
-                "userID" : displayUsers[index].userID as Any,
-                "name" : displayUsers[index].name as Any,
-                /*
-                 친구 state 설명:
-                    0 = 친구 신청 보냄
-                    1 = 친구 신청 받음
-                    2 = 친구 상태
-                    거절하면 document 자체를 삭제
-                 */
-                "state" : 0
-            ]){ err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added")
-                }
-        }
+        self.friendRequest(userFrom: displayUsers[index], userTo: myUser, state: 0)
+        
+        self.friendsID.append(displayUsers[index].documentID)
+        userTable.reloadData()
     }
 }
 
