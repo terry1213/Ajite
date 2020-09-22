@@ -29,8 +29,11 @@ class MyProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //데이터 불러오기
-        getData()
+        //플레이리스트 데이터 불러오기
+        getPlaylistsData() {
+            //테이블에 불러온 정보를 보여준다.
+            self.playlist.reloadData()
+        }
         //Label에 이름 적기
         self.userName.text = myUser.name
         //Label에 biography 적기
@@ -66,7 +69,7 @@ class MyProfileViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func getData(){
+    func getPlaylistsData(completion: @escaping () -> Void){
         db
             .collection("users").document(myUser.documentID)
             .collection("playlists").getDocuments() { (querySnapshot, err) in
@@ -90,10 +93,7 @@ class MyProfileViewController: UIViewController {
                     myUser.playlists.append(temPlaylist)
                 }
                 print("The number of playlists is \(myUser.playlists.count)")
-                DispatchQueue.main.async{
-                    //테이블에 불러온 정보를 보여준다.
-                    self.playlist.reloadData()
-                }
+                completion()
             }
         }
     }

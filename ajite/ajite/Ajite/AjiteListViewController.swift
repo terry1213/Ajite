@@ -32,7 +32,7 @@ class AjiteListViewController: UIViewController {
         }
     }
     
-    override func  prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "intoAjite" else {
             return
         }
@@ -45,7 +45,7 @@ class AjiteListViewController: UIViewController {
         destination.currentAjite = sendingAjite
     }
     
-    
+    // 아지트 아이디를 가져오는 함수
     func getAjitesID(completion: @escaping () -> Void){
         db
             .collection("users")
@@ -68,6 +68,7 @@ class AjiteListViewController: UIViewController {
         }
     }
     
+    // 아지트 데이터를 가져오는 함수
     func getAjitesData(completion: @escaping () -> Void) {
         for i in 0..<ajites.count {
             db
@@ -87,35 +88,66 @@ class AjiteListViewController: UIViewController {
         }
     }
     
-    func deleteAjiteFromUser(ajiteIDToDelete: String) {
+    // 아지트를 유저의 아지트 목록에서 삭제하는 함수
+    func deleteAjiteFromUser(ajiteIDToDelete: String, completion: @escaping () -> Void) {
         db
             .collection("users").document(myUser.documentID)
             .collection("ajites").document(ajiteIDToDelete)
             .delete()
+        completion()
     }
     
-    func deleteUserFromAjite(ajiteIDToDelete: String) {
+    // 유저를 아지트 맴버에서 삭제하는 함수
+    func deleteUserFromAjite(ajiteIDToDelete: String, completion: @escaping () -> Void) {
         db
             .collection("ajites").document(ajiteIDToDelete)
             .collection("members").document(myUser.documentID)
             .delete()
+        completion()
     }
     
-    
-    func reduceMemberNum(ajiteIDToDelete: String) {
+    // 아지트 맴버 수를 줄이는 함수
+    func reduceMemberNum(ajiteIDToDelete: String, completion: @escaping () -> Void) {
         db
             .collection("ajites").document(ajiteIDToDelete)
             .updateData([
                 "memberNum" : FieldValue.increment(Int64(-1))
             ])
+        completion()
     }
     
-    func deleteAjite(ajiteIDToDelete: String) {
+    // 아지트를 삭제하는 함수
+    func deleteAjite(ajiteIDToDelete: String, completion: @escaping () -> Void) {
         db
             .collection("ajites").document(ajiteIDToDelete)
             .delete()
+        completion()
     }
     
+    // 아지트 맴버가 더 이상 없는지 확인하고 아지트 자체를 삭제하는 함수
+    func checkAjite(ajiteIDToDelete: String, indexPath: IndexPath, completion: @escaping () -> Void) {
+        db
+            .collection("ajites").document(ajiteIDToDelete)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    
+                    self.reduceMemberNum(ajiteIDToDelete: ajiteIDToDelete) {
+                        if document.data()!["memberNum"] as! Int == 1 {
+                            self.deleteAjite(ajiteIDToDelete: ajiteIDToDelete) {
+                                completion()
+                            }
+                        }
+                    }
+                    
+                    ajites.remove(at: indexPath.row)
+                    self.ajiteList.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    print("Document does not exist")
+                }
+        }
+    }
     
     @IBAction func order(_ sender: Any) {
         print("Order Button pressed")
@@ -156,28 +188,12 @@ extension AjiteListViewController : UITableViewDataSource{
             
             let ajiteIDToDelete = ajites[indexPath.row].ajiteID
             
-            self.deleteAjiteFromUser(ajiteIDToDelete: ajiteIDToDelete)
-            
-            self.deleteUserFromAjite(ajiteIDToDelete: ajiteIDToDelete)
-            
-            db
-                .collection("ajites").document(ajiteIDToDelete)
-                .getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        print("Document data: \(dataDescription)")
+            self.deleteAjiteFromUser(ajiteIDToDelete: ajiteIDToDelete) {
+                self.deleteUserFromAjite(ajiteIDToDelete: ajiteIDToDelete) {
+                    self.checkAjite(ajiteIDToDelete: ajiteIDToDelete, indexPath: indexPath){
                         
-                        self.reduceMemberNum(ajiteIDToDelete: ajiteIDToDelete)
-                        
-                        if document.data()!["memberNum"] as! Int == 1 {
-                            self.deleteAjite(ajiteIDToDelete: ajiteIDToDelete)
-                        }
-                        
-                        ajites.remove(at: indexPath.row)
-                        self.ajiteList.deleteRows(at: [indexPath], with: .automatic)
-                    } else {
-                        print("Document does not exist")
                     }
+                }
             }
             
         }))
