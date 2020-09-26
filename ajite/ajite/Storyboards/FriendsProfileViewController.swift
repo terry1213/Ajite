@@ -30,7 +30,10 @@ class FriendsProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
+        getPlaylistsData() {
+            //테이블에 불러온 정보를 보여준다.
+            self.friendsPlaylist.reloadData()
+        }
         //Label에 친구 이름 적기
         self.friendsName.text = currentUser.name
         //Label에 친구 biography 적기
@@ -66,7 +69,7 @@ class FriendsProfileViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func getData(){
+    func getPlaylistsData(completion: @escaping () -> Void){
         //현재 유저의 documentID를 통해 해당 유저 소유의 플레이리스트 목록에 접근
         db
             .collection("users").document(currentUser.documentID)
@@ -77,7 +80,6 @@ class FriendsProfileViewController: UIViewController {
                     self.currentUser.playlists.removeAll()
                     //임시로 저장할 플레이리스트 변수 선언
                     var temPlaylist : Playlist
-                    var count = 0
                     for document in querySnapshot!.documents {
                         //임시 플레이리스트 생성
                         temPlaylist = Playlist()
@@ -90,13 +92,8 @@ class FriendsProfileViewController: UIViewController {
                         temPlaylist.id = document.documentID
                         //현재 유저의 플레이리스트 목록에 추가
                         self.currentUser.playlists.append(temPlaylist)
-                        count += 1
-                        //모든 플레이리스트를 불러왔을 경우
-                        if count == querySnapshot!.documents.count {
-                            //테이블에 불러온 정보를 보여준다.
-                            self.friendsPlaylist.reloadData()
-                        }
                     }
+                    completion()
                 }
             }
     }

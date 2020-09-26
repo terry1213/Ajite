@@ -11,7 +11,7 @@ import UIKit
 class FriendsViewController: UIViewController {
     
     // ======================> 변수, outlet 선언
-
+    
     @IBOutlet weak var searchFriends: UISearchBar!
     @IBOutlet weak var friendsList: UITableView!
     
@@ -22,7 +22,10 @@ class FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //데이터 불러오기
-        getData()
+        getFriendsList() {
+            //테이블에 불러온 정보를 보여준다.
+            self.friendsList.reloadData()
+        }
         self.friendsList.delegate = self
         self.friendsList.dataSource = self
     }
@@ -50,49 +53,53 @@ class FriendsViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func getData(){
+    // 친구 리스트를 불러오는 함수
+    func getFriendsList(completion: @escaping () -> Void){
         //유저 documentID를 통해 친구 목록에서 친구 사이의 유저 documentID를 불러온다.
         db
             .collection("users").document(myUser.documentID)
             .collection("friends").whereField("state", isEqualTo: 2).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                //데이터 중복을 막기 위해 원래 불러왔던 친구 목록을 삭제한다.
-                myUser.friends.removeAll()
-                var count = 0
-                for friendDocument in querySnapshot!.documents {
-                    //친구의 documentID를 통해 친구의 users document 정보 접근
-                    db
-                        .collection("users").document(friendDocument.documentID).getDocument { (document, error) in
-                            if let document = document, document.exists {
-                                let data = document.data()
-                                //임시로 저장할 유저 변수 생성
-                                let temUser = User()
-                                //유저 이메일 아이디 저장
-                                temUser.userID = data!["userID"] as! String
-                                //유저 이름 저장
-                                temUser.name = data!["name"] as! String
-                                //유저의 프로필 이미지 url 저장
-                                temUser.profileImageURL = data!["profileImageURL"] as! String
-                                //유저의 documentID 저장
-                                temUser.documentID = document.documentID
-                                //친구 목록에 추가
-                                myUser.friends.append(temUser)
-                                //테이블에 불러온 정보를 보여준다.
-                                count += 1
-                                //모든 친구 목록을 불러왔을 경우,
-                                if count == querySnapshot!.documents.count {
-                                    //테이블에 불러온 정보를 보여준다.
-                                    self.friendsList.reloadData()
-                                }
-                            } else {
-                                print("Document does not exist")
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    //데이터 중복을 막기 위해 원래 불러왔던 친구 목록을 삭제한다.
+                    myUser.friends.removeAll()
+                    var count = 0
+                    for friendDocument in querySnapshot!.documents {
+                        self.getFriendData(friendDocumentID: friendDocument.documentID) {
+                            count += 1
+                            if count == querySnapshot!.documents.count{
+                                completion()
                             }
                         }
+                    }
                 }
-                
-            }
+        }
+    }
+    
+    // 친구의 정보를 불러오는 함수
+    func getFriendData(friendDocumentID : String, completion: @escaping () -> Void){
+        //친구의 documentID를 통해 친구의 users document 정보 접근
+        db
+            .collection("users").document(friendDocumentID).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    //임시로 저장할 유저 변수 생성
+                    let temUser = User()
+                    //유저 이메일 아이디 저장
+                    temUser.userID = data!["userID"] as! String
+                    //유저 이름 저장
+                    temUser.name = data!["name"] as! String
+                    //유저의 프로필 이미지 url 저장
+                    temUser.profileImageURL = data!["profileImageURL"] as! String
+                    //유저의 documentID 저장
+                    temUser.documentID = document.documentID
+                    //친구 목록에 추가
+                    myUser.friends.append(temUser)
+                    completion()
+                } else {
+                    print("Document does not exist")
+                }
         }
     }
     
@@ -119,13 +126,13 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 65
+        return 65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataToSend = myUser.friends[indexPath.row]
         self.performSegue(withIdentifier: "toFriendsProfile", sender: dataToSend)
-       friendsList.deselectRow(at: indexPath, animated: true)
+        friendsList.deselectRow(at: indexPath, animated: true)
     }
     
 }
