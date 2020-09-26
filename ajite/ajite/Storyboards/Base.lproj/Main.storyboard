@@ -376,7 +376,7 @@
                                 <rect key="frame" x="338" y="33" width="22" height="23"/>
                                 <state key="normal" image="person.badge.plus.fill" catalog="system"/>
                                 <connections>
-                                    <segue destination="xl5-Xm-9WV" kind="show" id="Osm-Aa-jzG"/>
+                                    <segue destination="mSL-Oh-ks7" kind="show" id="ymc-RQ-8it"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -406,6 +406,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smc-PI-PgA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3446" y="811"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kvh-QP-ckf">
+            <objects>
+                <viewController id="Us7-lE-wvK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bfu-3G-K1b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qK9-Zj-DRo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1U-xK-ebz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4452" y="1019"/>
         </scene>
         <!--Updated Ajite VC-->
         <scene sceneID="RE3-Db-MdK">
@@ -589,7 +604,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5u-mG-8Eq">
-                                <rect key="frame" x="30" y="30" width="182.66666666666666" height="28"/>
+                                <rect key="frame" x="30" y="30" width="183.66666666666666" height="28"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="25"/>
                                 <color key="textColor" red="0.27684453129999997" green="0.32316142320000002" blue="0.45883959530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -907,8 +922,8 @@
                                 <rect key="frame" x="21" y="136.66666666666666" width="288" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ajites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQs-Ba-diz">
-                                <rect key="frame" x="30.000000000000007" y="90" width="127.66666666666669" height="36.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My Ajites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQs-Ba-diz">
+                                <rect key="frame" x="30" y="90" width="172" height="35"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1206,13 +1221,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UvK-fT-Ypc">
                                                     <rect key="frame" x="80" y="12.333333333333332" width="93.333333333333314" height="38.666666666666671"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bln-gs-2gI">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Video Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bln-gs-2gI">
                                                             <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKj-aq-ZXE">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Channel Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKj-aq-ZXE">
                                                             <rect key="frame" x="0.0" y="24.333333333333329" width="93.333333333333329" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
@@ -1275,7 +1290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgD-tx-5m7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4488.8000000000002" y="87.931034482758619"/>
+            <point key="canvasLocation" x="4354" y="93"/>
         </scene>
         <!--Members View Controller-->
         <scene sceneID="T0Y-8Y-SVQ">
@@ -1416,7 +1431,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IER-fM-2GH">
-                                <rect key="frame" x="0.0" y="112" width="375" height="612"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="668"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserTableViewCell" rowHeight="70" id="aqZ-UF-bkQ" customClass="UserTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -1496,7 +1511,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1CV-dD-dP9">
-                                <rect key="frame" x="0.0" y="56" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="mSL-Oh-ks7" id="pBw-w8-jb8"/>
@@ -1969,26 +1984,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZQ-bC-uGm">
-                                <rect key="frame" x="137.66666666666666" y="94" width="100" height="100"/>
+                                <rect key="frame" x="137.66666666666666" y="50" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="4I4-z5-h99"/>
                                     <constraint firstAttribute="width" constant="100" id="Vxz-oP-IoY"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mh4-7T-Ybk">
-                                <rect key="frame" x="166.66666666666666" y="202" width="41.666666666666657" height="20.333333333333343"/>
+                                <rect key="frame" x="166.66666666666666" y="158" width="41.666666666666657" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqE-Wo-LzE">
-                                <rect key="frame" x="166.66666666666666" y="230.33333333333334" width="41.666666666666657" height="20.333333333333343"/>
+                                <rect key="frame" x="166.66666666666666" y="186.33333333333334" width="41.666666666666657" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihu-QG-wQK">
-                                <rect key="frame" x="16" y="260.66666666666669" width="343" height="517.33333333333326"/>
+                                <rect key="frame" x="16" y="216.66666666666666" width="343" height="507.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjO-eo-dD2">
                                         <rect key="frame" x="8.0000000000000036" y="7.9999999999999982" width="62.333333333333343" height="20.333333333333329"/>
@@ -1997,7 +2012,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WjF-oR-H1m">
-                                        <rect key="frame" x="0.0" y="36.333333333333314" width="343" height="480.99999999999994"/>
+                                        <rect key="frame" x="0.0" y="36.333333333333371" width="343" height="471"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FriendsPlaylistTableViewCell" rowHeight="70" id="MoR-yf-byH" customClass="FriendsPlaylistTableViewCell" customModule="ajite" customModuleProvider="target">
@@ -2320,7 +2335,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qyl-py-7fJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pTj-k8-8yo" userLabel="Friend Request">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2392,6 +2407,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="div-26-TOa"/>
+        <segue reference="ymc-RQ-8it"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ajitelogo" width="200" height="200"/>
