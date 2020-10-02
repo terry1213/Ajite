@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "door-2.png",
+      "filename" : "노래 추가 아이콘-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "노래 추가 아이콘@2x-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "노래 추가 아이콘@3x-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
