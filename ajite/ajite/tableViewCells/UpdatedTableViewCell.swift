@@ -10,6 +10,7 @@ import UIKit
 
 class UpdatedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var ellipsis: UIButton!
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var videoName: UILabel!
     @IBOutlet weak var comment: UILabel!
@@ -17,6 +18,7 @@ class UpdatedTableViewCell: UITableViewCell {
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     override func awakeFromNib() {
+        self.ellipsis.transform = CGAffineTransform(rotationAngle: 90)
         super.awakeFromNib()
         // Initialization code
     }

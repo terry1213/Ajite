@@ -31,7 +31,8 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     // ======================> ViewController의 이동이나 Loading 될때 사용되는 함수들
     
     override func viewDidAppear(_ animated: Bool) {
-        
+      
+        //database
         db.collection("users").document(myUser.documentID).collection("invitation").whereField("stateInvite", isEqualTo: 0).getDocuments{(snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -62,6 +63,11 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     }
       
     override func viewWillAppear(_ animated: Bool) {
+        //appearance
+        self.ajiteName.backgroundColor = UIColor(white: 0.7, alpha: 0.3)
+        self.ajiteName.attributedPlaceholder = NSAttributedString(string: " Enter Ajite Name",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha:0.5)])
+        
         addingMembers.removeAll()
         memberTableView.reloadData()
         ajiteName.text = ""
