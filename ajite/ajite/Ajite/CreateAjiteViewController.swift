@@ -23,6 +23,7 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
     var addingMembers = [User]()
     let userRef = db.collection("users")
     
+    @IBOutlet weak var create: UIButton!
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var ajiteName: UITextField!
     
@@ -67,7 +68,8 @@ class CreateAjiteViewController: UIViewController, FriendsToAjiteDelegate, UITex
         self.ajiteName.backgroundColor = UIColor(white: 0.7, alpha: 0.3)
         self.ajiteName.attributedPlaceholder = NSAttributedString(string: " Enter Ajite Name",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha:0.5)])
-        
+        self.create.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+    
         addingMembers.removeAll()
         memberTableView.reloadData()
         ajiteName.text = ""
