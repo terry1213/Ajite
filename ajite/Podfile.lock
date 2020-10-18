@@ -367,36 +367,36 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
-  - KakaoSDK (2.0.3):
-    - KakaoSDKAuth (= 2.0.3)
-    - KakaoSDKCommon (= 2.0.3)
-    - KakaoSDKLink (= 2.0.3)
-    - KakaoSDKNavi (= 2.0.3)
-    - KakaoSDKStory (= 2.0.3)
-    - KakaoSDKTalk (= 2.0.3)
-    - KakaoSDKTemplate (= 2.0.3)
-    - KakaoSDKUser (= 2.0.3)
-  - KakaoSDKAuth (2.0.3):
-    - KakaoSDKCommon (= 2.0.3)
-  - KakaoSDKCommon (2.0.3):
+  - KakaoSDK (2.0.4):
+    - KakaoSDKAuth (= 2.0.4)
+    - KakaoSDKCommon (= 2.0.4)
+    - KakaoSDKLink (= 2.0.4)
+    - KakaoSDKNavi (= 2.0.4)
+    - KakaoSDKStory (= 2.0.4)
+    - KakaoSDKTalk (= 2.0.4)
+    - KakaoSDKTemplate (= 2.0.4)
+    - KakaoSDKUser (= 2.0.4)
+  - KakaoSDKAuth (2.0.4):
+    - KakaoSDKCommon (= 2.0.4)
+  - KakaoSDKCommon (2.0.4):
     - Alamofire (~> 5.1)
-  - KakaoSDKLink (2.0.3):
-    - KakaoSDKCommon (= 2.0.3)
-    - KakaoSDKTemplate (= 2.0.3)
-  - KakaoSDKNavi (2.0.3):
-    - KakaoSDKCommon (= 2.0.3)
-  - KakaoSDKStory (2.0.3):
-    - KakaoSDKAuth (= 2.0.3)
-    - KakaoSDKCommon (= 2.0.3)
-  - KakaoSDKTalk (2.0.3):
-    - KakaoSDKAuth (= 2.0.3)
-    - KakaoSDKCommon (= 2.0.3)
-    - KakaoSDKTemplate (= 2.0.3)
-  - KakaoSDKTemplate (2.0.3):
-    - KakaoSDKCommon (= 2.0.3)
-  - KakaoSDKUser (2.0.3):
-    - KakaoSDKAuth (= 2.0.3)
-    - KakaoSDKCommon (= 2.0.3)
+  - KakaoSDKLink (2.0.4):
+    - KakaoSDKCommon (= 2.0.4)
+    - KakaoSDKTemplate (= 2.0.4)
+  - KakaoSDKNavi (2.0.4):
+    - KakaoSDKCommon (= 2.0.4)
+  - KakaoSDKStory (2.0.4):
+    - KakaoSDKAuth (= 2.0.4)
+    - KakaoSDKCommon (= 2.0.4)
+  - KakaoSDKTalk (2.0.4):
+    - KakaoSDKAuth (= 2.0.4)
+    - KakaoSDKCommon (= 2.0.4)
+    - KakaoSDKTemplate (= 2.0.4)
+  - KakaoSDKTemplate (2.0.4):
+    - KakaoSDKCommon (= 2.0.4)
+  - KakaoSDKUser (2.0.4):
+    - KakaoSDKAuth (= 2.0.4)
+    - KakaoSDKCommon (= 2.0.4)
   - leveldb-library (1.22)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -486,15 +486,15 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
-  KakaoSDK: 14211a588217611f7745a23d9dfaaddd0936a615
-  KakaoSDKAuth: c35a4e9d036392ad08b4bdc30a58876267d2ef6e
-  KakaoSDKCommon: f45f28cbe6e61eb90d415ff993f4731fcbaf7c55
-  KakaoSDKLink: 93aaf115a1403a70909083d0b820434c0663a18c
-  KakaoSDKNavi: 4dcc38a10428f5fcd15e86e73bba25e7a8c8b99d
-  KakaoSDKStory: 3c8f59230ea13b72d8ebb16ff1e96f162cc6ad40
-  KakaoSDKTalk: c8b0ba5098c56523bba160285489557650d6e196
-  KakaoSDKTemplate: cf69d879d47b0f7fbabcf119428c6075b77fca11
-  KakaoSDKUser: 0ebc43dc33a41d25a22270fd04ed7af7a6b0279d
+  KakaoSDK: 9e2d0ddb9828e7e68cdc45cb756d4c649c65b1ba
+  KakaoSDKAuth: 3a88e4a110243f8c6b9948c5ec85670c7acaebf6
+  KakaoSDKCommon: 070472d0638ea6b28684a23c195e47015349e51b
+  KakaoSDKLink: a90a919c4b00dc85bbf21d91842961c105317317
+  KakaoSDKNavi: 698659afffcd6d069febe0d1eab7a2dc524697f5
+  KakaoSDKStory: da6ee55062acc3bd667315773671e55c85b5ca56
+  KakaoSDKTalk: 8cf6299b0eea7cf3139ab0f62b415fd054f83a29
+  KakaoSDKTemplate: 330007aea0b46de1ed93e4cbddc7b4c3b59bdc25
+  KakaoSDKUser: 7951e09f9e6de3908ae2d7f8486290c8607c217a
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   naveridlogin-sdk-ios: cf8afccdb1793d4ecfcd5d46aa8729d8b5058c70
