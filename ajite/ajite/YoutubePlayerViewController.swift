@@ -13,33 +13,30 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
     // ======================> 변수, outlet 선언
     
-    var youtubePlayer: YTPlayerView!
     var index: Int = 0
     var youtubeVideos = Playlist()
     
+    @IBOutlet weak var youtubePlayer: YTPlayerView!
     // ==================================================================>
     
     // ======================> ViewController와 View 관련 함수들
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-    }
-
-    override func loadView() {
-        youtubePlayer = YTPlayerView()
-        self.youtubePlayer.delegate = self;
-        self.youtubePlayer.load(withVideoId: youtubeVideos.songs[index].videoID, playerVars: [
-            "controls": 1,  //0: 영상 컨트롤 바 사라짐, 1: 컨트롤 바 생성
-            "playsinline": 1,   //0: 전체 화면 재생, 1: playerView 화면 내애서 재생
-        ])
-        view = youtubePlayer
     }
     
     // ==================================================================>
     
     // ======================> 유튜브 영상 재생 관련 함수
+    
+    func loadFirstSong() {
+        self.youtubePlayer.delegate = self;
+        youtubePlayer.load(withVideoId: youtubeVideos.songs[index].videoID, playerVars: [
+            "controls": 1,  //0: 영상 컨트롤 바 사라짐, 1: 컨트롤 바 생성
+            "playsinline": 1,   //0: 전체 화면 재생, 1: playerView 화면 내애서 재생
+        ])
+        //view = youtubePlayer
+    }
     
     //유튜브 플레이어 뷰가 준비 되면 실행될 함수
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
@@ -66,8 +63,9 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     }
     
     //특정 비디오를 재생하기 위해 사용하는 함수
-    func playCertainVideo() {
-        self.youtubePlayer.load(withVideoId: youtubeVideos.songs[index].videoID, playerVars: [
+    func playCertainVideo(_ indexOfSelectedSong: Int) {
+        index = indexOfSelectedSong
+        self.youtubePlayer.load(withVideoId: youtubeVideos.songs[indexOfSelectedSong].videoID, playerVars: [
             "controls": 1,  //0: 영상 컨트롤 바 사라짐, 1: 컨트롤 바 생성
             "playsinline": 1,   //0: 전체 화면 재생, 1: playerView 화면 내애서 재생
         ])

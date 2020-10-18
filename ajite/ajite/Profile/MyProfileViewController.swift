@@ -44,19 +44,19 @@ class MyProfileViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "toPlaylist" else {
-//            return
-//        }
-//        guard let sendingPlaylist = sender as? Playlist else {
-//            return
-//        }
-//        guard let destination = segue.destination as? PlaylistSongListViewController else {
-//            return
-//        }
-//        //플레이리스트 내부 뷰에 플레이리스트 전송
-//        destination.source = sendingPlaylist
-//        //플레이리스트 내부 뷰에 플레이리스트 주인 정보 전달
-//        destination.currentUser = myUser
+        guard segue.identifier == "toPlaylist" else {
+            return
+        }
+        guard let sendingPlaylist = sender as? Playlist else {
+            return
+        }
+        guard let destination = segue.destination as? PlaylistViewController else {
+            return
+        }
+        //플레이리스트 내부 뷰에 플레이리스트 전송
+        destination.playlist = sendingPlaylist
+        //플레이리스트 내부 뷰에 플레이리스트 주인 정보 전달
+        destination.currentUser = myUser
     }
     
     // ==================================================================>
