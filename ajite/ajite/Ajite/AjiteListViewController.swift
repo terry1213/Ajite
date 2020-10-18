@@ -15,6 +15,7 @@ var ajites : [Ajite] = []
 class AjiteListViewController: UIViewController {
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ajiteList: UITableView!
     
     override func viewDidLoad() {
@@ -29,7 +30,10 @@ class AjiteListViewController: UIViewController {
             self.getAjitesData() {
                 self.ajiteList.reloadData()
             }
+            
         }
+        ajiteList.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -168,11 +172,26 @@ extension AjiteListViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ajiteList.dequeueReusableCell(withIdentifier: "AjiteCell", for: indexPath) as! AjiteTableViewCell
         cell.ajiteName.text = ajites[indexPath.row].name
-        cell.ajiteImage.image = UIImage(named: "door-\(ajites[indexPath.row].ajiteImageString)")
+        cell.ajiteImage.image = UIImage(named: "ajitelogo.png")
         cell.numberOfMembers.text = "\(ajites[indexPath.row].numOfMembers)"
         cell.numberOfSongs.text = "\(ajites[indexPath.row].numOfSongs)"
+    
+     
+            // add shadow on cell
+        cell.backgroundColor = .clear// very important
+       cell.layer.masksToBounds = false
+        cell.layer.shadowOpacity = 0.23
+        cell.layer.shadowRadius = 15
+        cell.layer.cornerRadius = 15
+        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell.layer.shadowColor = UIColor.black.cgColor
+
+
+        
+   
         return cell
-    }
+        }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
@@ -206,6 +225,13 @@ extension AjiteListViewController : UITableViewDataSource{
         ajites.remove(at: fromIndexPath.row)
         ajites.insert(movedObject, at: to.row)
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // this will turn on `masksToBounds` just before showing the cell
+        cell.contentView.layer.masksToBounds = true
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
+    }
+    
 }
 
 extension AjiteListViewController : UITableViewDelegate {
