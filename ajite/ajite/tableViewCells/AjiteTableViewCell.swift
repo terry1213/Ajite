@@ -12,8 +12,10 @@ class AjiteTableViewCell: UITableViewCell {
     
     // ======================> 변수, outlet 선언
     
+    
     @IBOutlet weak var ajiteImage: UIImageView!
     @IBOutlet weak var ajiteName: UILabel!
+
     @IBOutlet weak var numberOfMembers: UILabel!
     @IBOutlet weak var numberOfSongs: UILabel!
     // ==================================================================>
@@ -22,6 +24,7 @@ class AjiteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+      
     }
     
     // ==================================================================>
@@ -36,6 +39,9 @@ class AjiteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+
+    
+  
 }
 
 //소속: AjiteListViewController
