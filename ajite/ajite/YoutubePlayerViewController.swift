@@ -108,6 +108,14 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
         switch isShuffle {
         case true:
             shuffleButton.tintColor = .systemBlue
+            if let parent = self.parent as? PlaylistViewController {
+                let currentSong = parent.playlist.songs.remove(at: index)
+                parent.playlist.songs.shuffle()
+                parent.playlist.songs.insert(currentSong, at: 0)
+                parent.songTable.reloadData()
+                youtubeVideos = parent.playlist
+                index = 0
+            }
             break
         case false:
             shuffleButton.tintColor = .lightGray
