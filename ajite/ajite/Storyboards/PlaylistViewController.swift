@@ -15,6 +15,8 @@ class PlaylistViewController: UIViewController {
     var currentUser = User()
     //현재 플레이리스트
     var playlist = Playlist()
+    //유튜브 플레이어
+    var youtubePlayerVC: YoutubePlayerViewController!
 
     @IBOutlet weak var playlistName: UILabel!
     @IBOutlet weak var songTable: UITableView!
@@ -39,7 +41,8 @@ class PlaylistViewController: UIViewController {
         guard let destination = segue.destination as? YoutubePlayerViewController else {
             return
         }
-        self.getData(destination)
+        youtubePlayerVC = destination
+        self.getData()
     }
     
     // ==================================================================>
@@ -52,7 +55,7 @@ class PlaylistViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func getData(_ youtubePlayerVC: YoutubePlayerViewController){
+    func getData(){
         //본인의, 선택한 플레이리스트의, 노래들을 불러온다.
         db
             .collection("users").document(currentUser.documentID)
@@ -85,8 +88,8 @@ class PlaylistViewController: UIViewController {
                 DispatchQueue.main.async{
                     //새로 받아온 정보로 테이블 업데이트
                     self.songTable.reloadData()
-                    youtubePlayerVC.youtubeVideos = self.playlist
-                    youtubePlayerVC.loadFirstSong()
+                    self.youtubePlayerVC.youtubeVideos = self.playlist
+                    self.youtubePlayerVC.loadFirstSong()
                 }
             }
         }
@@ -166,6 +169,8 @@ extension PlaylistViewController : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         songTable.deselectRow(at: indexPath, animated: true)
+        youtubePlayerVC.playCertainVideo(indexPath.row)
+        
     }
     
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
