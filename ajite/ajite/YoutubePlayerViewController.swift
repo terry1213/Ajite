@@ -85,6 +85,26 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     
     // ==================================================================>
     
+    @IBAction func PreviousSongButtonTouched(_ sender: Any) {
+        if index != 0 {
+            index -= 1
+        }
+        playCertainVideo(index)
+    }
+    
+    @IBAction func nextSongButtonTouched(_ sender: Any) {
+        if index < youtubeVideos.songs.count-1{
+            //인덱스 1 증가
+            index += 1
+            //해당 노래를 불러온다.
+            playCertainVideo(index)
+        }
+        else if isLoop == 1 {
+            index = 0
+            playCertainVideo(index)
+        }
+    }
+    
     @IBAction func loopButtonTouched(_ sender: Any) {
         isLoop = (isLoop + 1) % 3
         switch isLoop {
