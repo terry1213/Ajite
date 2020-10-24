@@ -10,10 +10,15 @@ import UIKit
 
 class NotificationTableViewController: UITableViewController {
 
+    @IBOutlet weak var ajiteInvites: UITableViewCell!
+    @IBOutlet weak var songInbox: UITableViewCell!
+    @IBOutlet weak var friendRequest: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "gradient1"))
-      
+        self.friendRequest.backgroundColor = .clear
+        self.songInbox.backgroundColor = .clear
+        self.ajiteInvites.backgroundColor = .clear
     }
   
 }

@@ -26,8 +26,11 @@ class MyProfileViewController: UIViewController {
         super.viewDidLoad()
         self.playlist.dataSource = self
         self.playlist.delegate = self
+        
+
     }
     
+  
     override func viewWillAppear(_ animated: Bool) {
         //플레이리스트 데이터 불러오기
         getPlaylistsData() {
@@ -118,6 +121,9 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.playlistName.text = myUser.playlists[indexPath.row].playlistName
         //해당 플레이리스트에 속한 노래의 개수를 적음
         cell.numberOfSongs.text = "\(myUser.playlists[indexPath.row].songNum) songs"
+        cell.record.image = UIImage(named:"record-2")
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = .clear
         return cell
     }
     
