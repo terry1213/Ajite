@@ -142,6 +142,8 @@ extension PlaylistViewController : UITableViewDataSource{
         cell.channelName.text = playlist.songs[indexPath.row].artist
         //cell.cellDelegate = self
         //cell.index = indexPath
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = .clear
         return cell
     }
     

@@ -39,7 +39,7 @@ class YoutubePlayerViewController: UIViewController, YTPlayerViewDelegate{
     func loadFirstSong() {
         self.youtubePlayer.delegate = self;
         playCertainVideo(index)
-        youtubePlayer.layer.cornerRadius = 15
+        youtubePlayer.layer.cornerRadius = 10
         youtubePlayer.layer.masksToBounds = true
     }
     
