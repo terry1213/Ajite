@@ -28,6 +28,7 @@ class PlaylistViewController: UIViewController {
         playlistName.text = playlist.playlistName
         self.songTable.dataSource = self
         self.songTable.delegate = self
+       
     }
     
     override func viewDidAppear (_ animated: Bool){
