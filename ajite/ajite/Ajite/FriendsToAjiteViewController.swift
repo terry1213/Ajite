@@ -25,6 +25,7 @@ class FriendsToAjiteViewController: UIViewController {
     var vcindex = 0
     var displayUsers: [User] = []
     var addedMembers = [User]() // 아지트에 새로 넣을 멤버들
+    var addedMembersNames = [String]()
     var alreadyMembers = [String]() // 이미 아지트에 있는 멤버들 (vcindex == 1인 경우)
     var delegate : FriendsToAjiteDelegate?
     let userRef = db.collection("users")
@@ -40,8 +41,8 @@ class FriendsToAjiteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  self.addedMembersTable.dataSource = self
-     //   self.addedMembersTable.delegate = self
+        //  self.addedMembersTable.dataSource = self
+        //   self.addedMembersTable.delegate = self
         self.searchFriendsTable.dataSource = self
         self.searchFriendsTable.delegate = self
         searchBar.delegate = self
@@ -50,7 +51,7 @@ class FriendsToAjiteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         displayUsers.removeAll()
-       // addedMembers.removeAll()
+        // addedMembers.removeAll()
         alreadyMembers.removeAll()
         totalUser.removeAll()
     }
@@ -64,7 +65,7 @@ class FriendsToAjiteViewController: UIViewController {
             print("vcindex = 1")
             let inviteAlert = UIAlertController(title: "Invite to Ajite", message: "Would you like to invite friends to your ajite?", preferredStyle: UIAlertController.Style.alert)
             inviteAlert.addAction(UIAlertAction(title: "Add",style: .default, handler: {(action: UIAlertAction!) in
-            
+                
                 for addedUser in self.addedMembers{
                     self.userRef.document(addedUser.documentID).collection("invitation").document(addedUser.documentID).setData([
                         "ajite" :  self.currentAjite.name,
@@ -142,7 +143,7 @@ class FriendsToAjiteViewController: UIViewController {
                                 temUser.profileImageURL = data!["profileImageURL"] as! String
                                 temUser.documentID = document.documentID
                                 //전체 유저 목록에 추가
-                               totalUser.append(temUser)
+                                totalUser.append(temUser)
                                 //테이블에 불러온 정보를 보여준다.
                                 count += 1
                                 if count == snap.documents.count {
@@ -151,7 +152,7 @@ class FriendsToAjiteViewController: UIViewController {
                                 }
                             }
                             else {
-                                    print("Document does not exist")
+                                print("Document does not exist")
                             }
                         }
                     }
@@ -165,13 +166,13 @@ class FriendsToAjiteViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-
+    
     //keyboard return누르면 숨겨짐
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
-  
+    
 }
 
 
@@ -182,11 +183,11 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      /* if tableView == self.addedMembersTable{
-            return addedMembers.count
-        } else {
-            return displayUsers.count
-        }*/
+        /* if tableView == self.addedMembersTable{
+         return addedMembers.count
+         } else {
+         return displayUsers.count
+         }*/
         return displayUsers.count
     }
     
@@ -197,51 +198,64 @@ extension FriendsToAjiteViewController : UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       /* if tableView == self.addedMembersTable{
-            addedMembersTable.deselectRow(at: indexPath, animated: true)
+        /* if tableView == self.addedMembersTable{
+         addedMembersTable.deselectRow(at: indexPath, animated: true)
+         }
+         else{*/
+        // addedMembers.append(displayUsers[indexPath.row])
+        //displayUsers.remove(at: indexPath.row)
+        //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
+        if(addedMembersNames.contains(displayUsers[indexPath.row].userID)){
+            if let itemToRemoveIndex =  addedMembersNames.firstIndex(of: displayUsers[indexPath.row].userID) {
+                addedMembersNames.remove(at: itemToRemoveIndex)
+                addedMembers.remove(at: itemToRemoveIndex)
+            }
         }
-        else{*/
-           // addedMembers.append(displayUsers[indexPath.row])
-            displayUsers.remove(at: indexPath.row)
-            //  searchFriendsTable.deselectRow(at: indexPath, animated: true)
-            searchFriendsTable.reloadData()
-            //addedMembersTable.reloadData()
+        else {
+            addedMembers.append(displayUsers[indexPath.row])
+            addedMembersNames.append(displayUsers[indexPath.row].userID)
         }
+        
+        
+        searchFriendsTable.reloadData()
+        //addedMembersTable.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      /*  if tableView == self.addedMembersTable{
-            let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
-            cell.addedMembersLabel.text = addedMembers[indexPath.row].name
-            let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
-            cell.addedFriendsProfile.image = UIImage(data: data!)
-            return cell
-        }*/
-      //  if tableView == self.searchFriendsTable{
-            let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! SearchFriendsTableViewCell
-            cell.searchFriendName.text = displayUsers[indexPath.row].name
-            //     cell.searchUser = myUser.friends 에 저장
-            let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
-            cell.searchFriendImage.image = UIImage(data: data!)
-            //cell.cellDelegate = self
-            //cell.delegate = self
-            return cell
+        /*  if tableView == self.addedMembersTable{
+         let cell = addedMembersTable.dequeueReusableCell(withIdentifier: "addedMembers", for: indexPath) as! AddedFriendsTableViewCell
+         cell.addedMembersLabel.text = addedMembers[indexPath.row].name
+         let data = try? Data(contentsOf: URL(string: addedMembers[indexPath.row].profileImageURL)!)
+         cell.addedFriendsProfile.image = UIImage(data: data!)
+         return cell
+         }*/
+        //  if tableView == self.searchFriendsTable{
+        let cell = searchFriendsTable.dequeueReusableCell(withIdentifier: "searchFriends", for: indexPath) as! SearchFriendsTableViewCell
+        cell.searchFriendName.text = displayUsers[indexPath.row].name
+        //     cell.searchUser = myUser.friends 에 저장
+        let data = try? Data(contentsOf: URL(string: displayUsers[indexPath.row].profileImageURL)!)
+        cell.searchFriendImage.image = UIImage(data: data!)
+        addedMembersNames.contains(displayUsers[indexPath.row].userID) ? cell.checkCircle.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) : cell.checkCircle.setImage(UIImage(systemName: "circle"), for: .normal)
+        //cell.cellDelegate = self
+        //cell.delegate = self
+        return cell
         //}
-       // return UITableViewCell()
+        // return UITableViewCell()
     }
     
     //search bar 에서 실수로 추가한 아이가 있으면 실수로 added member에 추가된 유저를 다시 삭제하는 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      /*  if tableView == self.addedMembersTable{
-            guard editingStyle == .delete else { return }
-            displayUsers.append(addedMembers[indexPath.row])
-            addedMembers.remove(at: indexPath.row)
-            
-            self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
-        }*/
+        /*  if tableView == self.addedMembersTable{
+         guard editingStyle == .delete else { return }
+         displayUsers.append(addedMembers[indexPath.row])
+         addedMembers.remove(at: indexPath.row)
+         
+         self.addedMembersTable.deleteRows(at: [indexPath], with: .automatic)
+         }*/
         searchFriendsTable.reloadData()
-     //   addedMembersTable.reloadData()
+        //   addedMembersTable.reloadData()
     }
-        
+    
 }
 
 

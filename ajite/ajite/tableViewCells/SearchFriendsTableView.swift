@@ -14,6 +14,7 @@ class SearchFriendsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var searchFriendImage: CircleImageView!
     @IBOutlet weak var searchFriendName: UILabel!
+    @IBOutlet weak var checkCircle: UIButton!
     
     // ==================================================================>
     
