@@ -33,10 +33,11 @@ class AjiteListViewController: UIViewController {
             
         }
         ajiteList.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
-       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue")
         guard segue.identifier == "intoAjite" else {
             return
         }
@@ -69,7 +70,7 @@ class AjiteListViewController: UIViewController {
                     print("The number of ajite is \(ajites.count)")
                     completion()
                 }
-        }
+            }
     }
     
     // 아지트 데이터를 가져오는 함수
@@ -150,7 +151,7 @@ class AjiteListViewController: UIViewController {
                 } else {
                     print("Document does not exist")
                 }
-        }
+            }
     }
     
     @IBAction func order(_ sender: Any) {
@@ -175,23 +176,23 @@ extension AjiteListViewController : UITableViewDataSource{
         cell.ajiteImage.image = UIImage(named: "ajitelogo.png")
         cell.numberOfMembers.text = "\(ajites[indexPath.row].numOfMembers)"
         cell.numberOfSongs.text = "\(ajites[indexPath.row].numOfSongs)"
-    
-     
-            // add shadow on cell
+        
+        
+        // add shadow on cell
         cell.backgroundColor = .clear// very important
-       cell.layer.masksToBounds = false
+        cell.layer.masksToBounds = false
         cell.layer.shadowOpacity = 0.23
         cell.layer.shadowRadius = 15
         cell.layer.cornerRadius = 15
         cell.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell.layer.shadowColor = UIColor.black.cgColor
-
-
         
-   
+        
+        
+        
         return cell
-        }
-
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
@@ -236,7 +237,7 @@ extension AjiteListViewController : UITableViewDataSource{
 
 extension AjiteListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataToSend = ajites[indexPath.row]
-        self.performSegue(withIdentifier: "intoAjite", sender: dataToSend)
+                let dataToSend = ajites[indexPath.row]
+                self.performSegue(withIdentifier: "intoAjite", sender: dataToSend)
     }
 }

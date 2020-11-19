@@ -9,7 +9,7 @@
 import UIKit
 
 class MyProfileViewController: UIViewController {
-
+    
     // ======================> 변수, outlet 선언
     
     @IBOutlet weak var playlist: UITableView!
@@ -27,10 +27,9 @@ class MyProfileViewController: UIViewController {
         self.playlist.dataSource = self
         self.playlist.delegate = self
         
-
     }
     
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         //플레이리스트 데이터 불러오기
         getPlaylistsData() {
@@ -40,7 +39,7 @@ class MyProfileViewController: UIViewController {
         //Label에 이름 적기
         self.userName.text = myUser.name
         //Label에 biography 적기
-        self.bio.text = myUser.bio
+        getUserBio(){}
         //UIImage에 유저 프로필 사진 넣기
         let data = try? Data(contentsOf: URL(string: myUser.profileImageURL)!)
         self.profileImage.image = UIImage(data: data!)
@@ -72,33 +71,53 @@ class MyProfileViewController: UIViewController {
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
+    func getUserBio(completion: @escaping () -> Void){
+        //유저 정보 불러오기
+        db
+            .collection("users").document(myUser.documentID)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                myUser.bio = document.data()!["bio"] == nil ? "" : document.data()!["bio"] as! String
+                self.bio.text = myUser.bio
+                print("Current data: \(data)")
+                completion()
+            }
+    }
+    
     func getPlaylistsData(completion: @escaping () -> Void){
         db
             .collection("users").document(myUser.documentID)
             .collection("playlists").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                //우선 전에 받아왔던 플레이리스트 정보들을 다 삭제한다.
-                myUser.playlists.removeAll()
-                //정보를 받아오기 위한 임시 플레이리스트 선언
-                var temPlaylist: Playlist
-                //firestore에서 본인의 플레이리스트를 전부 불러와서 하나하나씩 처리한다.
-                for document in querySnapshot!.documents {
-                    //다음 플레이리스트를 담기 위한 임시 플레이리스트 생성
-                    temPlaylist = Playlist()
-                    //플레이리스트 이름 받기
-                    temPlaylist.playlistName = document.data()["name"] as! String
-                    //플레이리스트 아이디 받기
-                    temPlaylist.songNum = document.data()["songNum"] as! Int
-                    temPlaylist.id = document.documentID
-                    //플레이리스트 목록에 추가
-                    myUser.playlists.append(temPlaylist)
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    //우선 전에 받아왔던 플레이리스트 정보들을 다 삭제한다.
+                    myUser.playlists.removeAll()
+                    //정보를 받아오기 위한 임시 플레이리스트 선언
+                    var temPlaylist: Playlist
+                    //firestore에서 본인의 플레이리스트를 전부 불러와서 하나하나씩 처리한다.
+                    for document in querySnapshot!.documents {
+                        //다음 플레이리스트를 담기 위한 임시 플레이리스트 생성
+                        temPlaylist = Playlist()
+                        //플레이리스트 이름 받기
+                        temPlaylist.playlistName = document.data()["name"] as! String
+                        //플레이리스트 아이디 받기
+                        temPlaylist.songNum = document.data()["songNum"] as! Int
+                        temPlaylist.id = document.documentID
+                        //플레이리스트 목록에 추가
+                        myUser.playlists.append(temPlaylist)
+                    }
+                    print("The number of playlists is \(myUser.playlists.count)")
+                    completion()
                 }
-                print("The number of playlists is \(myUser.playlists.count)")
-                completion()
             }
-        }
     }
     
     // ==================================================================>
@@ -128,7 +147,7 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 65
+        return 65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

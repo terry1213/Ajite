@@ -10,7 +10,7 @@ import UIKit
 
 class sharedSongsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var shareeProfile: UIImageView!
+    @IBOutlet weak var sharedProfile: UIImageView!
     @IBOutlet weak var videoName: UILabel!
     @IBOutlet weak var channelName: UILabel!
     override func awakeFromNib() {
