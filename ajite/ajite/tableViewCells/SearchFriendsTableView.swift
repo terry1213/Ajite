@@ -36,6 +36,7 @@ class SearchFriendsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+   
 }
 
 //소속: FriendsToAjiteViewController
