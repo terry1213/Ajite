@@ -35,7 +35,9 @@ class RequestViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         //유저의 정보를 가져온다.
-        getFriendRequest()
+        getFriendRequest(){
+            self.RequestTV.reloadData()
+        }
     }
     
     // ==================================================================>
@@ -45,26 +47,27 @@ class RequestViewController: UIViewController{
     
     // ======================> Firestore에서 데이터를 가져오거나 저장하는 함수들
     
-    func getFriendRequest(){
+    func getFriendRequest(completion: @escaping () -> Void){
         //친구 목록중에 나에게 친구 신청을 보낸(state = 1) 유저의 documentID를 불러온다.
         db
             .collection("users").document(myUser.documentID)
-            .collection("friends").whereField("state", isEqualTo: 1).getDocuments{ (snapshot, error) in
+            .collection("friends").whereField("state", isEqualTo: 1).addSnapshotListener{ (snapshot, error) in
                 if let err = error {
                     debugPrint("Error fetching docs: \(err)")
                 }
-                else {
-                    guard let snap = snapshot else {return}
-                    var count = 0
-                    for document in snap.documents {
-                        //유저 documentID를 통해 users document에 접근해서 해당 유저의 모든 정보를 가져온다.
-                        self.getUserData(userDocumentID: document.documentID){
-                            count += 1
-                            //모든 친구 요청을 불러왔을 경우,
-                            if count == snap.documents.count {
-                                //테이블에 불러온 정보를 보여준다.
-                                self.RequestTV.reloadData()
-                            }
+                self.requestUsers.removeAll()
+                guard let snap = snapshot else {return}
+                var count = 0
+                if snap.documents.count == 0 {
+                    completion()
+                }
+                for document in snap.documents {
+                    //유저 documentID를 통해 users document에 접근해서 해당 유저의 모든 정보를 가져온다.
+                    self.getUserData(userDocumentID: document.documentID){
+                        count += 1
+                        //모든 친구 요청을 불러왔을 경우,
+                        if count == snap.documents.count {
+                            completion()
                         }
                     }
                 }
@@ -162,8 +165,6 @@ extension RequestViewController: RequestTableViewUser {
         
         //친구 신청을 받은 유저의 친구 목록에서 document를 찾아 상태를 친구로 변경한다.(state -> 2)
         self.changeRequest(userFrom: requestUsers[index], userTo: myUser, state: 2)
-        
-        self.RequestTV.reloadData()
     }
     
     func DeclineClickCell(index: Int) {
@@ -172,7 +173,5 @@ extension RequestViewController: RequestTableViewUser {
         
         //친구 신청을 받은 유저의 친구 document를 찾아 삭제한다.
         deleteRequest(userFrom: myUser, userTo: requestUsers[index])
-        
-        self.RequestTV.reloadData()
     }
 }
