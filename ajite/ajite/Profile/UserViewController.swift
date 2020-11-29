@@ -24,7 +24,6 @@ class UserViewController: UIViewController {
     //화면에 보일 유저 정보(검색창을 통해 필터링한 목록)
     var displayUsers: [User] = []
     var friendsID : [String] = []
-    var ref: DocumentReference? = nil
     
     @IBOutlet var userTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -52,11 +51,12 @@ class UserViewController: UIViewController {
     
     //모든 유저 정보를 불러오는 함수
     func getUserData(){
-        userRef.getDocuments{ (snapshot, error) in
+        userRef.addSnapshotListener { (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
             }
             else {
+                users.removeAll()
                 guard let snap = snapshot else {return}
                 var temUser : User
                 for document in snap.documents {
@@ -81,7 +81,7 @@ class UserViewController: UIViewController {
     func getfriendsList() {
         db
             .collection("users").document(myUser.documentID)
-            .collection("friends").getDocuments() { (querySnapshot, err) in
+            .collection("friends").addSnapshotListener { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -90,6 +90,7 @@ class UserViewController: UIViewController {
                     }
                     //모든 유저 정보를 불러온다.
                     self.getUserData()
+                    self.userTable.reloadData()
                 }
             }
     }
@@ -186,9 +187,6 @@ extension UserViewController: TableViewUser {
         
         //친구 신청을 하는 유저의 friends collection에 friend document를 생성한다. state = 0
         self.friendRequest(userFrom: displayUsers[index], userTo: myUser, state: 0)
-        
-        self.friendsID.append(displayUsers[index].documentID)
-        userTable.reloadData()
     }
 }
 
