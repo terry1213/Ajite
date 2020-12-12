@@ -94,29 +94,30 @@ class MyProfileViewController: UIViewController {
     func getPlaylistsData(completion: @escaping () -> Void){
         db
             .collection("users").document(myUser.documentID)
-            .collection("playlists").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    //우선 전에 받아왔던 플레이리스트 정보들을 다 삭제한다.
-                    myUser.playlists.removeAll()
-                    //정보를 받아오기 위한 임시 플레이리스트 선언
-                    var temPlaylist: Playlist
-                    //firestore에서 본인의 플레이리스트를 전부 불러와서 하나하나씩 처리한다.
-                    for document in querySnapshot!.documents {
-                        //다음 플레이리스트를 담기 위한 임시 플레이리스트 생성
-                        temPlaylist = Playlist()
-                        //플레이리스트 이름 받기
-                        temPlaylist.playlistName = document.data()["name"] as! String
-                        //플레이리스트 아이디 받기
-                        temPlaylist.songNum = document.data()["songNum"] as! Int
-                        temPlaylist.id = document.documentID
-                        //플레이리스트 목록에 추가
-                        myUser.playlists.append(temPlaylist)
-                    }
-                    print("The number of playlists is \(myUser.playlists.count)")
-                    completion()
+            .collection("playlists").addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
                 }
+                //우선 전에 받아왔던 플레이리스트 정보들을 다 삭제한다.
+                myUser.playlists.removeAll()
+                //정보를 받아오기 위한 임시 플레이리스트 선언
+                var temPlaylist: Playlist
+                //firestore에서 본인의 플레이리스트를 전부 불러와서 하나하나씩 처리한다.
+                for document in querySnapshot!.documents {
+                    //다음 플레이리스트를 담기 위한 임시 플레이리스트 생성
+                    temPlaylist = Playlist()
+                    //플레이리스트 이름 받기
+                    temPlaylist.playlistName = document.data()["name"] as! String
+                    //플레이리스트 아이디 받기
+                    temPlaylist.songNum = document.data()["songNum"] as! Int
+                    temPlaylist.isPrivate = document.data()["isPrivate"] as! Bool
+                    temPlaylist.id = document.documentID
+                    //플레이리스트 목록에 추가
+                    myUser.playlists.append(temPlaylist)
+                }
+                print("The number of playlists is \(myUser.playlists.count)")
+                completion()
             }
     }
     
@@ -141,6 +142,9 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         //해당 플레이리스트에 속한 노래의 개수를 적음
         cell.numberOfSongs.text = "\(myUser.playlists[indexPath.row].songNum) songs"
         cell.record.image = UIImage(named:"레코드판")
+        cell.playlistID = myUser.playlists[indexPath.row].id
+        cell.isPrivate = myUser.playlists[indexPath.row].isPrivate
+        myUser.playlists[indexPath.row].isPrivate ? cell.lock.setImage(UIImage(systemName: "lock"), for: .normal) : cell.lock.setImage(UIImage(systemName: "lock.open"), for: .normal)
         cell.layer.masksToBounds = true
         cell.backgroundColor = .clear
         return cell

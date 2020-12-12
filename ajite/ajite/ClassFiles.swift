@@ -43,6 +43,7 @@ class Playlist {
     var playlistName = String()
     var songs = [Song]()
     var songNum = Int()
+    var isPrivate = Bool()
     init (){
         playlistName = ""
     }
