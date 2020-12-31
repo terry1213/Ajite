@@ -64,9 +64,7 @@
 		6EC6260324DD5A5F00B7555B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC6260124DD5A5F00B7555B /* UserTableViewCell.swift */; };
 		6EE115E824DF0ECD00CA4170 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE115E724DF0ECD00CA4170 /* RequestTableViewCell.swift */; };
 		B67DB12696AE46234150B7A8 /* Pods_ajite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8297C5520743A9EBE1BA23 /* Pods_ajite.framework */; };
-		DE7E8D542502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
-		DE7E8D552502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
-		DE7E8D562502628E00FA14F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */; };
+		DE9A1A94259DE0EC00CABD84 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE9A1A93259DE0EB00CABD84 /* GoogleService-Info.plist */; };
 		DEA14A2724D422A400B7FA2D /* TabBarMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */; };
 		DEA14A3124D58B2A00B7FA2D /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */; };
 		DEBEC58425137B5200C2CBAE /* ManageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBEC58325137B5100C2CBAE /* ManageFriendsTableViewCell.swift */; };
@@ -158,7 +156,7 @@
 		B8C466640AC8C7FFC02102DB /* Pods-ajite-ajiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite-ajiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ajite-ajiteUITests/Pods-ajite-ajiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C58B649ECA05C89B2D5CBBE5 /* Pods-ajite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajite.debug.xcconfig"; path = "Target Support Files/Pods-ajite/Pods-ajite.debug.xcconfig"; sourceTree = "<group>"; };
 		DDB97763F0BDF05CFAE67CD5 /* Pods-ajiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ajiteTests.release.xcconfig"; path = "Target Support Files/Pods-ajiteTests/Pods-ajiteTests.release.xcconfig"; sourceTree = "<group>"; };
-		DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE9A1A93259DE0EB00CABD84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEA14A2624D422A400B7FA2D /* TabBarMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuViewController.swift; sourceTree = "<group>"; };
 		DEA14A3024D58B2A00B7FA2D /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		DEBEC58325137B5100C2CBAE /* ManageFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -270,7 +268,7 @@
 		16AE4ADD24CC761400807ECB = {
 			isa = PBXGroup;
 			children = (
-				DE7E8D532502628E00FA14F5 /* GoogleService-Info.plist */,
+				DE9A1A93259DE0EB00CABD84 /* GoogleService-Info.plist */,
 				16AE4AE824CC761400807ECB /* ajite */,
 				16AE4B0224CC761900807ECB /* ajiteTests */,
 				16AE4B0D24CC761900807ECB /* ajiteUITests */,
@@ -495,7 +493,7 @@
 			files = (
 				1645658424CE889100DDA830 /* made.otf in Resources */,
 				16AE4AF924CC761800807ECB /* LaunchScreen.storyboard in Resources */,
-				DE7E8D542502628E00FA14F5 /* GoogleService-Info.plist in Resources */,
+				DE9A1A94259DE0EC00CABD84 /* GoogleService-Info.plist in Resources */,
 				1698B9AE24DAC9BE005DE79F /* proxima-black.otf in Resources */,
 				1698B9AF24DAC9BE005DE79F /* proxima-thin.otf in Resources */,
 				1698B9A924DAC99C005DE79F /* proxima-alt.otf in Resources */,
@@ -509,7 +507,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE7E8D552502628E00FA14F5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,7 +514,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE7E8D562502628E00FA14F5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
